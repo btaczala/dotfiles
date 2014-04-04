@@ -13,7 +13,8 @@ cpu_avg_samples 1
 
 TEXT
 [{ "full_text" : " Batt ${battery_percent BAT1}% " , "color" : "\#ffffff" },
-{ "full_text" : " RAM ${mem} " , "color" : ${if_match ${memperc}<90}"\#ffffff"${else}"\#ff0000"${endif} },
+{ "full_text" : " RAM ${mem}/${memmax} " , "color" : ${if_match ${memperc}<90}"\#ffffff"${else}"\#ff0000"${endif} },
 { "full_text" : " Load ${loadavg 1} " , "color" : "\#ffffff" },
-{ "full_text" : " I/O ${diskio /dev/sda} " , "color" : "\#ffffff" },
+{ "full_text" : " I/O ${diskio /dev/sda} " , "color" : "\#82b8d0" },
+{ "full_text" : " ${kernel} " , "color" : "\#a9db6c" },
 { "full_text" : " $time " , "color" : "\#ffffff" },
