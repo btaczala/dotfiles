@@ -214,7 +214,7 @@ bindsym XF86AudioNext exec mpc next
 bindsym XF86Launch1 exec /usr/bin/pactl play-sample that_was_easy
 bindsym XF86Sleep exec /usr/bin/backlight-control -c +10%
 bindsym XF86Battery exec /usr/bin/backlight-control -c -10%
-bindsym XF86Display exec sh ~/touchpad.sh 
+bindsym XF86Display exec sh ~/dotfiles/randr.sh
 bindsym $mod+m move workspace to output left
 exec --no-startup-id dunst -config ~/dotfiles/dunstrc
 exec --no-startup-id compton --inactive-dim 0.1 --backend=glx
