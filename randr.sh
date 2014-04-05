@@ -1,6 +1,7 @@
 #!/bin/sh
 # based on http://ebrnd.de/?p=501
 
+backlight-control -s 100
 xrandr --output VGA-0 --off --output DVI-0 --off --output LVDS --auto
 
 i3-nagbar -m "EBRND'S SUPER-COOL I3WM SCREEN CONFIG UTILITY" -t warning \

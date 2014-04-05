@@ -205,6 +205,7 @@ bindsym Ctrl+Shift+2 exec --no-startup-id setxkbmap pl
 
 
 # Toshiba laptop
+# Toshibas has messed up fn keys
 bindsym XF86AudioLowerVolume exec /usr/bin/pactl set-sink-volume 0 -- '-5%'
 bindsym XF86AudioRaiseVolume exec /usr/bin/pactl set-sink-volume 0 -- '+5%'
 bindsym XF86AudioMute exec /usr/bin/pactl set-sink-volume 0 0
