@@ -1,4 +1,24 @@
 [Filter #0]
+Applicability=0
+AutomaticName=true
+ConfigureShortcut=false
+ConfigureToolbar=false
+Enabled=true
+StopProcessingHere=true
+ToolbarName=<From>: Adair Jr, Mason <mason.adair@here.com>
+action-args-0=mobica/Inbox/proj/nokia-automotive
+action-name-0=transfer
+actions=1
+apply-on=check-mail,manual-filtering
+contentsA=Adair Jr, Mason <mason.adair@here.com>
+fieldA=From
+funcA=contains
+identifier=zt1dkT4o5udbxLhN
+name=<From>: Adair Jr, Mason <mason.adair@here.com>
+operator=and
+rules=1
+
+[Filter #1]
 Applicability=2
 AutomaticName=true
 ConfigureShortcut=false
@@ -20,7 +40,7 @@ name=<List-Id>: <members.mail.genivi.org>
 operator=and
 rules=1
 
-[Filter #1]
+[Filter #10]
 Applicability=2
 AutomaticName=true
 ConfigureShortcut=false
@@ -28,21 +48,21 @@ ConfigureToolbar=false
 Enabled=true
 Icon=system-run
 StopProcessingHere=true
-ToolbarName=<From>: plus.google.com
+ToolbarName=<List-Id>: <announce.qt-project.org>
 accounts-set=akonadi_imap_resource_9
-action-args-0=Google Mail (bartek.taczala)/Inbox/google-plus
+action-args-0=Google Mail (bartek.taczala)/Inbox/mailing lists/qt/announce
 action-name-0=transfer
 actions=1
 apply-on=check-mail,manual-filtering
-contentsA=plus.google.com
-fieldA=From
+contentsA=<announce.qt-project.org>
+fieldA=List-Id
 funcA=contains
-identifier=qbr6Qw9j13MNc00U
-name=<From>: plus.google.com
+identifier=SlZjgTQFuuBItyEQ
+name=<List-Id>: <announce.qt-project.org>
 operator=and
 rules=1
 
-[Filter #10]
+[Filter #11]
 Applicability=2
 AutomaticName=true
 ConfigureShortcut=false
@@ -64,7 +84,7 @@ name=<List-Id>: <devel.lists.sailfishos.org>
 operator=and
 rules=1
 
-[Filter #11]
+[Filter #12]
 Applicability=2
 AutomaticName=true
 ConfigureShortcut=false
@@ -86,7 +106,7 @@ name=<List-Id>: <development.qt-project.org>
 operator=and
 rules=1
 
-[Filter #12]
+[Filter #13]
 Applicability=2
 AutomaticName=true
 ConfigureShortcut=false
@@ -108,7 +128,7 @@ name=<List-Id>: <qt-creator.qt-project.org>
 operator=and
 rules=1
 
-[Filter #13]
+[Filter #14]
 Applicability=2
 AutomaticName=true
 ConfigureShortcut=false
@@ -130,7 +150,7 @@ name=<List-Id>: <ivi.lists.tizen.org>
 operator=and
 rules=1
 
-[Filter #14]
+[Filter #15]
 Applicability=2
 AutomaticName=true
 ConfigureShortcut=false
@@ -152,7 +172,7 @@ name=<List-Id>: <wayland-devel.lists.freedesktop.org>
 operator=and
 rules=1
 
-[Filter #15]
+[Filter #16]
 Applicability=0
 AutomaticName=true
 ConfigureShortcut=false
@@ -177,7 +197,7 @@ name=<List-Id>: <arch-dev-public.archlinux.org>
 operator=or
 rules=3
 
-[Filter #16]
+[Filter #17]
 Applicability=0
 AutomaticName=false
 ConfigureShortcut=false
@@ -199,7 +219,7 @@ name=CopyToInbox
 operator=and
 rules=1
 
-[Filter #17]
+[Filter #18]
 Applicability=0
 AutomaticName=false
 ConfigureShortcut=false
@@ -218,7 +238,7 @@ name=<From>: here.com
 operator=and
 rules=1
 
-[Filter #18]
+[Filter #19]
 Applicability=0
 AutomaticName=true
 ConfigureShortcut=false
@@ -239,7 +259,29 @@ name=<List-Id>: <nok01.mobica.com>
 operator=and
 rules=1
 
-[Filter #19]
+[Filter #2]
+Applicability=2
+AutomaticName=true
+ConfigureShortcut=false
+ConfigureToolbar=false
+Enabled=true
+Icon=system-run
+StopProcessingHere=true
+ToolbarName=<From>: plus.google.com
+accounts-set=akonadi_imap_resource_9
+action-args-0=Google Mail (bartek.taczala)/Inbox/google-plus
+action-name-0=transfer
+actions=1
+apply-on=check-mail,manual-filtering
+contentsA=plus.google.com
+fieldA=From
+funcA=contains
+identifier=qbr6Qw9j13MNc00U
+name=<From>: plus.google.com
+operator=and
+rules=1
+
+[Filter #20]
 Applicability=0
 AutomaticName=true
 ConfigureShortcut=false
@@ -260,28 +302,7 @@ name=<From>: L&C-builder@nokia.com
 operator=and
 rules=1
 
-[Filter #2]
-Applicability=0
-AutomaticName=true
-ConfigureShortcut=false
-ConfigureToolbar=false
-Enabled=true
-Icon=system-run
-StopProcessingHere=true
-ToolbarName=<List-Id>: <interest.qt-project.org>
-action-args-0=Google Mail (bartek.taczala)/Inbox/mailing lists/qt/users
-action-name-0=transfer
-actions=1
-apply-on=check-mail,manual-filtering
-contentsA=<interest.qt-project.org>
-fieldA=List-Id
-funcA=contains
-identifier=qfFlHR6tZmycIBrX
-name=<List-Id>: <interest.qt-project.org>
-operator=and
-rules=1
-
-[Filter #20]
+[Filter #21]
 Applicability=0
 AutomaticName=true
 ConfigureShortcut=false
@@ -300,7 +321,7 @@ name=<Subject>: [mplszczecin]
 operator=and
 rules=1
 
-[Filter #21]
+[Filter #22]
 Applicability=0
 AutomaticName=true
 ConfigureShortcut=false
@@ -319,7 +340,7 @@ name=<Subject>: [JIRA]
 operator=and
 rules=1
 
-[Filter #22]
+[Filter #23]
 Applicability=0
 AutomaticName=true
 ConfigureShortcut=false
@@ -340,7 +361,7 @@ name=<From>: gerrit@gerrit06.nokia.com
 operator=and
 rules=1
 
-[Filter #23]
+[Filter #24]
 Applicability=0
 AutomaticName=true
 ConfigureShortcut=false
@@ -369,6 +390,27 @@ ConfigureToolbar=false
 Enabled=true
 Icon=system-run
 StopProcessingHere=true
+ToolbarName=<List-Id>: <interest.qt-project.org>
+action-args-0=Google Mail (bartek.taczala)/Inbox/mailing lists/qt/users
+action-name-0=transfer
+actions=1
+apply-on=check-mail,manual-filtering
+contentsA=<interest.qt-project.org>
+fieldA=List-Id
+funcA=contains
+identifier=qfFlHR6tZmycIBrX
+name=<List-Id>: <interest.qt-project.org>
+operator=and
+rules=1
+
+[Filter #4]
+Applicability=0
+AutomaticName=true
+ConfigureShortcut=false
+ConfigureToolbar=false
+Enabled=true
+Icon=system-run
+StopProcessingHere=true
 ToolbarName=<Subject>: interview
 action-args-0=mobica/Inbox/Internal/Interviews
 action-name-0=transfer
@@ -382,7 +424,7 @@ name=<Subject>: interview
 operator=and
 rules=1
 
-[Filter #4]
+[Filter #5]
 Applicability=0
 AutomaticName=true
 ConfigureShortcut=false
@@ -403,7 +445,7 @@ name=<List-Id>: <std-discussion.isocpp.org>
 operator=and
 rules=1
 
-[Filter #5]
+[Filter #6]
 Applicability=2
 AutomaticName=true
 ConfigureShortcut=false
@@ -425,7 +467,7 @@ name=<List-Id>: <boost.lists.boost.org>
 operator=and
 rules=1
 
-[Filter #6]
+[Filter #7]
 Applicability=2
 AutomaticName=true
 ConfigureShortcut=false
@@ -447,7 +489,7 @@ name=<From>: noreply-3423eff1@plus.google.com
 operator=and
 rules=1
 
-[Filter #7]
+[Filter #8]
 Applicability=0
 AutomaticName=true
 ConfigureShortcut=false
@@ -468,7 +510,7 @@ name=<List-Id>: <boost-interest.lists.boost.org>
 operator=and
 rules=1
 
-[Filter #8]
+[Filter #9]
 Applicability=2
 AutomaticName=true
 ConfigureShortcut=false
@@ -490,27 +532,5 @@ name=<From>: notifications@github.com
 operator=and
 rules=1
 
-[Filter #9]
-Applicability=2
-AutomaticName=true
-ConfigureShortcut=false
-ConfigureToolbar=false
-Enabled=true
-Icon=system-run
-StopProcessingHere=true
-ToolbarName=<List-Id>: <announce.qt-project.org>
-accounts-set=akonadi_imap_resource_9
-action-args-0=Google Mail (bartek.taczala)/Inbox/mailing lists/qt/announce
-action-name-0=transfer
-actions=1
-apply-on=check-mail,manual-filtering
-contentsA=<announce.qt-project.org>
-fieldA=List-Id
-funcA=contains
-identifier=SlZjgTQFuuBItyEQ
-name=<List-Id>: <announce.qt-project.org>
-operator=and
-rules=1
-
 [General]
-filters=24
+filters=25
