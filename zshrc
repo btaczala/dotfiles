@@ -73,3 +73,4 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id
 export EDITOR=vim
+eval `dircolors /etc/dir_colors`
