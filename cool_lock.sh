@@ -18,4 +18,6 @@ rm $TEMP_FILE $TEMP_FILE_POST
 scrot $TEMP_FILE
 mogrify $MOGRIFY_OPTS
 #echo $MESSAGE | tr -d "\n" | convert $CONVERT_OPTS
+killall -SIGUSR1 dunst
 i3lock -i $TEMP_FILE
+killall -SIGUSR2 dunst
