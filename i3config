@@ -192,6 +192,7 @@ for_window [class="Termite"] border 1pixel
 for_window [class="Konsole"] border 1pixel
 for_window [class="Finalterm"] border 1pixel
 for_window [class="Google-chrome-stable"] border 1pixel
+for_window [class="Chromium"] border 1pixel
 for_window [class="nm-openconnect-auth-dialog"] border 1pixel
 for_window [class="Nm-openconnect-auth-dialog"] border 1pixel
 for_window [class="Google-chrome-unstable"] border 1pixel
