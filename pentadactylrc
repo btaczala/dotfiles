@@ -1,0 +1,204 @@
+" OPTION {{{
+  " default colorscheme
+  set titlestring=Mozilla\ Firefox
+  set guioptions=CBTbr
+  set showtabline=always
+  set popups=tab,resized
+  " complete search engine suguest
+  set complete=location,suggestion,bookmark
+  " use home row letters for hints instead of numbers
+  set hintkeys='sadfjklewcmpgh'
+  " only follow hints when press enter
+  set followhints=1
+  " highlight all search matches, not just the first
+  set hlfind
+  " find as you type
+  set incfind
+  " only consider case if an upper case char is used
+  set findcase=smart
+  " set wild mode to show completions as you type
+  "set wildmode=list:longest,full
+  " don't show autocomplete list until <Tab>
+  "set autocomplete=
+  " turn off the freakin' bell {{{
+  set noerrorbells
+  set novisualbell
+  javascript dactyl.beep = function() { return false; }
+  "}}}
+  " Yank (copy) to default clipboard with Y {{{
+  js editor.defaultRegister="+"
+  "}}}
+" }}}
+" MAPPING {{{
+  map , <Leader>
+  " unset maps
+  nmap w <Nop>
+  nmap W <Nop>
+  nmap d <Nop>
+  nmap u <Nop>
+  nmap a <Nop>
+  " auto add -tags option when adding bookmark
+  nmap a a<Space>-tags<Space>
+  " movement
+  nmap j 3<Down>
+  nmap k 3<Up>
+  " vimium like keymap
+  nmap d <C-d>
+  nmap u <C-u>
+  nmap J :tabprevious<CR>
+  nmap K :tabnext<CR>
+  nmap x :quit<CR>
+  nmap X :undo<CR>
+  " disable highlight
+  map <Leader>/ :set hlf!<CR>
+  " yank selected text to clipboard
+  nmap Y <yank-selection>
+  " open addons manager
+  nmap <Leader>a :dialog addons<CR>
+  " private mode
+  nmap <Leader>p :set private!<CR>
+  " display download
+  nmap <Leader>j :downloads<CR>
+  " add bookmarks
+  nmap <Leader>d :dialog addbookmark<CR>
+  " history
+  nmap <Leader>h :history<CR>
+  " list closed tabs
+  nmap <Leader>u :undo<Space>
+  " tabgroup
+  if config.OS.isMacOSX
+      nmap -builtin <Leader>g <S-M-e>
+  else
+      nmap -builtin <Leader>g <S-C-e>
+  end
+  " commands
+  nmap r :smartReload<CR>
+  nmap <silent> <Leader>w :smartLayoutClean<CR>
+  nmap <silent> <Leader>W :smartLayoutNormal<CR>
+  nmap <Leader>r :smartReader<CR>
+  " bypass pentadactyl commands
+  map -m n,v,i,c,t <C-a> <Pass>
+  map -m n,v,i,c,t <C-c> <Pass>
+  map -m n,v,i,c,t <C-f> <Pass>
+  map -m n,v,i,c,t <C-l> <Pass>
+  map -m n,v,i,c,t <C-p> <Pass>
+  map -m n,v,i,c,t <C-v> <Pass>
+  map -m n,v,i,c,t <C-x> <Pass>
+" }}}
+" BOOKMARKS {{{
+  " search engines
+  "silent bma -tags searchengine -title 'Amazon' http://www.amazon.com/exec/obidos/external-search/?field-keywords=%s&mode=blended&tag=mozilla-20&sourceid=Mozilla-search -k a
+  "silent bma -tags searchengine -title 'ArchLinux AUR' http://aur.archlinux.org/packages.php?O=0&L=0&C=0&K=%s&SeB=nd&PP=25 -k aur
+  "silent bma -tags searchengine -title 'ArchLinux Wiki' http://wiki.archlinux.org/index.php?search=%s -k aw
+  "silent bma -tags searchengine -title 'DeviantART' http://browse.deviantart.com/?qh=&section=&q=%s -k da
+  "silent bma -tags searchengine -title 'DuckDuckGo' https://duckduckgo.com/?q=%s -k ddg
+  "silent bma -tags searchengine -title 'Google Search' https://www.google.com/search?q=%s -k g
+  "silent bma -tags searchengine -title 'Google Translate' http://translate.google.com/#auto|pt|%s -k gt
+  "silent bma -tags searchengine -title 'ThePirateBay' http://thepiratebay.se/search/%s -k pb
+  "silent bma -tags searchengine -title 'Twitter' https://twitter.com/search/%s -k t
+  "silent bma -tags searchengine -title 'Wikipedia' http://pt.wikipedia.org/wiki/Special:Search?search=%s -k w
+  "silent bma -tags searchengine -title 'Wolfram Alpha' http://www.wolframalpha.com/input/?i=%s -k wa
+  "silent bma -tags searchengine -title 'Youtube' http://www.youtube.com/results?search_query=%s -k yt
+" }}}
+" BOOKMARKLET {{{
+  nmap <Leader>b :bml-
+  nmap <Leader>s :bml-subscribe<CR>
+
+  "http://www.instapaper.com/u
+  command! bml-instapaper -description "Bookmarklet: A simple tool to save web pages for reading later" open javascript:function%20iprl5(){var%20d=document,z=d.createElement('scr'+'ipt'),b=d.body,l=d.location;try{if(!b)throw(0);d.title='(Saving...)%20'+d.title;z.setAttribute('src',l.protocol+'//www.instapaper.com/j/bQ1lnqqYCoKr?u='+encodeURIComponent(l.href)+'&t='+(new%20Date().getTime()));b.appendChild(z);}catch(e){alert('Please%20wait%20until%20the%20page%20has%20loaded.');}}iprl5();void(0)
+  "http://www.readability.com/bookmarklets
+  command! bml-readability -description "Bookmarklet: Make webpage readable using readability" open javascript:%20((function%20()%20{%20window.baseUrl%20=%20'http://www.readability.com';%20window.readabilityToken%20=%20'';%20var%20s%20=%20document.createElement('script');%20s.setAttribute('type',%20'text/javascript');%20s.setAttribute('charset',%20'UTF-8');%20s.setAttribute('src',%20baseUrl%20+%20'/bookmarklet/read.js');%20document.documentElement.appendChild(s);%20})())
+  "http://readable.tastefulwords.com/
+  command! bml-readable -description "Bookmarklet: Make webpage readable" open javascript:(function(){_readableOptions={'text_font':'quote(Palatino%20Linotype),%20Palatino,%20quote(Book%20Antigua),%20Georgia,%20serif','text_font_monospace':'quote(Courier%20New),%20Courier,%20monospace','text_font_header':'quote(Times%20New%20Roman),%20Times,%20serif','text_size':'18px','text_line_height':'1.5','box_width':'30em','color_text':'#282828','color_background':'#F5F5F5','color_links':'#0000FF','text_align':'normal','base':'blueprint','custom_css':''};if(document.getElementsByTagName('body').length>0);else{return;}if(window.$readable){if(window.$readable.bookmarkletTimer){return;}}else{window.$readable={};}window.$readable.bookmarkletTimer=true;window.$readable.options=_readableOptions;if(window.$readable.bookmarkletClicked){window.$readable.bookmarkletClicked();return;}_readableScript=document.createElement('script');_readableScript.setAttribute('src','http://readable-static.tastefulwords.com/target.js?rand='+encodeURIComponent(Math.random()));document.getElementsByTagName('body')[0].appendChild(_readableScript);})()
+  "http://readitlaterlist.com/add.php
+  command! bml-readitlater -description "Bookmarklet: A simple tool to save web pages for reading later" open javascript:%20(function%20()%20{%20ISRIL_H%20=%20'5979';%20ISRIL_SCRIPT%20=%20document.createElement('SCRIPT');%20ISRIL_SCRIPT.type%20=%20'text/javascript';%20ISRIL_SCRIPT.src%20=%20'http://readitlaterlist.com/b/r.js';%20document.getElementsByTagName('head')[0].appendChild(ISRIL_SCRIPT)%20})();
+  command! bml-shareit -description "Bookmarklet: Universal sharing" open javascript:void((function(svc)%20{var%20d=document,w=window,p=0,b=function(){if(!p){p=1;if(_atc.xol)_adr.onReady();if(w.addthis_sendto)addthis_sendto(svc||%27bkmore%27,{product:%27bmt-%27+_atc.ver})}else{p=0;if(_atw)_atw.clb()}};if(!w._atc){var%20ol=w.addthis_onload||[],o=d.createElement(%27script%27);w.addthis_product%20=%20%27bmt-250%27;o.src=%27//s7.addthis.com/js/250/addthis_widget.js#domready=1&username=bookmarklet%27;ol.push(b);w.addthis_onload=ol;d.getElementsByTagName(%27body%27)[0].appendChild(o)}else%20b()})())
+  command! bml-subscribe -description "Bookmarklet: Subscribe using Google reader" open javascript:var%20b=document.body;var%20GR________bookmarklet_domain='http://www.google.com';if(b&&!document.xmlVersion){void(z=document.createElement('script'));void(z.src='http://www.google.com/reader/ui/subscribe-bookmarklet.js');void(b.appendChild(z));}else{location='http://www.google.com/reader/view/feed/'+encodeURIComponent(location.href)}
+  "http://labs.microsofttranslator.com/bookmarklet/
+  command! bml-translate -description "Bookmarklet: Translate any page with the simple click" open javascript:(function(){var%20s%20=%20document.createElement('script');%20s.type%20=%20'text/javascript';%20s.src%20=%20'http://labs.microsofttranslator.com/bookmarklet/default.aspx?f=js&to=en';%20document.body.insertBefore(s,%20document.body.firstChild);})()
+  "https://dev.twitter.com/docs/share-bookmarklet
+  command! bml-twitter -description "Bookmarklet: Share on Twitter" open javascript:(function(){window.twttr=window.twttr||{};var%20D=550,A=450,C=screen.height,B=screen.width,H=Math.round((B/2)-(D/2)),G=0,F=document,E;if(C>A){G=Math.round((C/2)-(A/2))}window.twttr.shareWin=window.open('http://twitter.com/share','','left='+H+',top='+G+',width='+D+',height='+A+',personalbar=0,toolbar=0,scrollbars=1,resizable=1');E=F.createElement('script');E.src='http://platform.twitter.com/bookmarklets/share.js?v=1';F.getElementsByTagName('head')[0].appendChild(E)}());
+" }}}
+" QUICKMARKS {{{
+  "qmark d http://www.tumblr.com/dashboard
+  "qmark m https://mail.google.com
+  "qmark r https://www.google.com/reader
+  "qmark t https://twitter.com
+  "qmark y https://www.youtube.com
+" }}}
+" SEARCHING {{{
+  " from http://www.slimeden.com/2011/03/firefox/pentadactyl
+  ":map t -js content.getSelection().toString()!=""?dactyl.execute(":tabopen "+ content.getSelection()):CommandExMode().open("tabopen ")
+  ":map o -js content.getSelection().toString()!=""?dactyl.execute(":open "+ content.getSelection()):CommandExMode().open("open ")
+  command! -nargs=* -complete=search search execute 'tabopen <args> ' + content.getSelection().toString()
+  map s :search<Space>
+  command! -nargs=? -complete=search switchSearch execute 'open <args> ' + (buffer.lastInputField?buffer.lastInputField.value:'')
+  map S gi<ESC> :switchSearch<Space>
+  command! -nargs=* siteSearch execute "tabopen <args> site:" + window.content.location.hostname
+
+  " hide all browser search engines except Google(for suggestion)
+  "js services.browserSearch.getEngines().forEach(function (e) {if(e.name!="Google") e.hidden = true})
+
+  "Searching: use DuckDuckGo
+  "set defsearch=ddg
+" }}}
+" COMMAND {{{
+  " smart reload
+  command! smartReload
+    \:javascript <<EOF
+    \if (buffer.URL.spec.indexOf('#') >= 0)
+    \    dactyl.execute("reload");
+    \else
+    \    dactyl.open(buffer.URL.spec);
+    \EOF
+
+  command! smartLayoutClean
+    \:javascript <<EOF
+    \dactyl.execute("set guioptions=Csb");
+    \dactyl.execute("set showtabline=never");
+    \dactyl.execute("set fs");
+    \EOF
+
+  command! smartLayoutNormal
+    \:javascript <<EOF
+    \dactyl.execute("set guioptions=CBTbr");
+    \dactyl.execute("set showtabline=always");
+    \dactyl.execute("set fs!");
+    \EOF
+
+  command! smartReader
+    \:javascript <<EOF
+    \if (typeof __readable_by_evernote === "object")
+    \   dactyl.execute("emenu Tools.Clearly");
+    \else
+    \   if (typeof commands.get("readability") === "object")
+    \       dactyl.execute("readability");
+    \else
+    \    dactyl.execute("bml-readability");
+    \EOF
+
+  "" Show Error Console
+  """ NOTE: Requires Web Developer toolbar.
+  command! error js webdeveloper_openErrorConsole();
+  "" Show User Agent
+  command! useragent set! general.useragent.extra.firefox?
+  "" Show Web Developer Toolbar
+  """ NOTE: Requires Web Developer toolbar.
+  command! webdev js webdeveloper_toggleToolbar();
+" }}}
+" PASSKEYS {{{
+  set passkeys+='duckduckgo.com':jkhvrsm!/<C-Enter>
+  set passkeys+='facebook.com':<CR>
+  set passkeys+='twitter.com':jk<Space>/.frmn?ghrpu<Return>
+  set passkeys+='www.tumblr.com':jkroae<CR>,gi
+  set passkeys+='www.google.com/voice':cm;!IU
+  set passkeys+='www.google.com/calendar':dwmxajkcnqep?<Del>s12345<Return>
+  set passkeys+='www.google.com/reader':jkAnpXaOslSDvmerfu12/a?<CR>,gh,gs,gS,gu
+  set passkeys+='www.google.com/search':jk
+  set passkeys+='drive.google.com':jkxANTPSDFcuarvzs<Return>./d?,gn,gl,gf,gd
+  set passkeys+='mail.google.com':c/kjnp<Return>uemxs+-!raflvIU[]zNqy?<CR>,gi,gs,gt,gd,ga,gc,gb,gk,gl
+
+  "Enable Pass Through mode on all Google sites:
+  "autocmd LocationChange google.com :normal! <C-z>
+"}}}
+" vim: set ft=vim
