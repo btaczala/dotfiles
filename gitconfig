@@ -1,0 +1,19 @@
+[user]
+	name = Bartosz Taczala
+	email = bartosz.taczala@mobica.com
+[merge]
+	tool = kdiff3
+[gui]
+	editor = kate
+	historybrowser = gitk
+[diff]
+	tool = kdiff3
+[color]
+	sh = auto
+	ui = auto
+[core]
+	editor = vim
+[alias]
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+[alias]
+	new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
