@@ -75,3 +75,6 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export SSH_KEY_PATH="~/.ssh/dsa_id
 export EDITOR=vim
 eval `dircolors /etc/dir_colors`
+export TASKRC=~/ownCloud/task/work/taskrc
+export TASKDATA=~/ownCloud/task/work/task
+
