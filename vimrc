@@ -39,6 +39,7 @@ Bundle "garbas/vim-snipmate"
 Bundle 'honza/vim-snippets'
 Bundle 'drmikehenry/vim-headerguard'
 Bundle 'vim-scripts/a.vim'
+Bundle 'jlanzarotta/bufexplorer'
 filetype plugin indent on     " required! 
 "
 " Brief help
