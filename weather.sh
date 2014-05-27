@@ -17,5 +17,5 @@ temperature=$(printf '%.0f' $(echo $weather | jq '.main.temp'))
 condition=$(echo $weather | jq -r '.weather[0].main')
 temperature=`expr $temperature - 270`
 
-echo -n "$city - $condition: "
+echo -n "$condition: "
 echo $temperature °$unit
