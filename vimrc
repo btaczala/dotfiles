@@ -40,6 +40,7 @@ Bundle 'honza/vim-snippets'
 Bundle 'drmikehenry/vim-headerguard'
 Bundle 'vim-scripts/a.vim'
 Bundle 'jlanzarotta/bufexplorer'
+Bundle 'altercation/vim-colors-solarized'
 filetype plugin indent on     " required! 
 "
 " Brief help
@@ -50,3 +51,5 @@ filetype plugin indent on     " required!
 "
 " see :h vundle for more details or wiki for FAQ
 " NOTE: comments after Bundle command are not allowed..
+syntax enable
+colorscheme solarized
