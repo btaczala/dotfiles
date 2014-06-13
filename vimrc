@@ -1,6 +1,8 @@
 set nocompatible               " be iMproved
 filetype off                   " required!
+
 syntax on
+set rtp+=~/.vim/bundle/Vundle.vim
 
 set hlsearch 
 set incsearch
@@ -19,37 +21,40 @@ set background=dark
 let g:ycm_global_ycm_extra_conf = '~/dotfiles/ycm_extra_conf.py'
 syntax enable
 
-call vundle#rc()
+call vundle#begin()
 
-" My Bundles here:
+" My Plugins here:
 "
-Bundle 'kien/ctrlp.vim'
-Bundle 'bling/vim-airline'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'bling/vim-bufferline'
-Bundle 'Yggdroot/indentLine'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
-Bundle 'mhinz/vim-startify'
-Bundle 'altercation/vim-colors-solarized'
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "garbas/vim-snipmate"
-Bundle 'honza/vim-snippets'
-Bundle 'drmikehenry/vim-headerguard'
-Bundle 'vim-scripts/a.vim'
-Bundle 'jlanzarotta/bufexplorer'
-Bundle 'altercation/vim-colors-solarized'
+Plugin 'gmarik/Vundle.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'bling/vim-airline'
+"Plugin 'Valloric/YouCompleteMe'
+Plugin 'bling/vim-bufferline'
+Plugin 'Yggdroot/indentLine'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+"Plugin 'scrooloose/syntastic'
+Plugin 'mhinz/vim-startify'
+Plugin 'altercation/vim-colors-solarized'
+Plugin "MarcWeber/vim-addon-mw-utils"
+Plugin "tomtom/tlib_vim"
+Plugin "garbas/vim-snipmate"
+Plugin 'honza/vim-snippets'
+Plugin 'drmikehenry/vim-headerguard'
+Plugin 'vim-scripts/a.vim'
+Plugin 'jlanzarotta/bufexplorer'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'vim-scripts/lbdbq'
+call vundle#end() 
 filetype plugin indent on     " required! 
 "
 " Brief help
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install(update) bundles
-" :BundleSearch(!) foo - search(or refresh cache first) for foo
-" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+" :PluginList          - list configured bundles
+" :PluginInstall(!)    - install(update) bundles
+" :PluginSearch(!) foo - search(or refresh cache first) for foo
+" :PluginClean(!)      - confirm(or auto-approve) removal of unused bundles
 "
 " see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Bundle command are not allowed..
+" NOTE: comments after Plugin command are not allowed..
 syntax enable
 colorscheme solarized
