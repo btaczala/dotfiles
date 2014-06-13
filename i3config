@@ -33,10 +33,10 @@ set $ws3 chat
 set $ws4 dev
 set $ws5 shoomee
 set $ws6 private-dev
-set $ws7 7
-set $ws8 8
+set $ws7 dev2
+set $ws8 dev3
 set $ws9 priv
-set $ws10 10
+set $ws10 various
 
 # class                 border  backgr. text    indicator
 client.focused          #1793D0 #1793D0 #FFFFFF #1793D0
@@ -222,7 +222,7 @@ bindsym XF86Display exec sh ~/dotfiles/randr.sh
 bindsym $mod+m move workspace to output left
 bindsym $mod+t move workspace to output up
 exec --no-startup-id compton --inactive-dim 0.1 --backend=glx
-exec --no-startup-id feh --bg-scale /usr/share/archlinux/wallpaper/archlinux-simplyblack.png
+exec --no-startup-id feh --bg-scale ~/ownCloud/wallpapers/dance_of_spirit.jpg
 exec --no-startup-id nm-applet
 exec --no-startup-id owncloud
 exec --no-startup-id mpd-notification
