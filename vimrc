@@ -43,7 +43,6 @@ Plugin 'honza/vim-snippets'
 Plugin 'drmikehenry/vim-headerguard'
 Plugin 'vim-scripts/a.vim'
 Plugin 'jlanzarotta/bufexplorer'
-Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-scripts/lbdbq'
 call vundle#end() 
 filetype plugin indent on     " required! 
