@@ -46,7 +46,7 @@ client.urgent           #2f343a #900000 #ffffff #900000
 
 # kill focused window
 bindsym $mod+Shift+q kill
-bindsym Control+mod1+l exec i3lock -f
+bindsym Control+mod1+l exec ~/dotfiles/cool_lock.sh
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec j4-dmenu-desktop --dmenu="dmenu -i" --term=termite
