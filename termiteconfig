@@ -11,7 +11,7 @@ allow_bold = true
 dynamic_title = true
 urgent_on_bell = true
 clickable_url = true
-font = Inconsolata-zi4 11
+font = Inconsolata-dz\ for\ Powerline\ Medium\ 11
 cursor_shape = block
 
 [colors]
