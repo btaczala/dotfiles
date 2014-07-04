@@ -7,7 +7,7 @@
 	editor = kate
 	historybrowser = gitk
 [diff]
-	tool = kdiff3
+	tool = vimdiff
 [color]
 	sh = auto
 	ui = auto
@@ -27,3 +27,5 @@
 	fl = log -u
 [alias]
     pub = "!f() { git push -u ${1:-origin} HEAD:`git config branch.$(git name-rev --name-only HEAD).merge | sed -e 's@refs/heads/@refs/for/@'`; }; f"
+[difftool]
+	prompt = false
