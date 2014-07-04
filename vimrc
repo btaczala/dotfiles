@@ -17,6 +17,8 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set background=dark
+set spell
+set spelllang=en_us
 
 let g:ycm_global_ycm_extra_conf = '~/dotfiles/ycm_extra_conf.py'
 syntax enable
