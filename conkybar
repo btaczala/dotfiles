@@ -10,17 +10,18 @@ if_up_strictness address
 use_spacer left
 override_utf8_locale no
 cpu_avg_samples 1
+override_utf8_locale yes
 
 TEXT
-[{ "full_text" : " Batt ${battery_percent BAT1}% " , "color" : ${if_match ${battery_percent BAT1}<50}"\#ffff00"${else}"\#ffffff"${endif} },
+[{ "full_text": "[$mpd_status] $mpd_artist:$mpd_title"},
+{ "full_text" : " Batt ${battery_percent BAT1}% " , "color" : ${if_match ${battery_percent BAT1}<50}"\#ffff00"${else}"\#ffffff"${endif} },
 ${if_match "${exec xset q | grep 'Caps Lock' | sed 's/.*Caps Lock:[ ]*\([^ ]*\).*/\1/'}"=="on"}
 { "full_text": "CapsLock", "color": "\#00CC00" },\
 ${endif}
-${if_up enp1s0} { "full_text": "eth: ${addr enp1s0}" },${endif}
-${if_up wlp2s0} { "full_text": "wlan: ${addr wlp2s0}" },${endif}
 { "full_text" : " / ${fs_used /}/${fs_size /} " , "color" : ${if_match ${memperc}<90}"\#ffffff"${else}"\#ff0000"${endif} },
 { "full_text" : " /home ${fs_used /home}/${fs_size /home} " , "color" : ${if_match ${memperc}<90}"\#ffffff"${else}"\#ff0000"${endif} },
-{ "full_text" : " RAM ${mem}/${memmax} " , "color" : ${if_match ${memperc}<90}"\#ffffff"${else}"\#ff0000"${endif} },
+{ "full_text" :   "cpu: $cpu%", "color":"\#00A9B5"},
+{ "full_text" : " ram ${mem}/${memmax} " , "color" : ${if_match ${memperc}<90}"\#ffffff"${else}"\#ff0000"${endif} },
 { "full_text" : " Load ${loadavg 1} " , "color" : "\#ffffff" },
 { "full_text" : " ${kernel} " , "color" : "\#a9db6c" },
 { "full_text" : " ${execi 1 pamixer --get-volume}% " , "color" : "\#a9db6c" },
