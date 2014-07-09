@@ -1,1 +1,1 @@
-test_encrypted filter=git-crypt diff=git-crypt
+secretfile filter=git-crypt diff=git-crypt
