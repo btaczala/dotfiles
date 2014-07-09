@@ -21,4 +21,5 @@ close_program kmail
 nmcli con down id mob-wawa
 nmcli con down id Nokia
 systemctl --user stop mopidy
-killall skype
+close_program skype
+close_program ncmpcpp
