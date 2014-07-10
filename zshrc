@@ -54,6 +54,7 @@ DISABLE_AUTO_UPDATE="true"
 plugins=(git common-aliases gitfast git-extras jira cp)
 
 source $ZSH/oh-my-zsh.sh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # User configuration
 
