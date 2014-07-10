@@ -1,0 +1,3 @@
+#!/bin/sh
+task add +email E-mail: $(sed -n '/^Subject: /{s///p;q}')
+
