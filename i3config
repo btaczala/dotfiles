@@ -227,3 +227,16 @@ exec --no-startup-id nm-applet
 exec --no-startup-id mpd-notification
 exec --no-startup-id /usr/lib/notify-osd/notify-osd
 
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id ~/dotfiles/power.sh lock, mode "default"
+    bindsym e exec --no-startup-id ~/dotfiles/power.sh logout, mode "default"
+    bindsym s exec --no-startup-id ~/dotfiles/power.sh suspend, mode "default"
+    bindsym h exec --no-startup-id ~/dotfiles/power.sh hibernate, mode "default"
+    bindsym r exec --no-startup-id ~/dotfiles/power.sh reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id ~/dotfiles/power.sh shutdown, mode "default"  
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Pause mode "$mode_system"
