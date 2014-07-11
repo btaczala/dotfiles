@@ -4,7 +4,7 @@ set sendmail    = /usr/bin/msmtp
 set folder      = ~/.mail/mobica
 set spoolfile   = "+INBOX"
 set mbox        = "+[Gmail]/All Mail"
-set postponed   = "+[Gmail]/Drafts"
+set postponed   = "+[Gmail].Drafts"
 unset record
 
 mailboxes +INBOX \
@@ -105,7 +105,10 @@ macro index,pager gb "<pipe-message>goobook add<enter><pipe-message>goobook relo
 bind editor <Tab> complete-query
 
 # gpg 
-
+source ~/.mutt/gpg.rc
+set pgp_use_gpg_agent = yes
+set pgp_sign_as = 829911F6
+set pgp_autosign 
 # htmls mails
 #
 auto_view text/html .
