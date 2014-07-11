@@ -22,7 +22,7 @@ ${endif}
 { "full_text" : " /home ${fs_used /home}/${fs_size /home} " , "color" : ${if_match ${memperc}<90}"\#ffffff"${else}"\#ff0000"${endif} },
 { "full_text" :   "cpu: $cpu%", "color":"\#00A9B5"},
 { "full_text" : " ram ${mem}/${memmax} " , "color" : ${if_match ${memperc}<90}"\#ffffff"${else}"\#ff0000"${endif} },
-${if_running offlineimap} {"full_text": "sync"},${else} {"full_text":"Inbox: ${mails ~/.mail/mobica/INBOX}"},${endif}
+${if_running offlineimap} {"full_text": "sync"},${else} {"full_text":"Mails: ${execi 1 ~/dotfiles/mailcheck.sh}"},${endif}
 { "full_text" : " Load ${loadavg 1} " , "color" : "\#ffffff" },
 { "full_text" : " ${kernel} " , "color" : "\#a9db6c" },
 { "full_text" : " ${execi 1 pamixer --get-volume}% " , "color" : "\#a9db6c" },
