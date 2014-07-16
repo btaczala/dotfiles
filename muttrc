@@ -9,6 +9,7 @@ unset record
 
 mailboxes +INBOX \
             '+INBOX.bbags'\
+            '+INBOX.Internal.Interviews'\
             '+INBOX.old'\
             '+INBOX.mplszczecin'\
             '+INBOX.notimportant'\
@@ -94,6 +95,7 @@ bind index R        group-reply
 bind pager R        group-reply
 bind index <tab>    sync-mailbox
 bind index <space>  collapse-thread
+bind index _        collapse-all
 # Sync email
 macro index O "<shell-escape>offlineimap<enter>"           "run offlineimap to sync all mail"
 macro index o "<shell-escape>offlineimap -qf INBOX<enter>" "run offlineimap to sync inbox"
@@ -103,6 +105,7 @@ macro index t "<pipe-message>~/dotfiles/mutt2task<enter> <copy-message>+TODO<ent
 set query_command = "goobook query '%s'"
 macro index,pager gb "<pipe-message>goobook add<enter><pipe-message>goobook reload<enter>" "add address to Google contacts"
 bind editor <Tab> complete-query
+macro index,pager c "<change-folder>?<toggle-mailboxes>" "open a different folder"
 
 # gpg 
 source ~/.mutt/gpg.rc
@@ -117,5 +120,27 @@ alternative_order text/plain text/enriched text/html
 set attribution     = "On %d, %n <%a> wrote:"
 set date_format="%y-%m-%d %T"
 set index_format="%2C | %Z [%d] %-30.30F (%-4.4c) %s"
+#set index_format="%Z %{%a %d %b %Y} %3M %-15.15L │%s"
 set status_format   = "-%r-Mutt: %f [Msgs:%?M?%M/?%m%?n? New:%n?%?o? Old:%o?%?d? Del:%d?%?F? Flag:%F?%?t? Tag:%t?%?p? Post:%p?%?b? Inc:%b? %?l? %l?]---(%s/%S)-default-%>-(%P)---"
+
+# notmuch
+macro index <F8> \
+    "<enter-command>set my_old_pipe_decode=\$pipe_decode my_old_wait_key=\$wait_key nopipe_decode nowait_key<enter>\
+    <shell-escape>notmuch-mutt -r --prompt search<enter>\
+    <change-folder-readonly>`echo ${XDG_CACHE_HOME:-$HOME/.cache}/notmuch/mutt/results`<enter>\
+    <enter-command>set pipe_decode=\$my_old_pipe_decode wait_key=\$my_old_wait_key<enter>" \
+    "notmuch: search mail"
+
+macro index <F9> \
+    "<enter-command>set my_old_pipe_decode=\$pipe_decode my_old_wait_key=\$wait_key nopipe_decode nowait_key<enter>\
+    <pipe-message>notmuch-mutt -r thread<enter>\
+    <change-folder-readonly>`echo ${XDG_CACHE_HOME:-$HOME/.cache}/notmuch/mutt/results`<enter>\
+    <enter-command>set pipe_decode=\$my_old_pipe_decode wait_key=\$my_old_wait_key<enter>" \
+    "notmuch: reconstruct thread"
+
+macro index <F6> \
+    "<enter-command>set my_old_pipe_decode=\$pipe_decode my_old_wait_key=\$wait_key nopipe_decode nowait_key<enter>\
+    <pipe-message>notmuch-mutt tag -- -inbox<enter>\
+    <enter-command>set pipe_decode=\$my_old_pipe_decode wait_key=\$my_old_wait_key<enter>" \
+    "notmuch: remove message from inbox"
 

@@ -7,3 +7,4 @@ kstart firefox https://outlook.com/here.com &
 systemctl --user start mopidy
 systemctl --user start offlineimap.service
 systemctl --user start offlineimap.timer
+~/dotfiles/skype_away.py online
