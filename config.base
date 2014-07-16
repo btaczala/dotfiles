@@ -38,11 +38,7 @@ set $ws8 8:dev3
 set $ws9 9:priv
 set $ws10 10:various
 
-# class                 border  backgr. text    indicator
-client.focused          #1793D0 #1793D0 #FFFFFF #1793D0
-client.focused_inactive #333333 #5f676a #ffffff #484e50
-client.unfocused        #333333 #222222 #888888 #292d2e
-client.urgent           #2f343a #900000 #ffffff #900000
+# $i3-theme-window
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -172,12 +168,8 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
 	status_command ~/dotfiles/conky-bar
-    colors {
-        statusline #AAAAAA
-        background #333333
-        focused_workspace #333333 #333333 #FFFFFF
-        inactive_workspace #484848 #484848 #AAAAAA
-    }
+    #status_command i3blocks
+    # $i3-theme-bar
 	position top
 }
 
@@ -197,6 +189,7 @@ for_window [class="nm-openconnect-auth-dialog"] border 1pixel
 for_window [class="Nm-openconnect-auth-dialog"] border 1pixel
 for_window [class="Google-chrome-unstable"] border 1pixel
 for_window [class="Kmail"] border 1pixel
+for_window [class="Opera"] border 1pixel
 assign [class="^Skype$"] "3:chat"
 assign [class="^pidgin$"] "3:chat"
 assign [class="^Pidgin$"] "3:chat"
