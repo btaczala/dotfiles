@@ -7,8 +7,8 @@ DEFAULT_USER=bata
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="dieter"
-#ZSH_THEME="agnoster"
-ZSH_THEME="powerline"
+ZSH_THEME="agnoster"
+#ZSH_THEME="powerline"
 #ZSH_THEME="blinks"
 
 # Example aliases
@@ -55,7 +55,6 @@ DISABLE_AUTO_UPDATE="true"
 plugins=(git common-aliases gitfast git-extras jira cp)
 
 source $ZSH/oh-my-zsh.sh
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # User configuration
 
