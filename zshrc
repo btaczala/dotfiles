@@ -7,7 +7,8 @@ DEFAULT_USER=bata
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="dieter"
-ZSH_THEME="agnoster"
+#ZSH_THEME="agnoster"
+ZSH_THEME="powerline"
 #ZSH_THEME="blinks"
 
 # Example aliases
