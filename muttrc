@@ -47,6 +47,8 @@ set pager_stop
 set menu_scroll
 set smart_wrap
 set tilde
+set edit_headers = yes
+set autoedit
 unset markers
  #
 # composing 
@@ -120,7 +122,6 @@ alternative_order text/plain text/enriched text/html
 set attribution     = "On %d, %n <%a> wrote:"
 set date_format="%y-%m-%d %T"
 set index_format="%2C | %Z [%d] %-30.30F (%-4.4c) %s"
-#set index_format="%Z %{%a %d %b %Y} %3M %-15.15L │%s"
 set status_format   = "-%r-Mutt: %f [Msgs:%?M?%M/?%m%?n? New:%n?%?o? Old:%o?%?d? Del:%d?%?F? Flag:%F?%?t? Tag:%t?%?p? Post:%p?%?b? Inc:%b? %?l? %l?]---(%s/%S)-default-%>-(%P)---"
 
 # notmuch
