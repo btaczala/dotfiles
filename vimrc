@@ -8,6 +8,7 @@ set hlsearch
 set incsearch
 set laststatus=2
 let g:airline_theme = 'wombat'
+let g:airline#extensions#tabline#enabled = 1
 let g:loaded_dispatch = 0
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
@@ -35,7 +36,6 @@ Plugin 'bling/vim-bufferline'
 Plugin 'Yggdroot/indentLine'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
-"Plugin 'scrooloose/syntastic'
 Plugin 'mhinz/vim-startify'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'MarcWeber/vim-addon-mw-utils'
@@ -45,7 +45,8 @@ Plugin 'honza/vim-snippets'
 Plugin 'drmikehenry/vim-headerguard'
 Plugin 'vim-scripts/a.vim'
 Plugin 'jlanzarotta/bufexplorer'
-Plugin 'vim-scripts/lbdbq'
+Plugin 'vim-scripts/mail.vim'
+Plugin 'mhinz/vim-signify'
 call vundle#end() 
 filetype plugin indent on     " required! 
 "
