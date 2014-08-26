@@ -13,15 +13,14 @@ kill `ps ax | grep qtcre | grep Shoo | awk {'print $1'}`
 ~/dotfiles/skype_away.py offline
 sleep 2
 purple-remote quit
-
 close_program firefox
 sleep 1
-akonadictl stop
-close_program kmail
 nmcli con down id mob-wawa
 nmcli con down id Nokia
+nmcli con down id Here
 systemctl --user stop mopidy
 systemctl --user stop offlineimap.timer
 systemctl --user stop offlineimap
 close_program skype
+killall skype
 close_program ncmpcpp

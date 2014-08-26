@@ -19,7 +19,8 @@ set shiftwidth=4
 set expandtab
 set background=dark
 set spell
-set spelllang=en_us
+set spelllang=en_us,pl
+set spellfile=~/ownCloud/en.utf-8.add
 
 let g:ycm_global_ycm_extra_conf = '~/dotfiles/ycm_extra_conf.py'
 syntax enable
@@ -47,6 +48,8 @@ Plugin 'vim-scripts/a.vim'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'vim-scripts/mail.vim'
 Plugin 'mhinz/vim-signify'
+Plugin 'peterhoeg/vim-qml'
+Plugin 'vhdirk/vim-cmake'
 call vundle#end() 
 filetype plugin indent on     " required! 
 "
@@ -59,4 +62,8 @@ filetype plugin indent on     " required!
 " see :h vundle for more details or wiki for FAQ
 " NOTE: comments after Plugin command are not allowed..
 syntax enable
-colorscheme solarized
+" colorscheme solarized
+"
+" Spellchecking options
+hi clear SpellBad
+hi SpellBad cterm=underline ctermfg=red

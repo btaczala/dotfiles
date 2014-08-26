@@ -1,34 +1,38 @@
 set mbox_type   = Maildir
 set sendmail    = /usr/bin/msmtp
 
-set folder      = ~/.mail/mobica
+set folder      = ~/.mail/private
 set spoolfile   = "+INBOX"
 set mbox        = "+[Gmail]/All Mail"
 set postponed   = "+[Gmail].Drafts"
 unset record
 
 mailboxes +INBOX \
-            '+INBOX.bbags'\
-            '+INBOX.Internal.Interviews'\
-            '+INBOX.old'\
-            '+INBOX.mplszczecin'\
-            '+INBOX.notimportant'\
-            '+INBOX.proj'\
-            '+INBOX.proj.jrl'\
-            '+INBOX.proj.nokia-automotive'\
-            '+INBOX.proj.nokia-automotive.nok01'\
+            '+INBOX.allegro'\
+            '+INBOX.eboki'\
+            '+INBOX.gh'\
             '+INBOX.mailing lists'\
-            '+INBOX.mailing lists.genivi-ivi-layer-management'\
-            '+INBOX.mailing lists.autmg'\
-            '+INBOX.mailing lists.ivi-tizen'\
-            '+TODO'\
+            '+INBOX.mailing lists.boost'\
+            '+INBOX.mailing lists.isocpp'\
+            '+INBOX.mailing lists.mer'\
+            '+INBOX.mailing lists.qt'\
+            '+INBOX.mailing lists.qt.announce'\
+            '+INBOX.mailing lists.qt.dev'\
+            '+INBOX.mailing lists.qt.qtcreator'\
+            '+INBOX.mailing lists.qt.users'\
+            '+INBOX.mailing lists.sailfish'\
+            '+INBOX.mailing lists.wayland'\
+            '+INBOX.mailing lists.various'\
+            '+INBOX.mailing lists.various.cinkciarz'\
+            '+INBOX.mailing lists.various.linkedIn'\
             '+[Gmail].Sent Mail'
 
-# main options
-set realname   = "Bartosz Taczala"
-set from       = "bartosz.taczala@mobica.com"
+set realname   = "Bartek Taczała"
+set from       = "bartek.taczala@gmail.com"
 set mail_check = 0
 set envelope_from
+
+set mailcap_path    = ~/.mutt/mailcap
 
 unset move           # gmail does that
 set delete           # don't ask, just do
@@ -64,13 +68,11 @@ unignore from: to: cc: date: subject:  # then, show only these
 hdr_order from: to: cc: date: subject: # and in this order
 
 set abort_nosubject=no
-set sig_dashes = yes # don't append -- as I use only my name as a sig
+set sig_dashes = no # don't append -- as I use only my name as a sig
 set attribution = " %n wrote:\n" # I don't like lengthy attributions as well
 alternates '(username|altusername)([-+].*)?@.*' 
 set hdr_format="%4C %Z %{%m/%d} %-15.15F (%4c) %s" # format of the index
 source /usr/share/doc/mutt/colors/solarized/mutt-colors-solarized-dark-16.muttrc
-#source ~/colors256-dark
-#source ~/colors-blackback
 
 ignore * 
 unignore from subject to cc date x-mailer x-url user-agent
@@ -102,8 +104,8 @@ bind index <tab>    sync-mailbox
 bind index <space>  collapse-thread
 bind index _        collapse-all
 # Sync email
-macro index O "<shell-escape>offlineimap<enter>"           "run offlineimap to sync all mail"
-macro index o "<shell-escape>offlineimap -qf INBOX<enter>" "run offlineimap to sync inbox"
+macro index O "<shell-escape>offlineimap -c ~/dotfiles/offlineimaprc_private<enter>"           "run offlineimap to sync all mail"
+macro index o "<shell-escape>offlineimap -c ~/dotfiles/offlineimaprc_private -qf INBOX<enter>" "run offlineimap to sync inbox"
 # task
 macro index t "<pipe-message>~/dotfiles/mutt2task<enter> <copy-message>+TODO<enter>"
 # add contact with 'gb' command
@@ -112,11 +114,6 @@ macro index,pager gb "<pipe-message>goobook add<enter><pipe-message>goobook relo
 bind editor <Tab> complete-query
 macro index,pager c "<change-folder>?<toggle-mailboxes>" "open a different folder"
 
-# gpg 
-source ~/.mutt/gpg.rc
-set pgp_use_gpg_agent = yes
-set pgp_sign_as = 829911F6
-set pgp_autosign 
 # htmls mails
 #
 auto_view text/html .

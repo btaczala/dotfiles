@@ -81,3 +81,5 @@ eval `dircolors /etc/dir_colors`
 export TASKRC=~/ownCloud/task/work/taskrc
 export TASKDATA=~/ownCloud/task/work/task
 export PATH=/home/bata/.gem/ruby/2.1.0/bin:$PATH
+
+export TERM=xterm-256color
