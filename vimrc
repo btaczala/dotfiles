@@ -18,8 +18,9 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set background=dark
-set spell
 set spelllang=en_us,pl
+au BufRead,BufNewFile *mutt* set filetype=mail
+autocmd FileType mail set spell
 set spellfile=~/ownCloud/en.utf-8.add
 
 let g:ycm_global_ycm_extra_conf = '~/dotfiles/ycm_extra_conf.py'
