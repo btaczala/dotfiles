@@ -14,7 +14,7 @@ override_utf8_locale yes
 
 TEXT
 [{ "full_text": "[$mpd_status] $mpd_artist:$mpd_title"},
-{ "full_text" : " Batt ${battery_short BAT1} " , "color" : ${if_match ${battery_percent BAT1}<50}"\#ffff00"${else}"\#ffffff"${endif} },
+{ "full_text" : "Batt ${battery_short BAT1} " , "color" : ${if_match ${battery_percent BAT1}<50}"\#ffff00"${else}"\#ffffff"${endif} },
 ${if_match "${exec xset q | grep 'Caps Lock' | sed 's/.*Caps Lock:[ ]*\([^ ]*\).*/\1/'}"=="on"}
 { "full_text": "CapsLock", "color": "\#00CC00" },\
 ${endif}
@@ -23,7 +23,5 @@ ${endif}
 { "full_text" :   "cpu: $cpu%", "color":"\#00A9B5"},
 { "full_text" : " ram ${mem}/${memmax} " , "color" : ${if_match ${memperc}<90}"\#ffffff"${else}"\#ff0000"${endif} },
 ${if_running offlineimap} {"full_text": "sync"},${else} {"full_text":"Mails: ${execi 1 ~/dotfiles/mailcheck.sh}"},${endif}
-{ "full_text" : " Load ${loadavg 1} " , "color" : "\#ffffff" },
-{ "full_text" : " ${kernel} " , "color" : "\#a9db6c" },
-{ "full_text" : " ${execi 1 pamixer --get-volume}% " , "color" : "\#a9db6c" },
+{ "full_text" : "${execi 1 pamixer --get-volume}% " , "color" : "\#a9db6c", "icon": "/home/bata/sm4tik-icon-pack/xbm/fox.xbm" },
 { "full_text" : " $time " , "color" : "\#ffffff" },

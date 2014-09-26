@@ -3,3 +3,4 @@ echo '{"version":1}'
 echo '['
 echo '[],'
 exec conky -c $HOME/dotfiles/conkybar
+#exec conky -c $HOME/dotfiles/i3conky

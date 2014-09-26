@@ -29,3 +29,7 @@
     pub = "!f() { git push -u ${1:-origin} HEAD:`git config branch.$(git name-rev --name-only HEAD).merge | sed -e 's@refs/heads/@refs/for/@'`; }; f"
 [difftool]
 	prompt = false
+[push]
+	default = simple
+[gitreview]
+	username = btaczala

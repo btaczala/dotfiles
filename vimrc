@@ -63,7 +63,7 @@ filetype plugin indent on     " required!
 " see :h vundle for more details or wiki for FAQ
 " NOTE: comments after Plugin command are not allowed..
 syntax enable
-" colorscheme solarized
+"colorscheme solarized
 "
 " Spellchecking options
 hi clear SpellBad

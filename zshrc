@@ -8,8 +8,6 @@ DEFAULT_USER=bata
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="dieter"
 ZSH_THEME="agnoster"
-#ZSH_THEME="powerline"
-#ZSH_THEME="blinks"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -52,7 +50,7 @@ DISABLE_AUTO_UPDATE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git common-aliases gitfast git-extras jira cp)
+plugins=(git common-aliases gitfast git-extras jira cp z systemd taskwarrior)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -77,9 +75,9 @@ fi
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id
 export EDITOR=vim
-eval `dircolors /etc/dir_colors`
+eval `dircolors ~/.dircolors`
 export TASKRC=~/ownCloud/task/work/taskrc
 export TASKDATA=~/ownCloud/task/work/task
 export PATH=/home/bata/.gem/ruby/2.1.0/bin:$PATH
 
-export TERM=xterm-256color
+export TERM=xterm-termite
