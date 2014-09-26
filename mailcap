@@ -2,9 +2,7 @@ application/excel;                        libreoffice %s
 application/x-excel;                      libreoffice %s
 application/x-msexcel;                    libreoffice %s
 application/vnd.ms-excel;                 libreoffice %s
-application/ms-word;                      antiword %s;          copiousoutput
 application/ms-word;                      libreoffice %s
-application/msword;                       antiword %s;          copiousoutput
 application/msword;                       libreoffice %s
 application/powerpoint;                   libreoffice %s
 application/mspowerpoint;                 libreoffice %s
@@ -15,27 +13,9 @@ application/pdf;                zathura %s
 image/pdf;                      zathura %s
 application/ps;                 zathura %s
 
-application/x-bz;               lesspipe.sh %s ; copiousoutput
-application/x-bzip2;            lesspipe.sh %s ; copiousoutput
-application/x-compress;         lesspipe.sh %s ; copiousoutput
-application/x-compressed;       lesspipe.sh %s ; copiousoutput
-application/x-gtar;             lesspipe.sh %s ; copiousoutput
-application/x-gzip;             lesspipe.sh %s ; copiousoutput
-application/x-zip-compressed;   lesspipe.sh %s ; copiousoutput
-application/x-tar;              lesspipe.sh %s ; copiousoutput
-application/zip;                lesspipe.sh %s ; copiousoutput
-multipart/x-zip;                lesspipe.sh %s ; copiousoutput
-multipart/x-gzip;               lesspipe.sh %s ; copiousoutput
-
-image/*;                        sxiv %s
-image/*;                        mirage %s
-image/*;                        gthumb %s
+image/*;                        feh %s
 audio/*;                        mplayer %s
 video/*;                        mplayer %s
 
 text/html; w3m -dump %s; nametemplate=%s.html; copiousoutput
-#text/html;                      firefox %s
-#text/html;                      lynx -dump %s
-#text/html;                      iconv -c -f %{charset} -t utf8 | html2text -b 0 ; copiousoutput
-#text/plain;                     emacsclient -c %s
-#text/plain;                     gvim %s
+text/plain;                      vim %s
