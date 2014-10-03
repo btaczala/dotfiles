@@ -81,3 +81,8 @@ export TASKDATA=~/ownCloud/task/work/task
 export PATH=/home/bata/.gem/ruby/2.1.0/bin:$PATH
 
 export TERM=xterm-termite
+
+if [[ $TERM == xterm-termite ]]; then
+  . /etc/profile.d/vte.sh
+    __vte_osc7
+fi
