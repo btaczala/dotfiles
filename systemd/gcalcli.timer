@@ -1,0 +1,10 @@
+[Unit]
+Description=gcalcli notification
+
+[Timer]
+OnBootSec=10min
+OnUnitInactiveSec=30m
+Unit=gcalcli.service
+
+[Install]
+WantedBy=multi-user.target

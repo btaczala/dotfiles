@@ -1,3 +1,6 @@
 [Timer]
 OnUnitInactiveSec=120s
 Unit=offlineimap.service
+
+[Install]
+WantedBy=multi-user.target
