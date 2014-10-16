@@ -1,5 +1,6 @@
 set mbox_type   = Maildir
 set sendmail    = /usr/bin/msmtp
+set editor="vim -c 'set spell spelllang=en,pl'" 
 
 set folder      = ~/.mail/mobica
 set spoolfile   = "+INBOX"
@@ -71,8 +72,7 @@ set sig_dashes = yes # don't append -- as I use only my name as a sig
 set attribution = " %n wrote:\n" # I don't like lengthy attributions as well
 alternates '(username|altusername)([-+].*)?@.*' 
 set hdr_format="%4C %Z %{%m/%d} %-15.15F (%4c) %s" # format of the index
-source /usr/share/doc/mutt/colors/vombatidae.mutt
-#source ~/dotfiles/zenburn.theme
+source ~/dotfiles/mutt/vombatidae.mutt
 
 ignore * 
 unignore from subject to cc date x-mailer x-url user-agent
