@@ -1,0 +1,29 @@
+[general]
+accounts = mobica
+ui = ttyui
+
+[Account mobica]
+localrepository = mobica-local
+remoterepository = mobica-remote
+status_backend = sqlite
+
+[Repository mobica-local]
+type = Maildir
+localfolders = ~/mail/mobica
+# Spaces in pathname are bad. Lets use `archive` which is a simple word
+# Besides, we only need `All Mail` folder. 
+# Sup would manage mails on its own.
+# If your GMail language setting is not English, you can execute 
+# `offlineimap --info` to find out the name of folder which is 
+# translated and encoded after your account is configured.
+nametrans = lambda folder: {'archive': '[Gmail]/All Mail',
+                            }.get(folder, folder)
+
+[Repository mobica-remote]
+type = Gmail
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+# Remember that GMail requires full mail address as username
+remoteuser = bartosz.taczala@mobica.com
+nametrans = lambda folder: {'[Gmail]/All Mail': 'archive',
+                        }.get(folder, folder)
+folderfilter = lambda folder: folder == '[Gmail]/All Mail'
