@@ -6,10 +6,7 @@ function start() {
 
 start skype
 start pidgin 
-truecrypt /dev/sda4 -p=bs8b@_@kmM & 
 systemctl --user start mopidy
-systemctl --user start offlineimap.service
-systemctl --user start offlineimap.timer
 systemctl --user start gcalcli.timer
 sleep 5
 ~/dotfiles/skype_away.py online
