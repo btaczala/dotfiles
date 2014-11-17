@@ -1,0 +1,25 @@
+[general]
+accounts = here
+ui = ttyui
+
+[Account here]
+localrepository = here-local
+remoterepository = here-remote
+status_backend = sqlite
+
+[Repository here-local]
+type = Maildir
+localfolders = ~/mail/here
+nametrans = lambda folder: {'archive': 'INBOX',
+                            }.get(folder, folder)
+
+[Repository here-remote]
+type = IMAP
+port = 993
+remotehost = outlook.office365.com
+remoteuser = ext-bartosz.1.taczala@here.com
+folderfilter = lambda folder: folder == 'INBOX'
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+
+nametrans = lambda folder: {'INBOX': 'archive',
+                        }.get(folder, folder)
