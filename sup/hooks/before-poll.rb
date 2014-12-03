@@ -1,4 +1,4 @@
-say "Running offlineimap for gmail"
+say "Running offlineimap gmail..."
 system "offlineimap", "-o", "-u", "quiet", "-c", "~/dotfiles/sup/offlineimap"
-say "Running offlineimap for here"
-system "offlineimap", "-o", "-u", "quiet", "-c", "~/dotfiles/sup/offlineimap_here"
+say "Running offlineimap here..."
+system "offlineimap", "-o", "-u", "quiet", "-c", "~/dotfiles/sup/offlineimap_imap"

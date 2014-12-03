@@ -51,6 +51,7 @@ Plugin 'vhdirk/vim-cmake'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'vim-scripts/lbdbq'
 Plugin 'morhetz/gruvbox'
+Plugin 'majutsushi/tagbar'
 call vundle#end() 
 filetype plugin indent on     " required! 
 "

@@ -4,8 +4,8 @@ function start() {
     nohup $1 > /dev/null 2>&1 &
 }
 
+start pidgin
 start skype
-start pidgin 
 systemctl --user start mopidy
 systemctl --user start gcalcli.timer
 sleep 5
