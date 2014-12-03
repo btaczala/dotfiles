@@ -11,7 +11,7 @@ allow_bold = true
 dynamic_title = true
 urgent_on_bell = true
 clickable_url = true
-font = Inconsolata-dz for Powerline 9
+font = Inconsolata for Powerline 9
 #font = Source Code Pro for Powerline
 cursor_shape = block
 

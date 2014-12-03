@@ -4,7 +4,7 @@
 [merge]
 	tool = kdiff3
 [gui]
-	editor = kate
+	editor = gvim
 	historybrowser = gitk
 [diff]
 	tool = vimdiff
