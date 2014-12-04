@@ -52,6 +52,7 @@ Plugin 'jlanzarotta/bufexplorer'
 Plugin 'vim-scripts/lbdbq'
 Plugin 'morhetz/gruvbox'
 Plugin 'majutsushi/tagbar'
+Plugin 'farseer90718/vim-taskwarrior'
 call vundle#end() 
 filetype plugin indent on     " required! 
 "

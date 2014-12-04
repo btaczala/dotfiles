@@ -33,8 +33,7 @@ m_sup_query ()
         email=${email%>}
 
         name=${contact%% <*}
-
-        echo -e ${email}"\t"${name}"\t\t"m_sup
+        echo -e "${email}\t${name}\t\tm_sup"
     done
 
 }

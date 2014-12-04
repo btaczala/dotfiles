@@ -32,13 +32,13 @@ m_gmail_query ()
       SUP_BASE=~/.sup
     fi
 
-    $goobook query "$@" | tr -d ' ' | while read contact; do
+    $goobook query "$@" | while read contact; do
       if [[ -z ${contact} ]]; then
         continue
       fi
 
       contact=($contact)
-      echo -e "${contact[0]}\t${contact[1]}\t\tm_gmail"
+      echo -e "${contact[0]}\t${contact[1]} ${contact[2]}\t\tm_gmail"
     done
 }
 
