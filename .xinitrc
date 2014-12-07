@@ -24,4 +24,5 @@ dunst -config /home/bata/dotfiles/dunstrc &
 # exec startxfce4
 # ...or the Window Manager of your choice
 sxhkd &
+xbinkeys &
 exec bspwm
