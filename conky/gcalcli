@@ -1,0 +1,37 @@
+alignment top_left
+maximum_width 630
+minimum_size 330 10
+gap_x 25
+gap_y 50
+
+own_window yes
+own_window_type desktop
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+own_window_transparent yes
+own_window_argb_visual yes
+own_window_argb_value 0
+
+update_interval 300
+background no
+
+border_width 1
+default_color cornflowerblue
+default_outline_color white
+default_shade_color white
+double_buffer no
+draw_borders no
+draw_graph_borders no
+draw_outline no
+draw_shades no
+max_port_monitor_connections 64
+max_specials 512
+max_user_text 16384
+text_buffer_size 8096
+no_buffers yes
+out_to_console no
+uppercase no
+use_xft yes
+xftfont Terminus:size=8
+
+TEXT
+${execpi 300 gcalcli --conky agenda}

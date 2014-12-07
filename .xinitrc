@@ -18,6 +18,9 @@ xset fp rehash
 unclutter -grab -noevents -root &
 compton &
 dunst -config /home/bata/dotfiles/dunstrc &
+conky -c ~/dotfiles/conky/gcalcli &
+feh --bg-scale ~/ownCloud/wallpapers/the_horse_head_nebula_with_blooming_colours.1920x1200.f8bb55d6.jpg &
+conky -c ~/dotfiles/conky/panel &
 
 # exec gnome-session
 # exec startkde
