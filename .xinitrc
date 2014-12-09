@@ -27,5 +27,5 @@ conky -c ~/dotfiles/conky/panel &
 # exec startxfce4
 # ...or the Window Manager of your choice
 sxhkd &
-xbinkeys &
+xbindkeys &
 exec bspwm
