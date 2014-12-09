@@ -9,18 +9,18 @@ function close_program()
     fi
 }
 
-kill `ps ax | grep qtcre | grep Shoo | awk {'print $1'}`
 ~/dotfiles/skype_away.py offline
 sleep 2
 purple-remote quit
 close_program firefox
 sleep 1
-nmcli con down id mob-wawa
-nmcli con down id Nokia
+nmcli con down id mobica
 nmcli con down id Here
 systemctl --user stop mopidy
-#systemctl --user stop offlineimap.timer
-#systemctl --user stop offlineimap
 close_program skype
 killall skype
 close_program ncmpcpp
+
+# close sup
+sup_id=`xdotool search --name sup | head -1`
+xdotool windowactivate --sync $sup_id key q y
