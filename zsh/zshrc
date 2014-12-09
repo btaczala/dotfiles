@@ -90,3 +90,6 @@ fi
 export PAGER=/usr/bin/vimpager
 alias less=$PAGER
 alias zless=$PAGER
+
+unset GREP_COLOR
+unset GREP_OPTIONS
