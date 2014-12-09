@@ -47,4 +47,4 @@ bspc rule -a feh floating=on manage=off
 bspc rule -a scratchpad sticky=on floating=on
 
 /home/bata/.config/bspwm/panel/panel &
-trayer --edge top --width 100 --widthtype pixel --align left --height 13 --margin 60 --tint 0xFF1f1f1f --transparent true --alpha 0 &
+stalonetray --dockapp-mode simple &
