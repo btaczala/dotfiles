@@ -80,6 +80,7 @@ eval `dircolors ~/.dircolors`
 export TASKRC=~/ownCloud/task/work/taskrc
 export TASKDATA=~/ownCloud/task/work/task
 export PATH=/home/bata/.gem/ruby/2.1.0/bin:$PATH
+export PATH=/home/bata/dotfiles/scripts:$PATH
 
 export TERM=xterm-termite
 
