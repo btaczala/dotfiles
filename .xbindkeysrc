@@ -48,6 +48,9 @@
 
 "xbacklight +5%"
  Mod2 + XF86MonBrightnessUp  
+
+"autorandr | dmenu"
+ Mod2 + XF86Display
 ##################################
 # End of xbindkeys configuration #
 ##################################
