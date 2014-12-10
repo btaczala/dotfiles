@@ -1,0 +1,12 @@
+source /usr/lib/prezto/runcoms/zpreztorc
+zstyle ':prezto:module:prompt' theme 'agnoster'
+zstyle ':prezto:load' pmodule \
+  'environment' \
+  'terminal' \
+  'editor' \
+  'git' \
+  'directory' \
+  'spectrum' \
+  'utility' \
+  'completion' \
+  'prompt'
