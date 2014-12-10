@@ -82,9 +82,11 @@ super + @button{1-3}
 
 super + Return
 	termite
+super + r
+	/home/bata/dotfiles/dmenu/fmenu
 
 super + space
-    j4-dmenu-desktop --dmenu="dmenu -i -nb \"#1f1f1f\" -nf \"#c0b18b\" -fn \"Terminus\""
+    j4-dmenu-desktop --dmenu="dmenu -i -nb \"#1f1f1f\" -nf \"#c0b18b\" -fn \"Inconsolata for Powerline-9\" -dim 0.5"
 
 super + l
     /usr/bin/lock
