@@ -6,7 +6,6 @@ bspc config window_gap          4
 i=1
 for monitor in $(bspc query -M); do
 bspc monitor $monitor \
-        -n "$i" \
         -d $i/{term,web,mail,dev,im,vi,vii,viii,ix,x}
     let i++
 done

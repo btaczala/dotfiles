@@ -3,12 +3,15 @@ source $(dirname $0)/config
 
 # WIFI ICONS
 # 
+interface=`nmcli c | grep wl | awk '{print $4}'`
 
-QUAL=`iwconfig wlp4s0 | grep 'Link Quality=' | awk '{gsub(/[=/]/," "); print $3}'`
-MAX=`iwconfig wlp4s0 | grep 'Link Quality=' | awk '{gsub(/[=/]/," "); print $4}'`
+QUAL=`iwconfig $interface | grep 'Link Quality=' | awk '{gsub(/[=/]/," "); print $3}'`
+MAX=`iwconfig $interface | grep 'Link Quality=' | awk '{gsub(/[=/]/," "); print $4}'`
 PERC=`echo $QUAL*100/$MAX | bc`
 
 icon=""
+essid=`nmcli c | grep $interface | awk '{print $1}'`
+vpn=`nmcli c | grep vpn | grep $interface | awk '{print $1}'`
 case $PERC in
 	[0-4])
 		icon=""
@@ -30,4 +33,8 @@ case $PERC in
 	;;
 esac
 
-echo "%{F$COLOR_ICON}$icon%{F-}"
+if [ "$vpn" == "" ]; then
+echo "%{F$COLOR_ICON}$icon $essid%{F-}"
+else 
+echo "%{F$COLOR_ICON}$icon $essid[$vpn]%{F-}"
+fi

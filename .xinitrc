@@ -28,4 +28,4 @@ conky -c ~/dotfiles/conky/panel &
 # ...or the Window Manager of your choice
 sxhkd &
 xbindkeys &
-exec bspwm
+exec bspwm > /tmp/bspwm.log 2>&1
