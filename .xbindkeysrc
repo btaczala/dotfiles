@@ -51,6 +51,20 @@
 
 "autorandr | dmenu"
  Mod2 + XF86Display
+
+"mpc toggle"
+ Mod2 + XF86AudioPlay
+
+"mpc next"
+ Mod2 + XF86AudioNext
+
+"mpc prev"
+ Mod2 + XF86AudioPrev
+
+"ponymix toggle"
+ Mod2 + XF86AudioMute
+
+
 ##################################
 # End of xbindkeys configuration #
 ##################################

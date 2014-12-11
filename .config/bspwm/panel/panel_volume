@@ -1,5 +1,9 @@
 #!/bin/bash
 
-vol=`ponymix get-volume`
-
-echo " $vol"
+muted=`ponymix is-muted`
+if [ $? -ne 0 ]; then
+    echo "muted"
+else
+    vol=`ponymix get-volume`
+    echo " $vol"
+fi

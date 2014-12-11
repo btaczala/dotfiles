@@ -1,0 +1,92 @@
+# Swap Usage:$color $swapperc%${color lightgrey}
+
+# the ${template x x x} command uses /sys/bus/platform/devices
+# for this to work you need both lm-sensors and hddtemp get both from main repos
+
+# set to yes if you want Conky to be forked in the background
+background no
+
+own_window yes
+own_window_type desktop
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+out_to_console no
+use_xft yes
+xftfont monospace:size=8
+update_interval 2
+
+# Create own window instead of using desktop (required in nautilus)
+own_window yes
+
+# Use double buffering (reduces flicker, may not work for everyone)
+double_buffer yes
+maximum_width 258
+
+draw_shades no
+
+# Draw outlines?
+draw_outline no
+
+# Draw borders around text
+draw_borders no
+
+# Stippled borders?
+stippled_borders 10
+
+# border margins
+#border_margin 4
+
+# border width
+border_width 1
+
+# Default colors and also border colors
+default_color white
+default_shade_color white
+default_outline_color white
+
+# Text alignment, other possible values are commented
+#alignment top_left
+#minimum_size 10 10
+#alignment top_right
+alignment bottom_left
+#alignment bottom_right
+
+# Gap between borders of screen and text
+gap_x 12
+gap_y 37
+# Add spaces to keep things from moving about?  This only affects certain objects.
+use_spacer left
+
+# Subtract file system buffers from used memory?
+no_buffers yes
+
+# set to yes if you want all text to be in uppercase
+uppercase no
+
+TEXT
+${color #55aaff}$nodename$color - $sysname $kernel on $machine
+${color #6495ed}Uptime:$color $uptime ${color lightgrey}- ${color #6495ed}Load:$color $loadavg${color lightgrey}
+$color$stippled_hr${color lightgrey}
+${color #6495ed}CPU: ${color lightgrey}Intel Xeon X3360 @ $color${freq_g} GHz${color lightgrey}
+${color #6495ed}CPU Fan: $color${platform it87.656 fan 1}${color grey} RPM @ $color${execi 8 cat /sys/class/hwmon/hwmon0/device/pwm1}
+${color black}${cpugraph 35,200 5000a0 6495ed}${color white}  ${cpugauge 35}${color lightgrey}
+${color #6495ed}Core0:$color${platform coretemp.0 temp 2} °C${color grey} @$color ${cpu cpu1}% ${alignr}${cpubar cpu1 6,120}
+${color #6495ed}Core1:$color${platform coretemp.0 temp 2} °C${color grey} @$color ${cpu cpu2}% ${alignr}${cpubar cpu2 6,120}
+${color #6495ed}Core2:$color${platform coretemp.0 temp 2} °C${color grey} @$color ${cpu cpu3}% ${alignr}${cpubar cpu3 6,120}
+${color #6495ed}Core3:$color${platform coretemp.0 temp 2} °C${color grey} @$color ${cpu cpu4}% ${alignr}${cpubar cpu4 6,120}${color grey}
+${color #6495ed}CPU:$color${platform it87.656 temp 2} °C   ${color #6495ed}M/B:$color${platform it87.656 temp 1} °C   ${color #6495ed}sda:$color ${execi 300 sudo hddtemp /dev/sda | cut -c34-35} °C
+${color #6495ed}GPU:${color lightgrey}$color${nvidia temp} °C 
+$color$stippled_hr${color lightgrey}
+${color #6495ed}RAM Use:  $color$mem ($memperc%)${color lightgrey} ${membar}
+ ${color #6495ed}/dev/shm:${color}${fs_used /dev/shm} (${fs_used_perc /dev/shm}%) ${fs_bar /dev/shm}
+ ${color #6495ed}/tmp:     ${color}${fs_used /tmp} (${fs_used_perc /tmp}%) ${fs_bar /tmp}
+$color$stippled_hr${color lightgrey}
+${color #6495ed}Processes:${color} $processes  ${color #6495ed}Running:$color$running_processes
+${color}Name                   PID    CPU%   MEM%
+${color #55aaff} ${top name 1}     ${top pid 1} ${top cpu 1} ${top mem 1}
+${color lightgrey} ${top name 2}     ${top pid 2} ${top cpu 2} ${top mem 2}
+${color lightgrey} ${top name 3}     ${top pid 3} ${top cpu 3} ${top mem 3}
+${color}Mem usage
+${color #55aaff} ${top_mem name 1}     ${top_mem pid 1} ${top_mem cpu 1} ${top_mem mem 1}
+${color lightgrey} ${top_mem name 2}     ${top_mem pid 2} ${top_mem cpu 2} ${top_mem mem 2}
+${color lightgrey} ${top_mem name 3}     ${top_mem pid 3} ${top_mem cpu 3} ${top_mem mem 3}

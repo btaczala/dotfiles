@@ -5,6 +5,11 @@ source $(dirname $0)/config
 # 
 interface=`nmcli c | grep wl | awk '{print $4}'`
 
+if [ "$interface" == "" ]; then
+    echo ""
+    exit
+fi
+
 QUAL=`iwconfig $interface | grep 'Link Quality=' | awk '{gsub(/[=/]/," "); print $3}'`
 MAX=`iwconfig $interface | grep 'Link Quality=' | awk '{gsub(/[=/]/," "); print $4}'`
 PERC=`echo $QUAL*100/$MAX | bc`

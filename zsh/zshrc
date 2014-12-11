@@ -23,3 +23,6 @@ alias zless=$PAGER
 unset GREP_COLOR
 unset GREP_OPTIONS
 
+alias gst='git status'
+alias gup='git pull --rebase'
+alias builds='cd ~/.builds'

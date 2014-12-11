@@ -1,5 +1,4 @@
 source /usr/lib/prezto/runcoms/zpreztorc
-zstyle ':prezto:module:prompt' theme 'agnoster'
 zstyle ':prezto:load' pmodule \
   'environment' \
   'terminal' \
@@ -7,6 +6,9 @@ zstyle ':prezto:load' pmodule \
   'git' \
   'directory' \
   'spectrum' \
+  'history' \
   'utility' \
   'completion' \
   'prompt'
+
+zstyle ':prezto:module:prompt' theme 'paradox'

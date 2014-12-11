@@ -44,6 +44,7 @@ bspc rule -a Conky sticky=on manage=off lower=on
 bspc rule -a astime sticky=on
 bspc rule -a feh floating=on manage=off
 bspc rule -a scratchpad sticky=on floating=on
+bspc rule -a Supt desktop=^3
 
 /home/bata/.config/bspwm/panel/panel &
 stalonetray --dockapp-mode simple &

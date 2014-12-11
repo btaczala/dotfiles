@@ -3,6 +3,10 @@ source $(dirname $0)/config
 
 interface=`nmcli c | grep en | grep -v vpn | awk '{print $4}'`
 
+if [ "$interface" == "" ]; then
+    exit
+fi
+
 icon=""
 id=`nmcli c | grep $interface | grep -v vpn | awk '{print $1}'`
 vpn=`nmcli c | grep vpn | grep $interface | awk '{print $1}'`
