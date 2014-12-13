@@ -1,2 +1,0 @@
-folder-hook . 'unset trash'
-#folder-hook mobica source ~/dotfiles/mutt/accounts/mobica

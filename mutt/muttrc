@@ -1,34 +1,16 @@
-set mbox_type=Maildir
-set folder=/home/bata/.mutt/mail/mobica
+# Paths ----------------------------------------------
+set folder           = ~/.mutt/mail/              # mailbox location
+set alias_file       = ~/.mutt/alias         # where to store aliases
+set header_cache     = ~/.mutt/cache/headers # where to store headers
+set message_cachedir = ~/.mutt/cache/bodies  # where to store bodies
+set certificate_file = ~/.mutt/certificates  # where to store certs
+set mailcap_path     = ~/.mutt/mailcap       # entries for filetypes
+set tmpdir           = ~/.mutt/temp          # where to keep temp files
+set signature        = ~/.mutt/sig           # my signature file
 
-source $HOME/dotfiles/mutt/mailboxes
-source $HOME/dotfiles/mutt/folder_hooks
-source $HOME/dotfiles/mutt/macros
-source $HOME/dotfiles/mutt/colors
-source $HOME/dotfiles/mutt/sidebar
-source $HOME/dotfiles/mutt/statusbar
-source $HOME/dotfiles/mutt/pager
-source $HOME/dotfiles/mutt/query
-
-set index_format="%Z %{%a %d %b %Y} %3M %-15.15L │%s"
-
-set realname = "Bartosz Taczała"
-
-# initial box
-set spoolfile=+INBOX
-
-set header_cache =~/.mutt/cache/headers
-set message_cachedir =~/.mutt/cache/bodies
-set certificate_file =~/.mutt/certificates
-set mailcap_path = $HOME/.mutt/mailcap
-
-set move = no  #Stop asking to "move read messages to mbox"!
-
-ignore headers *
-unignore headers from to subject date cc
-
-set sendmail_wait=-1
+# Basic Options --------------------------------------
 set wait_key = no        # shut up, mutt
+set mbox_type = Maildir  # mailbox type
 set timeout = 3          # idle time before scanning
 set mail_check = 0       # minimum time between scans
 unset move               # gmail does that
@@ -36,4 +18,93 @@ set delete               # don't ask, just do
 unset confirmappend      # don't ask, just do!
 set quit                 # don't ask, just do!!
 unset mark_old           # read/new is good enough for me
-set smart_wrap
+set beep_new             # bell on new mails
+set pipe_decode          # strip headers and eval mimes when piping
+set thorough_search      # strip headers and eval mimes before searching
+
+# Sidebar Patch --------------------------------------
+set sidebar_delim   = '  │'
+set sidebar_visible = yes
+set sidebar_width   = 24
+color sidebar_new color221 color233
+
+# Status Bar -----------------------------------------
+set status_chars  = " *%A"
+set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed)?───"
+
+
+# Header Options -------------------------------------
+ignore *                                # ignore all headers
+unignore from: to: cc: date: subject:   # show only these
+unhdr_order *                           # some distros order things by default
+hdr_order from: to: cc: date: subject:  # and in this order
+
+
+# Account Settings -----------------------------------
+
+# Default inbox.
+set spoolfile = "+mobica/INBOX"
+
+
+# Alternate email addresses.
+# alternates sjl@pculture.org still\.?life@gmail.com steve@ladyluckblues.com steve@pculture.org
+
+# Mailboxes to show in the sidebar.
+mailboxes +mobica/INBOX \
+          +mobica/INBOX.bbags \
+          +"mobica/INBOX.mailing lists"\
+          +"mobica/INBOX.mailing lists.autmg"\
+          +"mobica/INBOX.Internal"\
+          +"mobica/INBOX.Internal.Interviews"\
+
+# Other
+# special
+# folders.
+set mbox ="+steve-stevelosh.com/archive"
+set postponed="+steve-stevelosh.com/drafts"
+
+
+# Index View Options ---------------------------------
+set date_format = "%m/%d"
+set index_format = "[%Z]  %D  %-20.20F  %s"
+set sort = threads                         # like gmail
+set sort_aux = reverse-last-date-received  # like gmail
+set uncollapse_jump                        # don't collapse on an unread message
+set sort_re                                # thread based on regex
+set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
+
+
+# Index Key Bindings ---------------------------------
+bind index gg       first-entry
+bind index G        last-entry
+
+bind index R        group-reply
+bind index <tab>    sync-mailbox
+bind index <space>  collapse-thread
+
+# Ctrl-R to mark all as read 
+macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
+
+# Sync email
+macro index O "<shell-escape>offlineimap -c ~/dotfiles/mutt/mobica_offlineimap<enter>"           "run offlineimap to sync all mail"
+macro index o "<shell-escape>offlineimap -qf INBOX<enter>" "run offlineimap to sync inbox"
+
+# Saner copy/move dialogs
+macro index C "<copy-message>?<toggle-mailboxes>" "copy a message to a mailbox"
+macro index M "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
+
+# Sidebar Navigation ---------------------------------
+bind index,pager <down>   sidebar-next
+bind index,pager <up>     sidebar-prev
+bind index,pager <right>  sidebar-open
+
+# Colors --------------------------------
+# source /usr/share/doc/mutt/colors/solarized/mutt-colors-solarized-dark-256.muttrc
+source /home/bata/dotfiles/mutt/vombatidae.mutt
+
+
+# Contacts
+set query_command="goobook query '%s'"
+# macro index,pager a "<pipe-message>goobook add<return>" "add sender to google contacts"
+bind editor <Tab> complete-query
+
