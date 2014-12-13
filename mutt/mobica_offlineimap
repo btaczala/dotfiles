@@ -1,0 +1,34 @@
+[general]
+# list of the configured accounts
+accounts = mobica
+fsync = False 
+
+[Account mobica]
+localrepository = mobica-Local
+remoterepository = mobica-Remote
+quick = 30
+status_backend = sqlite
+maxage = 900
+
+[Repository mobica-Local]
+type = Maildir
+localfolders = /home/bata/.mutt/mail/mobica
+
+[Repository mobica-Remote]
+type = Gmail
+remoteuser = bartosz.taczala@mobica.com
+realdelete = no
+# google app-specific password
+ssl = yes
+maxconnections = 5
+holdconnectionopen = yes
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+postsynchook = notmuch new
+
+[mbnames]
+enabled = yes
+filename = ~/.mutt/mailboxes
+header = "mailboxes "
+peritem = "+%(accountname)s/%(foldername)s"
+sep = " "
+footer = "\n"

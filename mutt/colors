@@ -1,0 +1,7 @@
+color header brightred default subject
+color hdrdefault cyan default
+color quoted green default
+color status cyan default
+color indicator red default
+color normal white default
+color tree cyan default

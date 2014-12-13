@@ -1,0 +1,17 @@
+bind editor <Tab> complete-query
+bind editor ^T complete
+
+macro index,pager c "<change-folder>?<toggle-mailboxes>" "open a different folder"
+
+macro index p "<enter-command>set pager_index_lines=30"
+macro index P "<enter-command>set pager_index_lines=0"
+
+bind index gg       first-entry
+bind index G        last-entry
+
+bind index R        group-reply
+bind index u        sync-mailbox
+bind index <space>  collapse-thread
+bind index _        collapse-all
+
+bind compose p postpone-message

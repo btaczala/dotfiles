@@ -1,0 +1,39 @@
+set mbox_type=Maildir
+set folder=/home/bata/.mutt/mail/mobica
+
+source $HOME/dotfiles/mutt/mailboxes
+source $HOME/dotfiles/mutt/folder_hooks
+source $HOME/dotfiles/mutt/macros
+source $HOME/dotfiles/mutt/colors
+source $HOME/dotfiles/mutt/sidebar
+source $HOME/dotfiles/mutt/statusbar
+source $HOME/dotfiles/mutt/pager
+source $HOME/dotfiles/mutt/query
+
+set index_format="%Z %{%a %d %b %Y} %3M %-15.15L │%s"
+
+set realname = "Bartosz Taczała"
+
+# initial box
+set spoolfile=+INBOX
+
+set header_cache =~/.mutt/cache/headers
+set message_cachedir =~/.mutt/cache/bodies
+set certificate_file =~/.mutt/certificates
+set mailcap_path = $HOME/.mutt/mailcap
+
+set move = no  #Stop asking to "move read messages to mbox"!
+
+ignore headers *
+unignore headers from to subject date cc
+
+set sendmail_wait=-1
+set wait_key = no        # shut up, mutt
+set timeout = 3          # idle time before scanning
+set mail_check = 0       # minimum time between scans
+unset move               # gmail does that
+set delete               # don't ask, just do
+unset confirmappend      # don't ask, just do!
+set quit                 # don't ask, just do!!
+unset mark_old           # read/new is good enough for me
+set smart_wrap
