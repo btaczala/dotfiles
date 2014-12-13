@@ -30,11 +30,11 @@ case $BAT in
 		;;
 	[0-5])
 		bar="\f8$s$s$s$s$s$s$s$s$s"
-		icon="%{U#FFFF0000}%{+u}$icon"
+		icon="%{U#FFFF0000}$icon"
 		;;
 	[5-9])
 		bar="\f3$s\f8$s$s$s$s$s$s$s$s"
-		icon="%{U#FFFFD300}%{+u}$icon"
+		icon="%{U#FFFFD300}$icon"
 		;;
 	[1-2]*)
 		bar="$s$s\f8$s$s$s$s$s$s$s"
