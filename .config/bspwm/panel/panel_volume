@@ -2,8 +2,8 @@
 
 muted=`ponymix is-muted`
 if [ $? -ne 0 ]; then
-    echo "muted"
-else
     vol=`ponymix get-volume`
     echo " $vol"
+else
+    echo "muted"
 fi
