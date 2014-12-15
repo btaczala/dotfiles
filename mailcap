@@ -19,6 +19,7 @@ image/pdf;                      zathura %s
 application/ps;                 zathura %s
 
 image/*;                        gwenview %s
+image/png;                        gwenview %s
 audio/*;                        mplayer %s
 video/*;                        mplayer %s
 
