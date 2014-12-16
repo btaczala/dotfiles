@@ -76,6 +76,9 @@ super + !button{1-3}
 super + @button{1-3}
 	bspc pointer -u
 
+super + u
+    bspc desktop -f next.urgent; bspc window -f next.urgent
+
 #
 # wm independent hotkeys
 #
