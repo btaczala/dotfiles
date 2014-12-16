@@ -1,6 +1,4 @@
 [user]
-	name = Bartosz Taczala
-	email = ext-bartosz.1.taczala@here.com
 [merge]
 	tool = kdiff3
 [gui]
