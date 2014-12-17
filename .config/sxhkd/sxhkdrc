@@ -82,6 +82,7 @@ super + @button{1-3}
 
 super + Return
 	termite
+
 super + r
 	/home/bata/dotfiles/dmenu/fmenu
 

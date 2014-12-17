@@ -7,4 +7,5 @@ update_interval 3
 #update_interval_on_battery 5 BAT1
 
 TEXT
-S  ${cpu cpu0} ${execi 1 ./panel_volume}% ${execi 1 ./panel_eth} ${execi 1 ./panel_wifi} ${wireless_essid wlp4s0}${execi 1 ./panel_battery}${battery_percent BAT1}%%  ${time %H:%M} ${time %d/%m/%y} ${execi 10 ./panel_layout} %{-u}
+#S   ${cpu cpu0} ${execi 1 ./panel_volume}% ${execi 1 ./panel_eth} ${execi 1 ./panel_wifi} ${wireless_essid wlp4s0} ${execi 1 ./panel_battery}${battery_percent BAT1}%%  ${time %H:%M} ${time %d/%m/%y} ${execi 10 ./panel_layout} %{-u}
+S   ${cpu cpu0} ${execi 1 ./panel_volume}% ${execi 1 ./panel_eth} ${wireless_essid wlp4s0} ${execi 1 ./panel_battery}${battery_percent BAT1}%%  ${time %H:%M} ${time %d/%m/%y} ${execi 10 ./panel_layout} %{-u}
