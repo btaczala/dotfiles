@@ -1,0 +1,147 @@
+Failed to connect to the socket.
+Failed to connect to the socket.
+Failed to connect to the socket.
+Failed to connect to the socket.
+Conky: forked to background, pid is 6387
+
+Couldn't connect to X
+xcb_connection_has_error() returned true
+Failed to connect to the socket.
+Failed to connect to the socket.
+Cannot open display ":0"
+Conky: received SIGHUP or SIGUSR1. reloading the config file.
+xcb_connection_has_error() returned true
+Failed to connect to the socket.
+Failed to connect to the socket.
+Failed to connect to the socket.
+Cannot open display ":0"
+Conky: forked to background, pid is 2674
+
+X11 error: BadWindow (invalid Window parameter) (request: X_ConfigureWindow, resource 0xc)
+X11 error: BadWindow (invalid Window parameter) (request: X_MapWindow, resource 0x8)
+X11 error: BadWindow (invalid Window parameter) (request: X_ConfigureWindow, resource 0xc)
+X11 error: BadWindow (invalid Window parameter) (request: X_MapWindow, resource 0x8)
+X11 error: BadWindow (invalid Window parameter) (request: X_GetProperty, resource 0x14)
+X11 error 3 detected at xembed.c:494:xembed_retrive_data
+X11 error: BadWindow (invalid Window parameter) (request: X_ChangeWindowAttributes, resource 0x2)
+X11 error 3 detected at xutils.c:259:x11_get_window_size
+X11 error: BadWindow (invalid Window parameter) (request: X_GetWindowAttributes, resource 0x3)
+X11 error 3 detected at debug.c:140:print_icon_data
+X11 error: BadWindow (invalid Window parameter) (request: X_ChangeWindowAttributes, resource 0x2)
+X11 error: BadWindow (invalid Window parameter) (request: X_UnmapWindow, resource 0xa)
+X11 error: BadWindow (invalid Window parameter) (request: X_ReparentWindow, resource 0x7)
+X11 error: BadWindow (invalid Window parameter) (request: X_ConfigureWindow, resource 0xc)
+X11 error: BadWindow (invalid Window parameter) (request: X_MapWindow, resource 0x8)
+X11 error 3 detected at xutils.c:115:x11_get_server_timestamp
+X11 error: BadWindow (invalid Window parameter) (request: X_SendEvent, resource 0x19)
+X11 error 3 detected at xutils.c:259:x11_get_window_size
+X11 error: BadWindow (invalid Window parameter) (request: X_ConfigureWindow, resource 0xc)
+X11 error: BadWindow (invalid Window parameter) (request: X_MapWindow, resource 0x8)
+X11 error: BadWindow (invalid Window parameter) (request: X_GetWindowAttributes, resource 0x3)
+X11 error 3 detected at debug.c:140:print_icon_data
+X11 error: BadWindow (invalid Window parameter) (request: X_ChangeWindowAttributes, resource 0x2)
+X11 error: BadWindow (invalid Window parameter) (request: X_UnmapWindow, resource 0xa)
+X11 error: BadWindow (invalid Window parameter) (request: X_ReparentWindow, resource 0x7)
+X11 error: BadWindow (invalid Window parameter) (request: X_ConfigureWindow, resource 0xc)
+X11 error: BadWindow (invalid Window parameter) (request: X_MapWindow, resource 0x8)
+X11 error 3 detected at xutils.c:115:x11_get_server_timestamp
+Conky: './panel_conky' modified, reloading...
+Conky: './panel_conky' modified, reloading...
+Conky: './panel_conky' modified, reloading...
+Conky: './panel_conky' modified, reloading...
+Conky: './panel_conky' modified, reloading...
+Conky: './panel_conky' modified, reloading...
+Conky: './panel_conky' modified, reloading...
+Conky: './panel_conky' modified, reloading...
+Conky: './panel_conky' modified, reloading...
+Conky: './panel_conky' modified, reloading...
+Conky: can't stat /var/spool/mail/bata: No such file or directory
+Conky: './panel_conky' modified, reloading...
+Conky: './panel_conky' modified, reloading...
+Conky: './panel_conky' modified, reloading...
+Conky: './panel_conky' modified, reloading...
+Conky: './panel_conky' modified, reloading...
+Conky: './panel_conky' modified, reloading...
+Conky: './panel_conky' modified, reloading...
+./panel_battery: line 68: syntax error: unexpected end of file
+./panel_battery: line 68: syntax error: unexpected end of file
+./panel_battery: line 68: syntax error: unexpected end of file
+./panel_battery: line 68: syntax error: unexpected end of file
+./panel_battery: line 68: syntax error: unexpected end of file
+./panel_battery: line 68: syntax error: unexpected end of file
+./panel_battery: line 69: syntax error: unexpected end of file
+./panel_battery: line 69: syntax error: unexpected end of file
+./panel_battery: line 68: unexpected EOF while looking for matching `"'
+./panel_battery: line 69: syntax error: unexpected end of file
+./panel_battery: line 68: unexpected EOF while looking for matching `"'
+./panel_battery: line 69: syntax error: unexpected end of file
+Conky: './panel_conky' modified, reloading...
+Conky: './panel_conky' modified, reloading...
+Conky: unknown variable {battery
+Conky: './panel_conky' modified, reloading...
+Conky: './panel_conky' modified, reloading...
+Conky: './panel_conky' modified, reloading...
+X11 error: BadWindow (invalid Window parameter) (request: X_ConfigureWindow, resource 0xc)
+X11 error: BadWindow (invalid Window parameter) (request: X_MapWindow, resource 0x8)
+X11 error: BadWindow (invalid Window parameter) (request: X_ConfigureWindow, resource 0xc)
+X11 error: BadWindow (invalid Window parameter) (request: X_MapWindow, resource 0x8)
+X11 error: BadWindow (invalid Window parameter) (request: X_GetProperty, resource 0x14)
+X11 error 3 detected at xembed.c:494:xembed_retrive_data
+X11 error: BadWindow (invalid Window parameter) (request: X_ChangeWindowAttributes, resource 0x2)
+X11 error 3 detected at xutils.c:259:x11_get_window_size
+X11 error: BadWindow (invalid Window parameter) (request: X_GetWindowAttributes, resource 0x3)
+X11 error 3 detected at debug.c:140:print_icon_data
+X11 error: BadWindow (invalid Window parameter) (request: X_ChangeWindowAttributes, resource 0x2)
+X11 error: BadWindow (invalid Window parameter) (request: X_UnmapWindow, resource 0xa)
+X11 error: BadWindow (invalid Window parameter) (request: X_ReparentWindow, resource 0x7)
+X11 error: BadWindow (invalid Window parameter) (request: X_ConfigureWindow, resource 0xc)
+X11 error: BadWindow (invalid Window parameter) (request: X_MapWindow, resource 0x8)
+X11 error 3 detected at xutils.c:115:x11_get_server_timestamp
+X11 error: BadWindow (invalid Window parameter) (request: X_ConfigureWindow, resource 0xc)
+X11 error: BadWindow (invalid Window parameter) (request: X_MapWindow, resource 0x8)
+X11 error: BadWindow (invalid Window parameter) (request: X_ConfigureWindow, resource 0xc)
+X11 error: BadWindow (invalid Window parameter) (request: X_MapWindow, resource 0x8)
+X11 error 3 detected at debug.c:140:print_icon_data
+X11 error: BadWindow (invalid Window parameter) (request: X_GetWindowAttributes, resource 0x3)
+X11 error 3 detected at debug.c:140:print_icon_data
+X11 error: BadWindow (invalid Window parameter) (request: X_ChangeWindowAttributes, resource 0x2)
+X11 error: BadWindow (invalid Window parameter) (request: X_UnmapWindow, resource 0xa)
+X11 error: BadWindow (invalid Window parameter) (request: X_ReparentWindow, resource 0x7)
+X11 error: BadWindow (invalid Window parameter) (request: X_ConfigureWindow, resource 0xc)
+X11 error: BadWindow (invalid Window parameter) (request: X_MapWindow, resource 0x8)
+X11 error 3 detected at xutils.c:115:x11_get_server_timestamp
+Conky: forked to background, pid is 17979
+
+Conky: './panel_conky' modified, reloading...
+Conky: './panel_conky' modified, reloading...
+X11 error: BadWindow (invalid Window parameter) (request: X_ConfigureWindow, resource 0xc)
+X11 error: BadWindow (invalid Window parameter) (request: X_MapWindow, resource 0x8)
+X11 error: BadWindow (invalid Window parameter) (request: X_ConfigureWindow, resource 0xc)
+X11 error: BadWindow (invalid Window parameter) (request: X_MapWindow, resource 0x8)
+X11 error: BadWindow (invalid Window parameter) (request: X_GetProperty, resource 0x14)
+X11 error 3 detected at xembed.c:494:xembed_retrive_data
+X11 error: BadWindow (invalid Window parameter) (request: X_ChangeWindowAttributes, resource 0x2)
+X11 error 3 detected at xutils.c:259:x11_get_window_size
+X11 error: BadWindow (invalid Window parameter) (request: X_GetWindowAttributes, resource 0x3)
+X11 error 3 detected at debug.c:140:print_icon_data
+X11 error: BadWindow (invalid Window parameter) (request: X_ChangeWindowAttributes, resource 0x2)
+X11 error: BadWindow (invalid Window parameter) (request: X_UnmapWindow, resource 0xa)
+X11 error: BadWindow (invalid Window parameter) (request: X_ReparentWindow, resource 0x7)
+X11 error: BadWindow (invalid Window parameter) (request: X_ConfigureWindow, resource 0xc)
+X11 error: BadWindow (invalid Window parameter) (request: X_MapWindow, resource 0x8)
+X11 error 3 detected at xutils.c:115:x11_get_server_timestamp
+X11 error: BadWindow (invalid Window parameter) (request: X_SendEvent, resource 0x19)
+X11 error 3 detected at xutils.c:259:x11_get_window_size
+X11 error: BadWindow (invalid Window parameter) (request: X_ConfigureWindow, resource 0xc)
+X11 error: BadWindow (invalid Window parameter) (request: X_MapWindow, resource 0x8)
+X11 error: BadWindow (invalid Window parameter) (request: X_ConfigureWindow, resource 0xc)
+X11 error: BadWindow (invalid Window parameter) (request: X_MapWindow, resource 0x8)
+X11 error: BadWindow (invalid Window parameter) (request: X_GetWindowAttributes, resource 0x3)
+X11 error 3 detected at debug.c:140:print_icon_data
+X11 error: BadWindow (invalid Window parameter) (request: X_ChangeWindowAttributes, resource 0x2)
+X11 error: BadWindow (invalid Window parameter) (request: X_UnmapWindow, resource 0xa)
+X11 error: BadWindow (invalid Window parameter) (request: X_ReparentWindow, resource 0x7)
+X11 error: BadWindow (invalid Window parameter) (request: X_ConfigureWindow, resource 0xc)
+X11 error: BadWindow (invalid Window parameter) (request: X_MapWindow, resource 0x8)
+X11 error 3 detected at xutils.c:115:x11_get_server_timestamp
+Terminated
