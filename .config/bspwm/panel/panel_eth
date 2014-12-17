@@ -13,7 +13,7 @@ vpn=`nmcli c | grep vpn | grep $interface | awk '{print $1}'`
 
 
 if [ "$vpn" == "" ]; then
-echo "%{F$COLOR_ICON}$id%{F-}"
+echo "%{F$COLOR_ICON}  $id%{F-}"
 else 
-echo "%{F$COLOR_ICON}$id[$vpn]%{F-}"
+echo "%{F$COLOR_ICON}  $id[$vpn]%{F-}"
 fi

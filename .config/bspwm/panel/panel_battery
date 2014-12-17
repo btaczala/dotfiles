@@ -10,7 +10,7 @@ STATUS=`acpi -b | awk '{gsub(/,/,""); print $3}'`
 # Set Icon
 icon=""
 if [[ $STATUS != "Discharging" ]]; then
-	icon=""
+	icon=""
 elif [[ $BAT -lt 10 ]]; then
 	icon=""
 elif [[ $BAT -lt 40 ]]; then
