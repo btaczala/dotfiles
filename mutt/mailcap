@@ -9,18 +9,15 @@ application/mspowerpoint;                 libreoffice %s
 application/vnd.ms-powerpoint;            libreoffice %s
 application/vnd.oasis.opendocument.text;  libreoffice %s
 
-# gcalcli
-application/ics                           termite -e ~/dotfiles/gcal_import.sh %s
-text/ics                                  termite -e ~/dotfiles/gcal_import.sh %s
-text/calendar                             termite -e ~/dotfiles/gcal_import.sh %s
-
 application/pdf;                zathura %s
 image/pdf;                      zathura %s
 application/ps;                 zathura %s
 
 image/*;                        gwenview %s
+image/png;                        gwenview %s
 audio/*;                        mplayer %s
 video/*;                        mplayer %s
 
 text/html; w3m -dump %s; nametemplate=%s.html; copiousoutput
 text/plain;                      vim %s
+text/calendar; vcal -all %s; copiousoutput
