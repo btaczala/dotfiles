@@ -3,7 +3,8 @@ source $(dirname $0)/config
 
 # WIFI ICONS
 # 
-interface=`nmcli c | grep wl | awk '{print $4}'`
+#interface=`nmcli c | grep wl | awk '{print $4}'`
+interface=`nmcli -f DEVICE c | grep wl | head -1`
 
 if [ "$interface" == "" ]; then
     echo ""
@@ -15,7 +16,7 @@ MAX=`iwconfig $interface | grep 'Link Quality=' | awk '{gsub(/[=/]/," "); print 
 PERC=`echo $QUAL*100/$MAX | bc`
 
 icon=""
-essid=`nmcli c | grep $interface | awk '{print $1}'`
+essid=`nmcli c | grep $interface | grep -v vpn | awk '{print $1}'`
 vpn=`nmcli c | grep vpn | grep $interface | awk '{print $1}'`
 case $PERC in
 	[0-4])
