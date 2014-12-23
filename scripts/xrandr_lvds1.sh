@@ -1,8 +1,6 @@
 #!/bin/bash
 
-# kill trayer
-killall panel
-killall stalonetray
+~/dotfiles/scripts/bspwm_xrandr_stop.sh
 # set monitor
 xrandr --output LVDS1 --auto --output HDMI1 --off --output VGA1 --off
 # add padding
@@ -15,6 +13,4 @@ bspc rule -r Skype
 bspc rule -a Skype desktop=^5
 bspc rule -a Pidgin desktop=^5
 
-~/.config/bspwm/panel/panel &
-sleep 3
-stalonetray --dockapp-mode simple &
+~/dotfiles/scripts/bspwm_xrandr_start.sh &
