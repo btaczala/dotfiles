@@ -49,7 +49,7 @@
 "xbacklight +5%"
  Mod2 + XF86MonBrightnessUp  
 
-"autorandr | dmenu"
+"~/dotfiles/dmenu/xrmenu.sh"
  Mod2 + XF86Display
 
 "mpc toggle"

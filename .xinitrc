@@ -17,9 +17,10 @@ xset +fp /usr/share/fonts/local
 xset fp rehash 
 unclutter -grab -noevents -root &
 compton &
+export WALLPAPER=/home/bata/ownCloud/wallpapers/1616699.jpg
 dunst -config /home/bata/dotfiles/dunstrc &
 conky -c ~/dotfiles/conky/gcalcli &
-feh --bg-scale ~/ownCloud/wallpapers/the_horse_head_nebula_with_blooming_colours.1920x1200.f8bb55d6.jpg &
+feh --bg-scale $WALLPAPER
 conky -c ~/dotfiles/conky/panel &
 
 # exec gnome-session

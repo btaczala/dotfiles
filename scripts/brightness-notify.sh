@@ -27,7 +27,7 @@ esac
 
 brightness=`xbacklight -get`
 
-NID=`notify-send "Brightness"  -t 500 -i xfpm-brightness-lcd -h int:value:$brightness `
+NID=`notify-send "Brightness $brightness"  -t 500 -i xfpm-brightness-lcd -h int:value:$brightness `
 
 echo $NID > $CONTROL_FILE
 
