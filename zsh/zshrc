@@ -27,3 +27,6 @@ alias gst='git status'
 alias gup='git pull --rebase'
 alias builds='cd ~/.builds'
 source ~/dotfiles/zsh/k.sh
+
+export GOPATH=~/go
+export PATH=$PATH:$GOPATH/bin
