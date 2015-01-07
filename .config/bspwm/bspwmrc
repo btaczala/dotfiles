@@ -37,7 +37,7 @@ bspc config merge_overlapping_monitors true
 # Rules
 bspc rule -a Skype desktop=^5
 bspc rule -a Pidgin desktop=^5
-bspc rule -a Gimp desktop=^8 follow=on floating=on
+bspc rule -a gimp-2.8 floating=on
 bspc rule -a Chromium desktop=^2
 bspc rule -a Firefox desktop=^2
 bspc rule -a Conky sticky=on manage=off lower=on
@@ -45,6 +45,9 @@ bspc rule -a astime sticky=on
 bspc rule -a feh floating=on manage=off
 bspc rule -a scratchpad sticky=on floating=on
 bspc rule -a mutt desktop=^3
+
+bspc rule -a hmi floating=on 
+bspc rule -a QtQmlViewer floating=on
 
 /home/bata/.config/bspwm/panel/panel &
 sleep 2
