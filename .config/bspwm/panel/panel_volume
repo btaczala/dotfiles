@@ -1,9 +1,10 @@
 #!/bin/bash
+source $(dirname $0)/config
 
 muted=`ponymix is-muted`
 if [ $? -ne 0 ]; then
     vol=`ponymix get-volume`
-    echo " $vol"
+    echo "%{F$COLOR_ICON} %{F-}$vol"
 else
     echo "muted"
 fi

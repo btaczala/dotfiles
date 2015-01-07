@@ -1,4 +1,5 @@
 #!/bin/bash
+source $(dirname $0)/config
 
 layout=`setxkbmap -query | grep layout | awk '{print $2}'`
-echo " $layout"
+echo "%{F$COLOR_ICON} %{F-}$layout"

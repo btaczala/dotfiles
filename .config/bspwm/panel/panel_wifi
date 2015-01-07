@@ -40,7 +40,7 @@ case $PERC in
 esac
 
 if [ "$vpn" == "" ]; then
-    echo "%{F$COLOR_ICON}$icon $essid%{F-}"
+    echo "%{F$COLOR_ICON}$icon %{F-}$essid"
 else 
-    echo "%{F$COLOR_ICON}$icon $essid[$vpn]%{F-}"
+    echo "%{F$COLOR_ICON}$icon %{F-}$essid[$vpn]"
 fi
