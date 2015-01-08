@@ -5,8 +5,8 @@ source /usr/lib/prezto/runcoms/zshrc
 
 export EDITOR=vim
 eval `dircolors ~/.dircolors`
-export TASKRC=~/ownCloud/task/work/taskrc
-export TASKDATA=~/ownCloud/task/work/task
+export TASKRC=~/drive/taskwarrior/work/taskrc
+export TASKDATA=~/drive/taskwarrior/work/task
 export PATH=/home/bata/.gem/ruby/2.1.0/bin:$PATH
 export PATH=/home/bata/dotfiles/scripts:$PATH
 

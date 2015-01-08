@@ -9,6 +9,12 @@ function close_program()
     fi
 }
 
+echo "Sync drive"
+cd ~/drive
+drive push
+cd -
+
+
 ~/dotfiles/skype_away.py offline
 sleep 2
 purple-remote quit
