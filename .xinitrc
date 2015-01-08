@@ -15,7 +15,7 @@ xrdb ~/.Xresources
 xset +fp ~/.fonts
 xset +fp /usr/share/fonts/local 
 xset fp rehash 
-unclutter -grab -noevents -root &
+unclutter -noevents -root &
 compton &
 export WALLPAPER=/home/bata/ownCloud/wallpapers/1616699.jpg
 dunst -config /home/bata/dotfiles/dunstrc &
