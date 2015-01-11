@@ -1,22 +1,33 @@
-source /etc/zsh/zpreztorc
-source /usr/lib/prezto/init.zsh
-source /usr/lib/prezto/runcoms/zshrc
+host=`hostname`
+if [[ "$host" == "Barteks-Air" ]]; then
+    source ~/dotfiles/zsh/zpreztorc
+    source ~/.zprezto/init.zsh
+    source ~/.zprezto/runcoms/zshrc
+    export CLICOLOR=YES
+else
+    source /etc/zsh/zpreztorc
+    source /usr/lib/prezto/init.zsh
+    source /usr/lib/prezto/runcoms/zshrc
+    export TERM=xterm-termite
+    eval `dircolors ~/.dircolors`
+fi
 
 
 export EDITOR=vim
-eval `dircolors ~/.dircolors`
 export TASKRC=~/drive/taskwarrior/work/taskrc
 export TASKDATA=~/drive/taskwarrior/work/task
 export PATH=/home/bata/.gem/ruby/2.1.0/bin:$PATH
 export PATH=/home/bata/dotfiles/scripts:$PATH
 
-export TERM=xterm-termite
-
 if [[ $TERM == xterm-termite ]]; then
   . /etc/profile.d/vte.sh
     __vte_osc7
 fi
-export PAGER=/usr/bin/vimpager
+if [[ "$host" == "Barteks-Air" ]]; then
+	export PAGER=/usr/local/bin/vimpager
+else
+	export PAGER=/usr/bin/vimpager
+fi
 alias less=$PAGER
 alias zless=$PAGER
 
