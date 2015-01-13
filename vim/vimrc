@@ -53,6 +53,7 @@ Plugin 'vim-scripts/lbdbq'
 Plugin 'morhetz/gruvbox'
 Plugin 'majutsushi/tagbar'
 Plugin 'farseer90718/vim-taskwarrior'
+Plugin '29decibel/codeschool-vim-theme'
 call vundle#end() 
 filetype plugin indent on     " required! 
 "
@@ -65,4 +66,8 @@ filetype plugin indent on     " required!
 " see :h vundle for more details or wiki for FAQ
 " NOTE: comments after Plugin command are not allowed..
 set background=dark
-colorscheme gruvbox
+colorscheme codeschool
+
+" underline spelling mistakes
+hi clear SpellBad
+hi SpellBad cterm=underline
