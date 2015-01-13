@@ -68,6 +68,8 @@ set spoolfile = "+mobica/INBOX"
 # Mailboxes to show in the sidebar.
 mailboxes +mobica/INBOX \
           +mobica/INBOX.bbags \
+          +mobica/INBOX.proj \
+          +mobica/INBOX.proj.bos0x \
           +mobica/INBOX.mplszczecin \
           +mobica/INBOX.info_important \
           +"mobica/INBOX.Internal"\
