@@ -1,4 +1,4 @@
-source /usr/lib/prezto/runcoms/zpreztorc
+source ~/.zprezto/runcoms/zpreztorc
 zstyle ':prezto:load' pmodule \
   'environment' \
   'terminal' \
