@@ -1,5 +1,5 @@
-host=`hostname`
-if [[ "$host" == "Barteks-Air" ]]; then
+host=`uname`
+if [[ "$host" == "Darwin" ]]; then
     source ~/dotfiles/zsh/zpreztorc
     source ~/.zprezto/init.zsh
     source ~/.zprezto/runcoms/zshrc
@@ -23,7 +23,7 @@ if [[ $TERM == xterm-termite ]]; then
   . /etc/profile.d/vte.sh
     __vte_osc7
 fi
-if [[ "$host" == "Barteks-Air" ]]; then
+if [[ "$host" == "Darwin" ]]; then
 	export PAGER=/usr/local/bin/vimpager
 else
 	export PAGER=/usr/bin/vimpager
