@@ -1,0 +1,65 @@
+# Paths ----------------------------------------------
+source ~/dotfiles/mutt/mutt_common.config
+set signature = ~/dotfiles/mutt/sig_mobica
+
+# Sending --------------------------------------------
+set realname = "Bartosz Taczała"     # who am i?
+source mutt_sending.config
+set from = bartosz.taczala@mobica.com
+
+# Sidebar Patch --------------------------------------
+source ~/dotfiles/mutt/mutt_sidebar.config
+
+# Header Options -------------------------------------
+source ~/dotfiles/mutt/mutt_view.config
+
+
+# Default inbox.
+set spoolfile = "+mobica/INBOX"
+
+# Mailboxes to show in the sidebar.
+mailboxes +mobica/INBOX \
+          +mobica/INBOX.bbags \
+          +mobica/INBOX.proj \
+          +mobica/INBOX.proj.bos0x \
+          +mobica/INBOX.mplszczecin \
+          +mobica/INBOX.info_important \
+          +"mobica/INBOX.Internal"\
+          +"mobica/INBOX.Internal.Interviews"\
+          +"mobica/INBOX.Internal.paskiwynagrodze&AUQ-"\
+          +"mobica/INBOX.mailing lists"\
+          +"mobica/INBOX.mailing lists.autmg"\
+          +"mobica/INBOX.mailing lists.genivi-ivi-layer-management"\
+          +"mobica/INBOX.mailing lists.ivi-tizen"\
+
+# Other
+# special
+# folders.
+set mbox ="+mobica/archive"
+set postponed="+mobica/drafts"
+
+# Sync email
+macro index O "<shell-escape>offlineimap -c ~/dotfiles/mutt/offline_mobica.rc<enter>"           "run offlineimap to sync all mail"
+macro index o "<shell-escape>offlineimap -c ~/dotfiles/mutt/offline_mobica.rc -qf INBOX<enter>" "run offlineimap to sync inbox"
+
+# Other key bindings
+source ~/dotfiles/mutt/mutt_keybindings.config
+
+# Colors --------------------------------
+source /home/bata/dotfiles/mutt/vombatidae.mutt
+
+# Contacts
+set query_command="goobook query '%s'"
+# macro index,pager a "<pipe-message>goobook add<return>" "add sender to google contacts"
+bind editor <Tab> complete-query
+
+auto_view text/html
+auto_view text/calendar
+
+# NotMuch ------------------------------------------
+macro index <F8> \
+    "<enter-command>unset wait_key<enter><shell-escape>notmuch-mutt --prompt search<enter><change-folder-readonly>~/.cache/notmuch/mutt/results/" \
+    "search mail (using notmuch)"
+macro index <F9> \
+    "<enter-command>unset wait_key<enter><pipe-message>notmuch-mutt thread<enter><change-folder-readonly>~/.cache/notmuch/mutt/results/<enter><enter-command>set wait_key<enter>" \
+    "search and reconstruct owning thread (using notmuch)"
