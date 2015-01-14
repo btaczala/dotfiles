@@ -55,19 +55,18 @@ alternative_order text/plain text/enriched text/html
 # View attachments properly.
 bind attach <return> view-mailcap
 
-
 # Colors 
 source ~/dotfiles/mutt/vombatidae.mutt
 
 # Auto HTML
 auto_view text/html
 
-
 # Gmail-style keyboard shortcuts
 macro index ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to all mail"
 macro index gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts"
 macro index gi "<change-folder>=bartek.taczala/INBOX<enter>" "Go to inbox"
 
-set query_command = "contacts -Sf '%eTOKEN%n' '%s' | sed -e 's/TOKEN/\t/g'"
+#set query_command = "contacts -Sf '%eTOKEN%n' '%s' | sed -e 's/TOKEN/\t/g'"
+set query_command="goobook query '%s'"
 bind editor <Tab> complete-query
 bind editor ^T    complete
