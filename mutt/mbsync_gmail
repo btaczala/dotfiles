@@ -2,15 +2,13 @@ IMAPAccount bartek.taczala
 # Address to connect to
 Host imap.gmail.com
 User bartek.taczala@gmail.com
-Pass bs8b@_@kmGM
-# To store the password in an encrypted file use PassCmd instead of Pass
-# PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.mailpass.gpg"
+PassCmd "sh ~/dotfiles/mutt/pass.sh"
 #
 # Use SSL
 UseIMAPS yes
 RequireSSL yes
 # The following line should work. If get certificate errors, uncomment the two following lines and read the "Troubleshooting" section.
-CertificateFile /etc/ssl/certs/ca-certificates.crt
+#CertificateFile /etc/ssl/certs/ca-certificates.crt
 
 IMAPStore bartek.taczala-remote
 Account bartek.taczala
@@ -23,7 +21,7 @@ Inbox ~/.mutt/mail/bartek.taczala/Inbox
 Channel bartek.taczala-default
 Master :bartek.taczala-remote:
 Slave :bartek.taczala-local:
-Patterns "INBOX" "alberto" "mailing lists"
+Patterns "INBOX" "alberto" 
 # Automatically create missing mailboxes, both locally and on the server
 Create Both
 # Save the synchronization state files in the relevant directory
@@ -41,9 +39,28 @@ Slave ":bartek.taczala-local:sent"
 Create Both
 SyncState *
 
-Channel bartek.taczala-mailinglist
-Master ":bartek.taczala-remote:Inbox/mailing lists"
-Slave ":bartek.taczala-local:mailing.lists"
+Channel bartek.taczala-mailinglist-boost
+Master ":bartek.taczala-remote:mailing lists/boost"
+Slave ":bartek.taczala-local:mailing.lists.boost"
+Create Both
+SyncState *
+
+Channel bartek.taczala-mailinglist-isocpp
+Master ":bartek.taczala-remote:mailing lists/isocpp"
+Slave ":bartek.taczala-local:mailing.lists.isocpp"
+Create Both
+SyncState *
+
+Channel bartek.taczala-mailinglist-sailfish
+Master ":bartek.taczala-remote:mailing lists/sailfish"
+Slave ":bartek.taczala-local:mailing.lists.sailfish"
+Create Both
+SyncState *
+
+Channel bartek.taczala-mailinglist-wayland
+Master ":bartek.taczala-remote:mailing lists/wayland"
+Slave ":bartek.taczala-local:mailing.lists.wayland"
+Create Both
 SyncState *
 
 Channel bartek.taczala-archive
@@ -52,8 +69,14 @@ Slave ":bartek.taczala-local:archive"
 Create Both
 SyncState *
 
+
+
 Group bartek.taczala
 Channel bartek.taczala-default
 Channel bartek.taczala-drafts
 Channel bartek.taczala-sent
 Channel bartek.taczala-archive
+Channel bartek.taczala-mailinglist-boost
+Channel bartek.taczala-mailinglist-isocpp
+Channel bartek.taczala-mailinglist-sailfish
+Channel bartek.taczala-mailinglist-wayland

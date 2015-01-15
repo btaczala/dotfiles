@@ -31,11 +31,12 @@ set spoolfile = "+bartek.taczala/Inbox"
 # Alternate email addresses.
 
 # Mailboxes to show in the sidebar.
-mailboxes +bartek.taczala/Inbox \
-          '+bartek.taczala/INBOX.gh' \
-          '+bartek.taczala/INBOX.mailing lists.isocpp' \
-          '+bartek.taczala/INBOX.mailing lists.boost' \
-          '+bartek.taczala/[Gmail]/.All Mail' \
+mailboxes +'bartek.taczala/Inbox' \
+         '+bartek.taczala/alberto' \
+         '+bartek.taczala/mailing.lists.boost' \
+         '+bartek.taczala/mailing.lists.isocpp' \
+         '+bartek.taczala/mailing.lists.sailfish' \
+         '+bartek.taczala/mailing.lists.wayland' \
 
 # special folders.
 set mbox = "+bartek.taczala/archive"
