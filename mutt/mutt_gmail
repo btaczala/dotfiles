@@ -26,16 +26,16 @@ source ~/dotfiles/mutt/mutt_view.config
 # Account Settings -----------------------------------
 
 # Default inbox.
-set spoolfile = "+bartek.taczala/INBOX"
+set spoolfile = "+bartek.taczala/Inbox"
 
 # Alternate email addresses.
 
 # Mailboxes to show in the sidebar.
-mailboxes +bartek.taczala/INBOX \
+mailboxes +bartek.taczala/Inbox \
           '+bartek.taczala/INBOX.gh' \
           '+bartek.taczala/INBOX.mailing lists.isocpp' \
           '+bartek.taczala/INBOX.mailing lists.boost' \
-          '+bartek.taczala/archive' \
+          '+bartek.taczala/[Gmail]/.All Mail' \
 
 # special folders.
 set mbox = "+bartek.taczala/archive"
@@ -43,8 +43,7 @@ set postponed = "+bartek.taczala/drafts"
 
 
 # Sync email
-macro index O "<shell-escape>offlineimap -c ~/dotfiles/mutt/offline_gmail<enter>"           "run offlineimap to sync all mail"
-macro index o "<shell-escape>offlineimap -c ~/dotfiles/mutt/offline_gmail -qf INBOX<enter>" "run offlineimap to sync inbox"
+macro index o "<shell-escape>mbsync -c ~/dotfiles/mutt/mbsync_gmail bartek.taczala<enter>" "run mbox to sync inbox"
 
 # Other key bindings
 source ~/dotfiles/mutt/mutt_keybindings.config

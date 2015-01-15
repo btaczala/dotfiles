@@ -1,0 +1,59 @@
+IMAPAccount bartek.taczala
+# Address to connect to
+Host imap.gmail.com
+User bartek.taczala@gmail.com
+Pass bs8b@_@kmGM
+# To store the password in an encrypted file use PassCmd instead of Pass
+# PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.mailpass.gpg"
+#
+# Use SSL
+UseIMAPS yes
+RequireSSL yes
+# The following line should work. If get certificate errors, uncomment the two following lines and read the "Troubleshooting" section.
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore bartek.taczala-remote
+Account bartek.taczala
+
+MaildirStore bartek.taczala-local
+# The trailing "/" is important
+Path ~/.mutt/mail/bartek.taczala/
+Inbox ~/.mutt/mail/bartek.taczala/Inbox
+
+Channel bartek.taczala-default
+Master :bartek.taczala-remote:
+Slave :bartek.taczala-local:
+Patterns "INBOX" "alberto" "mailing lists"
+# Automatically create missing mailboxes, both locally and on the server
+Create Both
+# Save the synchronization state files in the relevant directory
+SyncState *
+
+Channel bartek.taczala-drafts
+Master ":bartek.taczala-remote:[Gmail]/Drafts"
+Slave ":bartek.taczala-local:drafts"
+Create Both
+SyncState *
+
+Channel bartek.taczala-sent
+Master ":bartek.taczala-remote:[Gmail]/Sent Mail"
+Slave ":bartek.taczala-local:sent"
+Create Both
+SyncState *
+
+Channel bartek.taczala-mailinglist
+Master ":bartek.taczala-remote:Inbox/mailing lists"
+Slave ":bartek.taczala-local:mailing.lists"
+SyncState *
+
+Channel bartek.taczala-archive
+Master ":bartek.taczala-remote:[Gmail]/All Mail"
+Slave ":bartek.taczala-local:archive"
+Create Both
+SyncState *
+
+Group bartek.taczala
+Channel bartek.taczala-default
+Channel bartek.taczala-drafts
+Channel bartek.taczala-sent
+Channel bartek.taczala-archive
