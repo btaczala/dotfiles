@@ -1,14 +1,17 @@
 host=`uname`
-source ~/.zprezto/init.zsh
-source ~/.zprezto/runcoms/zshrc
-source ~/dotfiles/zsh/zpreztorc
 if [[ "$host" == "Darwin" ]]; then
     export CLICOLOR=YES
+    source ~/.zprezto/init.zsh
+    source ~/.zprezto/runcoms/zshrc
+    source ~/dotfiles/zsh/zpreztorc
 else
     export TERM=xterm-termite
     eval `dircolors ~/.dircolors`
 fi
 
+source ~/.zprezto/init.zsh
+source ~/.zprezto/runcoms/zshrc
+source ~/dotfiles/zsh/zpreztorc
 
 export EDITOR=vim
 export TASKRC=~/drive/taskwarrior/work/taskrc
