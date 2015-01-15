@@ -1,13 +1,10 @@
 host=`uname`
+source ~/.zprezto/init.zsh
+source ~/.zprezto/runcoms/zshrc
+source ~/dotfiles/zsh/zpreztorc
 if [[ "$host" == "Darwin" ]]; then
-    source ~/dotfiles/zsh/zpreztorc
-    source ~/.zprezto/init.zsh
-    source ~/.zprezto/runcoms/zshrc
     export CLICOLOR=YES
 else
-    source /etc/zsh/zpreztorc
-    source /usr/lib/prezto/init.zsh
-    source /usr/lib/prezto/runcoms/zshrc
     export TERM=xterm-termite
     eval `dircolors ~/.dircolors`
 fi
