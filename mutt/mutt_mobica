@@ -4,7 +4,7 @@ set signature = ~/dotfiles/mutt/sig_mobica
 
 # Sending --------------------------------------------
 set realname = "Bartosz Taczała"     # who am i?
-source mutt_sending.config
+source ~/dotfiles/mutt/mutt_sending.config
 set from = bartosz.taczala@mobica.com
 
 # Sidebar Patch --------------------------------------
