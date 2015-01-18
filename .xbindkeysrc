@@ -64,6 +64,12 @@
 "ponymix toggle"
  Mod2 + XF86AudioMute
 
+"kbdlight down"
+ XF86KbdBrightnessDown
+
+"kbdlight up"
+ XF86KbdBrightnessUp
+
 
 ##################################
 # End of xbindkeys configuration #
