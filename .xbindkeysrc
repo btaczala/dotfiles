@@ -43,10 +43,10 @@
 "ponymix increase 5 ; volnoti-show `ponymix get-volume`"
  XF86AudioRaiseVolume
 
-"xbacklight -5%"
+"xbacklight -5% ; volnoti-show -s /usr/share/pixmaps/volnoti/display-brightness-symbolic.svg `xbacklight`"
  Mod2 + XF86MonBrightnessDown  
 
-"xbacklight +5%"
+"xbacklight +5% ; volnoti-show -s /usr/share/pixmaps/volnoti/display-brightness-symbolic.svg `xbacklight`"
  Mod2 + XF86MonBrightnessUp  
 
 "~/dotfiles/dmenu/xrmenu.sh"
