@@ -90,7 +90,7 @@ super + r
 	/home/bata/dotfiles/dmenu/fmenu
 
 super + space
-    j4-dmenu-desktop --dmenu="dmenu -i -nb \"#1f1f1f\" -nf \"#c0b18b\" -fn \"Inconsolata for Powerline-9\" -dim 0.5"
+    j4-dmenu-desktop --dmenu="dmenu -i -nb \"#1f1f1f\" -nf \"#c0b18b\" -fn \"Inconsolata for Powerline-9\" "
 
 super + l
     /usr/bin/lock
