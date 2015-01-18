@@ -37,6 +37,7 @@ mailboxes +'bartek.taczala/Inbox' \
          '+bartek.taczala/mailing.lists.isocpp' \
          '+bartek.taczala/mailing.lists.sailfish' \
          '+bartek.taczala/mailing.lists.wayland' \
+         '+bartek.taczala/mailing.lists.qtcreator' \
 
 # special folders.
 set mbox = "+bartek.taczala/archive"

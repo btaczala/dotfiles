@@ -63,6 +63,12 @@ Slave ":bartek.taczala-local:mailing.lists.wayland"
 Create Both
 SyncState *
 
+Channel bartek.taczala-mailinglist-qtcreator
+Master ":bartek.taczala-remote:mailing lists/qtcreator"
+Slave ":bartek.taczala-local:mailing.lists.qtcreator"
+Create Both
+SyncState *
+
 Channel bartek.taczala-archive
 Master ":bartek.taczala-remote:[Gmail]/All Mail"
 Slave ":bartek.taczala-local:archive"
@@ -80,3 +86,4 @@ Channel bartek.taczala-mailinglist-boost
 Channel bartek.taczala-mailinglist-isocpp
 Channel bartek.taczala-mailinglist-sailfish
 Channel bartek.taczala-mailinglist-wayland
+Channel bartek.taczala-mailinglist-qtcreator
