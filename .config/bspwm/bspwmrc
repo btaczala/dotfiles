@@ -49,7 +49,7 @@ bspc rule -a mutt desktop=^3
 bspc rule -a hmi floating=on 
 bspc rule -a QtQmlViewer floating=on
 
-/home/bata/.config/bspwm/panel/panel &
+~/.config/bspwm/panel/panel > /tmp/panel-log 2>&1 &
 sleep 2
 stalonetray --dockapp-mode simple &
 setxkbmap pl &
