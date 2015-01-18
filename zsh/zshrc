@@ -1,3 +1,4 @@
+source ~/.zprezto/init.zsh
 host=`uname`
 if [[ "$host" == "Darwin" ]]; then
     export CLICOLOR=YES
@@ -6,12 +7,11 @@ if [[ "$host" == "Darwin" ]]; then
     source ~/dotfiles/zsh/zpreztorc
 else
     export TERM=xterm-termite
-    eval `dircolors ~/.dircolors`
+    source ~/.zprezto/init.zsh
+    source ~/.zprezto/runcoms/zshrc
+    source ~/dotfiles/zsh/zpreztorc
+    eval `dircolors ~/dotfiles/dircolors.256dark`
 fi
-
-source ~/.zprezto/init.zsh
-source ~/.zprezto/runcoms/zshrc
-source ~/dotfiles/zsh/zpreztorc
 
 export EDITOR=vim
 export TASKRC=~/drive/taskwarrior/work/taskrc
@@ -41,3 +41,16 @@ source ~/dotfiles/zsh/k.sh
 
 export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
+
+if [[ "$host" == "Darwin" ]]; then
+    export CLICOLOR=YES
+    source ~/.zprezto/init.zsh
+    source ~/.zprezto/runcoms/zshrc
+    source ~/dotfiles/zsh/zpreztorc
+else
+    source ~/.zprezto/init.zsh
+    source ~/.zprezto/runcoms/zshrc
+    source ~/dotfiles/zsh/zpreztorc
+    eval `dircolors ~/dotfiles/dircolors.256dark`
+fi
+
