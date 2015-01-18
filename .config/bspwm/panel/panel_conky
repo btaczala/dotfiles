@@ -6,4 +6,4 @@ out_to_x no
 update_interval 3
 
 TEXT
-S %{F\#FF775759}%{F-}${if_mpd_playing}  ${mpd_title} - ${mpd_artist}${endif} %{F\#FF775759}%{F-} : ${memeasyfree}/${memmax} %{F\#FF775759}%{F-} ${cpu cpu0}% ${execi 1 ./panel_volume}% ${execi 1 ./panel_eth} ${execi 1 ./panel_wifi} ${execi 1 ./panel_battery}${battery_percent BAT1}% ${time %H:%M} ${time %d/%m/%y} ${execi 10 ./panel_layout} %{-u}
+S %{F\#FF775759}%{F-}${if_mpd_playing}  ${mpd_title} - ${mpd_artist}${endif} %{F\#FF775759}%{F-} : ${memeasyfree}/${memmax} %{F\#FF775759}%{F-} ${cpu cpu0}% ${execi 1 ./panel_volume}% ${execi 1 ./panel_eth} ${execi 1 ./panel_wifi} ${execi 1 ./panel_battery} ${time %H:%M} ${time %d/%m/%y} ${execi 10 ./panel_layout} %{-u}

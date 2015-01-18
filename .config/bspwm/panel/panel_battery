@@ -7,10 +7,13 @@ source $(dirname $0)/config
 BAT=`acpi -b | awk '{gsub(/%,/,""); print $4}' | sed 's/%//g'`
 STATUS=`acpi -b | awk '{gsub(/,/,""); print $3}'`
 
+LEFT=`acpi | awk '{print $5}'`
+
 # Set Icon
 icon=""
 if [[ $STATUS != "Discharging" ]]; then
 	icon=""
+    LEFT=""
 elif [[ $BAT -lt 10 ]]; then
 	icon=""
 elif [[ $BAT -lt 40 ]]; then
@@ -63,4 +66,5 @@ case $BAT in
 esac
 
 # Create Bar
-echo "%{F$COLOR_ICON}$icon%{F-} "
+#echo "%{F$COLOR_ICON}$bar%{F-}"
+echo "%{F$COLOR_ICON}$icon%{F-} $BAT $LEFT"
