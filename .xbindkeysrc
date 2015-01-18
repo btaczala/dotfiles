@@ -37,11 +37,11 @@
 #keystate_capslock = enable
 #keystate_scrolllock= enable
 
-"ponymix decrease 5"
- Mod2 + XF86AudioLowerVolume
+"ponymix decrease 5 ; volnoti-show `ponymix get-volume`"
+ XF86AudioLowerVolume
 
-"ponymix increase 5"
- Mod2 + XF86AudioRaiseVolume
+"ponymix increase 5 ; volnoti-show `ponymix get-volume`"
+ XF86AudioRaiseVolume
 
 "xbacklight -5%"
  Mod2 + XF86MonBrightnessDown  
