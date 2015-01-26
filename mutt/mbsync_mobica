@@ -1,0 +1,51 @@
+IMAPAccount mobica
+# Address to connect to
+Host imap.gmail.com
+User bartosz.taczala@mobica.com
+PassCmd "sh ~/dotfiles/mutt/pass_mobica.sh"
+#
+# Use SSL
+UseIMAPS yes
+RequireSSL yes
+# The following line should work. If get certificate errors, uncomment the two following lines and read the "Troubleshooting" section.
+#CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore mobica-remote
+Account mobica
+
+MaildirStore mobica-local
+# The trailing "/" is important
+Path ~/.mutt/mail/mobica/
+Inbox ~/.mutt/mail/mobica/Inbox
+
+Channel mobica-inbox
+Master :mobica-remote:
+Slave :mobica-local:
+# Exclude everything under the internal [Gmail] folder, except the interesting folders
+ Patterns * ![Gmail]* 
+Create slave
+SyncState *
+
+Channel mobica-drafts
+Master ":mobica-remote:[Gmail]/Drafts"
+Slave ":mobica-local:drafts"
+Create slave
+SyncState *
+
+Channel mobica-sent
+Master ":mobica-remote:[Gmail]/Sent Mail"
+Slave ":mobica-local:sent"
+Create slave
+SyncState *
+
+channel mobica-archive
+master ":mobica-remote:[Gmail]/All Mail"
+slave ":mobica-local:archive"
+create slave
+syncstate *
+
+Group mobica
+Channel mobica-inbox
+Channel mobica-drafts
+Channel mobica-sent
+Channel mobica-archive
