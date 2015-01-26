@@ -7,40 +7,32 @@ set realname = "Bartosz Taczała"     # who am i?
 source ~/dotfiles/mutt/mutt_sending.config
 set from = bartosz.taczala@mobica.com
 
-# Sidebar Patch --------------------------------------
 source ~/dotfiles/mutt/mutt_sidebar.config
+source ~/dotfiles/mutt/mutt_statusbar.config
 
 # Header Options -------------------------------------
 source ~/dotfiles/mutt/mutt_view.config
 
-
 # Default inbox.
-set spoolfile = "+mobica/INBOX"
+set spoolfile = "+mobica/Inbox"
 
 # Mailboxes to show in the sidebar.
-mailboxes +mobica/INBOX \
-          +mobica/INBOX.bbags \
-          +mobica/INBOX.proj \
-          +mobica/INBOX.proj.bos0x \
-          +mobica/INBOX.mplszczecin \
-          +mobica/INBOX.info_important \
-          +"mobica/INBOX.Internal"\
-          +"mobica/INBOX.Internal.Interviews"\
-          +"mobica/INBOX.Internal.paskiwynagrodze&AUQ-"\
-          +"mobica/INBOX.mailing lists"\
-          +"mobica/INBOX.mailing lists.autmg"\
-          +"mobica/INBOX.mailing lists.genivi-ivi-layer-management"\
-          +"mobica/INBOX.mailing lists.ivi-tizen"\
+mailboxes +mobica/Inbox \
+          '+mobica/bbags' \
+          '+mobica/mplszczecin' \
+          '+mobica/pro_jlr' \
+          '+mobica/pro_bos0x' \
+          '+mobica/mailing lists' \
+          '+mobica/mailing lists/.autmg' \
+          '+mobica/mailing lists/.genivi' \
+          '+mobica/mailing lists/.genivi-ivi-layer-management' \
+          '+mobica/mailing lists/.ivi-tizen' \
 
-# Other
-# special
-# folders.
 set mbox ="+mobica/archive"
 set postponed="+mobica/drafts"
 
 # Sync email
-macro index O "<shell-escape>offlineimap -c ~/dotfiles/mutt/offline_mobica.rc<enter>"           "run offlineimap to sync all mail"
-macro index o "<shell-escape>offlineimap -c ~/dotfiles/mutt/offline_mobica.rc -qf INBOX<enter>" "run offlineimap to sync inbox"
+macro index o "<shell-escape>mbsync -c ~/dotfiles/mutt/mbsync_mobica mobica<enter>" "run offlineimap to sync inbox"
 
 # Other key bindings
 source ~/dotfiles/mutt/mutt_keybindings.config
@@ -63,3 +55,5 @@ macro index <F8> \
 macro index <F9> \
     "<enter-command>unset wait_key<enter><pipe-message>notmuch-mutt thread<enter><change-folder-readonly>~/.cache/notmuch/mutt/results/<enter><enter-command>set wait_key<enter>" \
     "search and reconstruct owning thread (using notmuch)"
+
+macro index,pager a "<pipe-message>goobook -v add<return>" "add sender to google contacts"

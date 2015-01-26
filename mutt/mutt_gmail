@@ -16,8 +16,8 @@ set beep_new             # bell on new mails
 set pipe_decode          # strip headers and eval mimes when piping
 set thorough_search      # strip headers and eval mimes before searching
 
-# Sidebar Patch --------------------------------------
 source ~/dotfiles/mutt/mutt_sidebar.config
+source ~/dotfiles/mutt/mutt_statusbar.config
 
 # Header Options -------------------------------------
 source ~/dotfiles/mutt/mutt_view.config
@@ -38,6 +38,8 @@ mailboxes +'bartek.taczala/Inbox' \
          '+bartek.taczala/mailing.lists.sailfish' \
          '+bartek.taczala/mailing.lists.wayland' \
          '+bartek.taczala/mailing.lists.qtcreator' \
+         '+bartek.taczala/mailing.lists.qtdev' \
+         '+bartek.taczala/mailing.lists.qtusers' \
 
 # special folders.
 set mbox = "+bartek.taczala/archive"
