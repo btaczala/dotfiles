@@ -59,7 +59,6 @@ Plugin 'vhdirk/vim-cmake'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'vim-scripts/lbdbq'
 Plugin 'morhetz/gruvbox'
-Plugin 'majutsushi/tagbar'
 Plugin 'farseer90718/vim-taskwarrior'
 Plugin '29decibel/codeschool-vim-theme'
 Plugin 'fatih/vim-go'
@@ -67,6 +66,7 @@ Plugin 'peterhoeg/vim-qml'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'SirVer/ultisnips'
 Plugin 'Shougo/neocomplete.vim'
+Plugin 'majutsushi/tagbar'
 call vundle#end() 
 filetype plugin indent on     " required! 
 "
