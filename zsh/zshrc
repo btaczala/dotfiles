@@ -15,8 +15,6 @@ else
 fi
 
 export EDITOR=vim
-export TASKRC=~/drive/taskwarrior/work/taskrc
-export TASKDATA=~/drive/taskwarrior/work/task
 export PATH=/home/bata/.gem/ruby/2.1.0/bin:$PATH
 export PATH=/home/bata/dotfiles/scripts:$PATH
 
