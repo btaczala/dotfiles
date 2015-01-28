@@ -19,6 +19,7 @@ set spoolfile = "+mobica/Inbox"
 # Mailboxes to show in the sidebar.
 mailboxes +mobica/Inbox \
           '+mobica/bbags' \
+          '+mobica/b2b' \
           '+mobica/mplszczecin' \
           '+mobica/pro_jlr' \
           '+mobica/pro_bos0x' \
@@ -57,3 +58,4 @@ macro index <F9> \
     "search and reconstruct owning thread (using notmuch)"
 
 macro index,pager a "<pipe-message>goobook -v add<return>" "add sender to google contacts"
+macro index,pager ,ta '<pipe-message>~/dotfiles/scripts/mutt2task<enter>F'
