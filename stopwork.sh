@@ -13,6 +13,7 @@ echo "Sync drive"
 cd ~/drive
 drive push
 cd -
+task sync
 
 
 ~/dotfiles/skype_away.py offline

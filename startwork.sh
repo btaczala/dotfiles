@@ -7,6 +7,7 @@ function start() {
 echo 'Syncing drive'
 cd ~/drive
 drive pull -r --no-prompt=true
+task sync
 cd -
 
 start pidgin
