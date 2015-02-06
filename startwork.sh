@@ -10,6 +10,7 @@ drive pull -r --no-prompt=true
 task sync
 cd -
 
+termite -t mutt -d ~/Downloads -e "mutt -F ~/dotfiles/mutt/mutt_mobica" & 
 start pidgin
 start skype
 systemctl --user start mopidy
