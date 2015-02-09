@@ -17,7 +17,7 @@ xset +fp /usr/share/fonts/local
 xset fp rehash 
 unclutter -noevents -root &
 compton &
-export WALLPAPER=~/drive/wallpapers/ork22AE.png
+export WALLPAPER=~/drive/wallpapers/orK22AE.png
 dunst -config /home/bata/dotfiles/dunstrc &
 conky -c ~/dotfiles/conky/gcalcli &
 feh --bg-scale $WALLPAPER
