@@ -19,4 +19,4 @@ echo "T" >  "$PANEL_FIFO" &
 conky -c ./panel_conky > "$PANEL_FIFO" &
 
 WIDTH=$(xrandr  | grep \* | cut -d x -f1)
-cat "$PANEL_FIFO" | ./panel_bar | bar -g ${WIDTH}x12 -f "-misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1,-lucy-tewi-medium-r-normal--11-90-75-75-p-58-iso10646-1" -u 0 -B '#FF4A3A47' -F '#FFF8F8F2' | sh
+cat "$PANEL_FIFO" | ./panel_bar | bar -g ${WIDTH}x12 -f "-misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1,-lucy-tewi-medium-r-normal--11-90-75-75-p-58-iso10646-1" -u 0 -B '#FF4A3A47' -F '#FFF8F8F2' 

@@ -2,6 +2,6 @@
 
 echo 'Stop panel, conky, stalonetray'
 
-killall panel
+killall panel_bar
 killall conky
 killall stalonetray
