@@ -1,69 +1,48 @@
 #! /bin/sh
 
-CBR='%{B-}'         # reset bg color
-CB1='%{B#FF69D2E7}' # aqua
-CB2='%{B#FFA7DBD8}' # off white
-
-CFR='%{F-}'         # reset fg color
-CF1='%{F#FF49483E}' # dark gray
-CF2='%{F#FF69D2E7}' # aqua
-CF3='%{F#FFF92672}' # violet
-CF4='%{F#FFA7DBD8}' # off white 
-
-RA='%{r}'           # right align
-AC='%{A:'           # start click area
-AB=':}'             # end click area cmd
-AE='%{A}'           # end click area
-
-LT=''              # tiled layout
-LM=""              # monocle layout
-
-DO=''              # occupied desktop
-DF=''              # free desktop
-
-goto='bspc desktop -f'       # go to this desktop
-cycle='bspc desktop -l next' # cycle tiled/monocle
-
-logo="${CB1}${CF1}${AC}~/.config/bspwm/panel/scripts/spawn_dmenu${AB} $(hostname -s) ${CB2}${CF2}⮀${AE}"
+source $(dirname $0)/config
 
 while read -r line ; do
-	case $line in
-	S*)
-		sys_infos="${RA}${line#?}"
-	;;
-	T*)
-		title="${CFR} ${line#?} "
-	;;
-	W*)
-		wm_infos="${CB2}"
-		IFS=':'
-		set -- ${line#?}
-		while [ $# -gt 0 ] ; do
-			item=$1
-			name=${item#?}
-			case $item in
-			O*) wm_infos="${wm_infos}${CF2}${AC}${goto} ${name}${AB} ${DO} ${AE}";; # active occupied desktop
-			F*) wm_infos="${wm_infos}${CF2}${AC}${goto} ${name}${AB} ${DF} ${AE}";; # active free desktop
-			U*) wm_infos="${wm_infos}${CF3}${AC}${goto} ${name}${AB} ${DO} ${AE}";; # active urgent desktop
-			o*) wm_infos="${wm_infos}${CF1}${AC}${goto} ${name}${AB} ${DO} ${AE}";; # inactive occupied desktop
-			f*) wm_infos="${wm_infos}${CF1}${AC}${goto} ${name}${AB} ${DF} ${AE}";; # inactive free desktop
-			u*) wm_infos="${wm_infos}${CF3}${AC}${goto} ${name}${AB} ${DO} ${AE}";; # inactive urgent desktop
-			L*)
-				# layout
-				case $name in
-				t*) # tiled
-					layout=${LT}
-				;;
-				m*) # monocle
-					layout=${LM}
-				;;
-				esac
-				wm_infos="${wm_infos} ${CF1}${AC}${cycle}${AB}${layout}${AE} ${CBR}${CF4}⮀"
-			;;
-			esac
-			shift
-		done
-	;;
-	esac
-	printf "%s\n" "$logo $wm_infos $title $sys_infos"
+    case $line in
+        S*)
+            sys_infos="%{r}${line#?}"
+            ;;
+        T*)
+            title=" %{F$COLOR_ICON}  %{F-} bspwm"
+            ;;
+        W*)
+            wm_infos="%{c}"
+            IFS=':'
+            set -- ${line#?}
+            while [ $# -gt 0 ] ; do
+                item=$1
+                name=${item#?}
+                case $item in
+                    [OFU]*)
+                        # active desktop
+                        wm_infos="$wm_infos %{U$COLOR_ACTIVE}%{+u} ${name} %{-u}"
+                        ;;
+                    o*)
+                        # inactive but occupied desktop
+                        wm_infos="$wm_infos %{U$COLOR_OCCUPIED}%{+u}   %{-u}"
+                        ;;
+                    f*)
+                        # inactive desktop
+                        wm_infos="$wm_infos    "
+                        ;;
+                    u*)
+                        # urgent desktop
+                        wm_infos="$wm_infos %{U$COLOR_URGENT}%{+u}   %{-u}"
+                        ;;
+                    L*)
+                        # layout
+                        #layout=$(printf "%s" "${name}" | sed 's/\(.\).*/\U\1/')
+                        wm_infos="$wm_infos $layout"
+                        ;;
+                esac
+                shift
+            done
+            ;;
+    esac
+    printf "%s\n" "$title$wm_infos$sys_infos"
 done

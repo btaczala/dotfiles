@@ -1,23 +1,9 @@
+short_units yes3}
 background yes
 out_to_console yes
 out_to_x no
+# Update interval in seconds
 update_interval 3
 
-template0 ~/.config/bspwm/panel/scripts/toggle_conky \1
-
 TEXT
-S%{F\#FFFF38630}⮂%{F\#FF49483E}%{B\#FFF38630} \
-%{A:${template0 net}:} ${exec ./scripts/panel_wifi}%{A} %{F\#FFFFE6F0AF}⮂%{F\#FF49483E}%{B\#FFFFE6F0AF}\
-%{A:${template0 disk}:} / ${fs_used_perc /}%% \
-/ ${fs_used_perc /}%%%{A}  \
-%{A:${template0 mem}:} ${memperc}%%%{A} %{F\#FFFFE0E4CC}⮂%{F\#FF49483E}%{B\#FFFFE0E4CC} \
-${if_match ${cpu cpu0} > 75}\
-%{F\#FFD75F5F}${endif}\
-%{A:${template0 cpu}:} ${cpu cpu0}%%%{A}%{F\#FF49483E}  \
-${if_match ${hwmon 0 temp 1} > 59}\
-%{F\#FFD75F5F}${endif} \
-%{A:${template0 temp}:} ${hwmon 0 temp 1}°%{A}%{F\#FF49483E} %{F\#FFFA7DBD8}⮂%{F\#FF49483E}%{B\#FFA7DBD8} \
-%{A:${template0 mpd}:}${exec scripts/panel_volume}%{A}  \
-%{F\#FFF69D2E7}⮂%{F\#FF49483E}%{B\#FFFF69D2E7} %{A:${template0 cal}:} ${time %a %d.%m.%Y. %H:%M}%{A}%{B-}
-
-
+S %{F\#FF775759}%{F-}${if_mpd_playing}  ${mpd_title} - ${mpd_artist}${endif} %{F\#FF775759}%{F-} : ${memeasyfree}/${memmax} %{F\#FF775759}%{F-} ${cpu cpu0}% ${execi 1 ./panel_volume}% ${execi 1 ./panel_eth} ${execi 1 ./panel_wifi} ${execi 1 ./panel_battery} ${time %H:%M} ${time %d/%m/%y} ${execi 10 ./panel_layout} %{-u}
