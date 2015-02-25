@@ -24,6 +24,18 @@ set shiftwidth=4
 set expandtab
 set spell
 set spelllang=en_us,pl
+
+" Auto detect cores
+function! SetMakeprg()
+    if !empty($NUMBER_OF_PROCESSORS)
+        let n = $NUMBER_OF_PROCESSORS + 0
+    else
+        let n = system('nproc') + 0
+    endif
+    let &makeprg = 'make' . (n > 1 ? (' -j'.(n + 1)) : '')
+endfunction
+call SetMakeprg()
+
 au BufRead,BufNewFile *mutt* set filetype=mail
 autocmd BufRead,BufNewFile *.qml setfiletype qml
 autocmd BufRead,BufNewFile *.go setfiletype go
