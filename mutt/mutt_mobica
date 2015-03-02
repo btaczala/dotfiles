@@ -39,7 +39,7 @@ macro index o "<shell-escape>mbsync -c ~/dotfiles/mutt/mbsync_mobica mobica<ente
 source ~/dotfiles/mutt/mutt_keybindings.config
 
 # Colors --------------------------------
-source /home/bata/dotfiles/mutt/vombatidae.mutt
+source ~/dotfiles/mutt/vombatidae.mutt
 
 # Contacts
 set query_command="goobook query '%s'"
