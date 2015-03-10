@@ -16,3 +16,7 @@ name=$(get_wm_name)
 if [ "$name" = "calendar_floating" ] || [ "$instance" = "calendar_floating" ]; then
     echo "floating=on"
 fi
+
+if [ "$name" = "mutt" ]; then
+    echo "desktop=^1"
+fi

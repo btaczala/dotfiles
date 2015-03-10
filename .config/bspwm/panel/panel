@@ -17,6 +17,9 @@ bspc control --subscribe > "$PANEL_FIFO" &
 bspc config top_padding 15
 conky -c ./panel_conky > "$PANEL_FIFO" &
 echo "T" >  "$PANEL_FIFO" &
+if [ "$1" == "e" ];then
+    PANEL_GEOMETRY="1920x14+1080+0"
+fi
 
 cat "$PANEL_FIFO" \
 	| ./panel_bar \

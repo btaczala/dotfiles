@@ -16,6 +16,10 @@ bspc rule -r Skype
 bspc rule -a Skype desktop=^3
 bspc rule -a Pidgin desktop=^3
 
-~/dotfiles/scripts/bspwm_xrandr_start.sh
+~/dotfiles/scripts/bspwm_xrandr_start.sh e
 # set rain wallpaper on left monitor
 feh --bg-scale ~/drive/wallpapers/rain.png --bg-scale $WALLPAPER
+
+# padding to 0 on left monitor
+bspc config -m HDMI1 top_padding 0
+bspc config -m HDMI1 window_gap 1
