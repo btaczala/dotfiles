@@ -21,8 +21,10 @@ mailboxes +mobica/Inbox \
           '+mobica/bbags' \
           '+mobica/b2b' \
           '+mobica/mplszczecin' \
+          '+mobica/cto' \
           '+mobica/pro_jlr' \
           '+mobica/pro_bos0x' \
+          '+mobica/interviews' \
           '+mobica/mailing lists' \
           '+mobica/mailing lists/.autmg' \
           '+mobica/mailing lists/.genivi' \
@@ -58,4 +60,4 @@ macro index <F9> \
     "search and reconstruct owning thread (using notmuch)"
 
 macro index,pager a "<pipe-message>goobook -v add<return>" "add sender to google contacts"
-macro index,pager ,ta '<pipe-message>~/dotfiles/scripts/mutt2task<enter>F'
+macro index,pager ,ta '<pipe-message>~/dotfiles/mutt/mutt2task<enter>F'
