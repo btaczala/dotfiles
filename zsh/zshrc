@@ -18,10 +18,6 @@ export EDITOR=vim
 export PATH=/home/bata/.gem/ruby/2.1.0/bin:$PATH
 export PATH=/home/bata/dotfiles/scripts:$PATH
 
-if [[ $TERM == xterm-termite ]]; then
-  . /etc/profile.d/vte.sh
-    __vte_osc7
-fi
 if [[ "$host" == "Darwin" ]]; then
 	export PAGER=/usr/local/bin/vimpager
 else

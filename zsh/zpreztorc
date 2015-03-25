@@ -11,4 +11,4 @@ zstyle ':prezto:load' pmodule \
   'completion' \
   'prompt'
 
-zstyle ':prezto:module:prompt' theme 'paradox'
+zstyle ':prezto:module:prompt' theme 'sorin'

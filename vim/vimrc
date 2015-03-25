@@ -24,6 +24,7 @@ set shiftwidth=4
 set expandtab
 set spell
 set spelllang=en_us,pl
+set nu
 
 " Auto detect cores
 function! SetMakeprg()

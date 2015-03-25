@@ -84,7 +84,7 @@ super + u
 #
 
 super + Return
-	termite
+    urxvt	
 
 super + r
 	/home/bata/dotfiles/dmenu/fmenu
