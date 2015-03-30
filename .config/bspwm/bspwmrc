@@ -47,6 +47,8 @@ bspc rule -a scratchpad sticky=on floating=on
 
 bspc rule -a hmi floating=on 
 bspc rule -a QtQmlViewer floating=on
+bspc rule -a qmltestrunner floating=on
+bspc config external_rules_command "$HOME/.config/bspwm/external_rules.sh"
 
 ~/.config/bspwm/panel/panel > /tmp/panel-log 2>&1 &
 sleep 2

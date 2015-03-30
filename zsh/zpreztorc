@@ -2,10 +2,11 @@ source ~/.zprezto/runcoms/zpreztorc
 zstyle ':prezto:load' pmodule \
   'environment' \
   'terminal' \
-  'editor' \
-  'git' \
+  'fasd' \
   'directory' \
+  'git' \
   'spectrum' \
+  'archive' \
   'history' \
   'utility' \
   'completion' \

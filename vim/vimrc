@@ -80,6 +80,7 @@ Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'SirVer/ultisnips'
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'majutsushi/tagbar'
+Plugin 'wincent/Command-T'
 call vundle#end() 
 filetype plugin indent on     " required! 
 "
@@ -92,10 +93,6 @@ filetype plugin indent on     " required!
 " see :h vundle for more details or wiki for FAQ
 " NOTE: comments after Plugin command are not allowed..
 set background=dark
-<<<<<<< Updated upstream
-=======
-"colorscheme codeschool
->>>>>>> Stashed changes
 colorscheme gruvbox
 
 " underline spelling mistakes
@@ -103,3 +100,4 @@ hi clear SpellBad
 hi SpellBad cterm=underline
 
 " Mapping
+nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
