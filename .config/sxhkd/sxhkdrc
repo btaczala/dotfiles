@@ -92,6 +92,9 @@ super + r
 super + space
     j4-dmenu-desktop --dmenu="dmenu -i -nb \"#1f1f1f\" -nf \"#c0b18b\" -fn \"Inconsolata for Powerline-9\" "
 
+super + alt + space
+    dmenu_run
+
 super + l
     /usr/bin/lock
 

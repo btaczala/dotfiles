@@ -10,9 +10,9 @@ function close_program()
 }
 
 echo "Sync drive"
-cd ~/drive
-drive push
-cd -
+#cd ~/drive
+#drive push
+#cd -
 task sync
 
 

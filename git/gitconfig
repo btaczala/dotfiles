@@ -31,3 +31,8 @@
 	default = simple
 [gitreview]
 	username = btaczala
+[user]
+	name = Bartosz Taczała
+	email = bartosz.taczala@mobica.com
+[cola]
+	fontdiff = Source Code Pro,9,-1,5,50,0,0,0,0,0

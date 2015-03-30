@@ -92,6 +92,10 @@ filetype plugin indent on     " required!
 " see :h vundle for more details or wiki for FAQ
 " NOTE: comments after Plugin command are not allowed..
 set background=dark
+<<<<<<< Updated upstream
+=======
+"colorscheme codeschool
+>>>>>>> Stashed changes
 colorscheme gruvbox
 
 " underline spelling mistakes

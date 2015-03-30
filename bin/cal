@@ -1,0 +1,3 @@
+#!/bin/sh
+
+urxvt -hold -title calendar_floating -e /usr/bin/gcalcli calw
