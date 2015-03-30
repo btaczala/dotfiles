@@ -7,7 +7,7 @@ if [[ "$host" == "Darwin" ]]; then
     source ~/dotfiles/zsh/zpreztorc
     export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 else
-    export TERM=xterm-termite
+    export TERM='xterm-256color'
     source ~/.zprezto/init.zsh
     source ~/.zprezto/runcoms/zshrc
     source ~/dotfiles/zsh/zpreztorc
