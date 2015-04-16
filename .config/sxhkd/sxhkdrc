@@ -89,8 +89,9 @@ super + Return
 super + r
 	/home/bata/dotfiles/dmenu/fmenu
 
+#j4-dmenu-desktop --dmenu="dmenu -i -nb \"#1f1f1f\" -nf \"#c0b18b\" -fn \"Inconsolata for Powerline-9\" "
 super + space
-    j4-dmenu-desktop --dmenu="dmenu -i -nb \"#1f1f1f\" -nf \"#c0b18b\" -fn \"Inconsolata for Powerline-9\" "
+    rofi -show run
 
 super + alt + space
     dmenu_run

@@ -45,3 +45,24 @@ URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 !! white dark/light
 *color7: #e0e0e0
 color15: #e5e5e5
+
+rofi.width:           75
+rofi.lines:           10
+rofi.columns:         1
+rofi.font:            Monaco for Powerline 12
+rofi.fg:              #ccb18b
+rofi.bg:              #282828
+rofi.hlfg:            #000000
+rofi.hlbg:            #4c78c9
+rofi.bc:              #282828
+rofi.bw:              1
+rofi.loc:             0
+rofi.padding:         20
+rofi.yoffset:         0
+rofi.xoffset:         0
+rofi.fixed-num-lines: false
+rofi.hmode:           false
+rofi.terminal:        rxvt-unicode
+rofi.ssh-set-title:   true
+
+Xcursor.size:  16
