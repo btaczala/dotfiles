@@ -1,0 +1,3 @@
+#!/bin/sh
+
+urxvt -title calendar_floating -e ncmpcpp

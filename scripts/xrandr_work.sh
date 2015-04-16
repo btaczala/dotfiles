@@ -9,7 +9,7 @@ xrandr --output HDMI1 --rotate left
 bspc monitor 1 -n VGA1
 #bspc monitor VGA1 -d 1/VGA1/mail 2/VGA1/web 3/VGA1/im 4/VGA1/term 5/VGA1/VM
 #bspc monitor HDMI1 -d 6/HDMI1/dev 7/HDMI1/git 8/HDMI1/term
-bspc monitor VGA1 -d mail web im system dev irc
+bspc monitor VGA1 -d mail web im system dev irc wayland
 bspc monitor HDMI1 -d qtcreator git web
 
 # custom rules bitches
