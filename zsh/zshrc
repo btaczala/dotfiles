@@ -11,7 +11,7 @@ else
     source ~/.zprezto/init.zsh
     source ~/.zprezto/runcoms/zshrc
     source ~/dotfiles/zsh/zpreztorc
-    eval `dircolors ~/dotfiles/dircolors.256dark`
+    #eval `dircolors ~/dotfiles/dircolors.256dark`
 fi
 
 export EDITOR=vim
@@ -46,6 +46,6 @@ else
     source ~/.zprezto/init.zsh
     source ~/.zprezto/runcoms/zshrc
     source ~/dotfiles/zsh/zpreztorc
-    eval `dircolors ~/dotfiles/dircolors.256dark`
+    #eval `dircolors ~/dotfiles/dircolors.256dark`
 fi
 
