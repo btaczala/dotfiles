@@ -16,7 +16,6 @@ xset +fp ~/.fonts
 xset +fp /usr/share/fonts/local 
 xset fp rehash 
 unclutter -noevents -root &
-compton &
 export WALLPAPER=~/drive/wallpapers/orK22AE.png
 dunst -config ~/dotfiles/dunstrc &
 conky -c ~/dotfiles/conky/gcalcli &

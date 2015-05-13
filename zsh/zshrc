@@ -49,3 +49,4 @@ else
     #eval `dircolors ~/dotfiles/dircolors.256dark`
 fi
 
+eval "$(fasd --init auto)"
