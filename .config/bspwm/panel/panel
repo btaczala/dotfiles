@@ -23,7 +23,7 @@ fi
 
 cat "$PANEL_FIFO" \
 	| ./panel_bar \
-	| lemonbar \
+	| bar \
 		-f "$FONT1"\
         -f "$FONT2"\
 		-F "$COLOR_FOREGROUND"\
