@@ -21,9 +21,12 @@ set autoindent
 set tabstop=4
 set shiftwidth=4
 set expandtab
-set spell
+" no spell by default
+set nospell
 set spelllang=en_us,pl
 set nu
+set modeline
+set modelines=5
 
 " Auto detect cores
 function! SetMakeprg()
@@ -37,6 +40,8 @@ endfunction
 call SetMakeprg()
 
 au BufRead,BufNewFile *mutt* set filetype=mail
+au BufRead,BufNewFile *muttrc* set filetype=muttrc
+au BufRead,BufNewFile *vimpager* set nospell
 autocmd BufRead,BufNewFile *.qml setfiletype qml
 autocmd BufRead,BufNewFile *.go setfiletype go
 autocmd FileType mail set spell
