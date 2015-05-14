@@ -50,8 +50,6 @@ else
 fi
 
 eval "$(fasd --init auto)"
-# color man
-#man() { /usr/bin/man $* | \ col -b | \ vim -R -c 'set ft=man nomod nolist' - }
 alias j='fasd_cd -d -i'
 
 function title() {
