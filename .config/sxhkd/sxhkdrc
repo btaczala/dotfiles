@@ -99,6 +99,9 @@ super + space
 super + w
     rofi -show window
 
+super + e
+    ~/dotfiles/custom_rofi.sh
+
 super + alt + space
     dmenu_run
 

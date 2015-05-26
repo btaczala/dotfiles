@@ -4,7 +4,6 @@
 # set monitor
 xrandr --output LVDS1 --off --output VGA1 --auto
 xrandr --output HDMI1 --auto --output VGA1 --auto --output VGA1 --right-of HDMI1 --primary
-xrandr --output HDMI1 --rotate left
 
 bspc monitor 1 -n VGA1
 #bspc monitor VGA1 -d 1/VGA1/mail 2/VGA1/web 3/VGA1/im 4/VGA1/term 5/VGA1/VM
