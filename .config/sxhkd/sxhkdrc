@@ -85,6 +85,11 @@ super + {minus,equal}
 #
 # wm independent hotkeys
 #
+#
+F12
+ xdotool search --onlyvisible --classname URxvtQuake windowunmap \
+     || xdotool search --classname URxvtQuake windowmap \
+         || urxvt -name URxvtQuake -geometry 110x20+600
 
 super + Return
     urxvt	

@@ -2,5 +2,8 @@
 source $(dirname $0)/config
 
 numberOfMails=`fetchmail -c -u bartosz.taczala@mobica.com -p imap --ssl imap.gmail.com | awk '{print $1}'`
+if [ $? -ne 0 ]; then
+    numberOfMails = 0
+fi
 echo "%{F$COLOR_ICON} %{F-}$numberOfMails"
 

@@ -86,6 +86,8 @@ Plugin 'Shougo/neocomplete.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'wincent/Command-T'
 Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'Lokaltog/vim-easymotion'
+
 
 call vundle#end() 
 filetype plugin indent on     " required! 
