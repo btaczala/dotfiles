@@ -22,6 +22,8 @@ mailboxes +mobica/Inbox \
           '+mobica/b2b' \
           '+mobica/mplszczecin' \
           '+mobica/cto' \
+          '+mobica/projects' \
+          '+mobica/projects/.jlr05' \
           '+mobica/pro_jlr' \
           '+mobica/pro_bos0x' \
           '+mobica/interviews' \

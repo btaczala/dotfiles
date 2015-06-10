@@ -1,9 +1,12 @@
 #!/bin/bash
-source $(dirname $0)/config
 
-numberOfMails=`fetchmail -c -u bartosz.taczala@mobica.com -p imap --ssl imap.gmail.com | awk '{print $1}'`
+fetchMailOut=$(fetchmail -c -u bartosz.taczala@mobica.com -p imap --ssl imap.gmail.com)
 if [ $? -ne 0 ]; then
-    numberOfMails = 0
+    numberOfMails=$(cat /tmp/mails)
+else
+    #numberOfMails=$(fetchmail -c -u bartosz.taczala@mobica.com -p imap --ssl imap.gmail.com | awk '{print $1}')
+    numberOfMails=`echo $fetchMailOut | awk '{print $1}'`
+    echo $numberOfMails > /tmp/mails
 fi
-echo "%{F$COLOR_ICON} %{F-}$numberOfMails"
+echo $numberOfMails
 
