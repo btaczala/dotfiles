@@ -13,7 +13,7 @@ icon() {
 }
 
 clock() {
-    display="$(icon f073) $(date '+%b%e,%l:%M')"
+    display="$(icon f073)$(date '+%b%e,%l:%M')"
     command='urxvt -hold -title calendar_floating -g 120x50 -e /usr/bin/gcalcli calm -w 16'
     echo ${AC}$command${AB}$display${AE}
 }
@@ -21,6 +21,20 @@ clock() {
 mail() {
     icon f0e0
     $HOME/.config/bspwm/panel/panel_mail
+}
+
+memory() {
+    icon f17c
+    used=`free -m | grep Mem | cut -d ' ' -f20`
+    total=`free -m | grep Mem | cut -d ' ' -f12`
+    echo $used/$total
+}
+
+disk() {
+    icon f0a0
+    used=`df -h | grep home | awk '{print $3}'`
+    total=`df -h | grep home | awk '{print $2}'`
+    echo $used/$total
 }
 
 battery() {
@@ -39,7 +53,7 @@ battery() {
 volume() {
     vol=`$HOME/.config/bspwm/panel/panel_volume`
     
-    display="$(icon f028) $vol"
+    display="$(icon f028)$vol"
     command='pavucontrol'
     echo ${AC}$command${AB}$display${AE}
 }
@@ -74,23 +88,8 @@ mpd() {
 
 yaourtUpdates() {
     updates=$(eval yaourt -Qu | wc --lines)
-    command='urxvtc -e sh -c "yaourt -Syua"'
+    command='urxvt -e sh -c "yaourt -Syua"'
     echo ${AC}$command${AB}$(icon f062)$updates${AE}
-}
-
-themeSwitch() {
-    # ghetto
-    # todo: replace with dmenu or dzen dropdown to click themes from dir.
-    cur_theme=$(cat ~/.bspwm_theme | grep THEME_NAME | cut -c12-)
-    case $cur_theme in
-        pyonium) next_theme=pyonium_powerline ;;
-        pyonium_powerline) next_theme=jellybean ;;
-        jellybean) next_theme=solarized ;;
-        solarized) next_theme=pyonium ;;
-    esac
-    command="ltheme $next_theme"
-    icon f01e
-    echo ${AC}$command${AB}$cur_theme${AE}
 }
 
 #determine what to display based on arguments, unless there are none, then display all.
@@ -102,6 +101,8 @@ while :; do
         buf="${buf}${delim2}$(yaourtUpdates)"
         buf="${buf}${delim}$(battery)"
         buf="${buf}${delim2}$(network)"
+        buf="${buf}${delim2}$(disk)"
+        buf="${buf}${delim2}$(memory)"
         buf="${buf}${delim}$(volume)"
         buf="${buf}${delim}$(clock)"
     else

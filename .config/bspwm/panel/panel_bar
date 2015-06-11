@@ -45,18 +45,18 @@ while read -r line ; do
             item=$1
             name=${item#?}
             case $item in
-                O*) wm_infos="${wm_infos}%{F$pActive}${AC}${goto} ${name}${AB} ${DO} ${AE}";; # active occupied desktop
-                F*) wm_infos="${wm_infos}%{F$pActive}${AC}${goto} ${name}${AB} ${DF} ${AE}";; # active free desktop
-                U*) wm_infos="${wm_infos}%{F$pUrgent}${AC}${goto} ${name}${AB} ${DO} ${AE}";; # active urgent desktop
-                o*) wm_infos="${wm_infos}%{F$pRest}${AC}${goto} ${name}${AB} ${DO} ${AE}";; # inactive occupied desktop
-                f*) wm_infos="${wm_infos}%{F$pRest}${AC}${goto} ${name}${AB} ${DF} ${AE}";; # inactive free desktop
+                O*) wm_infos="${wm_infos}%{F$pActive}%{U$pActive}%{+u}${name}%{-u} ";; # active occupied desktop
+                F*) wm_infos="${wm_infos}%{F$pActive}%{U$pActive}%{+u}${name}%{-u} ";; # active free desktop
+                U*) wm_infos="${wm_infos}%{F$pUrgent}${name} ";; # active urgent desktop
+                o*) wm_infos="${wm_infos}%{F$pRest}${name} ";; # inactive occupied desktop
+                f*) wm_infos="${wm_infos}%{F$pRest}${name} ";; # inactive free desktop
                 u*) wm_infos="${wm_infos}%{F$pUrgent}${AC}${goto} ${name}${AB} ${DO} ${AE}";; # inactive urgent desktop
-                L*) wm_infos="${wm_infos}%{F$pRest}${AC}${cycle}${AB} $([[ $name == "T" ]] && echo $DT || echo $DM) ${AE}";; # Tiling/Monocle indicator, clickable toggle.
+                #L*) wm_infos="${wm_infos}%{F$pRest}${AC}${cycle}${AB} $([[ $name == "T" ]] && echo $DT || echo $DM) ${AE}";; # Tiling/Monocle indicator, clickable toggle.
             esac
             shift
         done
         wm_infos="$wm_infos${pWSRight}${pBG} "
     ;;
     esac
-    printf "%s\n" "%{l}$wm_infos$title %{r}$sys_infos"
+    printf "%s\n" "%{c} $wm_infos  %{r} $sys_infos"
 done
