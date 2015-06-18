@@ -18,7 +18,6 @@ xset fp rehash
 unclutter -noevents -root &
 export WALLPAPER=~/drive/wallpapers/orK22AE.png
 dunst -config ~/dotfiles/dunstrc &
-conky -c ~/dotfiles/conky/gcalcli &
 feh --bg-scale $WALLPAPER
 conky -c ~/dotfiles/conky/panel &
 
