@@ -45,7 +45,7 @@ au BufRead,BufNewFile *vimpager* set nospell
 autocmd BufRead,BufNewFile *.qml setfiletype qml
 autocmd BufRead,BufNewFile *.go setfiletype go
 autocmd FileType mail set spell
-set spellfile=~/ownCloud/en.utf-8.add
+set spellfile=~/dotfiles/vim/en.utf-8.add
 
 let g:ycm_global_ycm_extra_conf = '~/dotfiles/ycm_extra_conf.py'
 syntax enable
@@ -82,7 +82,6 @@ Plugin 'fatih/vim-go'
 Plugin 'peterhoeg/vim-qml'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'SirVer/ultisnips'
-Plugin 'Shougo/neocomplete.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'wincent/Command-T'
 Plugin 'octol/vim-cpp-enhanced-highlight'
