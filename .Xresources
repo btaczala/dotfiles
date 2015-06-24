@@ -1,4 +1,4 @@
-urxvt*font: xft:Monaco for powerline:pixelsize=10
+urxvt*font: xft:Terminess Powerline:pixelsize=10
 URxvt*scrollBar: false
 URxvt.saveLines: 32767
 URxvt*termName: rxvt
@@ -42,7 +42,7 @@ URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 rofi.width:           75
 rofi.lines:           10
 rofi.columns:         1
-rofi.font:            Monaco for Powerline 12
+rofi.font:            Terminess Powerline 12
 rofi.fg:              #ccb18b
 rofi.bg:              #282828
 rofi.hlfg:            #000000
