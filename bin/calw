@@ -1,0 +1,3 @@
+#!/bin/sh
+
+urxvt -hold -title calendar_floating -g 120x70 -e /usr/bin/gcalcli calm -w 16
