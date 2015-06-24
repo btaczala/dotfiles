@@ -86,6 +86,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'wincent/Command-T'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'Lokaltog/vim-easymotion'
+Plugin 'rking/ag.vim'
 
 
 call vundle#end() 
