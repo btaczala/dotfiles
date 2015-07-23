@@ -15,9 +15,10 @@
 #  color message      	color230      color234 
 
 # --- slightly less yellow text colors ---
-color normal		color253	color234 # mod
+# color normal		color253	color234 # mod
+# color normal		color253	color234 # mod
 # color normal		color253	color233 # mod
-#  color normal		color253	default # mod
+color normal		color253	default # mod
 color indicator    	color230     	color238
 color status       	color101     	color16
 #  color tree         	color113      	color234 
