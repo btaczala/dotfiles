@@ -1,0 +1,61 @@
+<head>
+    <title>Start</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+<div id="container">
+    <div id="header">
+        <h3 style="display: inline;"> <span class="green">&raquo; Google</span></h3>
+        <form method="get" action="https://www.google.com/search">
+            <input type="text" name="q" \> 
+        </form>
+    </div>
+        
+    <div id="links">
+
+        <div class="linksbox">
+            <h3><span class="green">&raquo; Google</span></h3>
+            <a href="http://gmail.com">Gmail</a>
+            <a href="http://google.com/calendar/render">Calendar</a>
+            <a href="https://drive.google.com/#my-drive">Drive</a>
+        </div>
+
+        <div class="linksbox">
+            <h3><span class="green">&raquo; JLR05</span></span></h3>
+            <!--<a href="http://play.spotify.com">Spotify</a>-->
+            <!--<a href="http://store.steampowered.com">Steam</a>   -->
+            <!--<a href="http://thepiratebay.se">TPB</a>    -->
+            <!--<a href="http://lowcygier.pl">Łowcy Gier</a>    -->
+        </div>
+
+        <div class="linksbox">
+            <h3> <span class="green">&raquo; Staff</span></h3>
+            <a href="http://feedly.com/">feedly</a>
+        </div>
+    </div>
+    
+    <script type="text/javascript">
+
+function GetClock(){
+d = new Date();
+nhour  = d.getHours();
+nmin   = d.getMinutes();
+nsec   = d.getSeconds();
+
+if(nmin <= 9) {nmin = "0" +nmin;}
+if(nsec <= 9) {nsec = "0" +nsec;}
+
+
+document.getElementById('clockbox').innerHTML=""+nhour+":"+nmin+":"+nsec+"";
+setTimeout("GetClock()", 1000);
+}
+window.onload=GetClock;
+</script>
+<div id="clockbox" style="font:80pt Ubuntu; font-weight: 100; color: rgba(255,255,255,0.35);text-align: center;"></div>
+
+</div>
+</body>
+</html>
