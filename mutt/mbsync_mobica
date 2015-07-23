@@ -2,7 +2,7 @@ IMAPAccount mobica
 # Address to connect to
 Host imap.gmail.com
 User bartosz.taczala@mobica.com
-PassCmd "sh ~/dotfiles/mutt/pass_mobica.sh"
+PassCmd "sh $HOME/dotfiles/mutt/pass_mobica.sh"
 #
 # Use SSL
 UseIMAPS yes

@@ -12,4 +12,4 @@ zstyle ':prezto:load' pmodule \
   'completion' \
   'prompt'
 
-zstyle ':prezto:module:prompt' theme 'sorin'
+zstyle ':prezto:module:prompt' theme 'skwp'

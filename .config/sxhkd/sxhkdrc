@@ -14,7 +14,7 @@ super + t
 super + b
 	bspc desktop -B
 
-super + {s,f}
+super + {g,f}
 	bspc window -t {floating,fullscreen}
 
 super + {grave,Tab}
@@ -37,8 +37,8 @@ super + m
 super + {_,shift + }{Left,Down,Up,Right}
 	bspc window -{f,s} {left,down,up,right}
 
-super + {_,shift + }c
-	bspc window -f {next,prev}
+#super + {_,shift + }c
+	#bspc window -f {next,prev}
 
 super + {comma,period}
 	bspc desktop -C {backward,forward}
@@ -92,12 +92,11 @@ F12
     || urxvt -name URxvtQuake -geometry 110x20+600+20
 
 super + Return
-    urxvt	
+    termite
 
 super + r
 	dmenu_extended_run
 
-#j4-dmenu-desktop --dmenu="dmenu -i -nb \"#1f1f1f\" -nf \"#c0b18b\" -fn \"Inconsolata for Powerline-9\" "
 super + space
     rofi -show run
 
@@ -106,6 +105,9 @@ super + w
 
 super + e
     ~/dotfiles/custom_rofi.sh
+
+super + d
+    rofi -terminal termite -show ssh
 
 super + alt + space
     dmenu_run

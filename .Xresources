@@ -1,11 +1,14 @@
-urxvt*font: xft:Terminess Powerline:pixelsize=10
+URxvt*font: xft:Terminess Powerline:pixelsize=10
 URxvt*scrollBar: false
 URxvt.saveLines: 32767
 URxvt*termName: rxvt
-URxvt.perl-ext-common: default,clipboard
+URxvt.perl-ext-common: default,clipboard,keyboard-select
 URxvt.iso14755: false
-URxvt.keysym.Shift-Control-C: perl:clipboard:copy
-URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.keysym.M-c: perl:clipboard:copy
+URxvt.keysym.M-v: perl:clipboard:paste
+URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+URxvt.keysym.M-s: perl:keyboard-select:search
+URxvt.keysym.Control-Escape: perl:keyboard-select:activate
 
 !-------------------------------------------------------------------------------
 ! Colors

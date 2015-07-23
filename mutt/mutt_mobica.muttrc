@@ -70,3 +70,4 @@ set pgp_sign_as = 829911F6
 set pgp_timeout = 3600
 set crypt_autosign = yes
 set crypt_replyencrypt = yes
+set sig_on_top = yes

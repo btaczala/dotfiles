@@ -1,0 +1,8 @@
+[Unit]
+Description=check mails
+RefuseManualStart=no
+RefuseManualStop=yes
+
+[Service]
+Type=oneshot
+ExecStart=/home/bata/dotfiles/systemd/get_mail.sh

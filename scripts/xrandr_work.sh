@@ -5,8 +5,8 @@
 xrandr --output HDMI1 --auto --output VGA1 --auto --output VGA1 --right-of HDMI1 
 xrandr --output LVDS1 --off --output VGA1 --auto --primary
 
-bspc monitor VGA1 -d mail web im system dev irc wayland
-bspc monitor HDMI1 -d qtcreator git web
+bspc monitor VGA1 -d mail web im system dev irc documents
+bspc monitor HDMI1 -d qtcreator dev ssh minicom
 
 # custom rules bitches
 bspc rule -r Pidgin

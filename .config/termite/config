@@ -11,30 +11,71 @@ allow_bold = true
 dynamic_title = true
 urgent_on_bell = true
 clickable_url = true
-font = Monaco for Powerline 8
+font = Terminess Powerline 8
 cursor_shape = block
 
+#[colors]
+#foreground = #a5a5a5
+#foreground_bold = #fedfed
+##foreground_dim = #888888
+#background = #1E1E1E
+###cursor = #dcdccc
+##
+#color0 = #242424
+#color1 = #FF0090
+#color2 = #A7FC00
+#color3 = #B27D12
+#color4 = #457585
+#color5 = #642337
+#color6 = #2ba8c1
+#color7 = #b3b3b3
+#color8 = #000000
+#color9 = #FF0000
+#color10 = #9ca554
+#color11 = #DDB62B
+#color12 = #228cb6
+#color13 = #7D2D41
+#color14 = #198577
+#color15 = #b3b3b3
+
+
 [colors]
-foreground = #a5a5a5
-foreground_bold = #fedfed
-#foreground_dim = #888888
-background = #1E1E1E
-##cursor = #dcdccc
-#
-color0 = #242424
-color1 = #FF0090
-color2 = #A7FC00
-color3 = #B27D12
-color4 = #457585
-color5 = #642337
-color6 = #2ba8c1
-color7 = #b3b3b3
-color8 = #000000
-color9 = #FF0000
-color10 = #9ca554
-color11 = #DDB62B
-color12 = #228cb6
-color13 = #7D2D41
-color14 = #198577
-color15 = #b3b3b3
+
+# special
+foreground      = #ffffff
+foreground_bold = #ffffff
+cursor          = #ffffff
+background      = #000000
+
+# black
+color0  = #191919
+color8  = #484848
+
+# red
+color1  = #eb3d51
+color9  = #be6262
+
+# green
+color2  = #66b61a
+color10 = #4b8a10
+
+# yellow
+color3  = #d98e1d
+color11 = #e5d95e
+
+# blue
+color4  = #23ffa8
+color12 = #23aaff
+
+# magenta
+color5  = #ff00da
+color13 = #ab005b
+
+# cyan
+color6  = #68a783
+color14 = #bbcd81
+
+# white
+color7  = #eaeaea
+color15 = #bbbbbb
 
