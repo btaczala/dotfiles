@@ -8,7 +8,6 @@ if [[ "$host" == "Darwin" ]]; then
     export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 else
     export TERM='xterm-256color'
-    #export TERM='xterm-termite'
     source ~/.zprezto/init.zsh
     source ~/.zprezto/runcoms/zshrc
     source ~/dotfiles/zsh/zpreztorc
@@ -77,8 +76,3 @@ function precmd() {
 function preexec() {
     title "$1" "%m:%35<...<%~"
 }
-
-. /etc/profile.d/vte.sh
-__vte_osc7
-
-eval $(dircolors ~/.dircolors)

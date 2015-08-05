@@ -92,7 +92,7 @@ F12
     || urxvt -name URxvtQuake -geometry 110x20+600+20
 
 super + Return
-    termite
+    urxvt 
 
 super + r
 	dmenu_extended_run

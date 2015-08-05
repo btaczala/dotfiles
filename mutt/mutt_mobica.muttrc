@@ -44,6 +44,8 @@ source ~/dotfiles/mutt/mutt_keybindings.config
 
 # Colors --------------------------------
 source ~/dotfiles/mutt/vombatidae.mutt
+#source ~/dotfiles/mutt/mutt-colors-solarized-dark-256.muttrc
+#source ~/dotfiles/mutt/mutt-colors-solarized-dark-16.muttrc
 
 # Contacts
 set query_command="goobook query '%s'"
