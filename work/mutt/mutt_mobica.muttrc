@@ -1,0 +1,75 @@
+# Paths ----------------------------------------------
+source $HOME/dotfiles/mutt/mutt_common.config
+set signature = $HOME/dotfiles/mutt/sig_mobica
+
+# Sending --------------------------------------------
+set realname = "Bartosz Taczała"     # who am i?
+source ~/dotfiles/mutt/mutt_sending.config
+set from = bartosz.taczala@mobica.com
+
+source ~/dotfiles/mutt/mutt_sidebar.config
+source ~/dotfiles/mutt/mutt_statusbar.config
+
+# Header Options -------------------------------------
+source ~/dotfiles/mutt/mutt_view.config
+
+# Default inbox.
+set spoolfile = "+mobica/Inbox"
+
+# Mailboxes to show in the sidebar.
+mailboxes +mobica/Inbox \
+          '+mobica/bbags' \
+          '+mobica/b2b' \
+          '+mobica/mplszczecin' \
+          '+mobica/cto' \
+          '+mobica/projects' \
+          '+mobica/projects/.jlr05' \
+          '+mobica/pro_jlr' \
+          '+mobica/pro_bos0x' \
+          '+mobica/interviews' \
+          '+mobica/mailing lists' \
+          '+mobica/mailing lists/.autmg' \
+          '+mobica/mailing lists/.genivi' \
+          '+mobica/mailing lists/.genivi-ivi-layer-management' \
+          '+mobica/mailing lists/.ivi-tizen' \
+
+set mbox ="+mobica/archive"
+set postponed="+mobica/drafts"
+
+# Sync email
+macro index o "<shell-escape>mbsync -c ~/dotfiles/work/mutt/mbsync_mobica mobica<enter>" "run offlineimap to sync inbox"
+
+# Other key bindings
+source ~/dotfiles/mutt/mutt_keybindings.config
+
+# Colors --------------------------------
+source ~/dotfiles/mutt/vombatidae.mutt
+#source ~/dotfiles/mutt/mutt-colors-solarized-dark-256.muttrc
+#source ~/dotfiles/mutt/mutt-colors-solarized-dark-16.muttrc
+
+# Contacts
+set query_command="goobook query '%s'"
+# macro index,pager a "<pipe-message>goobook add<return>" "add sender to google contacts"
+bind editor <Tab> complete-query
+
+auto_view text/html
+auto_view text/calendar
+
+# NotMuch ------------------------------------------
+macro index <F8> \
+    "<enter-command>unset wait_key<enter><shell-escape>notmuch-mutt --prompt search<enter><change-folder-readonly>~/.cache/notmuch/mutt/results/" \
+    "search mail (using notmuch)"
+macro index <F9> \
+    "<enter-command>unset wait_key<enter><pipe-message>notmuch-mutt thread<enter><change-folder-readonly>~/.cache/notmuch/mutt/results/<enter><enter-command>set wait_key<enter>" \
+    "search and reconstruct owning thread (using notmuch)"
+
+macro index,pager a "<pipe-message>goobook -v add<return>" "add sender to google contacts"
+macro index,pager ,ta '<pipe-message>~/dotfiles/mutt/mutt2task<enter>F'
+
+source /usr/share/doc/mutt/samples/gpg.rc
+set pgp_use_gpg_agent = yes
+set pgp_sign_as = 829911F6
+set pgp_timeout = 3600
+set crypt_autosign = yes
+set crypt_replyencrypt = yes
+set sig_on_top = yes

@@ -3,4 +3,4 @@ Description=gcalcli remind
 
 [Service]
 Type=simple
-ExecStart=/home/bata/dotfiles/gcal_remind.sh
+ExecStart=$HOME/dotfiles/systemd/gcal_remind.sh

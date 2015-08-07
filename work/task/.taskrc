@@ -1,0 +1,23 @@
+# [Created by task 2.4.0 2/2/2015 08:13:00]
+# Taskwarrior program configuration file.
+# For more documentation, see http://taskwarrior.org or try 'man task', 'man task-color',
+# 'man task-sync' or 'man taskrc'
+
+# Here is an example of entries that use the default, override and blank values
+#   variable=foo   -- By specifying a value, this overrides the default
+#   variable=      -- By specifying no value, this means no default
+#   #variable=foo  -- By commenting out the line, or deleting it, this uses the default
+
+# Use the command 'task show' to see all defaults and overrides
+
+# Files
+data.location=~/.task
+
+# Color theme (uncomment one to use)
+include ~/dotfiles/taskwarrior/solarized-dark-256.theme
+
+taskd.server=freecinc.com:53589
+taskd.key=\/home\/bata\/Documents\/GoogleDrive\/task_warrior\/freecinc_71f3c870.key.pem
+taskd.certificate=\/home\/bata\/Documents\/GoogleDrive\/task_warrior\/freecinc_71f3c870.cert.pem
+taskd.ca=\/home\/bata\/Documents\/GoogleDrive\/task_warrior\/freecinc_71f3c870.ca.pem
+taskd.credentials=FreeCinc\/freecinc_71f3c870\/d85789d1-bb07-4f81-85ad-aa24c5446ed6

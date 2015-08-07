@@ -1,7 +1,6 @@
 set nocompatible               " be iMproved
 filetype off                   " required!
 syntax on
-set rtp+=~/.vim/bundle/Vundle.vim
 
 set hlsearch 
 set incsearch
@@ -53,42 +52,33 @@ syntax enable
 " Use the right side of the screen
 let g:buffergator_viewport_split_policy = 'R'
 
-call vundle#begin()
+call plug#begin()
 
 " My Plugins here:
 "
-Plugin 'gmarik/Vundle.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'wincent/command-t'
-Plugin 'bling/vim-airline'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'bling/vim-bufferline'
-Plugin 'Yggdroot/indentLine'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'drmikehenry/vim-headerguard'
-Plugin 'vim-scripts/a.vim'
-Plugin 'vhdirk/vim-cmake'
-Plugin 'jlanzarotta/bufexplorer'
-Plugin '29decibel/codeschool-vim-theme'
-Plugin 'fatih/vim-go'
-Plugin 'peterhoeg/vim-qml'
-Plugin 'jeetsukumaran/vim-buffergator'
-Plugin 'SirVer/ultisnips'
-Plugin 'majutsushi/tagbar'
-Plugin 'wincent/Command-T'
-Plugin 'octol/vim-cpp-enhanced-highlight'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'rking/ag.vim'
-Plugin 'severin-lemaignan/vim-minimap'
-Plugin 'vim-scripts/YankRing.vim'
-Plugin 'rainbow_parentheses.vim'
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-notes'
-Plugin 'mhinz/vim-startify'
+Plug 'kien/ctrlp.vim'
+Plug 'bling/vim-airline'
+Plug 'Valloric/YouCompleteMe', { 'for': 'cpp','do': './install.sh --clang-completer --system-libclang'}
+autocmd! User YouCompleteMe call youcompleteme#Enable()
+Plug 'bling/vim-bufferline'
+Plug 'Yggdroot/indentLine'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'drmikehenry/vim-headerguard'
+Plug 'vim-scripts/a.vim'
+Plug 'vhdirk/vim-cmake'
+Plug 'jlanzarotta/bufexplorer'
+Plug '29decibel/codeschool-vim-theme'
+Plug 'fatih/vim-go'
+Plug 'peterhoeg/vim-qml'
+Plug 'jeetsukumaran/vim-buffergator'
+Plug 'majutsushi/tagbar'
+Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'rking/ag.vim'
+Plug 'severin-lemaignan/vim-minimap'
+Plug 'rainbow_parentheses.vim'
 
-call vundle#end() 
+call plug#end()
 filetype plugin indent on     " required! 
 set background=dark
 colorscheme burnttoast256
@@ -102,5 +92,4 @@ hi SpellBad cterm=underline
 nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <leader>t :TagbarToggle<CR>
 nnoremap <leader>n :NERDTreeToggle <CR>
-
 

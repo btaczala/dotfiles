@@ -104,7 +104,7 @@ super + w
     rofi -show window
 
 super + e
-    ~/dotfiles/custom_rofi.sh
+    ~/dotfiles/rofi/custom_rofi.sh
 
 super + d
     rofi -terminal termite -show ssh
@@ -113,7 +113,7 @@ super + alt + space
     dmenu_run
 
 super + l
-    /usr/bin/lock
+    sh $HOME/dotfiles/cool_lock.sh
 
 # make sxhkd reload its configuration files:
 super + Escape

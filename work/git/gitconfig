@@ -1,0 +1,37 @@
+[merge]
+	tool = kdiff3
+[gui]
+	editor = gvim
+	historybrowser = gitk
+[diff]
+	tool = vimdiff
+[color]
+	sh = auto
+	ui = auto
+[core]
+	editor = vim
+[alias]
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+[alias]
+	new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
+[alias]
+	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+[alias]
+	la = "!git config -l | grep alias | cut -c 7-"
+[alias]
+	ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+[alias]
+	fl = log -u
+[alias]
+    pub = "!f() { git push -u ${1:-origin} HEAD:`git config branch.$(git name-rev --name-only HEAD).merge | sed -e 's@refs/heads/@refs/for/@'`; }; f"
+[difftool]
+	prompt = false
+[push]
+	default = simple
+[gitreview]
+	username = btaczala
+[user]
+	name = Bartosz Taczała
+	email = bartosz.taczala@mobica.com
+[cola]
+	fontdiff = Source Code Pro,9,-1,5,50,0,0,0,0,0
