@@ -16,9 +16,8 @@ xset +fp ~/.fonts
 xset +fp /usr/share/fonts/local 
 xset fp rehash 
 unclutter -noevents -root &
-export WALLPAPER=~/drive/wallpapers/orK22AE.png
 dunst -config ~/dotfiles/dunstrc &
-feh --bg-scale $WALLPAPER
+nitrogen --restore
 conky -c ~/dotfiles/conky/panel &
 
 # exec gnome-session

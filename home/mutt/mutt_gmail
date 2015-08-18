@@ -47,7 +47,7 @@ set postponed = "+bartek.taczala/drafts"
 
 
 # Sync email
-macro index o "<shell-escape>mbsync -c ~/dotfiles/mutt/mbsync_gmail bartek.taczala<enter>" "run mbox to sync inbox"
+macro index o "<shell-escape>mbsync -c ~/dotfiles/home/mutt/mbsync_gmail bartek.taczala<enter>" "run mbox to sync inbox"
 
 # Other key bindings
 source ~/dotfiles/mutt/mutt_keybindings.config

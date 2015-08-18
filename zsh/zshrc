@@ -47,6 +47,10 @@ else
     source ~/dotfiles/zsh/zpreztorc
 fi
 
+if [ -e $HOME/.current_project ]; then
+    source $HOME/.current_project
+fi
+
 eval "$(fasd --init auto)"
 alias j='fasd_cd -d -i'
 

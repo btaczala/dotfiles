@@ -27,6 +27,7 @@ set spelllang=en_us,pl
 set nu
 set modeline
 set modelines=5
+set fillchars+=vert:│
 
 " Auto detect cores
 function! SetMakeprg()

@@ -4,7 +4,7 @@ STATE=`nmcli networking connectivity`
 
 if [ $STATE = 'full' ]
 then
-    mbsync -c ~/dotfiles/mutt/mbsync_mobica mobica
+    mbsync -c ~/dotfiles/work/mutt/mbsync_mobica mobica
     notmuch new
     exit 0
 fi

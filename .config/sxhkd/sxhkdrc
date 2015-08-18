@@ -14,7 +14,7 @@ super + t
 super + b
 	bspc desktop -B
 
-super + {g,f}
+super + {s,f}
 	bspc window -t {floating,fullscreen}
 
 super + {grave,Tab}
@@ -82,6 +82,9 @@ super + u
 super + {minus,equal}
     bspc config -d focused window_gap $((`bspc config -d focused window_gap` {+,-} 2 ))
 
+super + y
+    ~/dotfiles/bspwm/rofi_menu.sh
+
 #
 # wm independent hotkeys
 #
@@ -114,6 +117,12 @@ super + alt + space
 
 super + l
     sh $HOME/dotfiles/cool_lock.sh
+
+super + z
+    bspc control --toggle-visibility 
+
+super + shift + b
+    sh $HOME/dotfiles/scripts/toggle_bar.sh
 
 # make sxhkd reload its configuration files:
 super + Escape
