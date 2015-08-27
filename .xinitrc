@@ -18,7 +18,6 @@ xset fp rehash
 unclutter -noevents -root &
 dunst -config ~/dotfiles/dunstrc &
 nitrogen --restore
-conky -c ~/dotfiles/conky/panel &
 
 # exec gnome-session
 # exec startkde
