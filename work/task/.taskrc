@@ -17,7 +17,7 @@ data.location=~/.task
 include ~/dotfiles/taskwarrior/solarized-dark-256.theme
 
 taskd.server=freecinc.com:53589
-taskd.key=\/home\/bata\/Documents\/GoogleDrive\/task_warrior\/freecinc_71f3c870.key.pem
-taskd.certificate=\/home\/bata\/Documents\/GoogleDrive\/task_warrior\/freecinc_71f3c870.cert.pem
-taskd.ca=\/home\/bata\/Documents\/GoogleDrive\/task_warrior\/freecinc_71f3c870.ca.pem
-taskd.credentials=FreeCinc\/freecinc_71f3c870\/d85789d1-bb07-4f81-85ad-aa24c5446ed6
+taskd.key=\/home\/bata\/.task\/freecinc_f8bdccd6.key.pem
+taskd.certificate=\/home\/bata\/.task\/freecinc_f8bdccd6.cert.pem
+taskd.ca=\/home\/bata\/.task\/freecinc_f8bdccd6.ca.pem
+taskd.credentials=FreeCinc\/freecinc_f8bdccd6\/9ed3aa36-4759-42da-929b-ec21361a0f42

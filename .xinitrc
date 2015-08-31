@@ -26,3 +26,4 @@ nitrogen --restore
 sxhkd &
 xbindkeys &
 exec bspwm > /tmp/bspwm.log 2>&1
+#exec startkde

@@ -92,6 +92,10 @@ yaourtUpdates() {
     echo ${AC}$command${AB}$(icon f062)$updates${AE}
 }
 
+cpu() {
+    mpstat | awk '$3 ~ /CPU/ { for(i=1;i<=NF;i++) { if ($i ~ /%idle/) field=i } } $3 ~ /all/ { printf("%d%",100 - $field) }'
+}
+
 #determine what to display based on arguments, unless there are none, then display all.
 while :; do
     buf="S"
@@ -102,6 +106,7 @@ while :; do
         buf="${buf}${delim}$(battery)"
         buf="${buf}${delim2}$(network)"
         buf="${buf}${delim2}$(disk)"
+        buf="${buf}${delim2}$(cpu)"
         buf="${buf}${delim2}$(memory)"
         buf="${buf}${delim}$(volume)"
         buf="${buf}${delim}$(clock)"

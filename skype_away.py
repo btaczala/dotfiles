@@ -25,6 +25,17 @@
 
 import gtk, dbus, sys
 
+def mood(text=""):
+    bus = dbus.SessionBus()
+    try:
+        proxy = bus.get_object('com.Skype.API', '/com/Skype')
+        proxy.Invoke('NAME skype_mood.py')
+        proxy.Invoke('PROTOCOL 2')
+        command = 'SET PROFILE MOOD_TEXT %s' % text
+        return proxy.Invoke(command)
+    except:
+            print "Could not contact Skype client"
+ 
 def set_status(name):
   #print name
   answer = obj.Invoke("SET "+name)
@@ -85,4 +96,8 @@ if valid_status == 0:
   usage()
 
 set_status("USERSTATUS "+sys.argv[1].upper())
+if len(sys.argv) == 3:
+  mood(sys.argv[2])
+else:
+  mood("")
 
