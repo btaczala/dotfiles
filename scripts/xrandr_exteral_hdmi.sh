@@ -7,3 +7,6 @@ xrandr --output eDP1 --off --output HDMI1 --auto
 bspc config top_padding 15
 bspc monitor -d term web mail im dev dev2 vii viii ix spotify
 ~/dotfiles/scripts/bspwm_xrandr_start.sh & 
+
+# Start trayer
+trayer --SetDockType true --padding 10 --transparent true --alpha 0 --edge top --distance 8 --align right --padding 10 --expand false --widthtype request --heighttype pixel --height 18 --monitor 0 --margin 500 --tint 0x1D1F21 &
