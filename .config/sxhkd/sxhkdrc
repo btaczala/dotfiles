@@ -95,7 +95,7 @@ F12
     || urxvt -name URxvtQuake -geometry 110x20+600+20
 
 super + Return
-    urxvt 
+    termite
 
 super + r
 	dmenu_extended_run
@@ -120,6 +120,9 @@ super + l
 
 super + z
     bspc control --toggle-visibility 
+
+super + p
+    sh $HOME/dotfiles/bspwm/change_workspace.sh
 
 super + shift + b
     sh $HOME/dotfiles/scripts/toggle_bar.sh

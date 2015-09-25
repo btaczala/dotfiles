@@ -18,11 +18,8 @@ xset fp rehash
 unclutter -noevents -root &
 dunst -config ~/dotfiles/dunstrc &
 nitrogen --restore
+export XDG_CURRENT_DESKTOP=KDE
 
-# exec gnome-session
-# exec startkde
-# exec startxfce4
-# ...or the Window Manager of your choice
 sxhkd &
 xbindkeys &
 exec bspwm > /tmp/bspwm.log 2>&1

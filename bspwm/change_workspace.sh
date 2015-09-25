@@ -7,7 +7,8 @@ for monitor in `bspc query -M`; do
     workspaces+=$asd
 done
 
-workspace=`echo ${workspaces[*]} | tr " " "\n" | rofi -dmenu`
-if [ -n $workspace ]; then
+workspace=`echo ${workspaces[*]} | tr " " "\n" | rofi -dmenu -p "Change workspace to"`
+echo "Workspace= $workspace"
+if [[ -n $workspace ]]; then
     bspc desktop -f $workspace
 fi
