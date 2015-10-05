@@ -11,6 +11,7 @@ function get_wm_name {
 }
 
 name=$(get_wm_name)
+echo "Name=$name" >> /tmp/zlo
 
 # for gcalcli calendar window
 if [ "$name" = "calendar_floating" ] || [ "$instance" = "calendar_floating" ]; then

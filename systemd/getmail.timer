@@ -7,7 +7,7 @@ RefuseManualStop=no
 Persistent=false
 OnBootSec= 5min
 OnUnitActiveSec= 15min
-Unit=mbsync.service
+Unit=getmail.service
 
 [Install]
 WantedBy=default.target

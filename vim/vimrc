@@ -58,6 +58,7 @@ call plug#begin()
 " My Plugins here:
 "
 Plug 'kien/ctrlp.vim'
+Plug 'idbrii/vim-man'
 Plug 'bling/vim-airline'
 Plug 'Valloric/YouCompleteMe', { 'for': 'cpp','do': './install.sh --clang-completer --system-libclang'}
 autocmd! User YouCompleteMe call youcompleteme#Enable()
