@@ -96,7 +96,7 @@ super + Return
     termite
 
 super + space
-    rofi -show run
+    KDE_FULL_SESSION=1 rofi -show run
 
 super + r
     ~/dotfiles/bspwm/rofi_menu.sh

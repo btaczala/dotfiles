@@ -22,5 +22,6 @@ export XDG_CURRENT_DESKTOP=KDE
 
 sxhkd &
 xbindkeys &
+export KDE_FULL_SESSION=1
 exec bspwm > /tmp/bspwm.log 2>&1
 #exec startkde

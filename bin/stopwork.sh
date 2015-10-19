@@ -17,3 +17,4 @@ close_program skype
 killall skype
 close_program ncmpcpp
 
+i3lock
