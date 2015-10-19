@@ -1,0 +1,13 @@
+[general]
+targets = eris_redmine
+inline_links = False
+annotation_links = True
+annotation_length = 70
+
+[eris_redmine]
+service = redmine
+redmine.url = https://eris.mobica.com/
+redmine.key = 5da4a5834b127031a0e161d1ddd6acefa6452119
+redmine.user_id = 30
+redmine.project_name = jlr05
+add_tags = eris

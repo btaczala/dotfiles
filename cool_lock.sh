@@ -11,5 +11,6 @@ echo $why > /tmp/why
 #else
     #i3lock -n -f -r 40 
 #fi
+
 i3lock -i ~/dotfiles/walls/orion.png
 ~/dotfiles/skype_away.py online

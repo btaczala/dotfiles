@@ -1,4 +1,4 @@
-PANEL_WIDTH=$(sres -W)
+#PANEL_WIDTH=$(sres -W)
 PANEL_GEOMETRY="${PANEL_WIDTH}x30+0+0"
 FONT1="-*-terminus-bold-*-*-*-12-*-*-*-*-*-*-*"
 FONT2="-misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1"

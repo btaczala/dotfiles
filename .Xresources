@@ -52,7 +52,7 @@ URxvt.keysym.Control-Escape: perl:keyboard-select:activate
 
 
 rofi.width:           75
-rofi.lines:           10
+rofi.lines:           15
 rofi.columns:         1
 rofi.font:            Terminess Powerline 12
 rofi.fg:              #ccb18b

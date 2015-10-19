@@ -82,8 +82,6 @@ super + u
 super + {minus,equal}
     bspc config -d focused window_gap $((`bspc config -d focused window_gap` {+,-} 2 ))
 
-super + y
-    ~/dotfiles/bspwm/rofi_menu.sh
 
 #
 # wm independent hotkeys
@@ -97,12 +95,11 @@ F12
 super + Return
     termite
 
-super + r
-	dmenu_extended_run
-
 super + space
     rofi -show run
 
+super + r
+    ~/dotfiles/bspwm/rofi_menu.sh
 super + w
     rofi -show window
 
@@ -123,9 +120,6 @@ super + z
 
 super + p
     sh $HOME/dotfiles/bspwm/change_workspace.sh
-
-super + shift + b
-    sh $HOME/dotfiles/scripts/toggle_bar.sh
 
 # make sxhkd reload its configuration files:
 super + Escape
