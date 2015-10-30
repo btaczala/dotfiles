@@ -25,9 +25,11 @@ mail() {
 
 memory() {
     icon f17c
-    used=`free -m | grep Mem | cut -d ' ' -f20`
-    total=`free -m | grep Mem | cut -d ' ' -f12`
-    echo $used/$total
+    #used=`free -m | grep Mem | cut -d ' ' -f20`
+    #total=`free -m | grep Mem | cut -d ' ' -f12`
+    #echo $used/$total
+    val=`/usr/bin/top -n 1 | grep Mem | awk '{print $4}'`
+    echo $val
 }
 
 disk() {

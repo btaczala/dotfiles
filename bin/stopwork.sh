@@ -9,12 +9,13 @@ function close_program()
     fi
 }
 
-task sync
+#task sync
 
 ~/dotfiles/skype_away.py offline
 systemctl --user stop mopidy
 close_program skype
 killall skype
+killall google-chrome-stable
 close_program ncmpcpp
 
 i3lock

@@ -24,6 +24,8 @@ mailboxes +mobica/Inbox \
           '+mobica/cto' \
           '+mobica/projects' \
           '+mobica/projects/.jlr05' \
+          '+mobica/projects/.jlr05/.eris' \
+          '+mobica/projects/.jlr05/.jenkins' \
           '+mobica/pro_jlr' \
           '+mobica/pro_bos0x' \
           '+mobica/interviews' \
@@ -44,8 +46,8 @@ source ~/dotfiles/mutt/mutt_keybindings.config
 
 # Colors --------------------------------
 #source ~/dotfiles/mutt/vombatidae.mutt
-#source ~/dotfiles/mutt/mutt-colors-solarized-dark-256.muttrc
-source ~/dotfiles/mutt/mutt-colors-solarized-dark-16.muttrc
+source ~/dotfiles/mutt/mutt-colors-solarized-dark-256.muttrc
+#source ~/dotfiles/mutt/mutt-colors-solarized-dark-16.muttrc
 
 # Contacts
 set query_command="goobook query '%s'"
@@ -72,4 +74,4 @@ macro index,pager ,ta '<pipe-message>~/dotfiles/mutt/mutt2task<enter>F'
 #set pgp_timeout = 3600
 #set crypt_autosign = yes
 #set crypt_replyencrypt = yes
-#set sig_on_top = yes
+set sig_on_top = yes
