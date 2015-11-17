@@ -29,7 +29,7 @@
 [push]
 	default = simple
 [gitreview]
-	username = btaczala
+	username = bata
 [user]
 	name = Bartosz Taczała
 	email = bartosz.taczala@mobica.com

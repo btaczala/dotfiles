@@ -80,6 +80,7 @@ Plug 'rking/ag.vim'
 Plug 'severin-lemaignan/vim-minimap'
 Plug 'rainbow_parentheses.vim'
 Plug 'mfukar/robotframework-vim'
+Plug 'jeaye/color_coded'
 
 call plug#end()
 filetype plugin indent on     " required! 

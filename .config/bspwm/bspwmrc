@@ -20,11 +20,6 @@ bspc config gapless_monocle     true
 bspc config focus_follows_pointer true
 bspc config auto_alternate true
 bspc config auto_cancel true
-#bspc config normal_border_color "#332d29"
-#bspc config active_border_color "#b3c628"
-#bscp config focused_border_color "#d7ff87"
-#bspc config presel_border_color "#00FD02"
-#bspc config urgent_border_color "#9f7155"
 bspc config normal_border_color "#323537"
 bspc config active_border_color "#838184"
 bspc config focused_border_color "#a7db8d"
@@ -44,16 +39,13 @@ bspc rule -a Pidgin desktop=^5
 bspc rule -a gimp-2.8 floating=on
 bspc rule -a Chromium desktop=^2
 bspc rule -a Firefox desktop=^2
-bspc rule -a Conky sticky=on manage=off lower=on
 bspc rule -a astime sticky=on
-bspc rule -a feh floating=on manage=off
-bspc rule -a scratchpad sticky=on floating=on
+bspc rule -a scratchpad sticky=on state=floating 
 
-bspc rule -a nxe-app floating=on
-bspc rule -a Pavucontrol floating=on
-bspc rule -a QtQmlViewer floating=on
-bspc rule -a qmltestrunner floating=on
-bspc rule -a URxvtQuake sticky=on floating=on
+bspc rule -a Pavucontrol state=floating 
+bspc rule -a QtQmlViewer state=floating 
+bspc rule -a qmltestrunner state=floating
+bspc rule -a URxvtQuake sticky=on state=floating
 bspc config external_rules_command "$HOME/.config/bspwm/external_rules.sh"
 
 ~/.config/bspwm/panel/panel > /tmp/panel-log 2>&1 &

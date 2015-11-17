@@ -7,7 +7,10 @@ if [[ "$host" == "Darwin" ]]; then
     source ~/dotfiles/zsh/zpreztorc
     export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 else
-    export TERM='xterm-256color'
+    if [[ `export | grep TMUX` ]]; then
+    else
+        export TERM='xterm-256color'
+    fi
     source ~/.zprezto/init.zsh
     source ~/.zprezto/runcoms/zshrc
     source ~/dotfiles/zsh/zpreztorc
