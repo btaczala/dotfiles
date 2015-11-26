@@ -8,14 +8,14 @@ super + alt + Escape
 super + q
 	bspc window -c
 
-super + t
-	bspc desktop -l next
+#super + t
+	#bspc desktop -l next
 
 super + b
 	bspc desktop -B
 
-super + {s,f}
-	bspc window -t {floating,fullscreen}
+super + {t,s,f}
+    bspc window -t {tiled,floating,fullscreen}
 
 super + {grave,Tab}
 	bspc {window,desktop} -f last
@@ -96,24 +96,31 @@ super + Return
     termite
 
 super + space
-    KDE_FULL_SESSION=1 rofi -show run
+    ~/dotfiles/bspwm/rofi_exec_menu.sh
+    dmenu_run -x 100 -y 100 -w 600 -l 4 -nb "#282828" -nf "#ccb18b"
+    rofi -show run
 
 super + r
     ~/dotfiles/bspwm/rofi_menu.sh
+
 super + w
+    dswitcher
     rofi -show window
 
 super + e
     ~/dotfiles/rofi/custom_rofi.sh
 
-super + d
-    rofi -terminal termite -show ssh
+#super + d
+    #rofi -terminal termite -show ssh
 
-super + alt + space
-    dmenu_run
+#super + space
+    #KDE_FULL_SESSION=1 dmenu_run
 
 super + l
-    sh $HOME/dotfiles/cool_lock.sh
+    i3lock
+
+super + c
+    clipmenu
 
 super + z
     bspc control --toggle-visibility 

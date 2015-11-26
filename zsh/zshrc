@@ -83,3 +83,5 @@ function precmd() {
 function preexec() {
     title "$1" "%m:%35<...<%~"
 }
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

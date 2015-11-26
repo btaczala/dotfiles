@@ -17,11 +17,11 @@ function list_workspaces {
         workspaces+=' '
         workspaces+=$asd
     done
-    workspace=`echo ${workspaces[*]} | tr " " "\n" | rofi -dmenu -width 20`
+    workspace=`echo ${workspaces[*]} | tr " " "\n" | dmenu `
 }
 
 command=`echo "move
-close" | rofi -dmenu -width 10`
+close" | dmenu`
 
 case "$command" in
     'move')

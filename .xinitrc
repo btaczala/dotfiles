@@ -18,10 +18,13 @@ xset fp rehash
 unclutter -noevents -root &
 dunst -config ~/dotfiles/dunstrc &
 nitrogen --restore
+clipmenud & 
 export XDG_CURRENT_DESKTOP=KDE
 
 sxhkd &
 xbindkeys &
 export KDE_FULL_SESSION=1
 exec bspwm > /tmp/bspwm.log 2>&1
+#exec openbox &
 #exec startkde
+#exec herbstluftwm &

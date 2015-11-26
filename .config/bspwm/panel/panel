@@ -57,12 +57,13 @@ for i in $num_mon; do
     #fi
 
     # Grep for current monitor width (will be first number regex match from bspc query command below).
-    CUR_MON_WIDTH=$(bspc query -T -m $i | grep -oE "[0-9]{2,6}" | head -n 1)
+    #CUR_MON_WIDTH=$(bspc query -T -m $i | grep -oE "[0-9]{2,6}" | head -n 1)
+    CUR_MON_WIDTH=`bspc query -T -m VGA1 | jq '.rectangle.width'`
 
     # The nested expr statements account for gap settings and current offset.
     # PANEL_GAP value is set in profile.
 
-    MONITOR_OFFSET=`bspc query -T -m $i | head -n 1 | cut -d ' ' -f 2 | cut -d+ -f 2`
+    MONITOR_OFFSET=`bspc query -T -m VGA1 | jq '.rectangle.x'`
 
     cat "$PANEL_FIFO$i" | panel_bar |\
         lemonbar -g $(expr $CUR_MON_WIDTH - $(expr $PANEL_GAP + $PANEL_GAP))x$PANEL_HEIGHT+$(expr $MONITOR_OFFSET + $PANEL_GAP)+$PANEL_GAP -f "$PANEL_FONT_MAIN" -f "$PANEL_FONT_ICON" | sh &

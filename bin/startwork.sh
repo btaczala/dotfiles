@@ -12,5 +12,4 @@ systemctl --user start getmail.timer
 sleep 5
 ~/dotfiles/skype_away.py online
 
-task sync
 yaourt -Syy
