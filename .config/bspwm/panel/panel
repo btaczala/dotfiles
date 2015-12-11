@@ -24,6 +24,7 @@ trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 
 # Get the number of monitors we will be making bars for
 num_mon=$(bspc query -M)
+echo "$num_mon"
 
 # panel_gap to 0 if no gaps.
 [ "$BSPWM_GAPS" = false ] && PANEL_GAP=0
@@ -58,12 +59,14 @@ for i in $num_mon; do
 
     # Grep for current monitor width (will be first number regex match from bspc query command below).
     #CUR_MON_WIDTH=$(bspc query -T -m $i | grep -oE "[0-9]{2,6}" | head -n 1)
-    CUR_MON_WIDTH=`bspc query -T -m VGA1 | jq '.rectangle.width'`
+    CUR_MON_WIDTH=`bspc query -T -m $i | jq '.rectangle.width'`
 
     # The nested expr statements account for gap settings and current offset.
     # PANEL_GAP value is set in profile.
 
-    MONITOR_OFFSET=`bspc query -T -m VGA1 | jq '.rectangle.x'`
+    MONITOR_OFFSET=`bspc query -T -m $i | jq '.rectangle.x'`
+
+    echo "mon w = $CUR_MON_WIDTH off=$MONITOR_OFFSET" 
 
     cat "$PANEL_FIFO$i" | panel_bar |\
         lemonbar -g $(expr $CUR_MON_WIDTH - $(expr $PANEL_GAP + $PANEL_GAP))x$PANEL_HEIGHT+$(expr $MONITOR_OFFSET + $PANEL_GAP)+$PANEL_GAP -f "$PANEL_FONT_MAIN" -f "$PANEL_FONT_ICON" | sh &

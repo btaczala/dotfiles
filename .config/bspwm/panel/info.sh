@@ -9,7 +9,8 @@ AB=':}'             # end click area cmd
 AE='%{A}'           # end click area
 
 icon() {
-    echo -n -e "${cIcon}\u$1 ${cContent}"
+    #echo -n -e "${cIcon}\u$1 ${cContent}"
+    echo -n -e "\u$1 "
 }
 
 clock() {
@@ -25,18 +26,17 @@ mail() {
 
 memory() {
     icon f17c
-    #used=`free -m | grep Mem | cut -d ' ' -f20`
-    #total=`free -m | grep Mem | cut -d ' ' -f12`
-    #echo $used/$total
-    val=`/usr/bin/top -n 1 | grep Mem | awk '{print $4}'`
-    echo $val
+    used=`free -g | grep Mem | awk '{print $3}'`
+    total=`free -g | grep Mem | awk '{print $2}'`
+    echo "%{F#90C3D4}$used/$total%{F-}"
 }
 
 disk() {
     icon f0a0
     used=`df -h | grep home | awk '{print $3}'`
     total=`df -h | grep home | awk '{print $2}'`
-    echo $used/$total
+    echo "$used/$total"
+    #echo "%{F#A1D490}$used/$total%{F-}"
 }
 
 battery() {
@@ -44,7 +44,7 @@ battery() {
     BATS=/sys/class/power_supply/BAT1/status
     icon f0e7
     if [ -f $BATC ]; then
-        [ "`cat $BATS`" = "Charging" ] && echo -n '+' || echo -n '-'
+        [ "`cat $BATS`" = "Charging" ] && echo -n '+' || echo -n ''
         cat $BATC
     else
         #no battery information found.
@@ -54,7 +54,6 @@ battery() {
 
 volume() {
     vol=`$HOME/.config/bspwm/panel/panel_volume`
-    
     display="$(icon f028)$vol"
     command='pavucontrol'
     echo ${AC}$command${AB}$display${AE}
@@ -95,23 +94,26 @@ yaourtUpdates() {
 }
 
 cpu() {
-    mpstat | awk '$3 ~ /CPU/ { for(i=1;i<=NF;i++) { if ($i ~ /%idle/) field=i } } $3 ~ /all/ { printf("%d%",100 - $field) }'
+    icon f085
+    #mpstat | awk '$3 ~ /CPU/ { for(i=1;i<=NF;i++) { if ($i ~ /%idle/) field=i } } $3 ~ /all/ { printf("%d%",100 - $field) }'
+    cpu="$(eval $(awk '/^cpu /{print "previdle="$5";prevtotal="$2+$3+$4+$5}' /proc/stat);sleep 0.4;eval $(awk '/^cpu /{print "idle="$5";total="$2+$3+$4+$5}' /proc/stat);intervaltotal=$((total-${prevtotal:-0}));echo -ne "$((100*((intervaltotal)-($idle-${previdle:-0}))/(intervaltotal)))")"
+    echo "$cpu"
 }
 
 #determine what to display based on arguments, unless there are none, then display all.
 while :; do
     buf="S"
     if [ -z "$*" ];then
-        buf="${buf}${delim2}$(mpd)"
-        buf="${buf}${delim}$(mail)"
+        buf="${buf}${delim2}%{F#c17ffb}$(mpd)%{F-}"
+        buf="${buf}${delim}%{F#b8f544}$(mail)%{F-}"
         buf="${buf}${delim2}$(yaourtUpdates)"
         buf="${buf}${delim}$(battery)"
-        buf="${buf}${delim2}$(network)"
-        buf="${buf}${delim2}$(disk)"
-        buf="${buf}${delim2}$(cpu)"
+        #buf="${buf}${delim2}$(network)"
+        buf="${buf}${delim2}%{F#A1D490}$(disk)%{F-}"
+        buf="${buf}${delim2}%{F#D4A190}$(cpu)%{F-}"
         buf="${buf}${delim2}$(memory)"
         buf="${buf}${delim}$(volume)"
-        buf="${buf}${delim}$(clock)"
+        buf="${buf}${delim}%{F#fee179}$(clock)%{F-}"
     else
         cur_delim="$delim2"
         for arg in "$@"; do
