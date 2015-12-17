@@ -97,8 +97,8 @@ super + Return
 
 super + space
     ~/dotfiles/bspwm/rofi_exec_menu.sh
-    dmenu_run -x 100 -y 100 -w 600 -l 4 -nb "#282828" -nf "#ccb18b"
-    rofi -show run
+    #dmenu_run -x 100 -y 100 -w 600 -l 4 -nb "#282828" -nf "#ccb18b"
+    #rofi -show run
 
 super + r
     ~/dotfiles/bspwm/rofi_menu.sh
