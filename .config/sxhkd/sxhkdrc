@@ -113,8 +113,9 @@ super + e
 #super + d
     #rofi -terminal termite -show ssh
 
-#super + space
-    #KDE_FULL_SESSION=1 dmenu_run
+super + p
+    $HOME/dotfiles/bspwm/change_workspace.sh
+
 
 super + l
     i3lock

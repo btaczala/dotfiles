@@ -52,14 +52,14 @@
 "~/dotfiles/dmenu/xrmenu.sh"
  Mod2 + XF86Display
 
-"mpc toggle"
- Mod2 + XF86AudioPlay
+"playerctl play-pause"
+ XF86AudioPlay
 
-"mpc next"
- Mod2 + XF86AudioNext
+"playerctl next"
+ XF86AudioNext
 
-"mpc prev"
- Mod2 + XF86AudioPrev
+"playerctl prev"
+ XF86AudioPrev
 
 "ponymix toggle"
  Mod2 + XF86AudioMute
