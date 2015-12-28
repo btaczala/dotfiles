@@ -9,7 +9,7 @@ echo $why > /tmp/why
 #if [[ "$why" == "ping pong" ]]; then
     #i3lock -n -i ~/Downloads/pingpong.jpeg.size.xxlarge.letterbox.png -t
 #else
-    #i3lock -n -f -r 40 
+    i3lock -n -f 40 
 #fi
 
 i3lock -i ~/dotfiles/walls/orion.png
