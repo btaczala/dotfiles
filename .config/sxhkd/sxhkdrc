@@ -6,7 +6,7 @@ super + alt + Escape
 	bspc quit
 
 super + q
-	bspc window -c
+	bspc node -c
 
 #super + t
 	#bspc desktop -l next
@@ -29,16 +29,13 @@ super + {o,i}
 	bspc control --record-history on
 
 super + y
-	bspc window -w last.manual
+	bspc node -w last.manual
 
 super + m
-	bspc window -s biggest
+	bspc node -s biggest
 
 super + {_,shift + }{Left,Down,Up,Right}
-	bspc window -{f,s} {left,down,up,right}
-
-#super + {_,shift + }c
-	#bspc window -f {next,prev}
+	bspc node -{f,s} {west,south,north,east}
 
 super + {comma,period}
 	bspc desktop -C {backward,forward}
@@ -46,11 +43,13 @@ super + {comma,period}
 super + bracket{left,right}
 	bspc desktop -f {prev,next}
 
+# presel
 super + ctrl + {Left,Down,Up,Right}
-	bspc window -p {left,down,up,right}
+	bspc node -p {west,south,north,east}
 
-super + ctrl + {_,shift + }space
-	bspc {window -p cancel,desktop -c}
+# cancel presel
+super + ctrl + space
+    bspc node -p cancel
 
 super + alt + {Left,Down,Up,Right}
 	bspc window -e {left -10,down +10,up -10,right +10}
