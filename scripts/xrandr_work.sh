@@ -2,7 +2,7 @@
 
 ~/dotfiles/scripts/bspwm_xrandr_stop.sh 
 # set monitor
-xrandr --output HDMI1 --auto --output VGA1 --primary --auto --output VGA1 --right-of HDMI1 
+xrandr --output HDMI1 --auto --output VGA1 --primary --auto --right-of HDMI1 
 xrandr --output LVDS1 --off 
 
 bspc monitor VGA1  -d mail web im system dev irc documents
