@@ -8,37 +8,31 @@ super + alt + Escape
 super + q
 	bspc node -c
 
-#super + t
-	#bspc desktop -l next
-
 super + b
 	bspc desktop -B
 
 super + {t,s,f}
-    bspc window -t {tiled,floating,fullscreen}
+    bspc node -t {tiled,floating,fullscreen}
 
 super + {grave,Tab}
-	bspc {window,desktop} -f last
+	bspc {node,desktop} -f last
 
 super + apostrophe
-	bspc window -s last
+	bspc node -s last
 
 super + {o,i}
-	bspc control --record-history off; \
-	bspc window {older,newer} -f; \
-	bspc control --record-history on
+    bspc wm -h off; \
+    bspc node {older,newer} -f; \
+    bspc wm -h on
 
 super + y
 	bspc node -w last.manual
 
-super + m
+super + g
 	bspc node -s biggest
 
 super + {_,shift + }{Left,Down,Up,Right}
 	bspc node -{f,s} {west,south,north,east}
-
-super + {comma,period}
-	bspc desktop -C {backward,forward}
 
 super + bracket{left,right}
 	bspc desktop -f {prev,next}
@@ -52,10 +46,10 @@ super + ctrl + space
     bspc node -p cancel
 
 super + alt + {Left,Down,Up,Right}
-	bspc window -e {left -10,down +10,up -10,right +10}
+	bspc node {@west -r -10,@south -r +10,@north -r -10,@east -r +10}
 
-super + alt + shift + {h,j,k,l}
-	bspc window -e {right -10,up +10,down -10,left +10}
+super + alt + shift + {Left, Down, Up, Right}
+	bspc node {@east -r -10,@north +10,@south -r -10,@west -r +10}
 
 super + ctrl + {1-9}
 	bspc window -r 0.{1-9}
@@ -86,6 +80,7 @@ super + {minus,equal}
 # wm independent hotkeys
 #
 #
+#
 F12
  xdotool search --onlyvisible --classname URxvtQuake windowunmap \
     || xdotool search --classname URxvtQuake windowmap \
@@ -96,8 +91,6 @@ super + Return
 
 super + space
     ~/dotfiles/bspwm/rofi_exec_menu.sh
-    #dmenu_run -x 100 -y 100 -w 600 -l 4 -nb "#282828" -nf "#ccb18b"
-    #rofi -show run
 
 super + r
     ~/dotfiles/bspwm/rofi_menu.sh
@@ -115,15 +108,11 @@ super + e
 super + p
     $HOME/dotfiles/bspwm/change_workspace.sh
 
-
 super + l
-    i3lock
+    $HOME/dotfiles/cool_lock.sh
 
 super + c
     clipmenu
-
-super + z
-    bspc control --toggle-visibility 
 
 super + p
     sh $HOME/dotfiles/bspwm/change_workspace.sh

@@ -13,7 +13,7 @@ else
     fi
     source ~/.zprezto/init.zsh
     source ~/.zprezto/runcoms/zshrc
-    source ~/dotfiles/zsh/zpreztorc
+    source ~/dotfiles/zprezto/.zpreztorc
 fi
 
 export EDITOR=vim
@@ -43,11 +43,11 @@ if [[ "$host" == "Darwin" ]]; then
     export CLICOLOR=YES
     source ~/.zprezto/init.zsh
     source ~/.zprezto/runcoms/zshrc
-    source ~/dotfiles/zsh/zpreztorc
+    source ~/dotfiles/zprezto/.zpreztorc
 else
     source ~/.zprezto/init.zsh
     source ~/.zprezto/runcoms/zshrc
-    source ~/dotfiles/zsh/zpreztorc
+    source ~/dotfiles/zprezto/.zpreztorc
 fi
 
 if [ -e $HOME/.current_project ]; then

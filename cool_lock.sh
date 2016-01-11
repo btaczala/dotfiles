@@ -3,14 +3,11 @@
 icon="$HOME/dotfiles/lock.png"
 tmpbg='/tmp/screenshot.png'
 
-why=`echo -e "\nping pong\nmeeting" | rofi -dmenu -p lock`
-echo $why > /tmp/why
-~/dotfiles/skype_away.py away "$why"
-#if [[ "$why" == "ping pong" ]]; then
-    #i3lock -n -i ~/Downloads/pingpong.jpeg.size.xxlarge.letterbox.png -t
-#else
-    i3lock -n -f 40 
-#fi
+~/dotfiles/skype_away.py away 
 
-i3lock -i ~/dotfiles/walls/orion.png
+scrot $tmpbg
+convert $tmpbg -scale 25% -scale 400% $tmpbg
+[[ -f $1 ]] && convert /tmp/screen.png $1 -gravity center -composite -matte $tmpbg
+i3lock -n -i $tmpbg
 ~/dotfiles/skype_away.py online
+rm $tmpbg

@@ -32,7 +32,6 @@ bspc config remove_disabled_monitors true
 bspc config remove_unplugged_monitors true
 bspc config merge_overlapping_monitors true
 
-
 # Rules
 bspc rule -a Skype desktop=^3
 bspc rule -a Pidgin desktop=^5
@@ -51,4 +50,3 @@ bspc config external_rules_command "$HOME/.config/bspwm/external_rules.sh"
 ~/.config/bspwm/panel/panel > /tmp/panel-log 2>&1 &
 sleep 2
 setxkbmap pl &
-
