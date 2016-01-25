@@ -17,3 +17,7 @@ echo "Name=$name asd" >> /tmp/zlo
 if [ "$name" == "calendar_floating" ] || [ "$instance" == "calendar_floating" ] || [ "$name" == "URxvtQuake" ]; then
     echo "state=floating"
 fi
+
+if [ "$name" == "task_list_floating" ] || [ "$instance" == "task_list_floating" ]; then
+    echo "state=floating"
+fi

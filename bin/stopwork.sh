@@ -15,7 +15,10 @@ function close_program()
 systemctl --user stop mopidy
 close_program skype
 killall skype
-killall google-chrome-stable
+killall chrome
+killall firefox
+killall hangups
+killall mutt
 close_program ncmpcpp
 
-i3lock
+~/dotfiles/cool_lock.sh

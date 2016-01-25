@@ -30,17 +30,8 @@ set nu
 set modeline
 set modelines=5
 set fillchars+=vert:│
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.gcno,*.gcda,*.cpp.o,CMakeLists.txt.user
 
-" Auto detect cores
-function! SetMakeprg()
-    if !empty($NUMBER_OF_PROCESSORS)
-        let n = $NUMBER_OF_PROCESSORS + 0
-    else
-        let n = system('nproc') + 0
-    endif
-    let &makeprg = 'make' . (n > 1 ? (' -j'.(n + 1)) : '')
-endfunction
-call SetMakeprg()
 
 au BufRead,BufNewFile *mutt* set filetype=mail
 au BufRead,BufNewFile *muttrc* set filetype=muttrc
@@ -79,6 +70,7 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'rking/ag.vim'
 Plug 'severin-lemaignan/vim-minimap'
 Plug 'sjbach/lusty'
+Plug 'rhysd/vim-clang-format'
 
 call plug#end()
 filetype plugin indent on     " required! 
@@ -93,4 +85,8 @@ hi SpellBad cterm=underline
 nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <leader>b :TagbarToggle<CR>
 nnoremap <leader>n :NERDTreeToggle <CR>
+map <F2> :bprevious<CR>
+map <F3> :bnext<CR>
 
+autocmd FileType c,cpp nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
+autocmd FileType c,cpp vnoremap <buffer><Leader>cf :ClangFormat<CR>

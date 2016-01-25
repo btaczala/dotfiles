@@ -52,10 +52,10 @@ super + alt + shift + {Left, Down, Up, Right}
 	bspc node {@east -r -10,@north +10,@south -r -10,@west -r +10}
 
 super + ctrl + {1-9}
-	bspc window -r 0.{1-9}
+	bspc node -r 0.{1-9}
 
 super + {_,shift + }{1-9,0}
-	bspc {desktop -f,window -d} ^{1-9,10}
+	bspc {desktop -f,node -d} ^{1-9,10}
 
 ~button1
 	bspc pointer -g focus
@@ -120,6 +120,24 @@ super + p
 super + a
     sh $HOME/dotfiles/bspwm/toggle_panel.sh
 
+super + z
+    sh $HOME/dotfiles/bspwm/toggle_right.sh
+
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
+
+XF86AudioLowerVolume
+    ponymix decrease 5
+
+XF86AudioRaiseVolume
+    ponymix increase 5
+
+super + XF86AudioLowerVolume
+    ponymix --device 2 decrease 5
+
+super + XF86AudioRaiseVolume
+    ponymix --device 2 increase 5
+
+XF86AudioPlay
+    mpc playpause
