@@ -19,22 +19,13 @@ fi
 export EDITOR=vim
 export PATH=$HOME/.gem/ruby/2.1.0/bin:$PATH
 export PATH=$HOME/dotfiles/scripts:$PATH
-
-if [[ "$host" == "Darwin" ]]; then
-	export PAGER=/usr/local/bin/vimpager
-else
-	export PAGER=/usr/bin/vimpager
-fi
-alias less=$PAGER
-alias zless=$PAGER
+export PAGER=less
 
 unset GREP_COLOR
 unset GREP_OPTIONS
 
 alias gst='git status'
 alias gup='git pull --rebase'
-alias builds='cd ~/.builds'
-source ~/dotfiles/zsh/k.sh
 
 export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
@@ -48,10 +39,6 @@ else
     source ~/.zprezto/init.zsh
     source ~/.zprezto/runcoms/zshrc
     source ~/dotfiles/zprezto/.zpreztorc
-fi
-
-if [ -e $HOME/.current_project ]; then
-    source $HOME/.current_project
 fi
 
 eval "$(fasd --init auto)"

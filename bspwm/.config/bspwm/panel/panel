@@ -47,7 +47,7 @@ for i in $num_mon; do
     # Substitute the xtitle command here if you just want the current active window
     # name to be displayed.
     #xtitle -t 80 -sf 'T\\A%s//' > "$PANEL_FIFO$i" &
-    title.sh $i > "$PANEL_FIFO$i" &
+    #title.sh $i > "$PANEL_FIFO$i" &
 
     ## info.sh outputs system information.
     #if [ -z "$(eval echo \$'barInfo'$i)" ]; then

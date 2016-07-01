@@ -99,9 +99,6 @@ super + w
 super + e
     ~/dotfiles/rofi/custom_rofi.sh
 
-#super + d
-    #rofi -terminal termite -show ssh
-
 super + p
     $HOME/dotfiles/bspwm/change_workspace.sh
 

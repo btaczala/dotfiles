@@ -52,14 +52,14 @@ update() {
         if [ "$CUR_MON_TILED" = true ]; then
             winName $WIN_SOURCE;
         elif [ "$CUR_MON_TILED" = false ]; then
-            FLOAT_STATUS=$(bspc query -W -w focused.floating);
-            if [ ! -z $FLOAT_STATUS ]; then
-                winName $WIN_SOURCE;
-            else
-                for i in $(bspc query -W -d $CUR_MON_DESK); do
-                   winName $i;
-                done
-            fi;
+            #FLOAT_STATUS=$(bspc query -W -w focused.floating);
+            #if [ ! -z $FLOAT_STATUS ]; then
+            winName $WIN_SOURCE;
+            #else
+                #for i in $(bspc query -W -d $CUR_MON_DESK); do
+                   #winName $i;
+                #done
+            #fi;
         fi;
     fi
 }

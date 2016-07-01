@@ -5,10 +5,11 @@ syntax on
 set hlsearch 
 set incsearch
 set laststatus=2
+set colorcolumn=120
 set hidden
-let g:airline_theme = 'wombat'
+"let g:airline_theme = 'wombat'
+let g:airline_theme = 'distinguished'
 let g:airline#extensions#tabline#enabled = 1
-let g:loaded_dispatch = 0
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 let g:cmake_build_type = 'Debug'
@@ -17,6 +18,8 @@ let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:notes_directories = ['~/notes']
 let g:ycm_confirm_extra_conf = 0
+let g:BufKillOverrideCtrlCaret = 1
+let g:ycm_server_log_level = 'debug'
 let mapleader = ","
 set smartindent
 set autoindent
@@ -29,8 +32,9 @@ set spelllang=en_us,pl
 set nu
 set modeline
 set modelines=5
-set fillchars+=vert:│
+"set fillchars+=vert:│
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.gcno,*.gcda,*.cpp.o,CMakeLists.txt.user
+set wildignore+=*/build/*,*/3rdParty/*
 
 
 au BufRead,BufNewFile *mutt* set filetype=mail
@@ -53,6 +57,7 @@ call plug#begin()
 Plug 'kien/ctrlp.vim'
 Plug 'idbrii/vim-man'
 Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'Valloric/YouCompleteMe'
 Plug 'bling/vim-bufferline'
 Plug 'junegunn/fzf.vim'
@@ -71,6 +76,14 @@ Plug 'rking/ag.vim'
 Plug 'severin-lemaignan/vim-minimap'
 Plug 'sjbach/lusty'
 Plug 'rhysd/vim-clang-format'
+Plug 'rbgrouleff/bclose.vim'
+Plug 'qpkorr/vim-bufkill'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-fugitive'
+Plug 'vim-scripts/DoxygenToolkit.vim'
+Plug 'Matt-Deacalion/vim-systemd-syntax'
+Plug 'Shougo/neocomplete.vim'
+Plug 'kergoth/vim-bitbake'
 
 call plug#end()
 filetype plugin indent on     " required! 
@@ -85,8 +98,12 @@ hi SpellBad cterm=underline
 nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <leader>b :TagbarToggle<CR>
 nnoremap <leader>n :NERDTreeToggle <CR>
+nnoremap <leader>f :set foldmethod=syntax <CR>
 map <F2> :bprevious<CR>
 map <F3> :bnext<CR>
+map <F9> :Dispatch -j9<CR>
 
 autocmd FileType c,cpp nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
 autocmd FileType c,cpp vnoremap <buffer><Leader>cf :ClangFormat<CR>
+"Remove all trailing whitespace by pressing F5
+nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>

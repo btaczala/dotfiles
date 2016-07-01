@@ -2,10 +2,10 @@
 
 ~/dotfiles/scripts/bspwm_xrandr_stop.sh 
 # set monitor
-xrandr --output HDMI1 --auto --output VGA1 --primary --auto --right-of HDMI1 
+xrandr --output HDMI1 --auto --primary --output DVI-I-1  --auto --output DVI-I-1 --right-of HDMI1 
 xrandr --output LVDS1 --off 
 
-bspc monitor VGA1  -d mail web im system dev irc documents
+bspc monitor DVI-I-1  -d mail web im system dev irc documents
 bspc monitor HDMI1 -d qtcreator dev ssh minicom
 
 # custom rules bitches
@@ -13,8 +13,6 @@ bspc rule -r Pidgin
 bspc rule -r Skype
 bspc rule -a Skype desktop=^3
 bspc rule -a Pidgin desktop=^3
-bspc rule -a QtCreator desktop=^8
-
 
 ~/dotfiles/scripts/bspwm_xrandr_start.sh
 # padding to 0 on left monitor

@@ -21,4 +21,4 @@ killall hangups
 killall mutt
 close_program ncmpcpp
 
-~/dotfiles/cool_lock.sh
+sh $HOME/dotfiles/cool_lock.sh

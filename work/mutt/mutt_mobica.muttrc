@@ -26,6 +26,9 @@ mailboxes +mobica/Inbox \
           '+mobica/projects/.jlr05' \
           '+mobica/projects/.jlr05/.eris' \
           '+mobica/projects/.jlr05/.jenkins' \
+          '+mobica/projects/.jlr05/.gerrit' \
+          '+mobica/projects/.bos03' \
+          '+mobica/projects/.bos03/.jira' \
           '+mobica/pro_jlr' \
           '+mobica/pro_bos0x' \
           '+mobica/interviews' \

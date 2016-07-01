@@ -34,11 +34,8 @@ bspc config merge_overlapping_monitors true
 
 # Rules
 bspc rule -a Skype desktop=^3
-bspc rule -a Pidgin desktop=^5
-bspc rule -a gimp-2.8 floating=on
-bspc rule -a Chromium desktop=^2
+bspc rule -a Xephyr desktop=^6 state=tiled
 bspc rule -a Firefox desktop=^2
-bspc rule -a astime sticky=on
 bspc rule -a scratchpad sticky=on state=floating 
 
 bspc rule -a Pavucontrol state=floating 
