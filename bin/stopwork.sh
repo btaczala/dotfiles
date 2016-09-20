@@ -9,16 +9,11 @@ function close_program()
     fi
 }
 
-#task sync
-
 ~/dotfiles/skype_away.py offline
+sleep 2
 systemctl --user stop mopidy
 close_program skype
 killall skype
-killall chrome
-killall firefox
-killall hangups
-killall mutt
 close_program ncmpcpp
 
 sh $HOME/dotfiles/cool_lock.sh

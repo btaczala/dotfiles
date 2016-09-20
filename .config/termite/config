@@ -14,31 +14,6 @@ clickable_url = true
 font = Terminess Powerline 8
 cursor_shape = block
 
-#[colors]
-#foreground = #a5a5a5
-#foreground_bold = #fedfed
-##foreground_dim = #888888
-#background = #1E1E1E
-###cursor = #dcdccc
-##
-#color0 = #242424
-#color1 = #FF0090
-#color2 = #A7FC00
-#color3 = #B27D12
-#color4 = #457585
-#color5 = #642337
-#color6 = #2ba8c1
-#color7 = #b3b3b3
-#color8 = #000000
-#color9 = #FF0000
-#color10 = #9ca554
-#color11 = #DDB62B
-#color12 = #228cb6
-#color13 = #7D2D41
-#color14 = #198577
-#color15 = #b3b3b3
-
-
 [colors]
 
 # special
