@@ -13,7 +13,8 @@ function close_program()
 sleep 2
 systemctl --user stop mopidy
 close_program skype
-killall skype
+pkill --oldest chrome
+pkill --oldest skype
 close_program ncmpcpp
 
 sh $HOME/dotfiles/cool_lock.sh

@@ -6,9 +6,9 @@ function start() {
 
 
 start skype
-#systemctl --user start mopidy
+systemctl --user start mopidy
 systemctl --user start gcalcli.timer
-systemctl --user start getmail.timer 
+#systemctl --user start getmail.timer 
 sleep 5
 ~/dotfiles/skype_away.py online
 

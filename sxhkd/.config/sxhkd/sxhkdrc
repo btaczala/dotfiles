@@ -90,11 +90,11 @@ super + Return
 super + space
     rofi -show run
 
-super + r
-    ~/dotfiles/bspwm/rofi_menu.sh
-
 super + w
     rofi -show window
+
+super + r
+    dmenfm
 
 super + e
     ~/dotfiles/rofi/custom_rofi.sh
@@ -132,3 +132,12 @@ super + XF86AudioRaiseVolume
 
 XF86AudioPlay
     mpc playpause
+
+XF86AudioMute
+    ponymix toggle
+
+XF86MonBrightnessDown
+    xbacklight -5%
+
+XF86MonBrightnessUp
+    xbacklight +5%

@@ -2,7 +2,7 @@ set nocompatible               " be iMproved
 filetype off                   " required!
 syntax on
 
-set hlsearch 
+set hlsearch
 set incsearch
 set laststatus=2
 set colorcolumn=120
@@ -12,15 +12,12 @@ let g:airline_theme = 'distinguished'
 let g:airline#extensions#tabline#enabled = 1
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
-let g:cmake_build_type = 'Debug'
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:notes_directories = ['~/notes']
 let g:ycm_confirm_extra_conf = 0
 let g:BufKillOverrideCtrlCaret = 1
 let g:ycm_server_log_level = 'debug'
 let mapleader = ","
+let g:session_autosave = 'no'
+let g:session_autoload = 'no'
 set smartindent
 set autoindent
 set tabstop=4
@@ -32,14 +29,12 @@ set spelllang=en_us,pl
 set nu
 set modeline
 set modelines=5
-"set fillchars+=vert:│
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.gcno,*.gcda,*.cpp.o,CMakeLists.txt.user
 set wildignore+=*/build/*,*/3rdParty/*
 
 
 au BufRead,BufNewFile *mutt* set filetype=mail
 au BufRead,BufNewFile *muttrc* set filetype=muttrc
-au BufRead,BufNewFile *vimpager* set nospell
 autocmd BufRead,BufNewFile *.qml setfiletype qml
 autocmd BufRead,BufNewFile *.go setfiletype go
 autocmd FileType mail set spell
@@ -77,9 +72,15 @@ Plug 'Matt-Deacalion/vim-systemd-syntax'
 Plug 'Shougo/neocomplete.vim'
 Plug 'xuhdev/SingleCompile'
 Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'xolox/vim-session'
+Plug 'xolox/vim-misc'
+
+" Snippets
+Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
 
 call plug#end()
-filetype plugin indent on     " required! 
+filetype plugin indent on     " required!
 set background=dark
 colorscheme burnttoast256
 

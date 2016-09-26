@@ -1,0 +1,236 @@
+;=====================================================
+;
+;   To learn more about how to configure Lemonbuddy
+;   go to https://github.com/jaagr/lemonbuddy
+;
+;   The README contains alot of information
+;
+;=====================================================
+
+[settings]
+; Limit the amount of events sent to lemonbar within a set timeframe:
+; - "Allow <throttle_limit> updates within <throttle_ms> of time"
+; Default values:
+;throttle_limit = 5
+;throttle_ms = 50
+
+[bar/work_vga1]
+monitor = DP2-2
+bottom = false
+dock = false
+
+width = 100%
+height = 20
+
+
+background = #c0272822
+foreground = #c0f1ebeb
+
+spacing = 1
+lineheight = 1
+
+;separator = |
+
+;locale = en_US.UTF-8
+
+padding_left = 1
+padding_right = 1
+module_margin_left = 0
+module_margin_right = 0
+
+font-0 = sans:size=8;0
+font-1 = FontAwesome:size=10:weight=heavy;0
+
+modules-left = linux
+modules-center = bspwm
+modules-right = mpd memory volume battery clock
+
+[bar/work_hdmi1]
+monitor = DP2-1
+bottom = false
+dock = false
+
+width = 100%
+height = 20
+
+;offset_x = 0
+;offset_y = 0
+
+background = #00ffffff
+foreground = #fff
+;linecolor = #ff0000
+
+spacing = 1
+lineheight = 1
+
+;separator = |
+
+;locale = en_US.UTF-8
+
+padding_left = 1
+padding_right = 1
+module_margin_left = 0
+module_margin_right = 0
+
+font-0 = sans:size=8;0
+font-1 = FontAwesome:size=10:weight=heavy;0
+
+modules-center = bspwm
+
+[bar/work_edp1]
+monitor = eDP1
+bottom = false
+dock = false
+
+width = 100%
+height = 20
+
+background = #c0272822
+foreground = #c0f1ebeb
+
+spacing = 1
+lineheight = 1
+
+padding_left = 1
+padding_right = 1
+module_margin_left = 0
+module_margin_right = 0
+
+font-0 = sans:size=8;0
+font-1 = FontAwesome:size=10:weight=heavy;0
+
+modules-left = linux mpd
+modules-center = bspwm
+modules-right =  xbacklight pacman volume battery battrem clock
+
+[module/clock]
+type = internal/date
+date = %Y-%m-%d %H:%M
+format-padding = 2
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = ADP1
+format-discharging = <ramp-capacity> <label-discharging>
+format-charging = <animation-charging> <label-charging>
+label-discharging-foreground=#fba922
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+bar-capacity-width = 10
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-framerate_ms = 750
+
+[module/memory]
+type = internal/memory
+format = <label> 
+label = RAM %percentage_used%
+format-label-foreground = #fac863
+format-padding = 2
+
+[module/mpd]
+type = internal/mpd
+format-online = <icon-prev> <icon-stop> <toggle> <icon-next>  <icon-repeat> <icon-random>  <bar-progress> <label-time>  <label-song>
+format-padding = 2
+
+icon-play = 
+icon-pause = 
+icon-stop = 
+icon-prev = 
+icon-next = 
+icon-random = 
+icon-repeat = 
+
+toggle_on-foreground =
+toggle_off-foreground = #55
+
+bar-progress-width = 20
+bar-progress-format = %{A4:mpdseek+2: A5:mpdseek-2:}%fill%%indicator%%empty%%{A A}
+bar-progress-indicator = |
+bar-progress-indicator-foreground = #ff
+bar-progress-indicator-font = 3
+bar-progress-fill = ─
+bar-progress-fill-foreground = #bb
+bar-progress-fill-font = 3
+bar-progress-empty = ─
+bar-progress-empty-font = 3
+bar-progress-empty-foreground = #44
+
+[module/volume]
+type = internal/volume
+format-volume = <ramp-volume> <label-volume>
+format-volume-padding = 2
+format-muted-padding = 2
+label-volume = %percentage%
+label-muted =  muted
+label-muted-foreground = #66
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+label-volume-foreground=#a7db8d
+ramp-volume-foreground=#a7db8d
+
+[module/bspwm]
+workspace_icon-[0-9]+ = icon
+type = internal/bspwm
+label-active =  %icon%
+label-active-foreground = #ffffff
+label-active-underline = #fba922
+label-active-padding = 1
+label-occupied =  %icon%
+label-urgent = %icon%
+label-urgent-foreground = #000000
+label-urgent-background = #bd2c40
+label-urgent-underline = #9b0a20
+label-occupied-padding = 1
+label-empty =  %icon%
+label-empty-padding = 1
+label-dimmed-foreground = #555
+label-dimmed-underline = ${BAR.background}
+
+workspace_icon-0 = dev;
+workspace_icon-1 = im;
+workspace_icon-2 = mail;
+workspace_icon-3 = web;
+workspace_icon-4 = system;
+workspace_icon-5 = git;
+workspace_icon-6 = priv;
+workspace_icon-7 = code;
+workspace_icon-8 = docs;
+workspace_icon-default = 
+
+[module/linux]
+type = custom/text
+content = 
+click-left = "termite"
+
+[module/xbacklight]
+type = custom/script
+exec = b=$(xbacklight) && c=${b/.*}  && echo " $c"
+interval=1
+format-padding = 1
+
+
+[module/pacman]
+type = custom/script
+exec = count=$(pacman -Qu | wc -l); [ $count -gt 0 ] && echo "Updates available: $count"
+interval=1
+format-padding = 1
+
+[module/battrem]
+type = custom/script
+exec = acpi -b | grep Discharging | awk '{print $5}'
+interval=1
+format-padding = 1
+
+; vim:ft=dosini
