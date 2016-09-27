@@ -37,33 +37,6 @@
 #keystate_capslock = enable
 #keystate_scrolllock= enable
 
-"xbacklight -5% ; volnoti-show -s /usr/share/pixmaps/volnoti/display-brightness-symbolic.svg `xbacklight`"
- Mod2 + XF86MonBrightnessDown  
-
-"xbacklight +5% ; volnoti-show -s /usr/share/pixmaps/volnoti/display-brightness-symbolic.svg `xbacklight`"
- Mod2 + XF86MonBrightnessUp  
-
-"~/dotfiles/dmenu/xrmenu.sh"
- Mod2 + XF86Display
-
-"playerctl play-pause"
- XF86AudioPlay
-
-"playerctl next"
- XF86AudioNext
-
-"playerctl prev"
- XF86AudioPrev
-
-"ponymix toggle"
- Mod2 + XF86AudioMute
-
-"kbdlight down"
- XF86KbdBrightnessDown
-
-"kbdlight up"
- XF86KbdBrightnessUp
-
 
 ##################################
 # End of xbindkeys configuration #
