@@ -12,9 +12,10 @@ function close_program()
 ~/dotfiles/skype_away.py offline
 sleep 2
 systemctl --user stop mopidy
+systemctl --user stop getmail.timer
+systemctl --user stop getmail.service
 close_program skype
 pkill --oldest chrome
 pkill --oldest skype
 close_program ncmpcpp
 
-sh $HOME/dotfiles/cool_lock.sh
