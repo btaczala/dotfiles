@@ -80,9 +80,7 @@ super + {minus,equal}
 #
 #
 F12
- xdotool search --onlyvisible --classname URxvtQuake windowunmap \
-    || xdotool search --classname URxvtQuake windowmap \
-    || urxvt -name URxvtQuake -geometry 110x20+600+20
+    tdrop -a -w 80% -h 50% -y 30 termite
 
 super + Return
     termite
@@ -94,7 +92,7 @@ super + w
     rofi -show window
 
 super + r
-    dmenfm
+    rofi  -show fb -modi fb:/home/bata/dotfiles/rofi/rofi-file-browser.sh
 
 super + e
     ~/dotfiles/rofi/custom_rofi.sh
