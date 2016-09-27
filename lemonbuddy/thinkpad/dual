@@ -115,6 +115,7 @@ adapter = ADP1
 format-discharging = <ramp-capacity> <label-discharging>
 format-charging = <animation-charging> <label-charging>
 label-discharging-foreground=#fba922
+label-full = 
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
