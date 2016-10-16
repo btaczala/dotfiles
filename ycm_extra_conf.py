@@ -62,7 +62,6 @@ compilation_database_folder = os.getcwd() + "/build"
 if os.path.exists( compilation_database_folder ):
   database = ycm_core.CompilationDatabase( compilation_database_folder )
 else:
-  raise Exception("Path %s does not exists" % os.getcwd())
   database = None
 
 SOURCE_EXTENSIONS = [ '.cpp', '.cxx', '.cc', '.c', '.m', '.mm' ]
