@@ -78,7 +78,7 @@ font-1 = FontAwesome:size=10:weight=heavy;0
 modules-center = bspwm
 
 [bar/work_edp1]
-monitor = eDP1
+;monitor = eDP1
 bottom = false
 dock = false
 
