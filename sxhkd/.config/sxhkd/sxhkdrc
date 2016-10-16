@@ -80,7 +80,7 @@ super + {minus,equal}
 #
 #
 F12
-    tdrop -a -w 80% -h 50% -y 30 termite
+    tdrop -a -m -w 80% -h 50% -y 30 termite
 
 super + Return
     termite
