@@ -10,6 +10,5 @@ xrandr --output HDMI1 --auto
 bspc config top_padding 20
 bspc monitor -d mail web im dev code system ssh priv 
 nitrogen --restore & 
-lemonbuddy_wrapper work_edp1 --config=~/dotfiles/lemonbuddy/thinkpad/dual & 
-sleep 2
-trayer --SetDockType true --padding 50 --transparent true --alpha 240 --edge top --align left --expand false --widthtype request --heighttype pixel --height 15 --monitor 0 --margin 400 & 
+#lemonbuddy work_edp1 --config=$HOME/dotfiles/lemonbuddy/thinkpad/dual & 
+polybar only_one -c ~/dotfiles/lemonbuddy/thinkpad/poly_config & 

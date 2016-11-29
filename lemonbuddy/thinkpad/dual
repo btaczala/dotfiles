@@ -22,7 +22,6 @@ dock = false
 width = 100%
 height = 20
 
-
 background = #c0272822
 foreground = #c0f1ebeb
 
@@ -38,12 +37,16 @@ padding_right = 1
 module_margin_left = 0
 module_margin_right = 0
 
-font-0 = sans:size=8;0
-font-1 = FontAwesome:size=10:weight=heavy;0
+;font-0 = Hack:size=8;0
+font-0 = tamzen:size=9;1
+font-1 = FontAwesome:size=8;0
+font-2 = unifont:size=6;-1
 
 modules-left = linux
 modules-center = bspwm
-modules-right = mpd memory volume battery clock
+modules-right = mpd cpu memory volume battery clock
+wm-restack = bspwm
+tray-position = left
 
 [bar/work_hdmi1]
 monitor = DP2-1
@@ -56,26 +59,24 @@ height = 20
 ;offset_x = 0
 ;offset_y = 0
 
-background = #00ffffff
-foreground = #fff
-;linecolor = #ff0000
+background = #c0272822
+foreground = #c0f1ebeb
 
 spacing = 1
 lineheight = 1
-
-;separator = |
-
-;locale = en_US.UTF-8
 
 padding_left = 1
 padding_right = 1
 module_margin_left = 0
 module_margin_right = 0
 
-font-0 = sans:size=8;0
-font-1 = FontAwesome:size=10:weight=heavy;0
+font-0 = tamzen:size=9;1
+font-1 = FontAwesome:size=8;0
+font-2 = unifont:size=6;-1
 
+modules-left = linux wireless
 modules-center = bspwm
+wm-restack = bspwm
 
 [bar/work_edp1]
 ;monitor = eDP1
@@ -99,9 +100,11 @@ module_margin_right = 0
 font-0 = sans:size=8;0
 font-1 = FontAwesome:size=10:weight=heavy;0
 
-modules-left = linux mpd
+modules-left = linux mpd wireless
 modules-center = bspwm
 modules-right =  xbacklight pacman volume battery battrem clock
+tray-position = left
+wm-restack = bspwm
 
 [module/clock]
 type = internal/date
@@ -141,8 +144,7 @@ format-padding = 2
 
 [module/mpd]
 type = internal/mpd
-format-online = <icon-prev> <icon-stop> <toggle> <icon-next>  <icon-repeat> <icon-random>  <bar-progress> <label-time>  <label-song>
-format-padding = 2
+format-online = <icon-prev> <icon-stop> <toggle> <icon-next>  <icon-repeat> <icon-random> <label-time>  <label-song>
 
 icon-play = 
 icon-pause = 
@@ -156,16 +158,9 @@ toggle_on-foreground =
 toggle_off-foreground = #55
 
 bar-progress-width = 20
-bar-progress-format = %{A4:mpdseek+2: A5:mpdseek-2:}%fill%%indicator%%empty%%{A A}
 bar-progress-indicator = |
-bar-progress-indicator-foreground = #ff
-bar-progress-indicator-font = 3
 bar-progress-fill = ─
-bar-progress-fill-foreground = #bb
-bar-progress-fill-font = 3
 bar-progress-empty = ─
-bar-progress-empty-font = 3
-bar-progress-empty-foreground = #44
 
 [module/volume]
 type = internal/volume
@@ -181,10 +176,16 @@ ramp-volume-2 = 
 label-volume-foreground=#a7db8d
 ramp-volume-foreground=#a7db8d
 
+[module/cpu]
+type = internal/cpu
+label =  %percentage%
+interval = 0.5
+
 [module/bspwm]
-workspace_icon-[0-9]+ = icon
+workspace_icon-[0-9]+ = label; icon
+
 type = internal/bspwm
-label-active =  %icon%
+label-active = %icon%
 label-active-foreground = #ffffff
 label-active-underline = #fba922
 label-active-padding = 1
@@ -199,16 +200,16 @@ label-empty-padding = 1
 label-dimmed-foreground = #555
 label-dimmed-underline = ${BAR.background}
 
-workspace_icon-0 = dev;
-workspace_icon-1 = im;
-workspace_icon-2 = mail;
-workspace_icon-3 = web;
-workspace_icon-4 = system;
-workspace_icon-5 = git;
-workspace_icon-6 = priv;
-workspace_icon-7 = code;
-workspace_icon-8 = docs;
-workspace_icon-default = 
+ws-icon-0 = dev;
+ws-icon-1 = im;
+ws-icon-2 = mail;
+ws-icon-3 = web;
+ws-icon-4 = system;
+ws-icon-5 = git;
+ws-icon-6 = priv;
+ws-icon-7 = code;
+ws-icon-8 = docs;
+ws-icon-default = ♟
 
 [module/linux]
 type = custom/text
@@ -233,5 +234,9 @@ type = custom/script
 exec = acpi -b | grep Discharging | awk '{print $5}'
 interval=1
 format-padding = 1
+
+[module/wireless]
+type = internal/network
+interface = wlp2s0
 
 ; vim:ft=dosini

@@ -21,10 +21,7 @@ bspc config top_padding 18
 bspc config -m DP2-2 top_padding 20
 bspc config -m DP2-1 top_padding 20
 bspc monitor -s DP2-2
-lemonbuddy_wrapper work_vga1 --config=~/dotfiles/lemonbuddy/thinkpad/dual & 
-lemonbuddy_wrapper work_hdmi1 --config=~/dotfiles/lemonbuddy/thinkpad/dual & 
+lemonbuddy work_vga1 --config=$HOME/dotfiles/lemonbuddy/thinkpad/dual -r & 
+lemonbuddy work_hdmi1 --config=$HOME/dotfiles/lemonbuddy/thinkpad/dual -r & 
 nitrogen --restore
-
-sleep 2
-trayer --SetDockType true --padding 50 --transparent true --alpha 240 --edge top --align left --expand false --widthtype request --heighttype pixel --height 15 --monitor 1 --margin 40 & 
 
