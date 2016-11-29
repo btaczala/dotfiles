@@ -43,6 +43,7 @@ fi
 
 eval "$(fasd --init auto)"
 alias j='fasd_cd -d -i'
+alias cola='QT_QPA_PLATFORMTHEME= /usr/bin/git-cola'
 
 function title() {
     # escape '%' chars in $1, make nonprintables visible
