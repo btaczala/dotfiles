@@ -18,8 +18,8 @@ xset fp rehash
 unclutter -noevents -root &
 dunst -config ~/dotfiles/dunstrc &
 nitrogen --restore
-clipmenud & 
-export XDG_CURRENT_DESKTOP=KDE
+export XDG_CURRENT_DESKTOP=GNOME
+export QT_QPA_PLATFORMTHEME=qt5ct
 
 sxhkd &
 xbindkeys &
