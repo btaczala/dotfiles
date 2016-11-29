@@ -18,4 +18,5 @@ close_program skype
 pkill --oldest chrome
 pkill --oldest skype
 close_program ncmpcpp
+kill `ps ax | grep "termite -e mutt" | grep -v grep | awk '{ print $1}'`
 
