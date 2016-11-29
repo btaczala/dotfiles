@@ -11,7 +11,7 @@ function get_wm_name {
 }
 
 name=$(get_wm_name)
-echo "Name=$name asd" >> /tmp/zlo
+#echo "Name=$name asd $class" >> /tmp/zlo
 
 # for gcalcli calendar window
 if [ "$name" == "calendar_floating" ] || [ "$instance" == "calendar_floating" ] || [ "$name" == "URxvtQuake" ]; then
@@ -20,4 +20,8 @@ fi
 
 if [ "$name" == "task_list_floating" ] || [ "$instance" == "task_list_floating" ]; then
     echo "state=floating"
+fi
+
+if [ "$class" == "mutt" ]; then
+    echo "desktop=^1"
 fi
