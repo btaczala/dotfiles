@@ -1,15 +1,10 @@
 #!/bin/sh
-source ~/.bspwm_theme
 
-if killall panel > /dev/null
+padd=`bspc query -T -m | jq ".topPadding"`
+if [ "$padd" == "20" ]; 
 then
     bspc config top_padding 0
-    killall trayer
 else
-    bspc config top_padding $PANEL_HEIGHT
-    source ~/.config/bspwm/panel_base/profile
-    ~/.config/bspwm/panel_base/panel
-    sleep 2 
-    trayer --SetDockType true --padding 10 --transparent true --alpha 240 --edge top --align left --expand false --widthtype request --heighttype pixel --height 15 --monitor 1 --margin 40 &
+    bspc config top_padding 20
 fi
 
