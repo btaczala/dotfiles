@@ -80,7 +80,7 @@ super + {minus,equal}
 #
 #
 F12
-    tdrop -a -m -w 80% -h 50% -y 30 termite
+    tdrop -a -m -w 80% -h 50%  -x 10% -y 20% -s drop termite
 
 super + Return
     termite
@@ -115,6 +115,12 @@ super + a
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
+
+super + Prior
+    ponymix decrease 5
+
+super + Next
+    ponymix increase 5
 
 XF86AudioLowerVolume
     ponymix decrease 5
