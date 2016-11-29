@@ -21,7 +21,7 @@ set rnu
 set modeline
 set modelines=5
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.gcno,*.gcda,*.cpp.o,CMakeLists.txt.user
-set wildignore+=*/build/*,*/3rdParty/*
+set wildignore+=*/build/*
 
 " Global
 let mapleader = ","
@@ -55,7 +55,7 @@ call plug#begin()
 
 " My Plugins here:
 "
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'idbrii/vim-man'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -83,10 +83,14 @@ Plug 'xolox/vim-misc'
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'blindFS/vim-taskwarrior'
 Plug 'vim-scripts/DoxygenToolkit.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'vim-scripts/headerguard'
 
 " Snippets
 Plug 'honza/vim-snippets'
 Plug 'SirVer/ultisnips'
+let g:UltiSnipsExpandTrigger="<c-e>"
 
 call plug#end()
 filetype plugin indent on     " required!
