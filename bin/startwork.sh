@@ -11,9 +11,15 @@ systemctl --user start mopidy
 systemctl --user start gcalcli.timer
 systemctl --user start getmail.timer 
 
-termite  -e 'mutt -F ~/dotfiles/work/mutt/mutt_mobica.muttrc' --name=mutt  --class=mutt &
-google-chrome-stable --profile-directory="Profile 4" --class=chrome_priv &
-google-chrome-stable --profile-directory="Profile 1" --class=chrome_work &
+ps ax | grep "termite -e mutt" | grep -v grep
+if [ ! $? ]; then
+    termite  -e 'mutt -F ~/dotfiles/work/mutt/mutt_mobica.muttrc' --name=mutt  --class=mutt &
+fi
 
-sleep 5
+ps ax | grep /opt/google/chrome/chrome | grep -v grep
+if [ ! $? ]; then
+    google-chrome-stable --profile-directory="Profile 4" --class=chrome_priv &
+    google-chrome-stable --profile-directory="Profile 1" --class=chrome_work &
+fi
+
 ~/dotfiles/skype_away.py online
