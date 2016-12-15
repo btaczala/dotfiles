@@ -86,7 +86,7 @@ super + Return
     termite
 
 super + space
-    rofi -show run
+    rofi -show run -fake-transparency
 
 super + w
     rofi -show window
@@ -97,17 +97,17 @@ super + r
 super + e
     ~/dotfiles/rofi/custom_rofi.sh
 
-super + p
-    $HOME/dotfiles/bspwm/change_workspace.sh
-
 super + l
     $HOME/dotfiles/cool_lock.sh
 
 super + c
-    clipmenu
+    sh $HOME/dotfiles/bspwm/change_workspace.sh
+
+super + m
+    sh $HOME/dotfiles/monitors/change.sh
 
 super + p
-    sh $HOME/dotfiles/bspwm/change_workspace.sh
+    ls ~/dotfiles/xrandr_configs | rofi -dmenu
 
 super + a
     sh $HOME/dotfiles/bspwm/toggle_panel.sh
@@ -128,14 +128,8 @@ XF86AudioLowerVolume
 XF86AudioRaiseVolume
     ponymix increase 5
 
-super + XF86AudioLowerVolume
-    ponymix --device 2 decrease 5
-
-super + XF86AudioRaiseVolume
-    ponymix --device 2 increase 5
-
 XF86AudioPlay
-    mpc playpause
+    mpc toggle
 
 XF86AudioMute
     ponymix toggle

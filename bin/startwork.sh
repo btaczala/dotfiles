@@ -11,15 +11,20 @@ systemctl --user start mopidy
 systemctl --user start gcalcli.timer
 systemctl --user start getmail.timer 
 
-ps ax | grep "termite -e mutt" | grep -v grep
-if [ ! $? ]; then
-    termite  -e 'mutt -F ~/dotfiles/work/mutt/mutt_mobica.muttrc' --name=mutt  --class=mutt &
+out=`ps ax | grep "termite -e tmuxinator start mails" | grep -v grep`
+if [ "$out" == "" ]; then
+    termite  -e 'tmuxinator start mails' --name=mutt  --class=mutt &
+else
+    echo "Mutt is running"
 fi
 
-ps ax | grep /opt/google/chrome/chrome | grep -v grep
-if [ ! $? ]; then
+out=`ps ax | grep /opt/google/chrome/chrome | grep -v grep`
+if [ "$out" == "" ]; then
     google-chrome-stable --profile-directory="Profile 4" --class=chrome_priv &
     google-chrome-stable --profile-directory="Profile 1" --class=chrome_work &
+else
+    echo "Chrome is running"
 fi
 
+sleep 2
 ~/dotfiles/skype_away.py online

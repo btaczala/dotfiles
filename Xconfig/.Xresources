@@ -66,6 +66,6 @@ rofi.color-active:                   argb:00000000,  #6699CC , argb:00000000,  #
 rofi.color-window:                   argb:ee222222,  #FAC863 ,  #FAC863
 ! Separator style (none, dash, solid)
 rofi.separator-style:                solid
-rofi.font: Terminess Powerline 10
+rofi.font: unifont 8
 
-Xcursor.size:  16
+Xcursor.size:  10
