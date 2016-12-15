@@ -26,6 +26,7 @@ unset GREP_OPTIONS
 
 alias gst='git status'
 alias gup='git pull --rebase'
+alias clip='xsel -i -b'
 
 export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
@@ -73,3 +74,5 @@ function preexec() {
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
