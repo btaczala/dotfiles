@@ -9,9 +9,9 @@ application/mspowerpoint;                 libreoffice %s
 application/vnd.ms-powerpoint;            libreoffice %s
 application/vnd.oasis.opendocument.text;  libreoffice %s
 
-application/pdf;                zathura %s
-image/pdf;                      zathura %s
-application/ps;                 zathura %s
+application/pdf;                okular %s; nametemplate=%s.pdf
+image/pdf;                      okular %s
+application/ps;                 okular %s
 
 image/*;                        gwenview %s
 image/png;                      gwenview %s
