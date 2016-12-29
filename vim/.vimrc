@@ -66,8 +66,6 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-scripts/a.vim'
 Plug 'vhdirk/vim-cmake'
-Plug '29decibel/codeschool-vim-theme'
-Plug 'sjbach/lusty'
 Plug 'rhysd/vim-clang-format'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'qpkorr/vim-bufkill'
@@ -94,7 +92,7 @@ let g:UltiSnipsExpandTrigger="<c-e>"
 call plug#end()
 filetype plugin indent on     " required!
 set background=dark
-colorscheme burnttoast256
+colorscheme jellybeans
 
 " underline spelling mistakes
 hi clear SpellBad
@@ -102,7 +100,6 @@ hi SpellBad cterm=underline
 
 " Mapping
 nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <leader>b :TagbarToggle<CR>
 nnoremap <leader>n :NERDTreeToggle <CR>
 nnoremap <leader>f :set foldmethod=syntax <CR>
 map <F2> :bprevious<CR>
