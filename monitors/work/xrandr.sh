@@ -1,3 +1,6 @@
 #!/bin/bash
 
-xrandr --output DP2-1 --auto --output DP2-2 --mode 1920x1080 --right-of DP2-1 --output eDP1 --off
+xrandr --output eDP1 --off
+xrandr --output DP2-1 --auto 
+xrandr --output DP2-2 --auto --right-of DP2-1 
+

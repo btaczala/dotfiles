@@ -1,4 +1,5 @@
 #!/bin/bash
 
 setxkbmap pl
-nitrogen --random ~/dotfiles/walls --set-scaled
+nitrogen --set-zoom-fill ~/dotfiles/walls/dual_wall.jpg
+bspc wm -o
