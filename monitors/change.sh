@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash +xe
 
 current_setup="/tmp/current-monitor"
 this_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -25,7 +25,7 @@ config=$this_dir/$config/
 # call reset
 $this_dir/reset.sh
 
-configs=($config/"xrandr.sh" $config/$bspwm_script $config/$bar)
+configs=($config/"xrandr.sh" $config/$bspwm_script $config/$bar $config/"after.sh")
 for cfg in "${configs[@]}" 
 do 
     if [[ -e $cfg ]]; then
