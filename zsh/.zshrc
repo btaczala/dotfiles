@@ -27,6 +27,16 @@ unset GREP_OPTIONS
 alias gst='git status'
 alias gup='git pull --rebase'
 alias clip='xsel -i -b'
+# 
+# tmux aliases
+alias tmls='tmux list-sessions'
+alias tma='tmux attach-session'
+alias tmks='tmux kill-server'
+
+# task warrior aliases
+alias t='task'
+
+alias m='make -j9'
 
 export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
