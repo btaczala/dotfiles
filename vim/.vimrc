@@ -83,6 +83,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'vim-scripts/headerguard'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'junegunn/fzf.vim'
+Plug 'richq/vim-cmake-completion'
+Plug 'zanglg/nova.vim'
 
 " Snippets
 Plug 'honza/vim-snippets'
