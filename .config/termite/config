@@ -1,5 +1,3 @@
-# Solarized dark color scheme
-#
 [options]
 resize_grip = false
 scroll_on_output = false
@@ -11,8 +9,7 @@ allow_bold = true
 dynamic_title = true
 urgent_on_bell = true
 clickable_url = true
-font = Terminess Powerline 8
-cursor_shape = block
+font = Fira Mono 8
 
 [colors]
 
