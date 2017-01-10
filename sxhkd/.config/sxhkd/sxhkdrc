@@ -92,7 +92,7 @@ super + w
     rofi -show window
 
 super + r
-    rofi  -show fb -modi fb:/home/bata/dotfiles/rofi/rofi-file-browser.sh
+    rofi -show drun -fake-transparency
 
 super + e
     ~/dotfiles/rofi/custom_rofi.sh
@@ -101,6 +101,9 @@ super + l
     $HOME/dotfiles/cool_lock.sh
 
 super + c
+    clipmenu 
+
+super + x
     sh $HOME/dotfiles/bspwm/change_workspace.sh
 
 super + m

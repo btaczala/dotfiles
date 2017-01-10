@@ -16,6 +16,7 @@ xset +fp ~/.fonts
 xset +fp /usr/share/fonts/local 
 xset fp rehash 
 unclutter -noevents -root &
+clipmenud & 
 dunst -config ~/dotfiles/dunstrc &
 nitrogen --restore
 export XDG_CURRENT_DESKTOP=GNOME
