@@ -53,7 +53,7 @@ else
 fi
 
 eval "$(fasd --init auto)"
-alias j='fasd_cd -d -i'
+#alias j='fasd_cd -d -i'
 alias cola='QT_QPA_PLATFORMTHEME= /usr/bin/git-cola'
 
 function title() {
@@ -87,4 +87,13 @@ function preexec() {
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 
+source /usr/lib/z.sh
+source ~/dotfiles/zsh/functions.sh
+source ~/dotfiles/zsh/fzf-marks.plugin.zsh
+alias j=jump
+
 stty -ixon
+
+fpath=($fpath ~/dotfiles/zsh/completion)
+
+

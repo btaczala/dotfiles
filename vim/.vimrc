@@ -17,11 +17,12 @@ set expandtab
 set nospell "no spell by default
 set spelllang=en_us,pl
 set spellfile=~/dotfiles/vim/en.utf-8.add
+set nu
 set rnu
 set modeline
 set modelines=5
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.gcno,*.gcda,*.cpp.o,CMakeLists.txt.user
-set wildignore+=*/build/*
+set wildignore+=*/build*/*
 
 " Global
 let mapleader = ","
@@ -40,6 +41,10 @@ let g:session_autoload = 'no'
 " Bookmarks
 let g:bookmark_save_per_working_dir = 1
 let g:bookmark_auto_save = 1
+
+" Close NERDTree window
+let g:ctrlp_dont_split = 'NERD'
+let g:ctrlp_dont_split = 'nerdtree'
 
 au BufRead,BufNewFile *mutt* set filetype=mail
 au BufRead,BufNewFile *muttrc* set filetype=muttrc
@@ -90,6 +95,7 @@ Plug 'zanglg/nova.vim'
 Plug 'honza/vim-snippets'
 Plug 'SirVer/ultisnips'
 let g:UltiSnipsExpandTrigger="<c-e>"
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "my-snips"]
 
 call plug#end()
 filetype plugin indent on     " required!

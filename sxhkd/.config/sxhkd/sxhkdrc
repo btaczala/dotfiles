@@ -131,6 +131,12 @@ XF86AudioLowerVolume
 XF86AudioRaiseVolume
     ponymix increase 5
 
+super + F5
+    ponymix decrease 5
+
+super + F6
+    ponymix increase 5
+
 XF86AudioPlay
     mpc toggle
 

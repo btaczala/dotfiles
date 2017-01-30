@@ -43,6 +43,7 @@ set postponed="+mobica/drafts"
 
 # Sync email
 macro index o "<shell-escape>mbsync -c ~/dotfiles/work/mutt/mbsync_mobica mobica<enter>" "run offlineimap to sync inbox"
+macro index \Cw "<shell-escape>notmuch tag -unread tag:inbox<enter>" "run offlineimap to sync inbox"
 
 # Other key bindings
 source ~/dotfiles/mutt/mutt_keybindings.config
@@ -68,6 +69,7 @@ macro index <F9> \
 
 macro index,pager a "<pipe-message>goobook -v add<return>" "add sender to google contacts"
 macro index,pager ,ta '<pipe-message>~/dotfiles/mutt/mutt2task<enter>F'
+#macro index,pager U 'notmuch tag -unread tag:inbox<enter>F'
 
 #source /usr/share/doc/mutt-kz/samples/gpg.rc
 #set pgp_use_gpg_agent = yes
