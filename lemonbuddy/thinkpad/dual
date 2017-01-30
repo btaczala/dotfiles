@@ -8,115 +8,69 @@
 ;=====================================================
 
 [settings]
-; Limit the amount of events sent to lemonbar within a set timeframe:
-; - "Allow <throttle_limit> updates within <throttle_ms> of time"
-; Default values:
-;throttle_limit = 5
-;throttle_ms = 50
+font0 = tamzen:size=11;1
+font1 = FontAwesome:size=8;0
+font2 = unifont:size=6;-1
 
-[bar/work_vga1]
-monitor = DP2-2
+[bar/main]
+monitor = ${env:BAR_MONITOR:DP2-2}
 bottom = false
-dock = false
-
 width = 100%
 height = 20
-
-background = #c0272822
 foreground = #c0f1ebeb
-
 spacing = 1
-lineheight = 1
+module-margin-left = 1
+module-margin-right = 0
+;separator= "|"
 
-;separator = |
-
-;locale = en_US.UTF-8
-
-padding_left = 1
-padding_right = 1
-module_margin_left = 0
-module_margin_right = 0
-
-;font-0 = Hack:size=8;0
-font-0 = tamzen:size=9;1
-font-1 = FontAwesome:size=8;0
-font-2 = unifont:size=6;-1
+font-0 = ${settings.font0}
+font-1 = ${settings.font1}
+font-2 = ${settings.font2}
 
 modules-left = linux
 modules-center = bspwm
-modules-right = mpd cpu memory volume battery clock
+modules-right =  vpn pkg mail-counter volume battery clock keyboard
 wm-restack = bspwm
-tray-position = left
+tray-position = right
 
 [bar/work_hdmi1]
 monitor = DP2-1
 bottom = false
-dock = false
-
 width = 100%
 height = 20
-
-;offset_x = 0
-;offset_y = 0
-
 background = #c0272822
 foreground = #c0f1ebeb
-
 spacing = 1
 lineheight = 1
-
 padding_left = 1
 padding_right = 1
-module_margin_left = 0
-module_margin_right = 0
 
-font-0 = tamzen:size=9;1
-font-1 = FontAwesome:size=8;0
-font-2 = unifont:size=6;-1
+font-0 = ${settings.font0}
+font-1 = ${settings.font1}
+font-2 = ${settings.font2}
 
 modules-left = linux wireless
 modules-center = bspwm
 wm-restack = bspwm
 
-[bar/work_edp1]
-;monitor = eDP1
-bottom = false
-dock = false
-
-width = 100%
-height = 20
-
-background = #c0272822
-foreground = #c0f1ebeb
-
-spacing = 1
-lineheight = 1
-
-padding_left = 1
-padding_right = 1
-module_margin_left = 0
-module_margin_right = 0
-
-font-0 = sans:size=8;0
-font-1 = FontAwesome:size=10:weight=heavy;0
-
-modules-left = linux mpd wireless
-modules-center = bspwm
-modules-right =  xbacklight pacman volume battery battrem clock
-tray-position = left
-wm-restack = bspwm
+[module/keyboard]
+type = internal/xkeyboard
 
 [module/clock]
 type = internal/date
 date = %Y-%m-%d %H:%M
-format-padding = 2
+date-alt = %A, %d %B %Y
+time-alt = %H:%M:%S
+format-padding = 1
 
 [module/battery]
 type = internal/battery
 battery = BAT0
+full-at = 99
 adapter = ADP1
-format-discharging = <ramp-capacity> <label-discharging>
-format-charging = <animation-charging> <label-charging>
+format-discharging = <ramp-capacity><label-discharging>
+label-discharging = %percentage%% %time%
+format-charging = <animation-charging><label-charging>
 label-discharging-foreground=#fba922
 label-full = 
 
@@ -146,49 +100,33 @@ format-padding = 2
 type = internal/mpd
 format-online = <icon-prev> <icon-stop> <toggle> <icon-next>  <icon-repeat> <icon-random> <label-time>  <label-song>
 
-icon-play = 
-icon-pause = 
-icon-stop = 
-icon-prev = 
-icon-next = 
-icon-random = 
-icon-repeat = 
-
-toggle_on-foreground =
-toggle_off-foreground = #55
-
-bar-progress-width = 20
-bar-progress-indicator = |
-bar-progress-fill = ─
-bar-progress-empty = ─
-
 [module/volume]
 type = internal/volume
-format-volume = <ramp-volume> <label-volume>
-format-volume-padding = 2
+format-volume =<ramp-volume><label-volume>
 format-muted-padding = 2
 label-volume = %percentage%
 label-muted =  muted
-label-muted-foreground = #66
+label-muted-foreground = #f70808
 ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
-label-volume-foreground=#a7db8d
-ramp-volume-foreground=#a7db8d
+ramp-volume-foreground=#698edd
 
 [module/cpu]
 type = internal/cpu
 label =  %percentage%
-interval = 0.5
+format = <label>
+interval = 1
 
 [module/bspwm]
 workspace_icon-[0-9]+ = label; icon
+pin-workspaces = true
 
 type = internal/bspwm
-label-active = %icon%
-label-active-foreground = #ffffff
-label-active-underline = #fba922
-label-active-padding = 1
+label-focused = %icon%
+label-focused-foreground = #b4e07b
+label-focused-background = #3f3f3f
+label-focused-padding = 1
 label-occupied =  %icon%
 label-urgent = %icon%
 label-urgent-foreground = #000000
@@ -198,7 +136,7 @@ label-occupied-padding = 1
 label-empty =  %icon%
 label-empty-padding = 1
 label-dimmed-foreground = #555
-label-dimmed-underline = ${BAR.background}
+label-dimmed-underline = #bd2c40
 
 ws-icon-0 = dev;
 ws-icon-1 = im;
@@ -216,27 +154,33 @@ type = custom/text
 content = 
 click-left = "termite"
 
-[module/xbacklight]
-type = custom/script
-exec = b=$(xbacklight) && c=${b/.*}  && echo " $c"
-interval=1
-format-padding = 1
-
-
-[module/pacman]
-type = custom/script
-exec = count=$(pacman -Qu | wc -l); [ $count -gt 0 ] && echo "Updates available: $count"
-interval=1
-format-padding = 1
-
-[module/battrem]
-type = custom/script
-exec = acpi -b | grep Discharging | awk '{print $5}'
-interval=1
-format-padding = 1
-
 [module/wireless]
 type = internal/network
 interface = wlp2s0
+
+[module/mail-counter]
+type=custom/script
+exec=notmuch count tag:unread and tag:new
+format= <label>
+click-right=notmuch tag -unread tag:inbox
+
+[module/vpn]
+type = custom/script
+exec = echo ' vpn'
+exec-if = pgrep -x openconnect
+;exec-if = true
+interval = 1
+format-prefix = ""
+format-prefix-foreground = #f75e5e
+format-background=#272827
+
+[module/pkg]
+type = custom/script
+interval = 1200
+format = <label>
+format-underline = #dc322f
+label = %output:0:30%
+exec = ~/dotfiles/scripts/pacman_packages.sh
+exec-if = "ping -q -w 2 -c 1 176.34.135.167 > /dev/null"
 
 ; vim:ft=dosini

@@ -1,3 +1,3 @@
 #!/bin/bash
 
-polybar only_one -c ~/dotfiles/lemonbuddy/thinkpad/poly_config & 
+BAR_MONITOR=eDP1 polybar main -c ~/dotfiles/lemonbuddy/thinkpad/dual -r & 

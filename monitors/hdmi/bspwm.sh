@@ -1,6 +1,6 @@
 #!/bin/bash
 
-bspc monitor -d mail web im dev code system ssh priv 
+bspc monitor -d mail web im dev code system git priv 
 
 # custom rules bitches
 bspc rule -r Pidgin

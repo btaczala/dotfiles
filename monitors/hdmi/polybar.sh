@@ -1,3 +1,3 @@
 #!/bin/bash
 
-polybar only_one -c ~/dotfiles/lemonbuddy/thinkpad/poly_config & 
+polybar only_one -c ~/dotfiles/lemonbuddy/thinkpad/poly_config -r & 
