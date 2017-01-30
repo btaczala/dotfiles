@@ -27,6 +27,7 @@ xbindkeys &
 synclient VertScrollDelta=-111
 synclient HorizScrollDelta=-111
 export KDE_FULL_SESSION=1
+redshift & 
 exec bspwm > /tmp/bspwm.log 2>&1
 #exec openbox &
 #exec startkde
