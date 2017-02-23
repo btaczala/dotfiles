@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 function start() {
     nohup $@ > /dev/null 2>&1 &
@@ -6,7 +6,7 @@ function start() {
 
 setxkbmap pl
 
-start skype
+start pidgin
 systemctl --user start mopidy
 systemctl --user start gcalcli.timer
 systemctl --user start getmail.timer 
@@ -20,4 +20,4 @@ else
 fi
 
 sleep 2
-~/dotfiles/skype_away.py online
+purple-remote "setstatus?status=available&message="

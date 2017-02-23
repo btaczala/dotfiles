@@ -9,7 +9,9 @@ function close_program()
     fi
 }
 
+purple-remote "setstatus?status=offline&message="
 ~/dotfiles/skype_away.py offline
+nmcli con down id here.com
 sleep 2
 systemctl --user stop mopidy
 systemctl --user stop getmail.timer
@@ -18,6 +20,7 @@ close_program skype
 pkill --oldest chrome
 pkill --oldest skype
 close_program ncmpcpp
+purple-remote quit
 
 # kill all terminals
 killall termite

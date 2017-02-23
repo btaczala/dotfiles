@@ -9,6 +9,7 @@ if [ ! "$mpc_status" == "" ]; then
     mpc pause
 fi
 
+purple-remote "setstatus?status=away&message=afk"
 ~/dotfiles/skype_away.py away 
 
 #scrot $tmpbg
@@ -16,6 +17,7 @@ fi
 #[[ -f $1 ]] && convert /tmp/screen.png $1 -gravity center -composite -matte $tmpbg
 /usr/bin/xwobf -s 5 $tmpbg
 i3lock -n -i $tmpbg
+purple-remote "setstatus?status=available&message="
 ~/dotfiles/skype_away.py online
 rm $tmpbg
 
