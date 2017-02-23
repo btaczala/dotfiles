@@ -16,19 +16,16 @@ xset +fp ~/.fonts
 xset +fp /usr/share/fonts/local 
 xset fp rehash 
 unclutter -noevents -root &
-clipmenud & 
 dunst -config ~/dotfiles/dunstrc &
 nitrogen --restore
 export XDG_CURRENT_DESKTOP=GNOME
 export QT_QPA_PLATFORMTHEME=qt5ct
+
+systemctl --user start redshift
 
 sxhkd &
 xbindkeys &
 synclient VertScrollDelta=-111
 synclient HorizScrollDelta=-111
 export KDE_FULL_SESSION=1
-redshift & 
 exec bspwm > /tmp/bspwm.log 2>&1
-#exec openbox &
-#exec startkde
-#exec herbstluftwm &
