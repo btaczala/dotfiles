@@ -8,11 +8,8 @@ super + alt + Escape
 super + q
 	bspc node -c
 
-super + b
-	bspc desktop -B
-
-super + {t,s,f}
-    bspc node -t {tiled,floating,fullscreen}
+super + {t,s,f,p}
+    bspc node -t {tiled,floating,fullscreen,pseudo_tiled}
 
 super + {grave,Tab}
 	bspc {node,desktop} -f last
@@ -24,9 +21,6 @@ super + {o,i}
     bspc wm -h off; \
     bspc node {older,newer} -f; \
     bspc wm -h on
-
-super + y
-	bspc node -w last.manual
 
 super + g
 	bspc node -s biggest
@@ -77,10 +71,6 @@ super + {minus,equal}
 #
 # wm independent hotkeys
 #
-#
-#
-F12
-    tdrop -a -m -w 80% -h 50%  -x 10% -y 20% -s drop termite
 
 super + Return
     termite
@@ -103,14 +93,17 @@ super + l
 super + c
     clipmenu 
 
+super + comma
+    python ~/dotfiles/bspwm/change_workspace.py
+
 super + x
     sh $HOME/dotfiles/bspwm/change_workspace.sh
 
 super + m
     sh $HOME/dotfiles/monitors/change.sh
 
-super + p
-    ls ~/dotfiles/xrandr_configs | rofi -dmenu
+super + v
+    python ~/external/projects/pidgin-dmenu/pidgin.py
 
 super + a
     sh $HOME/dotfiles/bspwm/toggle_panel.sh

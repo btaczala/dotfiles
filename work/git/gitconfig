@@ -10,6 +10,7 @@
 	ui = auto
 [core]
 	editor = vim
+	autocrlf = input
 [alias]
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 [alias]
@@ -35,3 +36,5 @@
 	email = bartosz.taczala@mobica.com
 [cola]
 	fontdiff = Source Code Pro,9,-1,5,50,0,0,0,0,0
+[review "gerrit.it.here.com"]
+	username = btaczala

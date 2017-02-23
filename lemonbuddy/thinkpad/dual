@@ -160,7 +160,7 @@ interface = wlp2s0
 
 [module/mail-counter]
 type=custom/script
-exec=notmuch count tag:unread and tag:new
+exec=notmuch count --output=threads tag:unread and tag:new
 format= <label>
 click-right=notmuch tag -unread tag:inbox
 
