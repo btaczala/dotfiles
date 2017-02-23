@@ -3,6 +3,8 @@ filetype off                   " required!
 syntax on
 set guifont=Hack
 
+set exrc
+
 set hlsearch
 set incsearch
 set laststatus=2
@@ -38,13 +40,15 @@ let g:ycm_global_ycm_extra_conf = '~/dotfiles/ycm_extra_conf.py'
 let g:session_autosave = 'no'
 let g:session_autoload = 'no'
 
+let g:ycm_python_binary_path = '/usr/bin/python3'
+
 " Bookmarks
 let g:bookmark_save_per_working_dir = 1
 let g:bookmark_auto_save = 1
 
+" 
+let g:goyo_width = 140
 " Close NERDTree window
-let g:ctrlp_dont_split = 'NERD'
-let g:ctrlp_dont_split = 'nerdtree'
 
 au BufRead,BufNewFile *mutt* set filetype=mail
 au BufRead,BufNewFile *muttrc* set filetype=muttrc
@@ -60,7 +64,6 @@ call plug#begin()
 
 " My Plugins here:
 "
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'idbrii/vim-man'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -78,7 +81,6 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
 Plug 'Matt-Deacalion/vim-systemd-syntax'
 Plug 'Shougo/neocomplete.vim'
-Plug 'xuhdev/SingleCompile'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'xolox/vim-session'
 Plug 'xolox/vim-misc'
@@ -89,7 +91,15 @@ Plug 'vim-scripts/headerguard'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'junegunn/fzf.vim'
 Plug 'richq/vim-cmake-completion'
-Plug 'zanglg/nova.vim'
+Plug 'alepez/vim-gtest'
+" Distract free mode
+Plug 'junegunn/goyo.vim'
+
+Plug 'hdima/python-syntax'
+" colorschemes
+Plug 'agude/vim-eldar'
+Plug 'albertocg/contrastneed-theme'
+Plug 'crater2150/vim-theme-chroma'
 
 " Snippets
 Plug 'honza/vim-snippets'
@@ -109,7 +119,8 @@ hi SpellBad cterm=underline
 " Mapping
 nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <leader>n :NERDTreeToggle <CR>
-nnoremap <leader>f :set foldmethod=syntax <CR>
+"nnoremap <leader>f :set foldmethod=syntax <CR>
+map <C-P> :FZF<CR>
 map <F2> :bprevious<CR>
 map <F3> :bnext<CR>
 map <F9> :Dispatch -j9<CR>
@@ -118,3 +129,5 @@ autocmd FileType c,cpp nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
 autocmd FileType c,cpp vnoremap <buffer><Leader>cf :ClangFormat<CR>
 "Remove all trailing whitespace by pressing F5
 nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+
+set secure
