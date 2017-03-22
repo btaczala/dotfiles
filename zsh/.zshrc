@@ -96,4 +96,5 @@ stty -ixon
 
 fpath=($fpath ~/dotfiles/zsh/completion)
 
+source "$HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh"
 

@@ -92,6 +92,7 @@ Plug 'tmux-plugins/vim-tmux'
 Plug 'junegunn/fzf.vim'
 Plug 'richq/vim-cmake-completion'
 Plug 'alepez/vim-gtest'
+Plug 'terryma/vim-multiple-cursors'
 " Distract free mode
 Plug 'junegunn/goyo.vim'
 
@@ -100,6 +101,7 @@ Plug 'hdima/python-syntax'
 Plug 'agude/vim-eldar'
 Plug 'albertocg/contrastneed-theme'
 Plug 'crater2150/vim-theme-chroma'
+Plug 'morhetz/gruvbox'
 
 " Snippets
 Plug 'honza/vim-snippets'
@@ -110,7 +112,7 @@ let g:UltiSnipsSnippetDirectories=["UltiSnips", "my-snips"]
 call plug#end()
 filetype plugin indent on     " required!
 set background=dark
-colorscheme jellybeans
+colorscheme gruvbox
 
 " underline spelling mistakes
 hi clear SpellBad
