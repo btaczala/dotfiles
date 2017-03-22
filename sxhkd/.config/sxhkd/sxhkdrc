@@ -97,7 +97,7 @@ super + comma
     python ~/dotfiles/bspwm/change_workspace.py
 
 super + x
-    sh $HOME/dotfiles/bspwm/change_workspace.sh
+    python $HOME/dotfiles/bspwm/change_workspace.py
 
 super + m
     sh $HOME/dotfiles/monitors/change.sh
