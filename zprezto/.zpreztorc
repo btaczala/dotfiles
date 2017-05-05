@@ -13,5 +13,5 @@ zstyle ':prezto:load' pmodule \
   'rsync' \
   'prompt'
 
-zstyle ':prezto:module:prompt' theme 'skwp'
+zstyle ':prezto:module:prompt' theme 'damoekri'
 zstyle ':prezto:module:utility:make' color 'no'

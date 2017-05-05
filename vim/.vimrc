@@ -26,6 +26,9 @@ set modelines=5
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.gcno,*.gcda,*.cpp.o,CMakeLists.txt.user
 set wildignore+=*/build*/*
 
+set splitbelow
+set splitright
+
 " Global
 let mapleader = ","
 let g:BufKillOverrideCtrlCaret = 1
@@ -88,11 +91,13 @@ Plug 'MattesGroeger/vim-bookmarks'
 Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-scripts/headerguard'
-Plug 'tmux-plugins/vim-tmux'
 Plug 'junegunn/fzf.vim'
 Plug 'richq/vim-cmake-completion'
 Plug 'alepez/vim-gtest'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'fidian/hexmode'
+Plug 'rking/ag.vim'
+Plug 'felipec/notmuch-vim'
 " Distract free mode
 Plug 'junegunn/goyo.vim'
 
@@ -102,6 +107,8 @@ Plug 'agude/vim-eldar'
 Plug 'albertocg/contrastneed-theme'
 Plug 'crater2150/vim-theme-chroma'
 Plug 'morhetz/gruvbox'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'benmills/vimux'
 
 " Snippets
 Plug 'honza/vim-snippets'
@@ -112,7 +119,8 @@ let g:UltiSnipsSnippetDirectories=["UltiSnips", "my-snips"]
 call plug#end()
 filetype plugin indent on     " required!
 set background=dark
-colorscheme gruvbox
+colorscheme jellybeans
+"colorscheme Tomorrow
 
 " underline spelling mistakes
 hi clear SpellBad
@@ -121,11 +129,18 @@ hi SpellBad cterm=underline
 " Mapping
 nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <leader>n :NERDTreeToggle <CR>
-"nnoremap <leader>f :set foldmethod=syntax <CR>
+nnoremap <leader>f :set foldmethod=syntax <CR>
+nnoremap <leader>b :Buffers <CR>
 map <C-P> :FZF<CR>
 map <F2> :bprevious<CR>
 map <F3> :bnext<CR>
-map <F9> :Dispatch -j9<CR>
+
+" Simplify split navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+nnoremap <silent> vv <C-w>v
 
 autocmd FileType c,cpp nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
 autocmd FileType c,cpp vnoremap <buffer><Leader>cf :ClangFormat<CR>

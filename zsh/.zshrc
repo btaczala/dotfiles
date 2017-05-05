@@ -17,6 +17,7 @@ else
 fi
 
 export EDITOR=vim
+export BROWSER=google-chrome-stable
 export PATH=$HOME/.gem/ruby/2.1.0/bin:$PATH
 export PATH=$HOME/dotfiles/scripts:$PATH
 export PAGER=less
@@ -87,7 +88,6 @@ function preexec() {
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 
-source /usr/lib/z.sh
 source ~/dotfiles/zsh/functions.sh
 source ~/dotfiles/zsh/fzf-marks.plugin.zsh
 alias j=jump
