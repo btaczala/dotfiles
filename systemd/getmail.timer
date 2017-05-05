@@ -1,12 +1,12 @@
 [Unit]
-Description=Check Mail every fifteen minutes
+Description=Check Mail every five minutes
 RefuseManualStart=no
 RefuseManualStop=no
 
 [Timer]
 Persistent=false
 OnBootSec= 5min
-OnUnitActiveSec= 15min
+OnUnitActiveSec= 5min
 Unit=getmail.service
 
 [Install]
