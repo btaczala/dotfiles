@@ -6,7 +6,7 @@ function start() {
 
 setxkbmap pl
 
-start pidgin
+start skypeforlinux
 systemctl --user start mopidy
 systemctl --user start gcalcli.timer
 systemctl --user start getmail.timer 
@@ -20,4 +20,3 @@ else
 fi
 
 sleep 2
-purple-remote "setstatus?status=available&message="
