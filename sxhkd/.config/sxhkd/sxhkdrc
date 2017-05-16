@@ -128,7 +128,9 @@ XF86AudioMute
     ponymix toggle
 
 XF86MonBrightnessDown
-    xbacklight -5%
+    xbacklight -dec 5
 
 XF86MonBrightnessUp
-    xbacklight +5%
+    xbacklight -inc 5
+Scroll_Lock
+    synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*0')
