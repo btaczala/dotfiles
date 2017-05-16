@@ -1,3 +1,3 @@
 #!/bin/bash
 
-xrandr --output eDP1 --off --output DP2-1 --off --output DP2-2 --off --output HDMI1 --auto
+xrandr --output eDP-1 --off --output DP2-1 --off --output DP2-2 --off --output HDMI-3 --auto

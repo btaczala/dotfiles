@@ -1,3 +1,4 @@
 #!/bin/bash
+source $HOME/dotfiles/monitors/`hostname`.config
 
-BAR_MONITOR=eDP1 polybar main -c ~/dotfiles/lemonbuddy/thinkpad/dual -r & 
+BAR_MONITOR=$laptop_display polybar main -c ~/dotfiles/lemonbuddy/thinkpad/dual -r & 

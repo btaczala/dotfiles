@@ -1,6 +1,8 @@
 #!/bin/bash
 
-xrandr --output eDP1 --off
-xrandr --output DP2-1 --auto 
-xrandr --output DP2-2 --auto --right-of DP2-1 
+source $HOME/dotfiles/monitors/`hostname`.config
+
+xrandr --output $laptop_display --off
+xrandr --output $work_monitor_left --auto 
+xrandr --output $work_monitor_right --auto --right-of $work_monitor_left
 

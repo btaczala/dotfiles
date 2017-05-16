@@ -13,7 +13,7 @@ font1 = FontAwesome:size=8;0
 font2 = unifont:size=6;-1
 
 [bar/main]
-monitor = ${env:BAR_MONITOR:DP2-2}
+monitor = ${env:BAR_MONITOR}
 bottom = false
 width = 100%
 height = 20
@@ -29,12 +29,12 @@ font-2 = ${settings.font2}
 
 modules-left = linux
 modules-center = bspwm
-modules-right =  vpn pkg mail-counter volume battery clock keyboard
+modules-right =  vpn pkg volume battery clock keyboard
 wm-restack = bspwm
 tray-position = right
 
 [bar/work_hdmi1]
-monitor = DP2-1
+monitor = ${env:BAR_MONITOR}
 bottom = false
 width = 100%
 height = 20
@@ -66,8 +66,8 @@ format-padding = 1
 [module/battery]
 type = internal/battery
 battery = BAT0
-full-at = 99
-adapter = ADP1
+full-at = 100 
+adapter = AC
 format-discharging = <ramp-capacity><label-discharging>
 label-discharging = %percentage%% %time%
 format-charging = <animation-charging><label-charging>
