@@ -109,6 +109,7 @@ Plug 'crater2150/vim-theme-chroma'
 Plug 'morhetz/gruvbox'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
+Plug 'ledger/vim-ledger'
 
 " Snippets
 Plug 'honza/vim-snippets'
