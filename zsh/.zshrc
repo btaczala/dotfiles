@@ -37,8 +37,6 @@ alias tmks='tmux kill-server'
 # task warrior aliases
 alias t='task'
 
-alias m='make -j9'
-
 export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
 
@@ -53,8 +51,6 @@ else
     source ~/dotfiles/zprezto/.zpreztorc
 fi
 
-eval "$(fasd --init auto)"
-#alias j='fasd_cd -d -i'
 alias cola='QT_QPA_PLATFORMTHEME= /usr/bin/git-cola'
 
 function title() {
@@ -84,17 +80,15 @@ function preexec() {
     title "$1" "%m:%35<...<%~"
 }
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
-
-source ~/dotfiles/zsh/functions.sh
-source ~/dotfiles/zsh/fzf-marks.plugin.zsh
-alias j=jump
+source $HOME/dotfiles/zsh/fzf-marks.plugin.zsh
+source $HOME/dotfiles/zsh/my_fzf.sh
 
 stty -ixon
 
 fpath=($fpath ~/dotfiles/zsh/completion)
 
 source "$HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh"
+
 
