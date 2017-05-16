@@ -6,7 +6,7 @@ if [ $STATE = 'full' ]
 then
     mbsync -c ~/dotfiles/work/mutt/mbsync_mobica mobica
     notmuch new
-    $HOME/bata/dotfiles/systemd/notmuch-notification.sh
+    $HOME/dotfiles/systemd/notmuch-notification.sh
     exit 0
 fi
 echo "No internet connection."
