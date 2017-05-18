@@ -1,3 +1,2 @@
-offlineimaprc filter=git-crypt diff=git-crypt
-offlineimaprc_private filter=git-crypt diff=git-crypt
-*.enc filter=git-crypt diff=git-crypt
+ledger/ledger.dat filter=git-crypt diff=git-crypt
+*.key filter=git-crypt diff=git-crypt
