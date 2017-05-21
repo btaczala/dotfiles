@@ -49,9 +49,7 @@ let g:ycm_python_binary_path = '/usr/bin/python3'
 let g:bookmark_save_per_working_dir = 1
 let g:bookmark_auto_save = 1
 
-" 
 let g:goyo_width = 140
-" Close NERDTree window
 
 au BufRead,BufNewFile *mutt* set filetype=mail
 au BufRead,BufNewFile *muttrc* set filetype=muttrc
@@ -110,6 +108,7 @@ Plug 'morhetz/gruvbox'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 Plug 'ledger/vim-ledger'
+Plug 'NLKNguyen/papercolor-theme'
 
 " Snippets
 Plug 'honza/vim-snippets'
@@ -120,7 +119,10 @@ let g:UltiSnipsSnippetDirectories=["UltiSnips", "my-snips"]
 call plug#end()
 filetype plugin indent on     " required!
 set background=dark
-colorscheme jellybeans
+"set background=light
+set t_Co=256
+"colorscheme jellybeans
+colorscheme PaperColor
 "colorscheme Tomorrow
 
 " underline spelling mistakes

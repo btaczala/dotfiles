@@ -3,7 +3,7 @@
 current_setup="/tmp/current-monitor"
 this_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-if [[ $# -eq 1 ]]; then 
+if [[ $# -eq 1 ]]; then
     config=$1
     if [[ "`find $this_dir -mindepth 1 -type d | grep $config | grep -v grep`" == "" ]]; then
         echo "No such config $config"
@@ -26,15 +26,15 @@ config=$this_dir/$config/
 $this_dir/reset.sh
 
 configs=($config/"xrandr.sh" $config/$bspwm_script $config/$bar $config/"after.sh")
-for cfg in "${configs[@]}" 
-do 
+for cfg in "${configs[@]}"
+do
     if [[ -e $cfg ]]; then
         echo "Executing $cfg"
         $cfg
     fi
 done
 
-if [[ -d $current_setup ]]; then 
+if [[ -d $current_setup ]]; then
     unlink $current_setup
 fi
 
