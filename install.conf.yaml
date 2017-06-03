@@ -1,0 +1,17 @@
+- defaults:
+    link:
+      relink: true
+- clean: ['~']
+- shell: 
+    - mkdir -p ~/.config/dunst
+
+- link:
+    ~/.tmux.conf: tmux/.tmux.conf
+    ~/.config/bspwm: bspwm/.config/bspwm
+    ~/.config/sxhkd: sxhkd/.config/sxhkd
+    ~/.config/termite: .config/termite
+    ~/.vimrc: vim/.vimrc
+    ~/.xinitrc: Xconfig/.xinitrc
+    ~/.Xresources: Xconfig/.Xresources
+    ~/.zshrc: zsh/.zshrc
+    ~/.config/dunst/dunstrc: dunstrc
