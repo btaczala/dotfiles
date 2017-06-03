@@ -25,7 +25,7 @@ config=$this_dir/$config/
 # call reset
 $this_dir/reset.sh
 
-configs=($config/"xrandr.sh" $config/$bspwm_script $config/$bar $config/"after.sh")
+configs=($config/$bspwm_script $config/$bar $config/"after.sh")
 for cfg in "${configs[@]}"
 do
     if [[ -e $cfg ]]; then
