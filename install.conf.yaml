@@ -19,3 +19,4 @@
     ~/.Xresources: Xconfig/.Xresources
     ~/.zshrc: zsh/.zshrc
     ~/.config/dunst/dunstrc: dunstrc
+    ~/.netrc: netrc
