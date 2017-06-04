@@ -4,6 +4,10 @@
 - clean: ['~']
 - shell: 
     - mkdir -p ~/.config/dunst
+    - [
+      '[[ -d ~/.zprezto ]] || 
+        git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto" 
+      fi']
 
 - link:
     ~/.tmux.conf: tmux/.tmux.conf
