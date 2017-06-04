@@ -21,3 +21,4 @@
     ~/.config/dunst/dunstrc: dunstrc
     ~/.netrc: netrc
     ~/.gitconfig: work/git/gitconfig
+    ~/.gdbinit: gdbinit
