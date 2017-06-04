@@ -20,3 +20,4 @@
     ~/.zshrc: zsh/.zshrc
     ~/.config/dunst/dunstrc: dunstrc
     ~/.netrc: netrc
+    ~/.gitconfig: work/git/gitconfig

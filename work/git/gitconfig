@@ -36,5 +36,4 @@
 	email = bartosz.taczala@mobica.com
 [cola]
 	fontdiff = Source Code Pro,9,-1,5,50,0,0,0,0,0
-[review "gerrit.it.here.com"]
-	username = btaczala
+	spellcheck = false
