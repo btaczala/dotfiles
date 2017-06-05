@@ -44,6 +44,7 @@ let g:session_autosave = 'no'
 let g:session_autoload = 'no'
 
 let g:ycm_python_binary_path = '/usr/bin/python3'
+let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 " Bookmarks
 let g:bookmark_save_per_working_dir = 1
@@ -96,6 +97,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'fidian/hexmode'
 Plug 'rking/ag.vim'
 Plug 'felipec/notmuch-vim'
+Plug 'peterhoeg/vim-qml'
 " Distract free mode
 Plug 'junegunn/goyo.vim'
 
@@ -121,8 +123,8 @@ filetype plugin indent on     " required!
 set background=dark
 "set background=light
 set t_Co=256
-"colorscheme jellybeans
-colorscheme PaperColor
+colorscheme jellybeans
+""colorscheme PaperColor
 "colorscheme Tomorrow
 
 " underline spelling mistakes
@@ -149,5 +151,6 @@ autocmd FileType c,cpp nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
 autocmd FileType c,cpp vnoremap <buffer><Leader>cf :ClangFormat<CR>
 "Remove all trailing whitespace by pressing F5
 nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 
 set secure

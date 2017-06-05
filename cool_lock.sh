@@ -9,6 +9,10 @@ if [ ! "$mpc_status" == "" ]; then
     mpc pause
 fi
 
+if [ "`playerctl status`" == "Playing" ]; then 
+    playerctl pause
+fi
+
 purple-remote "setstatus?status=away&message=afk"
 
 /usr/bin/xwobf -s 5 $tmpbg
@@ -18,4 +22,8 @@ rm $tmpbg
 
 if [ ! "$mpc_status" == "" ]; then
     mpc play
+fi
+
+if [ "`playerctl status`" == "Paused" ];then 
+    playerctl play
 fi

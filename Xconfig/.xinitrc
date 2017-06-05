@@ -11,6 +11,12 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
   unset f
 fi
 
+export XDG_CURRENT_DESKTOP=KDE
+export QT_QPA_PLATFORMTHEME=qt5ct
+export _JAVA_AWT_WM_NONREPARENTING=1
+#export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
+
 xrdb ~/.Xresources 
 xset +fp ~/.fonts
 xset +fp /usr/share/fonts/local 
@@ -18,14 +24,9 @@ xset fp rehash
 unclutter -noevents -root &
 dunst -config ~/dotfiles/dunstrc &
 nitrogen --restore
-export XDG_CURRENT_DESKTOP=GNOME
-export QT_QPA_PLATFORMTHEME=qt5ct
-
-systemctl --user start redshift
-
 sxhkd &
 xbindkeys &
 synclient VertScrollDelta=-111
 synclient HorizScrollDelta=-111
-export KDE_FULL_SESSION=1
+
 exec bspwm > /tmp/bspwm.log 2>&1
