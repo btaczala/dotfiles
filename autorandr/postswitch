@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "Executing $HOME/dotfiles/monitors/change.sh ${AUTORANDR_CURRENT_PROFILE}"
+$HOME/dotfiles/monitors/change.sh ${AUTORANDR_CURRENT_PROFILE}

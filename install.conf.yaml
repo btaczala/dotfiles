@@ -27,3 +27,4 @@
     ~/.config/systemd/user/gcalcli.service: systemd/gcalcli.service
     ~/.config/systemd/user/gcalcli.timer: systemd/gcalcli.timer
     ~/.config/systemd/user/mopidy.service: systemd/mopidy.service
+    ~/.config/autorandr/postswitch: autorandr/postswitch
