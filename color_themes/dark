@@ -1,4 +1,0 @@
-#!/bin/bash
-
-termite_theme="$HOME/.config/termite/themes/really_dark.config"
-

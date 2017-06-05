@@ -1,3 +1,0 @@
-#!/bin/bash
-
-termite_theme="$HOME/.config/termite/themes/Tomorrow.config"

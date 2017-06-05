@@ -3,7 +3,6 @@
       relink: true
 - clean: ['~']
 - shell: 
-    - mkdir -p ~/.config/dunst
     - [
       '[[ -d ~/.zprezto ]] || 
         git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto" 
@@ -11,14 +10,14 @@
 
 - link:
     ~/.tmux.conf: tmux/.tmux.conf
-    ~/.config/bspwm: bspwm/.config/bspwm
-    ~/.config/sxhkd: sxhkd/.config/sxhkd
-    ~/.config/termite: .config/termite
+    ~/.config/bspwm: config/bspwm
+    ~/.config/sxhkd: config/sxhkd
+    ~/.config/termite: config/termite
+    ~/.config/dunst: config/dunst
     ~/.vimrc: vim/.vimrc
     ~/.xinitrc: Xconfig/.xinitrc
     ~/.Xresources: Xconfig/.Xresources
     ~/.zshrc: zsh/.zshrc
-    ~/.config/dunst/dunstrc: dunstrc
     ~/.netrc: netrc
     ~/.gitconfig: work/git/gitconfig
     ~/.gdbinit: gdbinit
@@ -28,3 +27,4 @@
     ~/.config/systemd/user/gcalcli.timer: systemd/gcalcli.timer
     ~/.config/systemd/user/mopidy.service: systemd/mopidy.service
     ~/.config/autorandr/postswitch: autorandr/postswitch
+    ~/.vim/colors: vim/.vim/colors
