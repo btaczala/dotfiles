@@ -27,4 +27,5 @@
     ~/.config/systemd/user/gcalcli.timer: systemd/gcalcli.timer
     ~/.config/systemd/user/mopidy.service: systemd/mopidy.service
     ~/.config/autorandr/postswitch: autorandr/postswitch
+    ~/.config/autorandr/predetect: autorandr/predetect
     ~/.vim/colors: vim/.vim/colors
