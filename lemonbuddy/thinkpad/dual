@@ -147,6 +147,9 @@ ws-icon-5 = git;
 ws-icon-6 = priv;
 ws-icon-7 = code;
 ws-icon-8 = docs;
+ws-icon-9 = irc;
+ws-icon-10 = vm;
+ws-icon-11 = music;
 ws-icon-default = ♟
 
 [module/linux]
