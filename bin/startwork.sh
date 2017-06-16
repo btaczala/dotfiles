@@ -18,5 +18,3 @@ if [ "$out" == "" ]; then
 else
     echo "Chrome is running"
 fi
-
-sleep 2

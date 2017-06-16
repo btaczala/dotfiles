@@ -37,3 +37,15 @@
 [cola]
 	fontdiff = Hack,9,-1,5,50,0,0,0,0,0
 	spellcheck = false
+
+[alias]
+  showtool = "!f() { git difftool $1^ $1; }; f"
+  added = difftool --cached
+[diff]
+  tool = icdiff
+[difftool]
+  prompt = false
+[difftool "icdiff"]
+  cmd = /usr/bin/icdiff --line-numbers $LOCAL $REMOTE
+[pager]
+  difftool = true
