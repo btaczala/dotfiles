@@ -126,6 +126,7 @@ set t_Co=256
 colorscheme jellybeans
 ""colorscheme PaperColor
 "colorscheme Tomorrow
+"colorscheme messy
 
 " underline spelling mistakes
 hi clear SpellBad
