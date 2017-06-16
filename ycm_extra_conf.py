@@ -41,7 +41,7 @@ flags = [
 '-Wno-long-long',
 '-Wno-variadic-macros',
 '-fexceptions',
-'-std=c++14',
+'-std=c++1z',
 '-I',
 '/usr/include/c++/7.1.1',
 '-I',
@@ -134,6 +134,7 @@ def FlagsForFile( filename, **kwargs ):
 
     final_flags.append("-I/usr/include/c++/6.3.1")
     final_flags.append("-I/usr/include/")
+    final_flags.append("-std=c++1z")
 
     # NOTE: This is just for YouCompleteMe; it's highly likely that your project
     # does NOT need to remove the stdlib flag. DO NOT USE THIS IN YOUR
