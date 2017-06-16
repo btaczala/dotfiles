@@ -132,7 +132,7 @@ def FlagsForFile( filename, **kwargs ):
       compilation_info.compiler_flags_,
       compilation_info.compiler_working_dir_ )
 
-    final_flags.append("-I/usr/include/c++/6.3.1")
+    final_flags.append("-I/usr/include/c++/7.1.1")
     final_flags.append("-I/usr/include/")
     final_flags.append("-std=c++1z")
 
