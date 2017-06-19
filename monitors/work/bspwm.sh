@@ -2,7 +2,7 @@
 
 source $HOME/dotfiles/monitors/`hostname`.config
 
-bspc monitor $work_monitor_right -d mail web im system irc vm
+bspc monitor $work_monitor_right -d mail web im irc system vm
 bspc monitor $work_monitor_left -d code dev music priv
 
 # custom rules bitches
