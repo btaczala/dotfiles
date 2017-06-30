@@ -82,7 +82,7 @@ super + l
     $HOME/dotfiles/cool_lock.sh
 
 super + c
-    /usr/bin/clipmenu
+    CM_LAUNCHER=rofi /usr/bin/clipmenu
 
 super + comma
     python ~/dotfiles/bspwm/change_workspace.py
