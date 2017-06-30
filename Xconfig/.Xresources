@@ -12,43 +12,27 @@ URxvt.keysym.Control-Escape: perl:keyboard-select:activate
 !-------------------------------------------------------------------------------
 ! Colors
 
-! special
-*.foreground:   #a5a2a2
-!*.background:   #090300
-*.background:   #020202
-*.cursorColor:  #a5a2a2
+*foreground: 	#ffffff
+*background: 	#222222
+*cursorColor:  #ffffff
+*colorUL:      #C5C8A8
 
-! black
-*.color0:       #090300
-*.color8:       #5c5855
-
-! red
-*.color1:       #db2d20
-*.color9:       #db2d20
-
-! green
-*.color2:       #01a252
-*.color10:      #01a252
-
-! yellow
-*.color3:       #fded02
-*.color11:      #fded02
-
-! blue
-*.color4:       #01a0e4
-*.color12:      #01a0e4
-
-! magenta
-*.color5:       #a16a94
-*.color13:      #a16a94
-
-! cyan
-*.color6:       #b5e4f4
-*.color14:      #b5e4f4
-
-! white
-*.color7:       #a5a2a2
-*.color15:      #f7f7f7
+*color0: 	#474747
+*color8: 	#383838
+*color1: 	#D85774
+*color9: 	#F59BB0
+*color2: 	#C5C8A8
+*color10: 	#DEFFD4
+*color3: 	#BACCAC
+*color11: 	#BED19E
+*color4: 	#C777AF
+*color12:     #D498D0
+*color5: 	#E36BB2
+*color13: 	#D14BAA
+*color6: 	#D09EAF
+*color14: 	#CC91A3
+*color7: 	#F5CCD4
+*color15: 	#FFFFFF
 
 
 ! ------------------------------------------------------------------------------
