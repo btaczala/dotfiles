@@ -111,7 +111,6 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 Plug 'ledger/vim-ledger'
 Plug 'NLKNguyen/papercolor-theme'
-Plug 'jeaye/color_coded'
 
 " Snippets
 Plug 'honza/vim-snippets'
