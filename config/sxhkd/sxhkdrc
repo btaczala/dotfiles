@@ -64,7 +64,7 @@ super + {minus,equal}
 #
 
 super + Return
-    urxvt
+    termite
 
 super + space
     rofi -show run -fake-transparency
