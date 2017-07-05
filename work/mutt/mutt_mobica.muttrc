@@ -49,7 +49,9 @@ macro index \Cw "<shell-escape>notmuch tag -unread tag:inbox<enter>" "run offlin
 source ~/dotfiles/mutt/mutt_keybindings.config
 
 # Colors --------------------------------
-source ~/dotfiles/mutt/mutt-colors-solarized-dark-256.muttrc
+#source ~/dotfiles/mutt/mutt-colors-solarized-dark-256.muttrc
+#source ~/dotfiles/mutt/colors/themes.256
+source ~/dotfiles/mutt/colors/tomorrow-night.muttrc
 
 # Contacts
 set query_command="goobook query '%s'"
