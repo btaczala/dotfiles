@@ -51,11 +51,15 @@ let g:session_autosave = 'no'
 let g:session_autoload = 'no'
 
 let g:ycm_python_binary_path = '/usr/bin/python3'
-let $FZF_DEFAULT_COMMAND = 'ag -g "" --ignore 3rdParty'
+let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+let g:fzf_layout = { 'window': 'enew' }
 
 " Bookmarks
 let g:bookmark_save_per_working_dir = 1
 let g:bookmark_auto_save = 1
+
+" clang tools
+let g:clang_rename_path='/usr/bin/clang-rename'
 
 let g:goyo_width = 140
 
@@ -77,6 +81,7 @@ Plug 'idbrii/vim-man'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'Valloric/YouCompleteMe'
+Plug 'jeaye/color_coded'
 Plug 'bling/vim-bufferline'
 Plug 'Yggdroot/indentLine'
 Plug 'scrooloose/nerdcommenter'
@@ -134,7 +139,7 @@ nnoremap <leader>n :NERDTreeToggle <CR>
 nnoremap <leader>f :set foldmethod=syntax <CR>
 nnoremap <leader>b :Buffers <CR>
 nnoremap <leader>c :cnext <CR>
-map <C-P> :FZF<CR>
+nnoremap <silent> <expr> <C-P> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":FZF\<cr>"
 map <F2> :bprevious<CR>
 map <F3> :bnext<CR>
 
@@ -145,8 +150,11 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 nnoremap <silent> vv <C-w>v
 
+" clang tools
 autocmd FileType c,cpp nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
 autocmd FileType c,cpp vnoremap <buffer><Leader>cf :ClangFormat<CR>
+noremap <leader>cr :pyf /usr/share/clang/clang-rename.py<cr>
+
 "Remove all trailing whitespace by pressing F5
 nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
