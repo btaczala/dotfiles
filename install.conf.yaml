@@ -30,3 +30,4 @@
     ~/.config/autorandr/predetect: autorandr/predetect
     ~/.vim/colors: vim/.vim/colors
     ~/.gcalclirc: gcalcli/gcalclirc
+    ~/.tmuxinator: tmuxinator
