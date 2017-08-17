@@ -39,3 +39,4 @@ windows:
       panes:
         - mutt -F /home/bata/dotfiles/work/mutt/mutt_mobica.muttrc
         - goobook reload && gcalcli calw
+        - t next
