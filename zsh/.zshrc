@@ -91,4 +91,6 @@ fpath=($fpath ~/dotfiles/zsh/completion)
 source "$HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh"
 unset -f make
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+eval $(dircolors -b $HOME/dotfiles/.dircolors)
