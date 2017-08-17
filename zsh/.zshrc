@@ -51,7 +51,6 @@ else
     source ~/dotfiles/zprezto/.zpreztorc
 fi
 
-alias cola='QT_QPA_PLATFORMTHEME= /usr/bin/git-cola'
 
 function title() {
     # escape '%' chars in $1, make nonprintables visible
@@ -90,5 +89,6 @@ stty -ixon
 fpath=($fpath ~/dotfiles/zsh/completion)
 
 source "$HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh"
+unset -f make
 
 

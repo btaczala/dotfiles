@@ -29,3 +29,4 @@
     ~/.config/autorandr/postswitch: autorandr/postswitch
     ~/.config/autorandr/predetect: autorandr/predetect
     ~/.vim/colors: vim/.vim/colors
+    ~/.gcalclirc: gcalcli/gcalclirc

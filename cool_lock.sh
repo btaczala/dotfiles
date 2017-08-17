@@ -14,16 +14,15 @@ tmpbg='/tmp/screenshot.png'
 
 mpc_status=`mpc status | grep playing`
 
-irc_away "away"
-
 if [ ! "$mpc_status" == "" ]; then
     mpc pause
 fi
 
+purple-remote "setstatus?status=away&message="
 /usr/bin/xwobf -s 5 $tmpbg
 i3lock -n -i $tmpbg
-irc_away ""
 rm $tmpbg
+purple-remote "setstatus?status=available&message="
 
 if [ ! "$mpc_status" == "" ]; then
     mpc play

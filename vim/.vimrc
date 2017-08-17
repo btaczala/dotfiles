@@ -35,6 +35,13 @@ let g:BufKillOverrideCtrlCaret = 1
 " airline
 let g:airline_theme = 'distinguished'
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_detect_modified=0
+let g:airline_detect_paste=0
+let g:airline_left_sep = '⮀'
+let g:airline_left_alt_sep = '⮁'
+let g:airline_right_sep = '⮂'
+let g:airline_right_alt_sep = '⮃'
+let g:airline_section_c = '%F'
 " Ycm
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_server_log_level = 'debug'
@@ -44,7 +51,7 @@ let g:session_autosave = 'no'
 let g:session_autoload = 'no'
 
 let g:ycm_python_binary_path = '/usr/bin/python3'
-let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+let $FZF_DEFAULT_COMMAND = 'ag -g "" --ignore 3rdParty'
 
 " Bookmarks
 let g:bookmark_save_per_working_dir = 1
@@ -86,9 +93,7 @@ Plug 'Shougo/neocomplete.vim'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'xolox/vim-session'
 Plug 'xolox/vim-misc'
-Plug 'MattesGroeger/vim-bookmarks'
 Plug 'vim-scripts/DoxygenToolkit.vim'
-Plug 'airblade/vim-gitgutter'
 Plug 'vim-scripts/headerguard'
 Plug 'junegunn/fzf.vim'
 Plug 'richq/vim-cmake-completion'
@@ -103,14 +108,7 @@ Plug 'junegunn/goyo.vim'
 
 Plug 'hdima/python-syntax'
 " colorschemes
-Plug 'agude/vim-eldar'
-Plug 'albertocg/contrastneed-theme'
-Plug 'crater2150/vim-theme-chroma'
 Plug 'morhetz/gruvbox'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'benmills/vimux'
-Plug 'ledger/vim-ledger'
-Plug 'NLKNguyen/papercolor-theme'
 
 " Snippets
 Plug 'honza/vim-snippets'
@@ -125,9 +123,6 @@ set background=dark
 "set background=light
 set t_Co=256
 colorscheme jellybeans
-""colorscheme PaperColor
-"colorscheme Tomorrow
-"colorscheme messy
 
 " underline spelling mistakes
 hi clear SpellBad
@@ -138,6 +133,7 @@ nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <leader>n :NERDTreeToggle <CR>
 nnoremap <leader>f :set foldmethod=syntax <CR>
 nnoremap <leader>b :Buffers <CR>
+nnoremap <leader>c :cnext <CR>
 map <C-P> :FZF<CR>
 map <F2> :bprevious<CR>
 map <F3> :bnext<CR>

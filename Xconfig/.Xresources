@@ -2,12 +2,14 @@ URxvt.font:         xft:Envy Code R:pixelsize=12
 URxvt*scrollBar: false
 URxvt.saveLines: 32767
 URxvt*termName: rxvt
-URxvt.perl-ext-common: default,clipboard,keyboard-select
+URxvt.perl-ext-common: default,clipboard,keyboard-select,resize-font
 URxvt.iso14755: false
 URxvt.keysym.Shift-Control-C: perl:clipboard:copy
 URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 URxvt.keysym.M-s: perl:keyboard-select:search
 URxvt.keysym.Control-Escape: perl:keyboard-select:activate
+URxvt.resize-font.smaller: C-Down
+URxvt.resize-font.bigger: C-Up
 
 !-------------------------------------------------------------------------------
 ! Colors
@@ -53,3 +55,4 @@ rofi.separator-style:                solid
 rofi.font: Envy Code R 10
 
 Xcursor.size:  8
+
