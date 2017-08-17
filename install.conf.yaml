@@ -31,3 +31,6 @@
     ~/.vim/colors: vim/.vim/colors
     ~/.gcalclirc: gcalcli/gcalclirc
     ~/.tmuxinator: tmuxinator
+    ~/.config/nvim/init.vim: 
+      create: true
+      path: nvim/init.vim
