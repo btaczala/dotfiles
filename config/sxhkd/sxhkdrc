@@ -72,6 +72,9 @@ super + space
 super + w
     rofi -show window
 
+alt + tab
+    rofi -show window
+
 super + r
     rofi -show drun -fake-transparency
 
@@ -82,7 +85,8 @@ super + l
     $HOME/dotfiles/cool_lock.sh
 
 super + c
-    CM_LAUNCHER=rofi /usr/bin/clipmenu
+    rofi -modi "clipboard:greenclip print" -show clipboard
+    #CM_LAUNCHER=rofi /usr/bin/clipmenu
 
 super + comma
     python ~/dotfiles/bspwm/change_workspace.py
@@ -128,9 +132,9 @@ XF86AudioMute
     ponymix toggle
 
 XF86MonBrightnessDown
-    xbacklight -dec 5
+    xbacklight -dec 10 -fps 60
 
 XF86MonBrightnessUp
-    xbacklight -inc 5
+    xbacklight -inc 10 -fps 60
 Scroll_Lock
     synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*0')

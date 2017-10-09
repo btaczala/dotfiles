@@ -24,6 +24,7 @@ xset fp rehash
 unclutter -noevents -root &
 dunst -config ~/dotfiles/dunstrc &
 nitrogen --restore
+greenclip daemon &
 sxhkd &
 xbindkeys &
 synclient VertScrollDelta=-111
