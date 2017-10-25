@@ -55,13 +55,21 @@ Plug 'vim-scripts/a.vim'
 Plug 'morhetz/gruvbox'
 Plug 'nanotech/jellybeans.vim'
 Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'alepez/vim-gtest'
+Plug 'altercation/vim-colors-solarized'
+Plug 'nightsense/seagrey'
+Plug 'nightsense/plumber'
 
 " Initialize plugin system
 call plug#end()
 
 set background=dark
+"set background=light
 set t_Co=256
 colorscheme jellybeans
+"colorscheme vrunchbang
+syntax enable
+"colorscheme solarized
 " Mapping
 nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <leader>n :NERDTreeToggle <CR>
