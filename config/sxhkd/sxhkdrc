@@ -66,6 +66,9 @@ super + {minus,equal}
 super + Return
     termite
 
+super + shift + Return
+    termite -c ~/.config/termite/mutt.config
+
 super + space
     rofi -show run -fake-transparency
 
@@ -101,7 +104,7 @@ super + v
     python ~/external/projects/pidgin-dmenu/pidgin.py
 
 super + a
-    sh $HOME/dotfiles/bspwm/toggle_panel.sh
+    pavucontrol
 
 # make sxhkd reload its configuration files:
 super + Escape

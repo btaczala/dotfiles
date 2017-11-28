@@ -130,9 +130,8 @@ def FlagsForFile( filename, **kwargs ):
       compilation_info.compiler_flags_,
       compilation_info.compiler_working_dir_ )
 
-    final_flags.append("-I/usr/include/c++/7.1.1")
+    final_flags.append("-I/usr/include/c++/7.2.0")
     final_flags.append("-I/usr/include/")
-    final_flags.append("-std=c++1z")
 
     # NOTE: This is just for YouCompleteMe; it's highly likely that your project
     # does NOT need to remove the stdlib flag. DO NOT USE THIS IN YOUR

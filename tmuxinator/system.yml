@@ -1,6 +1,6 @@
-# ~/.tmuxinator/mails.yml
+# ~/.tmuxinator/system.yml
 
-name: mails
+name: system
 root: ~/
 
 # Optional tmux socket
@@ -28,15 +28,18 @@ root: ~/
 # attach: false
 
 # Runs after everything. Use it to attach to tmux with custom options etc.
-# post: tmux -CC attach -t mails
+# post: tmux -CC attach -t system
 
 windows:
-  - editor:
-      layout: main-horizontal
+  - dashboard:
+      layout: 761d,272x60,0,0[272x11,0,0,25,272x20,0,12{71x20,0,12,26,93x20,72,12,31,106x20,166,12,32},272x27,0,33,30]
       # Synchronize all panes of this window, can be enabled before or after the pane commands run.
       # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
       # synchronize: after
       panes:
-        - neomutt -F /home/bata/dotfiles/work/mutt/mutt_mobica.muttrc
-        - goobook reload && gcalcli calw
-        - t next
+        - htop
+        - watch -n 1 sensors
+        - watch -n 1 dfc
+        - journalctl -f
+        - sleep 1 && ttyload
+  - htop: htop

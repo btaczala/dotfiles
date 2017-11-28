@@ -17,6 +17,7 @@ MaildirStore mobica-local
 # The trailing "/" is important
 Path ~/.mutt/mail/mobica/
 Inbox ~/.mutt/mail/mobica/Inbox
+SubFolders Verbatim
 
 Channel mobica-inbox
 Master :mobica-remote:

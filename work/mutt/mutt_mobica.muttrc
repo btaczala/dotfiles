@@ -18,25 +18,8 @@ set spoolfile = "+mobica/Inbox"
 
 # Mailboxes to show in the sidebar.
 mailboxes +mobica/Inbox \
-          '+mobica/bbags' \
-          '+mobica/b2b' \
           '+mobica/mplszczecin' \
-          '+mobica/cto' \
           '+mobica/projects' \
-          '+mobica/projects/.jlr05' \
-          '+mobica/projects/.jlr05/.eris' \
-          '+mobica/projects/.jlr05/.jenkins' \
-          '+mobica/projects/.jlr05/.gerrit' \
-          '+mobica/projects/.bos03' \
-          '+mobica/projects/.bos03/.jira' \
-          '+mobica/pro_jlr' \
-          '+mobica/pro_bos0x' \
-          '+mobica/interviews' \
-          '+mobica/mailing lists' \
-          '+mobica/mailing lists/.autmg' \
-          '+mobica/mailing lists/.genivi' \
-          '+mobica/mailing lists/.genivi-ivi-layer-management' \
-          '+mobica/mailing lists/.ivi-tizen' \
 
 set mbox ="+mobica/archive"
 set postponed="+mobica/drafts"
