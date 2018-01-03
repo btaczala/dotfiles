@@ -14,27 +14,32 @@ URxvt.resize-font.bigger: C-Up
 !-------------------------------------------------------------------------------
 ! Colors
 
-*foreground: 	#ffffff
-*background: 	#222222
-*cursorColor:  #ffffff
-*colorUL:      #C5C8A8
-
-*color0: 	#474747
-*color8: 	#383838
-*color1: 	#D85774
-*color9: 	#F59BB0
-*color2: 	#C5C8A8
-*color10: 	#DEFFD4
-*color3: 	#BACCAC
-*color11: 	#BED19E
-*color4: 	#C777AF
-*color12:     #D498D0
-*color5: 	#E36BB2
-*color13: 	#D14BAA
-*color6: 	#D09EAF
-*color14: 	#CC91A3
-*color7: 	#F5CCD4
-*color15: 	#FFFFFF
+*background: #1D1F21
+*foreground: #C5C8C6
+! black
+*color0: #282A2E
+*color8: #373B41
+! red
+*color1: #A54242
+*color9: #CC6666
+! green
+*color2: #8C9440
+*color10: #B5BD68
+! yellow
+*color3: #DE935F
+*color11: #F0C674
+! blue
+*color4: #5F819D
+*color12: #81A2BE
+! magenta
+*color5: #85678F
+*color13: #B294BB
+! cyan
+*color6: #5E8D87
+*color14: #8ABEB7
+! white
+*color7: #707880
+*color15: #C5C8C6
 
 
 ! ------------------------------------------------------------------------------
