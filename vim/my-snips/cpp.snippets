@@ -7,3 +7,19 @@ snippet test_platform_ifdef
 ${1}
 #endif
 endsnippet
+
+snippet gtest_main
+int main(int argc, char* argv[]) {
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
+}
+$0
+endsnippet
+
+snippet tfun
+template<typename ${1:T}>
+$2 $3($4) {
+/* ... */
+}
+$0
+endsnippet
