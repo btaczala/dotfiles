@@ -1,0 +1,9 @@
+#!/bin/sh
+
+#termite -t calendar_floating --geometry=120x50 -e ncmpcpp
+if [ "$#" -ne 1 ]; then
+    termite -t calendar_floating
+else
+    echo "Running cheat $@"
+    termite -t calendar_floating --hold --geometry=800x600 -e "cheat $@"
+fi

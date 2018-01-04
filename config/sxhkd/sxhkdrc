@@ -101,7 +101,7 @@ super + m
     sh $HOME/dotfiles/monitors/change.sh
 
 super + v
-    python ~/external/projects/pidgin-dmenu/pidgin.py
+	sh $HOME/dotfiles/bin/cheat
 
 super + a
     pavucontrol
