@@ -66,7 +66,7 @@ call plug#end()
 set background=dark
 "set background=light
 set t_Co=256
-colorscheme jellybeans
+colorscheme gruvbox
 "colorscheme vrunchbang
 syntax enable
 "colorscheme solarized
