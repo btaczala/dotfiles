@@ -16,4 +16,4 @@ bspc config top_padding 18
 
 bspc config -m $work_monitor_left top_padding 20
 bspc config -m $work_monitor_right top_padding 20
-bspc monitor -s HDMI-2
+bspc monitor -s DisplayPort-2

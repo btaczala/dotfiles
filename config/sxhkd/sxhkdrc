@@ -106,6 +106,9 @@ super + v
 super + a
     pavucontrol
 
+super + b
+    python ~/dotfiles/bin/pidgin-dmenu-bspwm.py
+
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd

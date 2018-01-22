@@ -2,8 +2,8 @@
 
 #termite -t calendar_floating --geometry=120x50 -e ncmpcpp
 if [ "$#" -ne 1 ]; then
-    termite -t calendar_floating
+    termite -t calendar_floating --geometry=1200x800
 else
     echo "Running cheat $@"
-    termite -t calendar_floating --hold --geometry=800x600 -e "cheat $@"
+    termite -t calendar_floating --hold --geometry=1200x800 -e "cheat $@"
 fi

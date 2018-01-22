@@ -17,8 +17,8 @@ else
 fi
 
 export EDITOR=vim
-export BROWSER=google-chrome-stable
-export PATH=$HOME/.gem/ruby/2.1.0/bin:$PATH
+export BROWSER=firefox
+export PATH=$HOME/.gem/ruby/2.5.0/bin:$PATH
 export PATH=$HOME/dotfiles/scripts:$PATH
 export PAGER=less
 
@@ -32,6 +32,7 @@ alias clip='xsel -i -b'
 # tmux aliases
 alias tmls='tmux list-sessions'
 alias tma='tmux attach-session'
+alias tmn='tmux new-session'
 alias tmks='tmux kill-server'
 
 # task warrior aliases

@@ -6,7 +6,7 @@ function start() {
 
 setxkbmap pl
 
-start skypeforlinux
+start pidgin
 systemctl --user start mopidy
 systemctl --user start gcalcli.timer
 systemctl --user start getmail.timer 
@@ -18,3 +18,5 @@ if [ "$out" == "" ]; then
 else
     echo "Chrome is running"
 fi
+
+firefox & 

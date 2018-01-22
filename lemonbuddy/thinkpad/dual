@@ -27,9 +27,10 @@ font-0 = ${settings.font0}
 font-1 = ${settings.font1}
 font-2 = ${settings.font2}
 
-modules-left = linux
+modules-left = linux wireless eth vpn 
 modules-center = bspwm
-modules-right =  vpn pkg volume battery clock keyboard
+modules-right =  pkg volume battery keyboard clock 
+;modules-right =  pkg volume battery keyboard clock 
 wm-restack = bspwm
 tray-position = right
 
@@ -61,13 +62,13 @@ type = internal/date
 date = %Y-%m-%d %H:%M
 date-alt = %A, %d %B %Y
 time-alt = %H:%M:%S
-format-padding = 1
+;format-padding = 1
 
 [module/battery]
 type = internal/battery
 battery = BAT0
 full-at = 100 
-adapter = ADP1
+adapter = AC
 format-discharging = <ramp-capacity><label-discharging>
 label-discharging = %percentage%% %time%
 format-charging = <animation-charging><label-charging>
@@ -160,6 +161,18 @@ click-left = "termite"
 [module/wireless]
 type = internal/network
 interface = wlp2s0
+format-connected = <label-connected>
+label-connected =  %essid%
+format-spacing = 2
+;label-connected-foreground = #eefafafa
+
+[module/eth]
+type = internal/network
+interface = enp0s31f6
+format-connected = <label-connected>
+label-connected =  %local_ip%
+format-spacing = 2
+;label-connected-foreground = #eefafafa
 
 [module/mail-counter]
 type=custom/script

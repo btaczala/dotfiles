@@ -41,6 +41,7 @@ bspc rule -a scratchpad sticky=on state=floating
 bspc rule -a Pavucontrol state=floating 
 bspc rule -a QtQmlViewer state=floating 
 bspc rule -a qmltestrunner state=floating
+bspc rule -a feh state=floating
 bspc rule -a URxvtQuake sticky=on state=floating
 bspc config external_rules_command "$HOME/.config/bspwm/external_rules.sh"
 

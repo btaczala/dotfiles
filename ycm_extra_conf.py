@@ -41,7 +41,7 @@ flags = [
 '-fexceptions',
 '-std=c++1z',
 '-I',
-'/usr/include/c++/7.1.1',
+'/usr/include/c++/7.2.1',
 '-I',
 '/usr/include/boost/'
 ]
