@@ -101,7 +101,7 @@ super + m
     sh $HOME/dotfiles/monitors/change.sh
 
 super + v
-	sh $HOME/dotfiles/bin/cheat
+	sh $HOME/dotfiles/bin/scratchpad
 
 super + a
     pavucontrol
@@ -131,8 +131,8 @@ super + F5
 super + F6
     ponymix increase 5
 
-XF86AudioPlay
-    mpc toggle
+XF86AudioPause
+    playerctl play-pause
 
 XF86AudioMute
     ponymix toggle
@@ -142,5 +142,6 @@ XF86MonBrightnessDown
 
 XF86MonBrightnessUp
     xbacklight -inc 10 -fps 60
+
 Scroll_Lock
     synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*0')
