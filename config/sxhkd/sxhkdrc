@@ -70,7 +70,7 @@ super + Return
     termite
 
 super + shift + Return
-    termite -c ~/.config/termite/mutt.config
+    termite -c ~/.config/termite/themes/Tomorrow.config
 
 super + space
     rofi -show run -fake-transparency

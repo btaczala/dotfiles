@@ -2,7 +2,7 @@
 
 #termite -t calendar_floating --geometry=120x50 -e ncmpcpp
 if [ "$#" -ne 1 ]; then
-    termite -t calendar_floating --geometry=1200x800 -e "tmuxinator start scratchpad"
+    termite -t calendar_floating -r scratchpad --geometry=1200x800 -e "tmuxinator start scratchpad"
 else
     echo "Running cheat $@"
     termite -t calendar_floating --hold --geometry=1200x800 -e "cheat $@"

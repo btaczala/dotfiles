@@ -80,8 +80,6 @@ function preexec() {
     title "$1" "%m:%35<...<%~"
 }
 
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
 source $HOME/dotfiles/zsh/fzf-marks.plugin.zsh
 source $HOME/dotfiles/zsh/my_fzf.sh
 
