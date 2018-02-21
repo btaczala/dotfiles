@@ -87,6 +87,9 @@ super + e
 super + shift + l
     $HOME/dotfiles/cool_lock.sh
 
+super + shift + a
+	autorandr; notify-send "autorandr finished"
+
 super + c
     rofi -modi "clipboard:greenclip print" -show clipboard
     #CM_LAUNCHER=rofi /usr/bin/clipmenu
