@@ -28,6 +28,9 @@ super + g
 super + {_,shift + }{Left,Down,Up,Right}
 	bspc node -{f,s} {west,south,north,east}
 
+super + {h,j,k,l}
+	bspc node -f {west,south,north,east}
+
 super + bracket{left,right}
 	bspc desktop -f {prev,next}
 
@@ -75,16 +78,13 @@ super + space
 super + w
     rofi -show window
 
-alt + tab
-    rofi -show window
-
 super + r
     rofi -show drun -fake-transparency
 
 super + e
     ~/dotfiles/rofi/custom_rofi.sh
 
-super + l
+super + shift + l
     $HOME/dotfiles/cool_lock.sh
 
 super + c
