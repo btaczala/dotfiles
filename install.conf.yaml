@@ -1,6 +1,7 @@
 - defaults:
     link:
       relink: true
+      create: true
 - clean: ['~']
 - shell: 
     - [
@@ -14,6 +15,7 @@
     ~/.config/sxhkd: config/sxhkd
     ~/.config/termite: config/termite
     ~/.config/dunst: config/dunst
+    ~/.config/rofi-pass/config: config/rofi-pass/config
     ~/.vimrc: vim/.vimrc
     ~/.xinitrc: Xconfig/.xinitrc
     ~/.Xresources: Xconfig/.Xresources
