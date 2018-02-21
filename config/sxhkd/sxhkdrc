@@ -95,7 +95,7 @@ super + c
     #CM_LAUNCHER=rofi /usr/bin/clipmenu
 
 super + comma
-    python ~/dotfiles/bspwm/change_workspace.py
+	/usr/bin/rofi-pass
 
 super + x
     python $HOME/dotfiles/bspwm/change_workspace.py
