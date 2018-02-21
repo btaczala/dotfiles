@@ -1,3 +1,14 @@
 #!/bin/sh
 
-urxvt -title calendar_floating -g 120x50 -e ncmpcpp
+w=$(bspc query -T -m focused | jq .rectangle.width)
+h=$(bspc query -T -m focused | jq .rectangle.height)
+
+wnew=$(echo "$w * 0.6" | bc -l)
+hnew=$(echo "$h * 0.6" | bc -l)
+
+wint=${wnew%.*}
+hint=${hnew%.*}
+
+res=$wint"x"$hint
+echo $res
+termite --title calendar_floating --hold --geometry $res -e /usr/bin/ncmpcpp
