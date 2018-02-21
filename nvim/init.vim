@@ -16,10 +16,12 @@ set wildignore+=*/build*/*
 
 let g:python_host_prog='/usr/bin/python3'
 let mapleader = ","
-let $FZF_DEFAULT_COMMAND = 'ag -g "" --ignore 3rdParty'
+let $FZF_DEFAULT_COMMAND = 'rg --files --follow --glob "!.git/*"'
 
 " airline
-let g:airline_theme = 'distinguished'
+let g:airline_theme = 'wombat'
+let g:airline_skip_empty_sections = 1
+let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_detect_modified=0
 let g:airline_detect_paste=0
@@ -35,21 +37,27 @@ let g:ycm_global_ycm_extra_conf = '~/dotfiles/ycm_extra_conf.py'
 let g:UltiSnipsExpandTrigger="<c-e>"
 let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME.'/dotfiles/vim/my-snips']
 
+let g:ackprg = "ag --vimgrep"
+
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 Plug 'wbthomason/buildit.nvim'
 Plug 'arakashic/chromatica.nvim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'roxma/vim-tmux-clipboard'
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'vhdirk/vim-cmake'
-Plug 'Valloric/YouCompleteMe'
+Plug 'richq/vim-cmake-completion'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --system-libclang' }
 Plug 'tpope/vim-dispatch'
 Plug 'rhysd/vim-clang-format'
 Plug 'honza/vim-snippets'
+Plug 'lvht/fzf-mru'
 Plug 'SirVer/ultisnips'
 Plug 'vim-scripts/a.vim'
 Plug 'morhetz/gruvbox'
@@ -59,26 +67,39 @@ Plug 'alepez/vim-gtest'
 Plug 'altercation/vim-colors-solarized'
 Plug 'nightsense/seagrey'
 Plug 'nightsense/plumber'
+Plug 'kovetskiy/sxhkd-vim'
+Plug 'moll/vim-bbye'
+Plug 'peterhoeg/vim-qml'
+Plug 'tpope/vim-fugitive'
+Plug 'lyuts/vim-rtags'
+Plug 'w0ng/vim-hybrid'
+Plug 'mileszs/ack.vim'
+Plug 'mfukar/robotframework-vim'
 
 " Initialize plugin system
 call plug#end()
 
-set background=dark
-"set background=light
-set t_Co=256
-colorscheme gruvbox
-"colorscheme vrunchbang
+"set t_Co=256
 syntax enable
-"colorscheme solarized
 " Mapping
 nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <leader>n :NERDTreeToggle <CR>
 nnoremap <leader>f :set foldmethod=syntax <CR>
 nnoremap <leader>b :Buffers <CR>
 nnoremap <leader>c :cnext <CR>
+nnoremap <Leader>q :Bdelete<CR>
 map <C-P> :FZF<CR>
 map <F2> :bprevious<CR>
 map <F3> :bnext<CR>
 
 autocmd FileType c,cpp nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
 autocmd FileType c,cpp vnoremap <buffer><Leader>cf :ClangFormat<CR>
+autocmd FileType cpp set keywordprg=cppman
+
+set exrc
+
+let g:hybrid_custom_term_colors = 1
+"let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
+set background=dark
+colorscheme hybrid
+
