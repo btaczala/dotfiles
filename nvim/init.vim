@@ -77,6 +77,7 @@ Plug 'w0ng/vim-hybrid'
 Plug 'mileszs/ack.vim'
 Plug 'mfukar/robotframework-vim'
 Plug 'moll/vim-bbye'
+Plug 'nathanaelkane/vim-indent-guides'
 
 " Initialize plugin system
 call plug#end()
