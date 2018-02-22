@@ -88,11 +88,10 @@ super + shift + l
     $HOME/dotfiles/cool_lock.sh
 
 super + shift + a
-	autorandr; notify-send "autorandr finished"
+	notify-send "Starting autorandr"; sleep 1; autorandr -c; notify-send "autorandr finished"
 
 super + c
     rofi -modi "clipboard:greenclip print" -show clipboard
-    #CM_LAUNCHER=rofi /usr/bin/clipmenu
 
 super + comma
 	/usr/bin/rofi-pass
