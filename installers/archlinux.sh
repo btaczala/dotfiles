@@ -1,6 +1,6 @@
 #!/bin/bash
 
-packages=('xwobf-git' 'bspwm' 'sway' 'xorg-xprop' 'pass' 'rofi' 'greenclip' 'pass-ssh' 'rofi-pass' 'pinentry-rofi')
+packages=('xwobf-git' 'bspwm' 'sway' 'xorg-xprop' 'pass' 'rofi' 'greenclip' 'pass-ssh' 'rofi-pass' 'pinentry-rofi' 'ripgrep' 'vifm')
 
 function install_yaourt() {
     sudo pacman -S --needed base-devel git wget yajl
