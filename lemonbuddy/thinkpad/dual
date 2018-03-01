@@ -70,7 +70,7 @@ time-alt = %H:%M:%S
 [module/battery]
 type = internal/battery
 battery = BAT0
-full-at = 100 
+full-at = 98 
 adapter = ${env:BAR_ADAPTER}
 format-discharging = <ramp-capacity><label-discharging>
 label-discharging = %percentage%% %time%
