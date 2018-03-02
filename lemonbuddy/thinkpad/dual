@@ -32,7 +32,7 @@ font-2 = ${settings.font2}
 
 modules-left = linux wireless eth vpn 
 modules-center = bspwm
-modules-right =  pkg volume battery keyboard clock 
+modules-right = kdeconnect pkg volume battery keyboard clock 
 ;modules-right =  pkg volume battery keyboard clock 
 wm-restack = bspwm
 tray-position = right
@@ -192,6 +192,15 @@ interval = 1
 format-prefix = ""
 format-prefix-foreground = #f75e5e
 format-background=#272827
+
+[module/kdeconnect]
+type = custom/script
+exec = echo ' '
+exec-if = $HOME/dotfiles/lemonbuddy/thinkpad/nexus.sh
+;exec-if = true
+interval = 1
+format-prefix = ""
+format-prefix-foreground = #cbd85f
 
 [module/pkg]
 type = custom/script
