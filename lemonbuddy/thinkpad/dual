@@ -188,7 +188,7 @@ type = custom/script
 exec = echo ' vpn'
 exec-if = pgrep -x openconnect
 ;exec-if = true
-interval = 1
+interval = 5
 format-prefix = ""
 format-prefix-foreground = #f75e5e
 format-background=#272827
@@ -198,7 +198,7 @@ type = custom/script
 exec = echo ' '
 exec-if = $HOME/dotfiles/lemonbuddy/thinkpad/nexus.sh
 ;exec-if = true
-interval = 1
+interval = 5
 format-prefix = ""
 format-prefix-foreground = #cbd85f
 
