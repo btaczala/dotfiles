@@ -13,7 +13,7 @@ systemctl --user start getmail.timer
 
 out=`ps ax | grep /opt/google/chrome/chrome | grep -v grep`
 if [ "$out" == "" ]; then
-    google-chrome-stable --profile-directory="Profile 4" --class=chrome_priv &
+    google-chrome-stable --class=chrome_priv &
 else
     echo "Chrome is running"
 fi
