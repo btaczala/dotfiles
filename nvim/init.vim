@@ -13,6 +13,7 @@ set modeline
 set modelines=5
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.gcno,*.gcda,*.cpp.o,CMakeLists.txt.user
 set wildignore+=*/build*/*
+set splitright
 
 let g:python_host_prog='/usr/bin/python3'
 let mapleader = ","
@@ -75,6 +76,7 @@ Plug 'lyuts/vim-rtags'
 Plug 'w0ng/vim-hybrid'
 Plug 'mileszs/ack.vim'
 Plug 'mfukar/robotframework-vim'
+Plug 'moll/vim-bbye'
 
 " Initialize plugin system
 call plug#end()
@@ -99,7 +101,7 @@ autocmd FileType cpp set keywordprg=cppman
 set exrc
 
 let g:hybrid_custom_term_colors = 1
-"let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
+let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
 set background=dark
 colorscheme hybrid
 
