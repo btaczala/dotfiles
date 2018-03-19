@@ -78,6 +78,7 @@ Plug 'mileszs/ack.vim'
 Plug 'mfukar/robotframework-vim'
 Plug 'moll/vim-bbye'
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'MattesGroeger/vim-bookmarks'
 
 " Initialize plugin system
 call plug#end()
@@ -97,7 +98,6 @@ map <F3> :bnext<CR>
 
 autocmd FileType c,cpp nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
 autocmd FileType c,cpp vnoremap <buffer><Leader>cf :ClangFormat<CR>
-autocmd FileType cpp set keywordprg=cppman
 
 set exrc
 
@@ -106,3 +106,6 @@ let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palett
 set background=dark
 colorscheme hybrid
 
+" cppman 
+command! -nargs=+ Cppman silent! call system("tmux split-window cppman " . expand(<q-args>))
+autocmd FileType cpp nnoremap <silent><buffer> K <Esc>:Cppman <cword><CR>
