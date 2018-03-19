@@ -9,8 +9,9 @@
     show_age_threshold = 60
     word_wrap = yes
     ignore_newline = no
-    geometry = "0x5-30+70"
-    shrink = no
+    #geometry = "0x5-30+70"
+    geometry = "300x5-24+48"
+    shrink = yes
     transparency = 0
     idle_threshold = 120
     monitor = 0
@@ -31,7 +32,8 @@
 
 [frame]
     width = 1
-    color = "#FFaf865a"
+    #color = "#FFaf865a"
+    color = "#00ff00"
 
 [shortcuts]
     close = ctrl+space
@@ -54,11 +56,9 @@
     foreground = "#ffffff"
     timeout = 0
 
-[irc]
-    appname = "weechat"
-    format  = "%s: %b"
-    urgency = normal
-    background = "#A0A0A0"
-    foreground = "#000000"
+[pidgin_notification]
+    appname = Pidgin
+    summary = "*"
+    script = ~/dotfiles/config/dunst/pidgin.sh
 
 # vim: set et fenc=utf-8 ft=vim sts=4 sw=4 ts=8 tw=80 ft=cfg :
