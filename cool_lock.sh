@@ -27,3 +27,5 @@ purple-remote "setstatus?status=available&message="
 if [ ! "$mpc_status" == "" ]; then
     mpc play
 fi
+
+setxkbmap pl
