@@ -11,7 +11,7 @@ function get_wm_name {
 }
 
 name=$(get_wm_name)
-#echo "Name=$name asd $class" >> /tmp/zlo
+echo "Name=$name [][] $class $instance" >> /tmp/zlo
 
 # for gcalcli calendar window
 if [ "$name" == "calendar_floating" ] || [ "$instance" == "calendar_floating" ] || [ "$name" == "URxvtQuake" ]; then
@@ -25,3 +25,9 @@ fi
 if [ "$class" == "mutt" ]; then
     echo "desktop=^1"
 fi
+
+if [ "$class" == "" ]; then
+    echo "desktop=^1"
+fi
+
+xwininfo -id $wid | grep "NBA - Google Chrome" && echo "state=floating"

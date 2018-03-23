@@ -133,6 +133,9 @@ super + F5
 super + F6
     ponymix increase 5
 
+super + n
+    sh $HOME/dotfiles/scripts/toggle_nba.sh
+
 XF86AudioPause
     playerctl play-pause
 
