@@ -41,7 +41,7 @@ flags = [
 '-fexceptions',
 '-std=c++1z',
 '-I',
-'/usr/include/c++/7.2.1',
+'/usr/include/c++/7.3.1',
 '-I',
 '/usr/include/boost/'
 ]
@@ -114,6 +114,7 @@ def GetCompilationInfoForFile( filename ):
           replacement_file )
         if compilation_info.compiler_flags_:
           return compilation_info
+    compilation_info = flags
     return None
   return database.GetCompilationInfoForFile( filename )
 
@@ -124,7 +125,10 @@ def FlagsForFile( filename, **kwargs ):
     # python list, but a "list-like" StringVec object
     compilation_info = GetCompilationInfoForFile( filename )
     if not compilation_info:
-      return None
+      return {
+        'flags': flags,
+        'do_cache': True
+      }
 
     final_flags = MakeRelativePathsInFlagsAbsolute(
       compilation_info.compiler_flags_,

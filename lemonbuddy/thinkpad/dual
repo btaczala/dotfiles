@@ -64,6 +64,7 @@ type = internal/xkeyboard
 [module/clock]
 type = internal/date
 date = %Y-%m-%d %H:%M
+time = %H:%M
 date-alt = %A, %d %B %Y
 time-alt = %H:%M:%S
 ;format-padding = 1
