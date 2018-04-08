@@ -127,6 +127,12 @@ XF86AudioLowerVolume
 XF86AudioRaiseVolume
     ponymix increase 5
 
+super + F1
+    /usr/bin/brightnessctl s 10%-
+
+super + F2
+    /usr/bin/brightnessctl s 10%+
+
 super + F5
     ponymix decrease 5
 
@@ -143,10 +149,10 @@ XF86AudioMute
     ponymix toggle
 
 XF86MonBrightnessDown
-	/usr/bin/brightnessctl 10%-
+	/usr/bin/brightnessctl s 10%-
 
 XF86MonBrightnessUp
-	/usr/bin/brightnessctl 10%+
+	/usr/bin/brightnessctl s 10%+
 
 Scroll_Lock
     synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*0')
