@@ -98,6 +98,7 @@ map <F3> :bnext<CR>
 
 autocmd FileType c,cpp nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
 autocmd FileType c,cpp vnoremap <buffer><Leader>cf :ClangFormat<CR>
+autocmd FileType qml nnoremap <Leader>cf :!qmllint %<CR>
 
 set exrc
 
