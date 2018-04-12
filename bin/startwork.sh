@@ -6,7 +6,6 @@ function start() {
 
 setxkbmap pl
 
-start pidgin
 systemctl --user start mopidy
 systemctl --user start gcalcli.timer
 systemctl --user start getmail.timer 
