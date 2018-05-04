@@ -92,4 +92,4 @@ unset -f make
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-eval $(dircolors -b $HOME/dotfiles/.dircolors)
+(cat ~/.cache/wal/sequences &)
