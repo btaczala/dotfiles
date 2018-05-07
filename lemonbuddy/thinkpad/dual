@@ -188,7 +188,7 @@ click-right=notmuch tag -unread tag:inbox
 [module/vpn]
 type = custom/script
 exec = echo ' vpn'
-exec-if = pgrep -x openconnect || pgrep -x openvpn
+exec-if = pgrep --ns 0 -x openconnect || pgrep --ns 0 -x openvpn
 ;exec-if = true
 interval = 5
 format-prefix = ""
