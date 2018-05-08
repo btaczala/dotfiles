@@ -17,13 +17,10 @@ echo "mpc status $mpc_status"
 
 if [ "$mpc_status" == "Playing" ]; then
     playerctl pause
-fi
 
-purple-remote "setstatus?status=away&message="
 /usr/bin/xwobf -s 5 $tmpbg
 i3lock -n -i $tmpbg
 rm $tmpbg
-purple-remote "setstatus?status=available&message="
 
 if [ "$mpc_status" == "Playing" ]; then
     playerctl play

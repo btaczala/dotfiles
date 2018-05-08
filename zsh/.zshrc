@@ -52,7 +52,6 @@ else
     source ~/dotfiles/zprezto/.zpreztorc
 fi
 
-
 function title() {
     # escape '%' chars in $1, make nonprintables visible
     local a=${(V)1//\%/\%\%}
