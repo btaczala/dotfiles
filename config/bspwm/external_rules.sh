@@ -4,8 +4,6 @@ wid=$1
 class=$2
 instance=$3
 
-#echo $instance >> /tmp/zlo
-
 function get_wm_name {
     xprop -id $wid | grep _NET_WM_ICON_NAME | awk '{ print $3}' | tr -d '"'
 }

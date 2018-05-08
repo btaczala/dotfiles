@@ -79,6 +79,8 @@ Plug 'mfukar/robotframework-vim'
 Plug 'moll/vim-bbye'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'MattesGroeger/vim-bookmarks'
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
+Plug 'dylanaraps/wal.vim'
 
 " Initialize plugin system
 call plug#end()
@@ -95,6 +97,9 @@ nnoremap <Leader>q :Bdelete<CR>
 map <C-P> :FZF<CR>
 map <F2> :bprevious<CR>
 map <F3> :bnext<CR>
+noremap <F5> :set list!<CR>
+inoremap <F5> <C-o>:set list!<CR>
+cnoremap <F5> <C-c>:set list!<CR>
 
 autocmd FileType c,cpp nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
 autocmd FileType c,cpp vnoremap <buffer><Leader>cf :ClangFormat<CR>
@@ -105,7 +110,7 @@ set exrc
 let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
 set background=dark
-colorscheme hybrid
+colorscheme wal
 
 " cppman 
 command! -nargs=+ Cppman silent! call system("tmux split-window cppman " . expand(<q-args>))

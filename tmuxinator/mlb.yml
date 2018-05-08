@@ -1,0 +1,48 @@
+# ~/.tmuxinator/here.yml
+
+name: mlb
+root: ~/Projects/mlb/
+
+# Optional tmux socket
+# socket_name: foo
+
+# Runs before everything. Use it to start daemons etc.
+# pre: sudo /etc/rc.d/mysqld start
+
+# Project hooks
+# Runs on project start, always
+# on_project_start: command
+# Run on project start, the first time
+# on_project_first_start: command
+# Run on project start, after the first time
+# on_project_restart: command
+# Run on project exit ( detaching from tmux session )
+# on_project_exit: command
+# Run on project stop
+# on_project_stop: command
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+#pre_window: source ~/Projects/env.sh
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+# tmux_options: -f ~/.tmux.mac.conf
+
+# Controls whether the tmux session should be attached to automatically. Defaults to true.
+# attach: false
+
+# Runs after everything. Use it to attach to tmux with custom options etc.
+# post: tmux -CC attach -t here
+
+windows:
+  - nvim-server: cd mlb-server && nvim
+  - nvim-client: cd mlb-client-mobile && nvim
+  - builds-whole:
+      layout: main-horizontal
+      panes:
+        - cd mlb-server/build
+        - cd mlb-client-mobile/build
+  - build-android:
+      layout: main-vertical
+      panes: 
+        - cd mlb-client-mobile/build-android-x86
+        - cd mlb-client-mobile/build-android-arm
