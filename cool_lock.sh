@@ -1,5 +1,9 @@
 #!/bin/bash
 
+icon="$HOME/dotfiles/lock.png"
+tmpbg='/tmp/screenshot.png'
+mpc_status=$(playerctl status)
+
 function irc_away
 {
     msg=$1
@@ -9,21 +13,22 @@ function irc_away
     fi
 }
 
-icon="$HOME/dotfiles/lock.png"
-tmpbg='/tmp/screenshot.png'
+function revert() {
+    xset dpms 0 0 0
+    rm $tmpbg
+    setxkbmap pl
+    if [ "$mpc_status" == "Playing" ]; then
+        playerctl play
+    fi
+}
 
-mpc_status=$(playerctl status)
-echo "mpc status $mpc_status"
+trap revert HUP INT TERM
 
 if [ "$mpc_status" == "Playing" ]; then
     playerctl pause
-
-/usr/bin/xwobf -s 5 $tmpbg
-i3lock -n -i $tmpbg
-rm $tmpbg
-
-if [ "$mpc_status" == "Playing" ]; then
-    playerctl play
 fi
 
-setxkbmap pl
+/usr/bin/xwobf -s 5 $tmpbg
+convert -composite $tmpbg $HOME/dotfiles/rick.png -gravity South -geometry -20x1200 $tmpbg
+i3lock -n -i $tmpbg -e
+revert
