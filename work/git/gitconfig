@@ -1,9 +1,14 @@
+[user]
+	name = Bartosz Taczała
+	email = bartosz.taczala@mobica.com
+
 [merge]
 	tool = vimdiff
 [gui]
 	editor = gvim
 	historybrowser = gitk
 [diff]
+	tool = vimdiff
 [color]
 	sh = auto
 	ui = auto
@@ -13,45 +18,38 @@
 	excludesfile = ~/.gitignore
 [alias]
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-[alias]
 	new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
-[alias]
 	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
-[alias]
 	la = "!git config -l | grep alias | cut -c 7-"
-[alias]
 	ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
-[alias]
 	fl = log -u
-[alias]
     pub = "!f() { git push -u ${1:-origin} HEAD:`git config branch.$(git name-rev --name-only HEAD).merge | sed -e 's@refs/heads/@refs/for/@'`; }; f"
+    showtool = "!f() { git difftool $1^ $1; }; f"
+    added = difftool --cached
 [difftool]
 [push]
 	default = simple
 [gitreview]
-	username = bata
-[user]
-	name = Bartosz Taczała
-	email = bartosz.taczala@mobica.com
+	username = bataczal
+	remote = origin
 [cola]
 	fontdiff = Hack,9,-1,5,50,0,0,0,0,0
 	spellcheck = false
-
-[alias]
-  showtool = "!f() { git difftool $1^ $1; }; f"
-  added = difftool --cached
-	d = difftool
-[diff]
-	tool = vimdiff
 [difftool]
 	prompt = false
 	tool = vimdiff
 [difftool "icdiff"]
-  cmd = /usr/bin/icdiff --line-numbers $LOCAL $REMOTE
+    cmd = /usr/bin/icdiff --line-numbers $LOCAL $REMOTE
 [pager]
-  difftool = true
+    difftool = true
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
+[review "gerrit.it.here.com"]
+	username = bataczal
+[url "ssh://bataczal@rep-gerrit-ams.it.here.com"]
+	insteadOf = ssh://bataczal@gerrit.it.here.com
+[url "ssh://bataczal@gerrit.it.here.com"]
+	pushInsteadOf = ssh://bataczal@gerrit.it.here.com
