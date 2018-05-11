@@ -20,6 +20,10 @@ if [ "$name" == "task_list_floating" ] || [ "$instance" == "task_list_floating" 
     echo "state=floating"
 fi
 
+if [ "$name" == "wxtest" ]; then
+    echo "state=floating"
+fi
+
 if [ "$class" == "mutt" ]; then
     echo "desktop=^1"
 fi

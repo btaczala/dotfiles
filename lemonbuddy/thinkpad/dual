@@ -197,7 +197,6 @@ click-right=notmuch tag -unread tag:inbox
 type = custom/script
 exec = echo ' vpn'
 exec-if = pgrep openconnect || pgrep openvpn
-;exec-if = true
 interval = 5
 format-prefix = ""
 format-prefix-foreground = #f75e5e
