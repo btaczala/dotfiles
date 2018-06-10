@@ -41,8 +41,8 @@ font-2 = ${settings.font2}
 
 modules-left = linux wireless eth vpn 
 modules-center = bspwm
-modules-right = kdeconnect pkg volume battery keyboard clock 
-;modules-right =  pkg volume battery keyboard clock 
+modules-right = kdeconnect volume battery keyboard clock 
+;modules-right =  volume battery keyboard clock 
 wm-restack = bspwm
 tray-position = right
 
@@ -211,14 +211,5 @@ exec-if = $HOME/dotfiles/lemonbuddy/thinkpad/nexus.sh
 interval = 5
 format-prefix = ""
 format-prefix-foreground = #cbd85f
-
-[module/pkg]
-type = custom/script
-interval = 1200
-format = <label>
-format-underline = #dc322f
-label = %output:0:30%
-exec = ~/dotfiles/scripts/pacman_packages.sh
-exec-if = "ping -q -w 2 -c 1 176.34.135.167 > /dev/null"
 
 ; vim:ft=dosini
