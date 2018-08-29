@@ -20,7 +20,7 @@ let mapleader = ","
 let $FZF_DEFAULT_COMMAND = 'rg --files --follow --glob "!.git/*"'
 
 " airline
-let g:airline_theme = 'wombat'
+"let g:airline_theme = 'wombat'
 let g:airline_skip_empty_sections = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -61,19 +61,14 @@ Plug 'honza/vim-snippets'
 Plug 'lvht/fzf-mru'
 Plug 'SirVer/ultisnips'
 Plug 'vim-scripts/a.vim'
-Plug 'morhetz/gruvbox'
-Plug 'nanotech/jellybeans.vim'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'alepez/vim-gtest'
 Plug 'altercation/vim-colors-solarized'
-Plug 'nightsense/seagrey'
-Plug 'nightsense/plumber'
 Plug 'kovetskiy/sxhkd-vim'
 Plug 'moll/vim-bbye'
 Plug 'peterhoeg/vim-qml'
 Plug 'tpope/vim-fugitive'
 Plug 'lyuts/vim-rtags'
-Plug 'w0ng/vim-hybrid'
 Plug 'mileszs/ack.vim'
 Plug 'mfukar/robotframework-vim'
 Plug 'moll/vim-bbye'
@@ -81,6 +76,8 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'dylanaraps/wal.vim'
+Plug 'xolox/vim-notes'
+Plug 'xolox/vim-misc'
 
 " Initialize plugin system
 call plug#end()
@@ -92,24 +89,28 @@ nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <leader>n :NERDTreeToggle <CR>
 nnoremap <leader>f :set foldmethod=syntax <CR>
 nnoremap <leader>b :Buffers <CR>
-nnoremap <leader>c :cnext <CR>
+"nnoremap <leader>c :cnext <CR>
+"bbye
 nnoremap <Leader>q :Bdelete<CR>
 map <C-P> :FZF<CR>
 map <F2> :bprevious<CR>
 map <F3> :bnext<CR>
+nmap <leader>cp :let @+ = expand("%")<CR>
 noremap <F5> :set list!<CR>
 inoremap <F5> <C-o>:set list!<CR>
 cnoremap <F5> <C-c>:set list!<CR>
 
 autocmd FileType c,cpp nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
 autocmd FileType c,cpp vnoremap <buffer><Leader>cf :ClangFormat<CR>
-autocmd FileType qml nnoremap <Leader>cf :!qmllint %<CR>
+"autocmd FileType qml nnoremap <Leader>cf :!qmllint %<CR>
+autocmd FileType qml nnoremap <Leader>cf :!qmlfmt -w %<CR>
+autocmd FileType qml nnoremap <Leader>cs :!qmlscene % -style material<CR><Paste>
 
 set exrc
 
-let g:hybrid_custom_term_colors = 1
-let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
-set background=dark
+"let g:hybrid_custom_term_colors = 1
+"let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
+"set background=dark
 colorscheme wal
 
 " cppman 
