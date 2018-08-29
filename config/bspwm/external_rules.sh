@@ -9,7 +9,7 @@ function get_wm_name {
 }
 
 name=$(get_wm_name)
-echo "Name=$name [][] $class $instance" >> /tmp/zlo
+echo "wid=$1 Name=$name [][] $class [] $instance []" >> /tmp/zlo
 
 # for gcalcli calendar window
 if [ "$name" == "calendar_floating" ] || [ "$instance" == "calendar_floating" ] || [ "$name" == "URxvtQuake" ]; then
@@ -20,12 +20,28 @@ if [ "$name" == "task_list_floating" ] || [ "$instance" == "task_list_floating" 
     echo "state=floating"
 fi
 
-if [ "$name" == "wxtest" ]; then
+if [ "$name" == "Search"]; then
+    echo "Search" >> /tmp/zlo
+    echo "sticky above"
+fi
+
+if [ "$name" == "ASSERT" ] && [ "$instance" == "wxtest" ]; then
+    echo "Trafiony" >> /tmp/zlo
+    echo "layer=above"
+fi
+
+if [ "$instance" == "wxtest" ]; then
     echo "state=floating"
 fi
 
+
+
 if [ "$class" == "mutt" ]; then
     echo "desktop=^1"
+fi
+
+if [ "$instance" == "battle.net.exe" ]; then
+    echo "state=floating"
 fi
 
 if [ "$class" == "" ]; then
@@ -33,3 +49,4 @@ if [ "$class" == "" ]; then
 fi
 
 xwininfo -id $wid | grep "NBA - Google Chrome" && echo "state=floating"
+xwininfo -id $wid | grep "Search Tree" && echo "above focus=on"
