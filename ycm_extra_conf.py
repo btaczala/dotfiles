@@ -30,18 +30,17 @@
 
 import os
 import ycm_core
+from pathlib import Path
 
 # These are the compilation flags that will be used in case there's no
 # compilation database set (by default, one is not set).
-flags = [
+default_flags= [
 '-Wall',
 '-Wextra',
 '-Wno-long-long',
 '-Wno-variadic-macros',
 '-fexceptions',
 '-std=c++1z',
-'-I',
-'/usr/include/c++/7.3.1',
 '-I',
 '/usr/include/boost/'
 ]
@@ -114,10 +113,17 @@ def GetCompilationInfoForFile( filename ):
           replacement_file )
         if compilation_info.compiler_flags_:
           return compilation_info
-    compilation_info = flags
+    compilation_info = default_flags
     return None
   return database.GetCompilationInfoForFile( filename )
 
+def DefaultCppIncludeDir ( ):
+    flags = list(default_flags)
+
+    for child in Path('/usr/include/c++').iterdir():
+        flags.append('-I')
+        flags.append(child.as_posix())
+    return list ( flags )
 
 def FlagsForFile( filename, **kwargs ):
   if database:
@@ -125,8 +131,9 @@ def FlagsForFile( filename, **kwargs ):
     # python list, but a "list-like" StringVec object
     compilation_info = GetCompilationInfoForFile( filename )
     if not compilation_info:
+      DefaultCppFlags( )
       return {
-        'flags': flags,
+        'flags': default_flags,
         'do_cache': True
       }
 
@@ -134,7 +141,6 @@ def FlagsForFile( filename, **kwargs ):
       compilation_info.compiler_flags_,
       compilation_info.compiler_working_dir_ )
 
-    final_flags.append("-I/usr/include/c++/7.2.0")
     final_flags.append("-I/usr/include/")
 
     # NOTE: This is just for YouCompleteMe; it's highly likely that your project
@@ -146,9 +152,10 @@ def FlagsForFile( filename, **kwargs ):
       pass
   else:
     relative_to = DirectoryOfThisScript()
-    final_flags = MakeRelativePathsInFlagsAbsolute( flags, relative_to )
+    ff = DefaultCppIncludeDir( )
+    final_flags = MakeRelativePathsInFlagsAbsolute( ff, relative_to )
 
   return {
-    'flags': final_flags,
-    'do_cache': True
+    'flags': ff,
+    'do_cache': False
   }
