@@ -1,3 +1,3 @@
 #!/bin/bash
 
-termite -c ~/.config/termite/mutt.config -e '/usr/bin/tmux attach-session -t mails'
+termite -c ~/.config/termite/mutt.config -e '/home/bata/.gem/ruby/2.5.0/bin/tmuxinator start mails'
