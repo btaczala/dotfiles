@@ -1,6 +1,6 @@
 #!/bin/bash
 
-bspc monitor -d mail web im irc music dev code system priv  
+bspc monitor -d mail web im irc music dev code system priv games
 
 # custom rules bitches
 bspc rule -r Pidgin

@@ -164,7 +164,7 @@ ws-icon-8 = docs;
 ws-icon-9 = irc;
 ws-icon-10 = vm;
 ws-icon-11 = music;
-ws-icon-12 = games;
+ws-icon-12 = games;│
 ws-icon-default = ♟
 
 [module/linux]
@@ -178,7 +178,7 @@ interface = ${env:BAR_WIRELESS}
 format-connected = <label-connected>
 label-connected =  %essid%
 format-spacing = 2
-;label-connected-foreground = #eefafafa
+label-connected-foreground = ${colors.foreground}
 
 [module/eth]
 type = internal/network
@@ -196,10 +196,10 @@ click-right=notmuch tag -unread tag:inbox
 
 [module/vpn]
 type = custom/script
-exec = echo ' vpn'
-exec-if = pgrep openconnect || pgrep openvpn
+exec = $HOME/dotfiles/scripts/bar_vpn.sh
+exec-if = pgrep openconnect || pgrep openvpn || pgrep pptp
 interval = 5
-format-prefix = ""
+format-prefix = " "
 format-prefix-foreground = #f75e5e
 format-background=#272827
 
