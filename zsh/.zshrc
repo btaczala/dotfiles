@@ -16,8 +16,8 @@ else
     source ~/dotfiles/zprezto/.zpreztorc
 fi
 
-export EDITOR=vim
-export BROWSER=firefox
+export EDITOR=nvim
+export BROWSER=google-chrome-stable
 export PATH=$HOME/.gem/ruby/2.5.0/bin:$PATH
 export PATH=$HOME/dotfiles/scripts:$PATH
 export PAGER=less
@@ -86,7 +86,6 @@ stty -ixon
 
 fpath=($fpath ~/dotfiles/zsh/completion)
 
-source "$HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh"
 unset -f make
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
