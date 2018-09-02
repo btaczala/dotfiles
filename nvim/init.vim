@@ -102,15 +102,12 @@ cnoremap <F5> <C-c>:set list!<CR>
 
 autocmd FileType c,cpp nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
 autocmd FileType c,cpp vnoremap <buffer><Leader>cf :ClangFormat<CR>
-"autocmd FileType qml nnoremap <Leader>cf :!qmllint %<CR>
 autocmd FileType qml nnoremap <Leader>cf :!qmlfmt -w %<CR>
 autocmd FileType qml nnoremap <Leader>cs :!qmlscene % -style material<CR><Paste>
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 set exrc
 
-"let g:hybrid_custom_term_colors = 1
-"let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
-"set background=dark
 colorscheme wal
 
 " cppman 
