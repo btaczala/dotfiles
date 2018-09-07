@@ -28,6 +28,8 @@ unset GREP_OPTIONS
 alias gst='git status'
 alias gup='git pull --rebase'
 alias clip='xsel -i -b'
+alias llsa='exa --all -l --grid --header --git'
+alias lls='exa -l --grid --header --git'
 # 
 # tmux aliases
 alias tmls='tmux list-sessions'
