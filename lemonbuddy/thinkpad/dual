@@ -197,7 +197,8 @@ click-right=notmuch tag -unread tag:inbox
 [module/vpn]
 type = custom/script
 exec = $HOME/dotfiles/scripts/bar_vpn.sh
-exec-if = pgrep openconnect || pgrep openvpn || pgrep pptp
+exec-if = nmcli c show --active | grep vpn
+;exec-if = pgrep openconnect || pgrep openvpn || pgrep pptp || pgrep pppd
 interval = 5
 format-prefix = " "
 format-prefix-foreground = #f75e5e

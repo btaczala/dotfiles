@@ -28,7 +28,7 @@ set sidebar_format="%B%?F? [%F]?%* %?N?%N/?%S"
 set mail_check_stats
 
 # You can use any gmail imap mailboxes
-mailboxes =INBOX =[Gmail]/Sent\ Mail =[Gmail]/Drafts =[Gmail]/Spam =[Gmail]/Trash =mplszczecin
+mailboxes =INBOX =[Gmail]/Sent\ Mail =[Gmail]/Drafts =[Gmail]/Spam =[Gmail]/Trash =mplszczecin =dys01
 
 # Vim like binds
 bind attach,index,pager \CD next-page
@@ -52,3 +52,5 @@ set smtp_pass=`/usr/bin/pass mobica/mail`
 set signature=$HOME/dotfiles/work/mutt/signature
 
 set header_cache = ~/.mutt/hcache
+set query_command="goobook query %s"
+bind editor <Tab> complete-query

@@ -123,6 +123,8 @@ def DefaultCppIncludeDir ( ):
     for child in Path('/usr/include/c++').iterdir():
         flags.append('-I')
         flags.append(child.as_posix())
+        flags.append('-I')
+        flags.append(child.as_posix() + '/x86_64-pc-linux-gnu')
     return list ( flags )
 
 def FlagsForFile( filename, **kwargs ):
@@ -131,9 +133,8 @@ def FlagsForFile( filename, **kwargs ):
     # python list, but a "list-like" StringVec object
     compilation_info = GetCompilationInfoForFile( filename )
     if not compilation_info:
-      DefaultCppFlags( )
       return {
-        'flags': default_flags,
+        'flags': DefaultCppIncludeDir(),
         'do_cache': True
       }
 
@@ -142,6 +143,7 @@ def FlagsForFile( filename, **kwargs ):
       compilation_info.compiler_working_dir_ )
 
     final_flags.append("-I/usr/include/")
+    ff = final_flags
 
     # NOTE: This is just for YouCompleteMe; it's highly likely that your project
     # does NOT need to remove the stdlib flag. DO NOT USE THIS IN YOUR
