@@ -1,4 +1,5 @@
 set history save on
+set history filename ~/.gdb_history
 
 python
 import sys, os.path
