@@ -17,7 +17,7 @@ set splitright
 
 let g:python_host_prog='/usr/bin/python3'
 let mapleader = ","
-let $FZF_DEFAULT_COMMAND = 'rg --files --follow --glob "!.git/*"'
+let $FZF_DEFAULT_COMMAND = 'rg --files --follow --glob "!.git/*" --glob "!3rdParty/*"'
 
 " airline
 "let g:airline_theme = 'wombat'
@@ -78,6 +78,7 @@ Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'dylanaraps/wal.vim'
 Plug 'xolox/vim-notes'
 Plug 'xolox/vim-misc'
+Plug 'markonm/traces.vim'
 
 " Initialize plugin system
 call plug#end()
