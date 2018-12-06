@@ -1,7 +1,7 @@
 #!/bin/sh
 . "${HOME}/.cache/wal/colors.sh"
 
-bspc config border_width        3
+bspc config border_width        4
 bspc config window_gap          2
 i=1
 for monitor in $(bspc query -M); do
@@ -33,9 +33,6 @@ bspc config remove_unplugged_monitors true
 bspc config merge_overlapping_monitors true
 
 # Rules
-bspc rule -a Skype desktop=^3
-bspc rule -a Xephyr desktop=^6 state=tiled
-bspc rule -a Firefox desktop=^2
 bspc rule -a scratchpad sticky=on state=floating 
 
 bspc rule -a Pavucontrol state=floating 

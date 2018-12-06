@@ -73,7 +73,7 @@ super + shift + Return
     termite -c ~/.config/termite/themes/Tomorrow.config
 
 super + space
-    rofi -show run -fake-transparency
+    rofi -show run
 
 super + w
     rofi -show window

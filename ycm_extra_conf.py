@@ -42,7 +42,11 @@ default_flags= [
 '-fexceptions',
 '-std=c++1z',
 '-I',
-'/usr/include/boost/'
+'/usr/include/boost/',
+'-I',
+'/usr/include/c++/8.2.1/x86_64-pc-linux-gnu/',
+'-I',
+'/usr/include/c++/8.2.1'
 ]
 
 
@@ -128,6 +132,7 @@ def DefaultCppIncludeDir ( ):
     return list ( flags )
 
 def FlagsForFile( filename, **kwargs ):
+  final_flags = default_flags
   if database:
     # Bear in mind that compilation_info.compiler_flags_ does NOT return a
     # python list, but a "list-like" StringVec object
@@ -154,10 +159,9 @@ def FlagsForFile( filename, **kwargs ):
       pass
   else:
     relative_to = DirectoryOfThisScript()
-    ff = DefaultCppIncludeDir( )
-    final_flags = MakeRelativePathsInFlagsAbsolute( ff, relative_to )
+    final_flags = MakeRelativePathsInFlagsAbsolute( final_flags, relative_to )
 
   return {
-    'flags': ff,
+    'flags': final_flags,
     'do_cache': False
   }

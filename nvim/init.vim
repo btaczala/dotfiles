@@ -41,13 +41,15 @@ let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME.'/dotfiles/vim/my-snips']
 
 let g:ackprg = "ag --vimgrep"
 
+" Shfmt 4 spaces
+let g:shfmt_extra_args = '-i 4'
+
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'wbthomason/buildit.nvim'
 Plug 'arakashic/chromatica.nvim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -80,6 +82,7 @@ Plug 'dylanaraps/wal.vim'
 Plug 'xolox/vim-notes'
 Plug 'xolox/vim-misc'
 Plug 'markonm/traces.vim'
+Plug 'z0mbix/vim-shfmt', { 'for': 'sh' }
 
 " Initialize plugin system
 call plug#end()
@@ -91,10 +94,10 @@ nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <leader>n :NERDTreeToggle <CR>
 nnoremap <leader>f :set foldmethod=syntax <CR>
 nnoremap <leader>b :Buffers <CR>
-"nnoremap <leader>c :cnext <CR>
 "bbye
 nnoremap <Leader>q :Bdelete<CR>
 map <C-P> :FZF<CR>
+map <C-B> :Buffers<CR>
 map <F2> :bprevious<CR>
 map <F3> :bnext<CR>
 nmap <leader>cp :let @+ = expand("%")<CR>
@@ -107,9 +110,10 @@ autocmd FileType c,cpp vnoremap <buffer><Leader>cf :ClangFormat<CR>
 autocmd FileType qml nnoremap <Leader>cf :!qmlfmt -w %<CR>
 autocmd FileType qml nnoremap <Leader>cs :!qmlscene % -style material<CR><Paste>
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType cmake nnoremap <buffer><Leader>cf :!cmake-format -i %<CR>
+autocmd FileType sh nnoremap <buffer><Leader>cf :Shfmt<CR>
 
 set exrc
-
 colorscheme wal
 
 " cppman 

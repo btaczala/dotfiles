@@ -2,6 +2,12 @@
 
 icon="$HOME/dotfiles/lock.png"
 tmpbg='/tmp/screenshot.png'
+
+if pgrep -x "i3lock" > /dev/null
+then
+    exit 1
+fi
+
 mpc_status=$(playerctl status)
 
 function irc_away
@@ -32,3 +38,4 @@ fi
 convert -composite $tmpbg $HOME/dotfiles/rick.png -gravity South -geometry -20x1200 $tmpbg
 i3lock -n -i $tmpbg -e
 revert
+

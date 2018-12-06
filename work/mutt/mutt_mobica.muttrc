@@ -20,6 +20,7 @@ set spoolfile = "+mobica/Inbox"
 mailboxes +mobica/Inbox \
           '+mobica/mplszczecin' \
           '+mobica/projects' \
+          '+mobica/dys01' \
 
 set mbox ="+mobica/archive"
 set postponed="+mobica/drafts"

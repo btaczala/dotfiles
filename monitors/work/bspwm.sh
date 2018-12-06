@@ -6,8 +6,7 @@ bspc monitor $work_monitor_right -d mail code dev apps docs
 bspc monitor $work_monitor_left -d web im system music priv
 
 # custom rules bitches
-bspc rule -r Skype
-bspc rule -a Skype desktop=^2
+bspc rule -a Pidgin desktop=^7
 
 # padding to 0 on left monitor
 bspc config top_padding 18
