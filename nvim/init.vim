@@ -4,6 +4,7 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
+
 set nospell "no spell by default
 set spelllang=en_us,pl
 set spellfile=~/dotfiles/vim/en.utf-8.add
