@@ -3,12 +3,13 @@
 	email = bartosz.taczala@mobica.com
 
 [merge]
-	tool = vimdiff
+	;tool = vimdiff
+    tool = nvimdiff4
 [gui]
 	editor = gvim
 	historybrowser = gitk
 [diff]
-	tool = vimdiff
+	tool = nvimdiff2
 [color]
 	sh = auto
 	ui = auto
@@ -23,8 +24,6 @@
 	la = "!git config -l | grep alias | cut -c 7-"
 	ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
 	fl = log -u
-    pub = "!f() { git push -u ${1:-origin} HEAD:`git config branch.$(git name-rev --name-only HEAD).merge | sed -e 's@refs/heads/@refs/for/@'`; }; f"
-    showtool = "!f() { git difftool $1^ $1; }; f"
     added = difftool --cached
 [difftool]
 [push]
@@ -47,9 +46,13 @@
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
-[review "gerrit.it.here.com"]
-	username = bataczal
-[url "ssh://bataczal@rep-gerrit-ams.it.here.com"]
-	insteadOf = ssh://bataczal@gerrit.it.here.com
-[url "ssh://bataczal@gerrit.it.here.com"]
-	pushInsteadOf = ssh://bataczal@gerrit.it.here.com
+
+# stolen from https://vimways.org/2018/vim-and-git/
+[mergetool "nvimdiff4"]
+    cmd = nvim -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+
+[mergetool "nfugitive"]
+    cmd = nvim -f -c "Gdiff" "$MERGED"
+
+[difftool "nvimdiff2"]
+    cmd = nvim -d $LOCAL $REMOTE

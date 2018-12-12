@@ -83,6 +83,7 @@ Plug 'xolox/vim-notes'
 Plug 'xolox/vim-misc'
 Plug 'markonm/traces.vim'
 Plug 'z0mbix/vim-shfmt', { 'for': 'sh' }
+Plug 'airblade/vim-gitgutter'
 
 " Initialize plugin system
 call plug#end()
