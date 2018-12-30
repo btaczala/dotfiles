@@ -4,8 +4,8 @@ if [[ "$host" == "Darwin" ]]; then
     export CLICOLOR=YES
     source ~/.zprezto/init.zsh
     source ~/.zprezto/runcoms/zshrc
-    source ~/dotfiles/zsh/zpreztorc
-    export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+    source ~/dotfiles/zprezto/.zpreztorc
+    export PATH=/usr/local/bin:/opt/local/bin:/opt/local/sbin:$PATH
 else
     if [[ `export | grep TMUX` ]]; then
     else
@@ -92,4 +92,7 @@ unset -f make
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+if [[ "$host" != "Darwin" ]]; then
+    eval $(dircolors -b $HOME/dotfiles/.dircolors)
+fi
 (cat ~/.cache/wal/sequences &)
