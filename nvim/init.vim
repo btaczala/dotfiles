@@ -4,7 +4,6 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
-
 set nospell "no spell by default
 set spelllang=en_us,pl
 set spellfile=~/dotfiles/vim/en.utf-8.add
@@ -16,12 +15,11 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.gcno,*.gcda,*.cpp.o,CMakeLists.txt.us
 set wildignore+=*/build*/*
 set splitright
 
-let g:python_host_prog='/usr/bin/python3'
-let mapleader = ","
+"let g:python_host_prog='/usr/bin/python3' let mapleader = ","
 let $FZF_DEFAULT_COMMAND = 'rg --files --follow --glob "!.git/*" --glob "!3rdParty/*"'
 
 " airline
-"let g:airline_theme = 'wombat'
+let g:airline_theme = 'wombat'
 let g:airline_skip_empty_sections = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
