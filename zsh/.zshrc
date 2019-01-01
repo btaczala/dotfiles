@@ -90,9 +90,14 @@ fpath=($fpath ~/dotfiles/zsh/completion)
 
 unset -f make
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh 
 
 if [[ "$host" != "Darwin" ]]; then
     eval $(dircolors -b $HOME/dotfiles/.dircolors)
 fi
 (cat ~/.cache/wal/sequences &)
+
+export QT_QPA_PLATFORMTHEME=qt5ct
+export CMAKE_C_COMPILER_LAUNCHER=sccache
+export CMAKE_CXX_COMPILER_LAUNCHER=sccache
+export SCCACHE_MEMCACHED=tcp://192.168.1.217:11211
