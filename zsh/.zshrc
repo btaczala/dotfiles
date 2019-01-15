@@ -1,7 +1,6 @@
 source ~/.zprezto/init.zsh
 host=`uname`
 if [[ "$host" == "Darwin" ]]; then
-    export CLICOLOR=YES
     source ~/.zprezto/init.zsh
     source ~/.zprezto/runcoms/zshrc
     source ~/dotfiles/zprezto/.zpreztorc
@@ -91,13 +90,12 @@ fpath=($fpath ~/dotfiles/zsh/completion)
 unset -f make
 
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh 
+# For OSX
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 if [[ "$host" != "Darwin" ]]; then
     eval $(dircolors -b $HOME/dotfiles/.dircolors)
+    (cat ~/.cache/wal/sequences &)
 fi
-(cat ~/.cache/wal/sequences &)
 
-export QT_QPA_PLATFORMTHEME=qt5ct
-export CMAKE_C_COMPILER_LAUNCHER=sccache
-export CMAKE_CXX_COMPILER_LAUNCHER=sccache
-export SCCACHE_MEMCACHED=tcp://192.168.1.217:11211
+
