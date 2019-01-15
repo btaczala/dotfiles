@@ -15,8 +15,13 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.gcno,*.gcda,*.cpp.o,CMakeLists.txt.us
 set wildignore+=*/build*/*
 set splitright
 
-"let g:python_host_prog='/usr/bin/python3' let mapleader = ","
-let $FZF_DEFAULT_COMMAND = 'rg --files --follow --glob "!.git/*" --glob "!3rdParty/*"'
+let mapleader = ","
+if has('mac')
+    let g:python_host_prog='/usr/local/bin/python3' 
+    let g:python2_host_prog = '/usr/local/bin/python'
+    let g:python3_host_prog = '/usr/local/bin/python3'
+endif
+let $FZF_DEFAULT_COMMAND = 'rg --files --follow --glob "!.git/*" --glob "!build/*"'
 
 " airline
 let g:airline_theme = 'wombat'
@@ -74,6 +79,7 @@ Plug 'mfukar/robotframework-vim'
 Plug 'moll/vim-bbye'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'MattesGroeger/vim-bookmarks'
+Plug 'plasticboy/vim-markdown'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'dylanaraps/wal.vim'
 Plug 'xolox/vim-notes'
@@ -81,6 +87,8 @@ Plug 'xolox/vim-misc'
 Plug 'markonm/traces.vim'
 Plug 'z0mbix/vim-shfmt', { 'for': 'sh' }
 Plug 'airblade/vim-gitgutter'
+
+
 
 " Initialize plugin system
 call plug#end()
