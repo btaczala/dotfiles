@@ -3,6 +3,7 @@ set autoindent
 set tabstop=4
 set shiftwidth=4
 set expandtab
+set encoding=utf8
 
 set nospell "no spell by default
 set spelllang=en_us,pl
@@ -14,6 +15,7 @@ set modelines=5
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.gcno,*.gcda,*.cpp.o,CMakeLists.txt.user
 set wildignore+=*/build*/*
 set splitright
+set makeprg=ninja\ -C\ build
 
 let mapleader = ","
 if has('mac')
@@ -21,12 +23,12 @@ if has('mac')
     let g:python2_host_prog = '/usr/local/bin/python'
     let g:python3_host_prog = '/usr/local/bin/python3'
 endif
-let $FZF_DEFAULT_COMMAND = 'rg --files --follow --glob "!.git/*" --glob "!build/*"'
+let $FZF_DEFAULT_COMMAND = 'rg --files --follow --glob "!.git/*" --glob "!build*/*"'
 
 " airline
 let g:airline_theme = 'wombat'
 let g:airline_skip_empty_sections = 1
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_detect_modified=0
 let g:airline_detect_paste=0
