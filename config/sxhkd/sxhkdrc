@@ -106,7 +106,7 @@ super + v
 	tdrop -ma -w -80 -x 40 -s scratchpad termite
 
 super + a
-    pavucontrol
+    pavucontrol-qt
 
 super + b
     python ~/dotfiles/bin/pidgin-dmenu-bspwm.py

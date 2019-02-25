@@ -23,15 +23,9 @@ function install_if_needed() {
     if [ $? -eq 0 ]; then
         echo "Package $package already installed"
     else 
-        yaourt -S $package --noconfirm
+        yay -S $package --noconfirm
     fi
 }
-
-echo "Checking for yaourt"
-pacman -Qi > /dev/null 2>&1
-if [ ! $? -eq 0 ]; then
-    install_yaourt
-fi
 
 for package in "${packages[@]}" 
 do

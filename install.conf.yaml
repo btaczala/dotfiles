@@ -36,9 +36,3 @@
     ~/.config/nvim/init.vim: 
       create: true
       path: nvim/init.vim
-- shell: 
-  - 
-    command: sh installers/task_warrior.sh
-    stdin: true
-    stdout: true
-    stderr: true
