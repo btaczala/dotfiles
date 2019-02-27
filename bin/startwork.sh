@@ -16,3 +16,7 @@ if [ "$out" == "" ]; then
 else
     echo "Chrome is running"
 fi
+
+start firefox
+start slack
+start rocketchat-desktop
