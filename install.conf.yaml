@@ -20,7 +20,6 @@
     ~/.xinitrc: Xconfig/.xinitrc
     ~/.Xresources: Xconfig/.Xresources
     ~/.zshrc: zsh/.zshrc
-    ~/.netrc: netrc
     ~/.gitconfig: work/git/gitconfig
     ~/.gdbinit: gdbinit
     ~/.config/systemd/user/getmail.service: systemd/getmail.service
