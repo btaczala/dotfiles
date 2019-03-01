@@ -41,5 +41,8 @@ bspc rule -a QtQmlViewer state=floating
 bspc rule -a qmltestrunner state=floating
 bspc rule -a feh state=floating
 bspc rule -a URxvtQuake sticky=on state=floating
+bspc rule -a Firefox desktop=web
+bspc rule -a Slack desktop=slack
+bspc rule -a google-chrome desktop=priv
 bspc config external_rules_command "$HOME/.config/bspwm/external_rules.sh"
 
