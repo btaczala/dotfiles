@@ -103,7 +103,7 @@ super + m
     sh $HOME/dotfiles/monitors/change.sh
 
 super + v
-	tdrop -ma -w -80 -x 40 -s scratchpad termite
+	tdrop -ma -w -80 -x 40 -s scratchpad urxvt
 
 super + a
     pavucontrol-qt
