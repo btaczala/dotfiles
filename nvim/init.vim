@@ -26,7 +26,6 @@ endif
 let $FZF_DEFAULT_COMMAND = 'rg --files --follow --glob "!.git/*" --glob "!build*/*"'
 
 " airline
-let g:airline_theme = 'wombat'
 let g:airline_skip_empty_sections = 1
 let g:airline_powerline_fonts = 0
 let g:airline#extensions#tabline#enabled = 1
@@ -49,6 +48,9 @@ let g:ackprg = "ag --vimgrep"
 " Shfmt 4 spaces
 let g:shfmt_extra_args = '-i 4'
 
+" rust
+let g:cargo_makeprg_params = 'build'
+
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'scrooloose/nerdtree'
@@ -62,7 +64,7 @@ Plug 'roxma/vim-tmux-clipboard'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'vhdirk/vim-cmake'
 Plug 'richq/vim-cmake-completion'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --system-libclang' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --system-libclang --rust-completer --go-completer' }
 Plug 'tpope/vim-dispatch'
 Plug 'rhysd/vim-clang-format'
 Plug 'honza/vim-snippets'
@@ -89,8 +91,8 @@ Plug 'xolox/vim-misc'
 Plug 'markonm/traces.vim'
 Plug 'z0mbix/vim-shfmt', { 'for': 'sh' }
 Plug 'airblade/vim-gitgutter'
-
-
+Plug 'rust-lang/rust.vim'
+Plug 'fatih/vim-go'
 
 " Initialize plugin system
 call plug#end()
@@ -119,6 +121,7 @@ autocmd FileType qml nnoremap <Leader>cf :!qmlfmt -w %<CR>
 autocmd FileType qml nnoremap <Leader>cs :!qmlscene % -style material<CR><Paste>
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType cmake nnoremap <buffer><Leader>cf :!cmake-format -i %<CR>
+autocmd FileType rust nnoremap <buffer><Leader>cf :RustFmt<CR>
 autocmd FileType sh nnoremap <buffer><Leader>cf :Shfmt<CR>
 
 set exrc
