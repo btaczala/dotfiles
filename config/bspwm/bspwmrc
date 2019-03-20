@@ -44,5 +44,6 @@ bspc rule -a URxvtQuake sticky=on state=floating
 bspc rule -a Firefox desktop=web
 bspc rule -a Slack desktop=slack
 bspc rule -a google-chrome desktop=priv
+bspc rule -a Spotify desktop=music
 bspc config external_rules_command "$HOME/.config/bspwm/external_rules.sh"
 

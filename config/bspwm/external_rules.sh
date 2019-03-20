@@ -34,8 +34,6 @@ if [ "$instance" == "wxtest" ]; then
     echo "state=floating"
 fi
 
-
-
 if [ "$class" == "mutt" ]; then
     echo "desktop=^1"
 fi
@@ -46,6 +44,10 @@ fi
 
 if [ "$class" == "" ]; then
     echo "desktop=^1"
+fi
+
+if [[ $(xwininfo -id $wid | grep Spotify) ]]; then
+    echo "desktop=^5"
 fi
 
 xwininfo -id $wid | grep "NBA - Google Chrome" && echo "state=floating"

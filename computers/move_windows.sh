@@ -2,10 +2,18 @@
 
 for node in $(bspc query -N); do
     name=$(bspc query -T -n $node | jq .client.className)
+    instance=$(bspc query -T -n $node | jq .client.instanceName)
     name="${name#\"}"
     name="${name%\"}"
     #echo $name
 
+    wid=$(bspc query -T -n $node | jq .id)
+
+    if [[ "$name" == "Firefox" ]]; then
+        id=$(bspc query -T -n $node | jq .id)
+        echo "Moving Firefox to web"
+        bspc node $id -d web
+    fi
     if [[ "$name" == "Spotify" ]]; then
         id=$(bspc query -T -n $node | jq .id)
         echo "Moving spotify to music"
@@ -20,9 +28,15 @@ for node in $(bspc query -N); do
         id=$(bspc query -T -n $node | jq .id)
         bspc node $id -d rocket
     fi
-    if [[ "$name" == "Google-chrome" ]]; then
+    if [[ "$instance" == "google-chrome" ]]; then
         id=$(bspc query -T -n $node | jq .id)
+        echo "Moving google to priv"
         bspc node $id -d priv
+    fi
+
+    if [[ $(xprop -id $wid 2>/dev/null | grep spotify) ]]; then
+        echo "spotify"
+        bspc node $wid -wd music
     fi
 done
 
