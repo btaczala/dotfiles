@@ -98,4 +98,3 @@ if [[ "$host" != "Darwin" ]]; then
     (cat ~/.cache/wal/sequences &)
 fi
 
-
