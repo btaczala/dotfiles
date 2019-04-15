@@ -1,0 +1,21 @@
+set $bg1 ~/dotfiles/walls/orion.png
+output * bg $bg1 fill
+
+smart_gaps on
+gaps inner 14
+
+#
+# Screen locking
+#
+
+set $swaylock_command swaylock -f --daemonize \
+    --image $bg1 \
+    --ignore-empty-password
+
+bindsym $mod+$alt+l exec $swaylock_command
+
+exec swayidle -w \
+    timeout 1200 "$swaylock_command" \
+    timeout 1200 'swaymsg "output * dpms off"' \
+    resume 'swaymsg "output * dpms on"' \
+before-sleep "$swaylock_command"
