@@ -92,7 +92,10 @@ Plug 'markonm/traces.vim'
 Plug 'z0mbix/vim-shfmt', { 'for': 'sh' }
 Plug 'airblade/vim-gitgutter'
 Plug 'rust-lang/rust.vim'
-Plug 'fatih/vim-go'
+Plug 'kergoth/vim-bitbake'
+Plug 'vim-scripts/SyntaxRange'
+Plug 'vim-scripts/ingo-library'
+Plug 'lyuts/vim-rtags'
 
 " Initialize plugin system
 call plug#end()
