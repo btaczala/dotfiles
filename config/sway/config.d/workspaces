@@ -42,3 +42,5 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 # assignments
 assign [class="Firefox"] $ws2
 assign [app_id="firefox"] $ws2
+
+for_window [class="QUL" instance="QUL"] floating enable

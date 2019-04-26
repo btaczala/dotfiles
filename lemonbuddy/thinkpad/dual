@@ -167,6 +167,7 @@ ws-icon-11 = music;
 ws-icon-12 = games;│
 ws-icon-13 = slack;
 ws-icon-14 = rocket;
+ws-icon-15 = nba;
 ws-icon-default = ♟
 
 [module/linux]

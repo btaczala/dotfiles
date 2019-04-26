@@ -5,7 +5,9 @@ for node in $(bspc query -N); do
     instance=$(bspc query -T -n $node | jq .client.instanceName)
     name="${name#\"}"
     name="${name%\"}"
-    #echo $name
+    instance="${instance#\"}"
+    instance="${instance%\"}"
+    echo $name $instance
 
     wid=$(bspc query -T -n $node | jq .id)
 
@@ -31,12 +33,12 @@ for node in $(bspc query -N); do
     if [[ "$instance" == "google-chrome" ]]; then
         id=$(bspc query -T -n $node | jq .id)
         echo "Moving google to priv"
-        bspc node $id -d priv
+        bspc node $wid -d priv
     fi
 
     if [[ $(xprop -id $wid 2>/dev/null | grep spotify) ]]; then
         echo "spotify"
-        bspc node $wid -wd music
+        bspc node $wid -d music
     fi
 done
 

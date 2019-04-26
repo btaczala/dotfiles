@@ -1,15 +1,15 @@
 #!/bin/bash
 
 killall Xephyr
-sleep 2
+sleep 1
 
-current_mon=`bspc query -M | head -1`
-width=`bspc query -m $current_mon -T | jq .desktops[1].root.rectangle.width`
-height=`bspc query -m $current_mon -T | jq .desktops[1].root.rectangle.height`
+s_width=$(swaymsg -t get_outputs -r | jq '.[0].rect.width')
+s_height=$(swaymsg -t get_outputs -r | jq '.[0].rect.height')
+
+width=$(echo "$s_width-200" | bc)
+height=$(echo "$s_height-200" | bc)
 
 echo "Xephyr :1 -screen "$width"x"$height" -dpi 96 -ac &"
 Xephyr :1 -screen "$width"x"$height" -dpi 96 -ac &
-sleep 3
+sleep 1
 DISPLAY=:1 openbox & 
-DISPLAY=:1 termite & 
-DISPLAY=:1 pavucontrol & 
