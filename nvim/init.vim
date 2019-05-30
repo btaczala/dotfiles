@@ -42,6 +42,7 @@ let g:ycm_server_log_level = 'debug'
 let g:ycm_global_ycm_extra_conf = '~/dotfiles/ycm_extra_conf.py'
 let g:UltiSnipsExpandTrigger="<c-e>"
 let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME.'/dotfiles/vim/my-snips']
+let g:rg_command = 'rg --vimgrep -S'
 
 let g:ackprg = "ag --vimgrep"
 
@@ -50,6 +51,7 @@ let g:shfmt_extra_args = '-i 4'
 
 " rust
 let g:cargo_makeprg_params = 'build'
+
 
 call plug#begin('~/.local/share/nvim/plugged')
 
@@ -68,22 +70,14 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --system-
 Plug 'tpope/vim-dispatch'
 Plug 'rhysd/vim-clang-format'
 Plug 'honza/vim-snippets'
-Plug 'lvht/fzf-mru'
 Plug 'SirVer/ultisnips'
 Plug 'vim-scripts/a.vim'
 Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'alepez/vim-gtest'
 Plug 'altercation/vim-colors-solarized'
-Plug 'kovetskiy/sxhkd-vim'
-Plug 'moll/vim-bbye'
 Plug 'peterhoeg/vim-qml'
 Plug 'tpope/vim-fugitive'
 Plug 'mileszs/ack.vim'
-Plug 'mfukar/robotframework-vim'
-Plug 'moll/vim-bbye'
-Plug 'nathanaelkane/vim-indent-guides'
 Plug 'MattesGroeger/vim-bookmarks'
-Plug 'plasticboy/vim-markdown'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'dylanaraps/wal.vim'
 Plug 'xolox/vim-notes'
@@ -91,11 +85,12 @@ Plug 'xolox/vim-misc'
 Plug 'markonm/traces.vim'
 Plug 'z0mbix/vim-shfmt', { 'for': 'sh' }
 Plug 'airblade/vim-gitgutter'
-Plug 'rust-lang/rust.vim'
-Plug 'kergoth/vim-bitbake'
-Plug 'vim-scripts/SyntaxRange'
-Plug 'vim-scripts/ingo-library'
+" for Bdelete
+Plug 'moll/vim-bbye'
+Plug 'luochen1990/rainbow'
+Plug 'RRethy/vim-illuminate'
 Plug 'lyuts/vim-rtags'
+Plug 'jremmen/vim-ripgrep'
 
 " Initialize plugin system
 call plug#end()
@@ -107,6 +102,7 @@ nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <leader>n :NERDTreeToggle <CR>
 nnoremap <leader>f :set foldmethod=syntax <CR>
 nnoremap <leader>b :Buffers <CR>
+nnoremap <leader>a :Dispatch <CR>
 "bbye
 nnoremap <Leader>q :Bdelete<CR>
 map <C-P> :FZF<CR>
