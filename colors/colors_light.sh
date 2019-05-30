@@ -20,8 +20,8 @@ function colors_qt() {
 function restart_browsers() {
     killall firefox
     killall chrome
-    firefox & 
-    /usr/bin/google-chrome-stable & 
+    sway exec firefox
+    sway exec google-chrome-stable
 }
 
 wal -l --theme base16-github

@@ -8,9 +8,11 @@ gaps inner 14
 # Screen locking
 #
 
-set $swaylock_command swaylock -f --daemonize \
-    --image $bg1 \
-    --ignore-empty-password
+#set $swaylock_command swaylock -f --daemonize \
+#    --image $bg1 \
+#   --ignore-empty-password
+
+set $swaylock_command ~/dotfiles/cool_lock_sway.sh
 
 bindsym $mod+$alt+l exec $swaylock_command
 

@@ -8,7 +8,9 @@ bindsym $mod+space exec rofi -show run
 bindsym $mod+a exec pavucontrol-qt
 bindsym $mod+comma exec rofi-pass
 bindsym $mod+Return exec $term
+bindsym $mod+m exec ~/dotfiles/scripts/playerctl_dmenu.sh
 
+bindsym $mod+c exec ~/Projects/clipman/clipman -s --selector=rofi
 
 # notifications
 exec mako
@@ -26,3 +28,5 @@ bindsym XF86AudioRaiseVolume exec ponymix increase 5
 bindsym $mod+f7 exec playerctl play-pause
 bindsym $mod+f5 exec ponymix decrease 5
 bindsym $mod+f6 exec ponymix increase 5
+
+exec xrandr --dpi 192
