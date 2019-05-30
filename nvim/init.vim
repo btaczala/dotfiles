@@ -44,8 +44,6 @@ let g:UltiSnipsExpandTrigger="<c-e>"
 let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME.'/dotfiles/vim/my-snips']
 let g:rg_command = 'rg --vimgrep -S'
 
-let g:ackprg = "ag --vimgrep"
-
 " Shfmt 4 spaces
 let g:shfmt_extra_args = '-i 4'
 
@@ -76,7 +74,6 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'altercation/vim-colors-solarized'
 Plug 'peterhoeg/vim-qml'
 Plug 'tpope/vim-fugitive'
-Plug 'mileszs/ack.vim'
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'dylanaraps/wal.vim'
@@ -124,7 +121,10 @@ autocmd FileType rust nnoremap <buffer><Leader>cf :RustFmt<CR>
 autocmd FileType sh nnoremap <buffer><Leader>cf :Shfmt<CR>
 
 set exrc
-colorscheme wal
+if has('mac')
+else
+    colorscheme wal
+endif
 
 " cppman 
 command! -nargs=+ Cppman silent! call system("tmux split-window cppman " . expand(<q-args>))
