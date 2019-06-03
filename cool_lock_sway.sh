@@ -27,5 +27,8 @@ fi
 #grim $tmpbg
 tmpbg=~/dotfiles/walls/trees.jpg
 convert -composite $tmpbg $HOME/dotfiles/rick.png -gravity South -geometry -20x1200 $tmpbg
-swaylock -f $tmpbg --image ~/dotfiles/walls/trees.jpg
+swaylock $tmpbg --image ~/dotfiles/walls/trees.jpg
+
+echo "FINISHED"
+
 revert
