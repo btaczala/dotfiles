@@ -119,6 +119,7 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType cmake nnoremap <buffer><Leader>cf :!cmake-format -i %<CR>
 autocmd FileType rust nnoremap <buffer><Leader>cf :RustFmt<CR>
 autocmd FileType sh nnoremap <buffer><Leader>cf :Shfmt<CR>
+command Di Dispatch
 
 set exrc
 if has('mac')
