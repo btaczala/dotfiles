@@ -44,3 +44,4 @@ assign [class="Firefox"] $ws2
 assign [app_id="firefox"] $ws2
 
 for_window [class="QUL" instance="QUL"] floating enable
+for_window [class=mpv] floating enable
