@@ -3,6 +3,15 @@
 rofi_config="$HOME/.config/rofi/config"
 gtk_config="$HOME/.config/gtk-3.0/settings.ini"
 
+function colors_config() {
+    config_file="$HOME/.current_color"
+    if [ -f $config_file ]; then
+        rm -rf $config_file
+    fi
+
+    echo light > $config_file
+}
+
 function colors_gtk() {
     sed -i 's/gtk-theme-name.*/gtk-theme-name=Materia-light/g' $gtk_config
     sed -i 's/gtk-icon-theme-name.*/gtk-icon-theme-name=Flat-Remix-Light/g' $gtk_config
@@ -26,6 +35,7 @@ function restart_browsers() {
 
 wal -l --theme base16-github
 
+colors_config
 colors_gtk
 colors_rofi
 colors_qt
