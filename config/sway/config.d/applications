@@ -1,3 +1,4 @@
+# vim: ft=i3config
 set $menu rofi -i -modi drun -show drun
 set $term termite
 
@@ -21,7 +22,7 @@ bindsym $mod+Shift+n exec makoctl dismiss --all
 # brightness
 bindsym XF86MonBrightnessDown exec /usr/bin/brightnessctl s 10%-
 bindsym XF86MonBrightnessUp exec /usr/bin/brightnessctl s 10%+
-    
+
 # volume
 bindsym XF86AudioLowerVolume exec ponymix decrease 5
 bindsym XF86AudioRaiseVolume exec ponymix increase 5

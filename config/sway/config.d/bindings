@@ -1,3 +1,4 @@
+# vim: ft=i3config
 bindsym $mod+q kill
 
 # Drag floating windows by holding down $mod and left mouse button.

@@ -1,4 +1,3 @@
-
 set $ws1 mails
 set $ws2 browser
 set $ws3 slack
@@ -45,3 +44,4 @@ assign [app_id="firefox"] $ws2
 
 for_window [class="QUL" instance="QUL"] floating enable
 for_window [class=mpv] floating enable
+for_window [class=feh] floating enable
