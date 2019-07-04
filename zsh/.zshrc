@@ -16,7 +16,11 @@ else
 fi
 
 export EDITOR=nvim
-export BROWSER=google-chrome-stable
+if [[ $(hostname) == "archlinux-thinkpad-work" ]]; then
+    export BROWSER=firefox
+else
+    export BROWSER=google-chrome-stable
+fi
 export PATH=$HOME/.gem/ruby/2.5.0/bin:$PATH
 export PATH=$HOME/dotfiles/scripts:$PATH
 export PAGER=less
