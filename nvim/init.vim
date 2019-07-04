@@ -11,7 +11,7 @@ set spellfile=~/dotfiles/vim/en.utf-8.add
 set nu
 set rnu
 set modeline
-set modelines=5
+set modelines=1
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.gcno,*.gcda,*.cpp.o,CMakeLists.txt.user
 set wildignore+=*/build*/*
 set splitright
@@ -19,7 +19,7 @@ set makeprg=ninja\ -C\ build
 
 let mapleader = ","
 if has('mac')
-    let g:python_host_prog='/usr/local/bin/python3' 
+    let g:python_host_prog='/usr/local/bin/python3'
     let g:python2_host_prog = '/usr/local/bin/python'
     let g:python3_host_prog = '/usr/local/bin/python3'
 endif
@@ -88,6 +88,9 @@ Plug 'luochen1990/rainbow'
 Plug 'RRethy/vim-illuminate'
 Plug 'lyuts/vim-rtags'
 Plug 'jremmen/vim-ripgrep'
+Plug 'aklt/plantuml-syntax'
+Plug 'mboughaba/i3config.vim'
+Plug 'ntpeters/vim-better-whitespace'
 
 " Initialize plugin system
 call plug#end()
@@ -127,6 +130,6 @@ else
     colorscheme wal
 endif
 
-" cppman 
+" cppman
 command! -nargs=+ Cppman silent! call system("tmux split-window cppman " . expand(<q-args>))
 autocmd FileType cpp nnoremap <silent><buffer> K <Esc>:Cppman <cword><CR>
