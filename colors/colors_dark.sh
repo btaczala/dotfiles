@@ -29,9 +29,7 @@ function colors_qt() {
 
 function restart_browsers() {
     killall firefox
-    killall chrome
     sway exec firefox
-    sway exec google-chrome-stable 
 }
 
 wal --theme base16-atelier-forest

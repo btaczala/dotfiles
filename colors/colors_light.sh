@@ -24,13 +24,13 @@ function colors_rofi() {
 }
 
 function colors_qt() {
+    sed -i '/icon_theme.*/d' ~/.config/qt5ct/qt5ct.conf
     sed -i 's/color_scheme_path.*/color_scheme_path=\/usr\/share\/qt5ct\/colors\/airy.conf/g' ~/.config/qt5ct/qt5ct.conf
 }
+
 function restart_browsers() {
     killall firefox
-    killall chrome
     sway exec firefox
-    sway exec google-chrome-stable
 }
 
 wal -l --theme base16-github
@@ -39,4 +39,3 @@ colors_config
 colors_gtk
 colors_rofi
 colors_qt
-restart_browsers
