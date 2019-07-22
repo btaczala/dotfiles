@@ -16,6 +16,5 @@ set $down j
 set $up k
 set $right l
 
-default_border pixel
 
 include ~/.config/sway/config.d/*
