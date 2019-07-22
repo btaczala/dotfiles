@@ -16,11 +16,7 @@ else
 fi
 
 export EDITOR=nvim
-if [[ $(hostname) == "archlinux-thinkpad-work" ]]; then
-    export BROWSER=firefox
-else
-    export BROWSER=google-chrome-stable
-fi
+export BROWSER=firefox
 export PATH=$HOME/.gem/ruby/2.5.0/bin:$PATH
 export PATH=$HOME/dotfiles/scripts:$PATH
 export PAGER=less
@@ -31,9 +27,10 @@ unset GREP_OPTIONS
 alias gst='git status'
 alias gup='git pull --rebase'
 alias clip='xsel -i -b'
+alias ls='exa'
 alias llsa='exa --all -l --grid --header --git'
 alias lls='exa -l --grid --header --git'
-# 
+#
 # tmux aliases
 alias tmls='tmux list-sessions'
 alias tma='tmux attach-session'
@@ -93,7 +90,7 @@ fpath=($fpath ~/dotfiles/zsh/completion)
 
 unset -f make
 
-[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh 
+[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
 # For OSX
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
