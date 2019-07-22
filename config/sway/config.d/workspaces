@@ -42,6 +42,7 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 assign [class="Firefox"] $ws2
 assign [app_id="firefox"] $ws2
 
-for_window [class="QUL" instance="QUL"] floating enable
 for_window [class=mpv] floating enable
 for_window [class=feh] floating enable
+for_window [class="Qt Application Manager"] floating enable
+for_window [app_id="pavucontrol"] floating enable

@@ -1,104 +1,55 @@
 * {
     border: none;
     border-radius: 0;
-    /*font-family: "Ubuntu Nerd Font";*/
-    /*font-family: "Font Awesome";*/
-    font-family: Ubuntu, FontAwesome, Font Awesome, Helvetica, Arial, sans-serif;
+    font-family: Hack, Helvetica, Arial, sans-serif;
     font-size: 12px;
-    min-height: 0;
+    min-height: 28px;
 }
 
 window#waybar {
-    background: transparent;
+    background: rgba(0, 0, 9, 0.8);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.15);
     color: white;
 }
-
-#window {
-    /*font-weight: bold;*/
-    font-family: "Ubuntu";
-}
-/*
-#workspaces {
-    padding: 0 5px;
-}
-*/
 
 #workspaces button {
     padding: 0 5px;
     background: transparent;
     color: white;
-    border-top: 2px solid transparent;
+    border-bottom: 3px solid transparent;
 }
 
 #workspaces button.focused {
-    color: rgb(246, 201, 169);
-    border-top: 2px solid rgb(246, 201, 169);
+    background: rgba(255, 255, 255, 0.15);
+    border-bottom: 3px solid white;
 }
 
 #mode {
     background: #64727D;
-    border-bottom: 3px solid white;
+    border-bottom: 2px solid white;
 }
 
-#clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray, #mode {
-    padding: 0 3px;
-    margin: 0 2px;
+#clock, #battery, #cpu, #memory, #backlight, #network, #pulseaudio, #custom-spotify, #tray, #mode, #idle_inhibitor {
+    padding: 0 0px;
+    margin: 0 7px;
 }
 
 #clock {
-}
-
-#battery {
-}
-
-#battery icon {
-    color: red;
-}
-
-#battery.charging {
-}
-
-@keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: black;
-    }
-}
-
-#battery.warning:not(.charging) {
-    color: white;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-#cpu {
-}
-
-#memory {
-}
-
-#network {
-}
-
-#network.disconnected {
-    background: #f53c3c;
+    background-color: rgba(0, 0, 0, 0);
 }
 
 #pulseaudio {
+    background: rgba(0, 0, 0, 0);
+    color: white;
 }
 
 #pulseaudio.muted {
+    background: rgba(0, 0, 0, 0);
+    color: white;
+    margin-left: 10px;
 }
 
 #custom-spotify {
-    background: rgba(102, 204, 153, 0.7);
-    color: #202020;
+    background: rgba(0, 0, 0, 0);
+    color: white;
 }
-
-#tray {
-    background-color: #2980b9;
-}
-
