@@ -8,20 +8,20 @@ then
     exit 1
 fi
 
-mpc_status=$(playerctl status)
+mpc_status="$(mpc status | grep playing | awk '{print $1}')"
 
 function revert() {
     echo "$(date) reverting"
     #rm $tmpbg
-    if [ "$mpc_status" == "Playing" ]; then
-        playerctl play
+    if [ "$mpc_status" == "[playing]" ]; then
+        mpc play
     fi
 }
 
 trap revert HUP INT TERM
 
-if [ "$mpc_status" == "Playing" ]; then
-    playerctl pause
+if [ "$mpc_status" == "[playing]" ]; then
+    mpc pause
 fi
 
 #grim $tmpbg

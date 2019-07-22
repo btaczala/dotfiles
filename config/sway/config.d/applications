@@ -6,7 +6,7 @@ bindsym $mod+d exec $menu
 # start your launcher
 bindsym $mod+r exec $menu
 bindsym $mod+space exec rofi -show run
-bindsym $mod+a exec pavucontrol-qt
+bindsym $mod+a exec pavucontrol
 bindsym $mod+comma exec rofi-pass
 bindsym $mod+Return exec $term
 bindsym $mod+m exec ~/dotfiles/scripts/playerctl_dmenu.sh
@@ -27,7 +27,7 @@ bindsym XF86MonBrightnessUp exec /usr/bin/brightnessctl s 10%+
 bindsym XF86AudioLowerVolume exec ponymix decrease 5
 bindsym XF86AudioRaiseVolume exec ponymix increase 5
 
-bindsym $mod+f7 exec playerctl play-pause
+bindsym $mod+f7 exec mpc toggle
 bindsym $mod+f5 exec ponymix decrease 5
 bindsym $mod+f6 exec ponymix increase 5
 
