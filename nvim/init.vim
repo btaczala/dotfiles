@@ -86,7 +86,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'moll/vim-bbye'
 Plug 'luochen1990/rainbow'
 Plug 'lyuts/vim-rtags'
-Plug 'jremmen/vim-ripgrep'
+Plug 'mhinz/vim-grepper'
 Plug 'aklt/plantuml-syntax'
 Plug 'mboughaba/i3config.vim'
 Plug 'ntpeters/vim-better-whitespace'
@@ -127,7 +127,3 @@ if has('mac')
 else
     colorscheme wal
 endif
-
-" cppman
-command! -nargs=+ Cppman silent! call system("tmux split-window cppman " . expand(<q-args>))
-autocmd FileType cpp nnoremap <silent><buffer> K <Esc>:Cppman <cword><CR>
