@@ -1,4 +1,4 @@
-font=Hack 10
+font=Unifont 10
 layer=overlay
 anchor=top-right
 default-timeout=8000
