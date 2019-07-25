@@ -22,3 +22,8 @@ input "1133:49960:Logitech_USB_Keyboard" {
     xkb_options caps:escape
 }
 
+input "6940:6933:ckb1:_Corsair_STRAFE_Gaming_Keyboard_vKB" {
+    xkb_layout pl,us
+    xkb_options caps:escape
+}
+

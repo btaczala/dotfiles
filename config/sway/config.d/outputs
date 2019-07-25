@@ -1,16 +1,15 @@
 set $bg1 ~/dotfiles/walls/orion.png
 output * bg $bg1 fill
 
+output DP-4 pos 0 0
+output DP-5 pos 1920 0
+
 smart_gaps on
 gaps inner 14
 
 #
 # Screen locking
 #
-
-#set $swaylock_command swaylock -f --daemonize \
-#    --image $bg1 \
-#   --ignore-empty-password
 
 set $swaylock_command ~/dotfiles/cool_lock_sway.sh
 
@@ -21,3 +20,7 @@ exec swayidle -w \
     timeout 1200 'swaymsg "output * dpms off"' \
     resume 'swaymsg "output * dpms on"' \
 before-sleep "$swaylock_command"
+
+set $laptop eDP-1
+bindswitch lid:on output $laptop disable
+bindswitch lid:off output $laptop enable

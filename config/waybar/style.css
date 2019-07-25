@@ -1,9 +1,9 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: Hack, Helvetica, Arial, sans-serif;
+    font-family: Unifont, Helvetica, Arial, sans-serif;
     font-size: 12px;
-    min-height: 28px;
+    min-height: 20px;
 }
 
 window#waybar {
@@ -13,10 +13,10 @@ window#waybar {
 }
 
 #workspaces button {
-    padding: 0 5px;
+    padding: 0 0px;
     background: transparent;
     color: white;
-    border-bottom: 3px solid transparent;
+    border-bottom: 0px solid transparent;
 }
 
 #workspaces button.focused {

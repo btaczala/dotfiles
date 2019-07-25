@@ -1,5 +1,5 @@
 # vim: ft=i3config
 
-default_border pixel
-smart_borders on
+default_border pixel 4
+#smart_borders on
 smart_gaps on
