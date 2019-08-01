@@ -50,6 +50,14 @@ let g:shfmt_extra_args = '-i 4'
 " rust
 let g:cargo_makeprg_params = 'build'
 
+let g:PaperColor_Theme_Options = {
+  \   'theme': {
+  \     'default': {
+  \       'transparent_background': 1
+  \     }
+  \   }
+  \ }
+
 
 call plug#begin('~/.local/share/nvim/plugged')
 
@@ -90,6 +98,8 @@ Plug 'mhinz/vim-grepper'
 Plug 'aklt/plantuml-syntax'
 Plug 'mboughaba/i3config.vim'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'NLKNguyen/papercolor-theme'
+
 
 " Initialize plugin system
 call plug#end()
@@ -122,8 +132,16 @@ autocmd FileType cmake nnoremap <buffer><Leader>cf :!cmake-format -i %<CR>
 autocmd FileType rust nnoremap <buffer><Leader>cf :RustFmt<CR>
 autocmd FileType sh nnoremap <buffer><Leader>cf :Shfmt<CR>
 
+
 set exrc
 if has('mac')
 else
-    colorscheme wal
+    colorscheme PaperColor
+endif
+let color = system('cat ~/.current_color')
+
+if color =~# "light"
+    set background=light
+else
+    set background=dark
 endif
