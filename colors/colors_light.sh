@@ -3,6 +3,11 @@
 rofi_config="$HOME/.config/rofi/config"
 gtk_config="$HOME/.config/gtk-3.0/settings.ini"
 
+function colors_terminal() {
+    cd ~/.config/termite/
+    ln -sf config.light config
+}
+
 function colors_config() {
     config_file="$HOME/.current_color"
     if [ -f $config_file ]; then
@@ -33,8 +38,7 @@ function restart_browsers() {
     sway exec firefox
 }
 
-wal -l --theme base16-github
-
+colors_terminal
 colors_config
 colors_gtk
 colors_rofi

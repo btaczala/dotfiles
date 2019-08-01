@@ -96,6 +96,5 @@ unset -f make
 
 if [[ "$host" != "Darwin" ]]; then
     eval $(dircolors -b $HOME/dotfiles/.dircolors)
-    (cat ~/.cache/wal/sequences &)
 fi
 
