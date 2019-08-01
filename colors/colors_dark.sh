@@ -37,12 +37,8 @@ function restart_browsers() {
     sway exec firefox
 }
 
-wal --theme base16-atelier-forest
-
 colors_terminal
 colors_config
 colors_gtk
 colors_rofi
 colors_qt
-
-restart_browsers
