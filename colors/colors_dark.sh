@@ -26,6 +26,7 @@ function colors_gtk() {
 
 function colors_rofi() {
     sed -i 's/light/dark/g' $rofi_config
+    killall -USR1 termite
 }
 
 function colors_qt() {
