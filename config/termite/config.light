@@ -1,95 +1,61 @@
 [options]
-#allow_bold = true
-#audible_bell = false
-#clickable_url = true
-#dynamic_title = true
 font = Hack 9
-#fullscreen = true
-#geometry = 640x480
-#icon_name = terminal
-#mouse_autohide = false
-#scroll_on_output = false
-#scroll_on_keystroke = true
-# Length of the scrollback buffer, 0 disabled the scrollback buffer
-# and setting it to a negative value means "infinite scrollback"
 scrollback_lines = 10000
-#search_wrap = true
-#urgent_on_bell = true
-#hyperlinks = false
-
-# $BROWSER is used by default if set, with xdg-open as a fallback
-#browser = xdg-open
-
-# "system", "on" or "off"
-#cursor_blink = system
-
-# "block", "underline" or "ibeam"
-#cursor_shape = block
-
-# Hide links that are no longer valid in url select overlay mode
-#filter_unmatched_urls = true
-
-# Emit escape sequences for extra modified keys
-#modify_other_keys = false
-
-# set size hints for the window
-#size_hints = false
-
-# "off", "left" or "right"
-#scrollbar = off
-
-
+# default.light
 
 [colors]
+# Base16 Google Light
+# Author: Seth Wright (http://sethawright.com)
 
-# special
-foreground      = #515253
-foreground_bold = #515253
-cursor          = #515253
-background      = #fcfdfe
+foreground          = #373b41
+foreground_bold     = #282a2e
+cursor              = #282a2e
+cursor_foreground   = #ffffff
+background          = rgba(255, 255, 255)
 
-# black
-color0  = #0c0d0e
-color8  = #737475
+# 16 color space
 
-# red
-color1  = #e31a1c
-color9  = #e31a1c
+# Black, Gray, Silver, White
+color0  = #ffffff
+color8  = #b4b7b4
+color7  = #373b41
+color15 = #1d1f21
 
-# green
-color2  = #31a354
-color10 = #31a354
+# Red
+color1  = #CC342B
+color9  = #CC342B
 
-# yellow
-color3  = #dca060
-color11 = #dca060
+# Green
+color2  = #198844
+color10 = #198844
 
-# blue
-color4  = #3182bd
-color12 = #3182bd
+# Yellow
+color3  = #FBA922
+color11 = #FBA922
 
-# magenta
-color5  = #756bb1
-color13 = #756bb1
+# Blue
+color4  = #3971ED
+color12 = #3971ED
 
-# cyan
-color6  = #80b1d3
-color14 = #80b1d3
+# Purple
+color5  = #A36AC7
+color13 = #A36AC7
 
-# white
-color7  = #b7b8b9
-color15 = #fcfdfe
+# Teal
+color6  = #3971ED
+color14 = #3971ED
 
-
-[hints]
-#font = Monospace 12
-#foreground = #dcdccc
-#background = #3f3f3f
-#active_foreground = #e68080
-#active_background = #3f3f3f
-#padding = 2
-#border = #3f3f3f
-#border_width = 0.5
-#roundness = 2.0
+# Extra colors
+color16 = #F96A38
+color17 = #3971ED
+color18 = #e0e0e0
+color19 = #c5c8c6
+color20 = #969896
+color21 = #282a2e
+color38 = #282a2e
+# for pass, not to bright!
+color192 = #ff004c
+# for exa, not to bright!
+color190 = #ff004c
 
 # vim: ft=dosini cms=#%s
