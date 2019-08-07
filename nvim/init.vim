@@ -109,7 +109,7 @@ syntax enable
 " Mapping
 nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <leader>n :NERDTreeToggle <CR>
-nnoremap <leader>f :set foldmethod=syntax <CR>
+nnoremap <leader>f :GrepperRg 
 nnoremap <leader>b :Buffers <CR>
 nnoremap <leader>a :Dispatch <CR>
 "bbye
