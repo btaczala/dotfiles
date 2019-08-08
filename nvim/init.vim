@@ -100,6 +100,8 @@ Plug 'mboughaba/i3config.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'NLKNguyen/papercolor-theme'
 
+Plug 'itchyny/lightline.vim'
+Plug 'itchyny/lightline.vim'
 
 " Initialize plugin system
 call plug#end()
@@ -135,13 +137,20 @@ autocmd FileType sh nnoremap <buffer><Leader>cf :Shfmt<CR>
 
 set exrc
 if has('mac')
-else
     colorscheme PaperColor
-endif
-let color = system('cat ~/.current_color')
-
-if color =~# "light"
-    set background=light
+    let iterm_profile = $ITERM_PROFILE
+    colorscheme PaperColor
+    if iterm_profile == "dark"
+        set background=dark
+    else
+        set background=light        " Set solarized background color
+    endif
 else
-    set background=dark
+    let color = system('cat ~/.current_color')
+
+    if color =~# "light"
+        set background=light
+    else
+        set background=dark
+    endif
 endif

@@ -5,6 +5,28 @@ if [[ "$host" == "Darwin" ]]; then
     source ~/.zprezto/runcoms/zshrc
     source ~/dotfiles/zprezto/.zpreztorc
     export PATH=/usr/local/bin:/opt/local/bin:/opt/local/sbin:$PATH
+    export TERM='xterm-256color'
+
+    # from http://apas.gr/2018/11/dark-mode-macos-safari-iterm-vim/
+    sith() {
+        val=$(defaults read -g AppleInterfaceStyle 2>/dev/null)
+        if [[ $val == "Dark" ]]; then
+            i
+        fi
+    }
+
+    i() {
+        if [[ $ITERM_PROFILE == "light" ]]; then
+            echo -ne "\033]50;SetProfile=dark\a"
+            export ITERM_PROFILE="dark"
+        else
+            echo -ne "\033]50;SetProfile=light\a"
+            export ITERM_PROFILE="light"
+        fi
+    }
+
+    sith
+
 else
     if [[ `export | grep TMUX` ]]; then
     else
@@ -98,3 +120,7 @@ if [[ "$host" != "Darwin" ]]; then
     eval $(dircolors -b $HOME/dotfiles/.dircolors)
 fi
 
+
+fpath+=${ZDOTDIR:-~}/.zsh_functions
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
