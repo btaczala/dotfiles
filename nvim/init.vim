@@ -134,9 +134,9 @@ autocmd FileType cmake nnoremap <buffer><Leader>cf :!cmake-format -i %<CR>
 autocmd FileType rust nnoremap <buffer><Leader>cf :RustFmt<CR>
 autocmd FileType sh nnoremap <buffer><Leader>cf :Shfmt<CR>
 
+colorscheme PaperColor
 set exrc
 if has('mac')
-    colorscheme PaperColor
     let iterm_profile = $ITERM_PROFILE
     colorscheme PaperColor
     if iterm_profile == "dark"
