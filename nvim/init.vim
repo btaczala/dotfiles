@@ -101,7 +101,7 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'NLKNguyen/papercolor-theme'
 
 Plug 'itchyny/lightline.vim'
-Plug 'itchyny/lightline.vim'
+Plug 'majutsushi/tagbar'
 
 " Initialize plugin system
 call plug#end()
@@ -114,6 +114,7 @@ nnoremap <leader>n :NERDTreeToggle <CR>
 nnoremap <leader>f :GrepperRg 
 nnoremap <leader>b :Buffers <CR>
 nnoremap <leader>a :Dispatch <CR>
+nnoremap <leader>t :TagbarToggle <CR>
 "bbye
 nnoremap <Leader>q :Bdelete<CR>
 map <C-P> :FZF<CR>
