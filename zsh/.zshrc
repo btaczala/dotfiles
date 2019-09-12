@@ -120,7 +120,6 @@ if [[ "$host" != "Darwin" ]]; then
     eval $(dircolors -b $HOME/dotfiles/.dircolors)
 fi
 
-
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
