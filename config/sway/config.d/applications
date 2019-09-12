@@ -7,7 +7,7 @@ bindsym $mod+d exec $menu
 bindsym $mod+r exec $menu
 bindsym $mod+space exec rofi -show run
 bindsym $mod+a exec pavucontrol
-bindsym $mod+comma exec rofi-pass
+bindsym $mod+comma exec passmenu
 bindsym $mod+Return exec $term
 bindsym $mod+m exec ~/dotfiles/scripts/playerctl_dmenu.sh
 
