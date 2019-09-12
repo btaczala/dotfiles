@@ -25,17 +25,6 @@ if has('mac')
 endif
 let $FZF_DEFAULT_COMMAND = 'rg --files --follow --glob "!.git/*" --glob "!build*/*"'
 
-" airline
-let g:airline_skip_empty_sections = 1
-let g:airline_powerline_fonts = 0
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_detect_modified=0
-let g:airline_detect_paste=0
-let g:airline_left_sep = '⮀'
-let g:airline_left_alt_sep = '⮁'
-let g:airline_right_sep = '⮂'
-let g:airline_right_alt_sep = '⮃'
-let g:airline_section_c = '%F'
 " Ycm
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_server_log_level = 'debug'
@@ -57,6 +46,26 @@ let g:PaperColor_Theme_Options = {
   \     }
   \   }
   \ }
+let g:lightline = {
+      \ 'colorscheme': 'PaperColor',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'filename': 'LightlineFilename',
+      \   'gitbranch': 'fugitive#head',
+      \ }
+      \ }
+
+function! LightlineFilename()
+  let root = fnamemodify(get(b:, 'git_dir'), ':h')
+  let path = expand('%:p')
+  if path[:len(root)-1] ==# root
+    return path[len(root)+1:]
+  endif
+  return expand('%')
+endfunction
 
 
 call plug#begin('~/.local/share/nvim/plugged')
@@ -66,8 +75,6 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'arakashic/chromatica.nvim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'roxma/vim-tmux-clipboard'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'vhdirk/vim-cmake'
@@ -101,7 +108,8 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'NLKNguyen/papercolor-theme'
 
 Plug 'itchyny/lightline.vim'
-Plug 'itchyny/lightline.vim'
+Plug 'lervag/vimtex'
+Plug 'https://github.com/majutsushi/tagbar'
 
 " Initialize plugin system
 call plug#end()
