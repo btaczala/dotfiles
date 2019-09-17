@@ -1,4 +1,0 @@
-#!/bin/bash
-
-ls $HOME/.mutt/mail/mobica/Inbox/new | wc -l
-
