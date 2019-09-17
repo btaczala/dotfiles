@@ -1,3 +1,0 @@
-#!/bin/sh
-
-urxvt -hold -title calendar_floating -g 120x50 -e task 
