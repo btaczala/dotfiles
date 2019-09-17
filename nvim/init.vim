@@ -90,6 +90,7 @@ Plug 'roxma/vim-tmux-clipboard'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'vhdirk/vim-cmake'
 Plug 'richq/vim-cmake-completion'
+Plug 'pboettch/vim-cmake-syntax'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --system-libclang --rust-completer --go-completer' }
 Plug 'tpope/vim-dispatch'
 Plug 'rhysd/vim-clang-format'
@@ -120,7 +121,8 @@ Plug 'NLKNguyen/papercolor-theme'
 
 Plug 'itchyny/lightline.vim'
 Plug 'lervag/vimtex'
-Plug 'https://github.com/majutsushi/tagbar'
+Plug 'majutsushi/tagbar'
+Plug 'mhinz/vim-startify'
 
 " Initialize plugin system
 call plug#end()
@@ -133,7 +135,7 @@ nnoremap <leader>n :NERDTreeToggle <CR>
 nnoremap <leader>f :GrepperRg 
 nnoremap <leader>b :Buffers <CR>
 nnoremap <leader>a :Dispatch <CR>
-"bbye
+nnoremap <leader>t :TagbarToggle <CR>
 nnoremap <Leader>q :Bdelete<CR>
 nnoremap <Leader>s :BG<CR>
 
