@@ -124,6 +124,8 @@ nnoremap <leader>b :Buffers <CR>
 nnoremap <leader>a :Dispatch <CR>
 "bbye
 nnoremap <Leader>q :Bdelete<CR>
+nnoremap <Leader>s :BG<CR>
+
 map <C-P> :FZF<CR>
 map <C-B> :Buffers<CR>
 map <F2> :bprevious<CR>
@@ -160,4 +162,17 @@ else
     else
         set background=dark
     endif
+endif
+
+" functions
+if exists("*ToggleBackground") == 0
+	function ToggleBackground()
+		if &background == "dark"
+			set background=light
+		else
+			set background=dark
+		endif
+	endfunction
+
+	command BG call ToggleBackground()
 endif
