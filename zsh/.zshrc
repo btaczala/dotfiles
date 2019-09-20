@@ -116,10 +116,8 @@ unset -f make
 # For OSX
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-if [[ "$host" != "Darwin" ]]; then
-    eval $(dircolors -b $HOME/dotfiles/.dircolors)
-fi
-
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+# text file are to light for light theme
+export LS_COLORS="*.txt=0;0"
