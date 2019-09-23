@@ -1,20 +1,19 @@
 #!/bin/bash
 
-packages=('xwobf-git' 'bspwm' 'sway' 'xorg-xprop' 'pass' 'rofi' 'greenclip' 'pass-ssh' 'rofi-pass' 'pinentry-rofi' 'ripgrep' 'vifm' 'python-pywal')
+packages=('sway-git' 'xorg-xprop' 'pass' 'rofi' 'greenclip' 'rofi-greenclip' 'rofi-pass' 'pinentry-rofi' 'ripgrep' 'vifm' 'python-pywal')
 
-function install_yaourt() {
-    sudo pacman -S --needed base-devel git wget yajl
-    cd $(mktemp -d)
-    echo "$PWD"
-    git clone https://aur.archlinux.org/package-query.git > /dev/null
-	cd package-query
-	makepkg -si > /dev/null
-    cd ..
-    git clone https://aur.archlinux.org/yaourt.git > /dev/null
-    cd yaourt
-    makepkg -si > /dev/null
-    cd .. 
-    rm -rfv yaourt/ package-query/
+function install_yay() {
+    package="yay"
+    pacman -Qi $package > /dev/null 2>&1
+    if [ $? -eq 0 ]; then
+        echo "Package $package already installed"
+    else
+        cd $(mktemp -d)
+        echo "$PWD"
+        git clone https://aur.archlinux.org/yay.git && cd yay
+        makepkg -si
+    fi
+
 }
 
 function install_if_needed() {
@@ -22,12 +21,13 @@ function install_if_needed() {
     pacman -Qi $package > /dev/null 2>&1
     if [ $? -eq 0 ]; then
         echo "Package $package already installed"
-    else 
+    else
         yay -S $package --noconfirm
     fi
 }
 
-for package in "${packages[@]}" 
+install_yay
+for package in "${packages[@]}"
 do
     echo "Installing $package"
     install_if_needed $package

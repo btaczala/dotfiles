@@ -34,16 +34,19 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}% {icon}",
-        "format-icons": ["", "", "", "", ""]
+        "format": "<span font='Font Awesome 5 Free 10'>{icon}</span> {capacity}% - {time}",
+        "format-icons": ["", "", "", "", ""],
+        "format-charging": "<span font='Font Awesome 5 Free'></span>  <span font='Font Awesome 5 Free 12'>{icon}</span>  {capacity}% - {time}",
+        "format-full":  "<span font='Font Awesome 5 Free'></span>  <span font='Font Awesome 5 Free 12'>{icon}</span>  {capacity}% - Charged",
+        "interval": 30
     },
     "network": {
-        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-wifi": " {essid} ({signalStrength}%)",
         "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
         "format-disconnected": "Disconnected ⚠"
     },
     "pulseaudio": {
-        "format": "{volume}% {icon}",
+        "format": "{icon} {volume}%",
         "format-bluetooth": "{volume}% {icon}",
         "format-muted": "",
         "format-icons": {
@@ -58,7 +61,7 @@
         "on-click": "pavucontrol"
     },
     "mpd": {
-        "format" : "{stateIcon} {artist} - {album} - {title}",
+        "format" : "{stateIcon} {artist} - {title}",
         "format-disconnected" : " Disconnected  ",
         "state-icons": {
             "paused": "",

@@ -1,3 +1,0 @@
-#!/bin/sh
-task add proj:work +email E-mail: $(sed -n '/^Subject: /{s///p;q}')
-

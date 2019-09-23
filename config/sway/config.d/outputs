@@ -1,3 +1,4 @@
+# vim: ft=i3config
 set $bg1 ~/dotfiles/walls/orion.png
 output * bg $bg1 fill
 
@@ -11,15 +12,15 @@ gaps inner 14
 # Screen locking
 #
 
-set $swaylock_command ~/dotfiles/cool_lock_sway.sh
+set $swaylock ~/dotfiles/cool_lock_sway.sh
 
-bindsym $mod+$alt+l exec $swaylock_command
+bindsym $mod+$alt+l exec $swaylock
 
 exec swayidle -w \
-    timeout 300 "$swaylock_command" \
-    resume 'swaymsg "output * dpms on"' \
-before-sleep "$swaylock_command"
+    timeout 600 "$swaylock -f" \
+    before-sleep "$swaylock -f"
 
+# clamshell
 set $laptop eDP-1
 bindswitch lid:on output $laptop disable
 bindswitch lid:off output $laptop enable

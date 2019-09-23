@@ -22,6 +22,8 @@ function colors_gtk() {
     sed -i 's/gtk-icon-theme-name.*/gtk-icon-theme-name=Flat-Remix-Light/g' $gtk_config
     sed -i 's/Materia-dark/Materia-light/g' ~/.gtkrc-2.0
     sed -i 's/Flat-Remix-Dark/Flat-Remix-Light/g' ~/.gtkrc-2.0
+    gsettings set org.gnome.desktop.interface gtk-theme 'Materia-light'
+
 }
 
 function colors_rofi() {

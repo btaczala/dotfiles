@@ -1,4 +1,0 @@
-#!/bin/bash
-
-echo "Executing $HOME/dotfiles/computers/${AUTORANDR_CURRENT_PROFILE}.sh "
-$HOME/dotfiles/computers/${AUTORANDR_CURRENT_PROFILE}.sh 

@@ -25,17 +25,6 @@ if has('mac')
 endif
 let $FZF_DEFAULT_COMMAND = 'rg --files --follow --glob "!.git/*" --glob "!build*/*"'
 
-" airline
-let g:airline_skip_empty_sections = 1
-let g:airline_powerline_fonts = 0
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_detect_modified=0
-let g:airline_detect_paste=0
-let g:airline_left_sep = '⮀'
-let g:airline_left_alt_sep = '⮁'
-let g:airline_right_sep = '⮂'
-let g:airline_right_alt_sep = '⮃'
-let g:airline_section_c = '%F'
 " Ycm
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_server_log_level = 'debug'
@@ -55,8 +44,39 @@ let g:PaperColor_Theme_Options = {
   \     'default': {
   \       'transparent_background': 1
   \     }
+  \   },
+  \   'language': {
+  \     'python': {
+  \       'highlight_builtins' : 1
+  \     },
+  \     'cpp': {
+  \       'highlight_standard_library': 1
+  \     },
+  \     'c': {
+  \       'highlight_builtins' : 1
+  \     }
   \   }
   \ }
+let g:lightline = {
+      \ 'colorscheme': 'PaperColor',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'filename': 'LightlineFilename',
+      \   'gitbranch': 'fugitive#head',
+      \ }
+      \ }
+
+function! LightlineFilename()
+  let root = fnamemodify(get(b:, 'git_dir'), ':h')
+  let path = expand('%:p')
+  if path[:len(root)-1] ==# root
+    return path[len(root)+1:]
+  endif
+  return expand('%')
+endfunction
 
 
 call plug#begin('~/.local/share/nvim/plugged')
@@ -66,12 +86,11 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'arakashic/chromatica.nvim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'roxma/vim-tmux-clipboard'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'vhdirk/vim-cmake'
 Plug 'richq/vim-cmake-completion'
+Plug 'pboettch/vim-cmake-syntax'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --system-libclang --rust-completer --go-completer' }
 Plug 'tpope/vim-dispatch'
 Plug 'rhysd/vim-clang-format'
@@ -101,6 +120,8 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'NLKNguyen/papercolor-theme'
 
 Plug 'itchyny/lightline.vim'
+Plug 'lervag/vimtex'
+Plug 'mhinz/vim-startify'
 Plug 'majutsushi/tagbar'
 
 " Initialize plugin system
@@ -115,8 +136,9 @@ nnoremap <leader>f :GrepperRg
 nnoremap <leader>b :Buffers <CR>
 nnoremap <leader>a :Dispatch <CR>
 nnoremap <leader>t :TagbarToggle <CR>
-"bbye
 nnoremap <Leader>q :Bdelete<CR>
+nnoremap <Leader>s :BG<CR>
+
 map <C-P> :FZF<CR>
 map <C-B> :Buffers<CR>
 map <F2> :bprevious<CR>
@@ -135,9 +157,9 @@ autocmd FileType cmake nnoremap <buffer><Leader>cf :!cmake-format -i %<CR>
 autocmd FileType rust nnoremap <buffer><Leader>cf :RustFmt<CR>
 autocmd FileType sh nnoremap <buffer><Leader>cf :Shfmt<CR>
 
+colorscheme PaperColor
 set exrc
 if has('mac')
-    colorscheme PaperColor
     let iterm_profile = $ITERM_PROFILE
     colorscheme PaperColor
     if iterm_profile == "dark"
@@ -153,4 +175,17 @@ else
     else
         set background=dark
     endif
+endif
+
+" functions
+if exists("*ToggleBackground") == 0
+	function ToggleBackground()
+		if &background == "dark"
+			set background=light
+		else
+			set background=dark
+		endif
+	endfunction
+
+	command BG call ToggleBackground()
 endif

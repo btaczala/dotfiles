@@ -3,35 +3,21 @@
       relink: true
       create: true
 - clean: ['~']
-- shell: 
+- shell:
     - [
-      '[[ -d ~/.zprezto ]] || 
-        git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto" 
+      '[[ -d ~/.zprezto ]] ||
+        git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
       fi']
 
 - link:
     ~/.tmux.conf: tmux/.tmux.conf
-    ~/.config/bspwm: config/bspwm
-    ~/.config/sxhkd: config/sxhkd
     ~/.config/termite: config/termite
-    ~/.config/dunst: config/dunst
     ~/.config/rofi-pass/config: config/rofi-pass/config
     ~/.vimrc: vim/.vimrc
-    ~/.xinitrc: Xconfig/.xinitrc
-    ~/.Xresources: Xconfig/.Xresources
+    ~/.Xresources: Xconfig/Xresources
     ~/.zshrc: zsh/.zshrc
     ~/.gitconfig: work/git/gitconfig
     ~/.gdbinit: gdbinit
-    ~/.config/systemd/user/getmail.service: systemd/getmail.service
-    ~/.config/systemd/user/getmail.timer: systemd/getmail.timer
-    ~/.config/systemd/user/gcalcli.service: systemd/gcalcli.service
-    ~/.config/systemd/user/gcalcli.timer: systemd/gcalcli.timer
-    ~/.config/systemd/user/mopidy.service: systemd/mopidy.service
-    ~/.config/autorandr/postswitch: autorandr/postswitch
-    ~/.config/autorandr/predetect: autorandr/predetect
-    ~/.vim/colors: vim/.vim/colors
-    ~/.gcalclirc: gcalcli/gcalclirc
-    ~/.tmuxinator: tmuxinator
-    ~/.config/nvim/init.vim: 
+    ~/.config/nvim/init.vim:
       create: true
       path: nvim/init.vim
