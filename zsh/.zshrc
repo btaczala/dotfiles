@@ -6,6 +6,9 @@ if [[ "$host" == "Darwin" ]]; then
     source ~/dotfiles/zprezto/.zpreztorc
     export PATH=/usr/local/bin:/opt/local/bin:/opt/local/sbin:$PATH
     export TERM='xterm-256color'
+    # MacOS: Bug that causes a lot of programs to show "Warning: Failed to set locale category .."
+    # https://discourse.brew.sh/t/failed-to-set-locale-category-lc-numeric-to-en-ru/5092/6
+    export LC_ALL=en_US.UTF-8
 
     # from http://apas.gr/2018/11/dark-mode-macos-safari-iterm-vim/
     sith() {
