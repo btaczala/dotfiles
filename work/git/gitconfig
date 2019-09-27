@@ -8,8 +8,6 @@
 [gui]
 	editor = gvim
 	historybrowser = gitk
-[diff]
-	tool = nvimdiff2
 [color]
 	sh = auto
 	ui = auto
@@ -25,7 +23,6 @@
 	ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
 	fl = log -u
     added = difftool --cached
-[difftool]
 [push]
 	default = simple
 [gitreview]
@@ -34,13 +31,6 @@
 [cola]
 	fontdiff = Hack,9,-1,5,50,0,0,0,0,0
 	spellcheck = false
-[difftool]
-	prompt = false
-	tool = vimdiff
-[difftool "icdiff"]
-    cmd = /usr/bin/icdiff --line-numbers $LOCAL $REMOTE
-[pager]
-    difftool = true
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
@@ -54,5 +44,7 @@
 [mergetool "nfugitive"]
     cmd = nvim -f -c "Gdiff" "$MERGED"
 
-[difftool "nvimdiff2"]
-    cmd = nvim -d $LOCAL $REMOTE
+[difftool]
+    prompt = false
+[diff]
+    tool = nvimdiff4
