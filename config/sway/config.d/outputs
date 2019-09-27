@@ -19,8 +19,3 @@ bindsym $mod+$alt+l exec $swaylock
 exec swayidle -w \
     timeout 600 "$swaylock -f" \
     before-sleep "$swaylock -f"
-
-# clamshell
-set $laptop eDP-1
-bindswitch lid:on output $laptop disable
-bindswitch lid:off output $laptop enable
