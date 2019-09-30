@@ -16,9 +16,11 @@ bindsym $mod+c exec clipman -s --selector=rofi
 
 # notifications
 exec mako
-exec clipman -d 1>> /tmp/clipman.log 2>&1 &
 bindsym $mod+n exec makoctl dismiss
 bindsym $mod+Shift+n exec makoctl dismiss --all
+
+exec clipman -d 1>> /tmp/clipman.log 2>&1 &
+exec kanshi
 
 # brightness
 bindsym XF86MonBrightnessDown exec /usr/bin/brightnessctl s 10%-
