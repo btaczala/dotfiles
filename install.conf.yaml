@@ -13,6 +13,7 @@
     ~/.tmux.conf: tmux/.tmux.conf
     ~/.config/termite: config/termite
     ~/.config/rofi-pass/config: config/rofi-pass/config
+    ~/.config/kanshi: config/kanshi
     ~/.vimrc: vim/.vimrc
     ~/.Xresources: Xconfig/Xresources
     ~/.zshrc: zsh/.zshrc
