@@ -3,6 +3,7 @@ set $menu rofi -i -modi drun -show drun
 set $term termite
 
 bindsym $mod+d exec $menu
+bindsym $mod+shift+d exec $HOME/dotfiles/scripts/rofi_file_browser.sh $HOME/Documents
 # start your launcher
 bindsym $mod+r exec $menu
 bindsym $mod+space exec rofi -show run
@@ -20,7 +21,7 @@ bindsym $mod+n exec makoctl dismiss
 bindsym $mod+Shift+n exec makoctl dismiss --all
 
 exec clipman -d 1>> /tmp/clipman.log 2>&1 &
-exec kanshi
+exec_always kanshi >> /tmp/kanshi.log 2>&1 &
 
 # brightness
 bindsym XF86MonBrightnessDown exec /usr/bin/brightnessctl s 10%-
