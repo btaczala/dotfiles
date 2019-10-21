@@ -114,15 +114,11 @@ Plug 'moll/vim-bbye'
 Plug 'luochen1990/rainbow'
 Plug 'lyuts/vim-rtags'
 Plug 'mhinz/vim-grepper'
-Plug 'aklt/plantuml-syntax'
 Plug 'mboughaba/i3config.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'NLKNguyen/papercolor-theme'
-
 Plug 'itchyny/lightline.vim'
-Plug 'lervag/vimtex'
 Plug 'majutsushi/tagbar'
-Plug 'mhinz/vim-startify'
 
 " Initialize plugin system
 call plug#end()
