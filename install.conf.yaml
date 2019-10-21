@@ -16,7 +16,7 @@
     ~/.config/kanshi: config/kanshi
     ~/.vimrc: vim/.vimrc
     ~/.Xresources: Xconfig/Xresources
-    ~/.zshrc: zsh/.zshrc
+    ~/.zshrc: zsh/zshrc
     ~/.gitconfig: work/git/gitconfig
     ~/.gdbinit: gdbinit
     ~/.config/nvim/init.vim:
