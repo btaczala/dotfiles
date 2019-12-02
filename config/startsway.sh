@@ -5,6 +5,7 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 # after suspend/resume combo
 export QT_QPA_PLATFORM=wayland
 export QT_AUTO_SCREEN_SCALE_FACTOR=0
+export QT_ENABLE_HIGHDPI_SCALING=1
 export _JAVA_AWT_WM_NONREPARENTING=1
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
 export QT_LOGGING_RULES="qt5ct.debug=false"
