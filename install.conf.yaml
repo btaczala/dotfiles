@@ -22,3 +22,5 @@
     ~/.config/nvim/init.vim:
       create: true
       path: nvim/init.vim
+    ~/.config/vdirsyncer: work/siili/vdirsyncer
+    ~/.config/khal: work/siili/khal

@@ -1,0 +1,13 @@
+# vim: ft=config
+[calendars]
+
+  [[siili]]
+    path = ~/.calendars/siili/calendar
+    color = light red
+    priority = 20
+    readonly = True
+  [[qt]]
+    path = ~/.calendars/qt/calendar
+    color = light green
+    priority = 20
+    readonly = True
