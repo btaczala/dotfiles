@@ -24,3 +24,5 @@
       path: nvim/init.vim
     ~/.config/vdirsyncer: work/siili/vdirsyncer
     ~/.config/khal: work/siili/khal
+    ~/.config/zathura: config/zathura
+    ~/.config/mimeapps.list: config/mimeapps.list
