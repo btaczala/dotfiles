@@ -22,6 +22,7 @@ bindsym $mod+Shift+n exec makoctl dismiss --all
 
 exec clipman -d 1>> /tmp/clipman.log 2>&1 &
 exec kanshi >> /tmp/kanshi.log 2>&1 &
+exec redshift >> /tmp/redshift.log 2>&1 &
 
 # brightness
 bindsym XF86MonBrightnessDown exec /usr/bin/brightnessctl s 10%-
