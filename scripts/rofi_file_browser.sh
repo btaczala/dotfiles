@@ -2,5 +2,5 @@
 
 root_dir=$1
 
-file=$(fd . $root_dir | rofi -dmenu -p "Select file $root_dir")
-xdg-open $file
+file=$(exa -s modified -r $root_dir | rofi -dmenu -p "Select file $root_dir")
+xdg-open $root_dir/$file
