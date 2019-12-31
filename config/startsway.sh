@@ -14,4 +14,6 @@ export WLR_DRM_DEVICES=/dev/dri/card0
 if [ -e /tmp/sway.log ]; then
     rm -rf /tmp/sway.log
 fi
+
+systemctl --user restart davmail@bartek.service
 sway > /tmp/sway.log 2>&1
