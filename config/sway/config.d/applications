@@ -32,7 +32,7 @@ bindsym XF86MonBrightnessUp exec /usr/bin/brightnessctl s 10%+
 bindsym XF86AudioLowerVolume exec ponymix decrease 5
 bindsym XF86AudioRaiseVolume exec ponymix increase 5
 
-bindsym $mod+f7 exec mpc toggle
+bindsym $mod+f7 exec playerctl play-pause
 bindsym $mod+f5 exec ponymix decrease 5
 bindsym $mod+f6 exec ponymix increase 5
 

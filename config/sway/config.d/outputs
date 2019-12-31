@@ -12,7 +12,7 @@ gaps inner 14
 # Screen locking
 #
 
-set $swaylock ~/dotfiles/cool_lock_sway.sh
+set $swaylock ~/dotfiles/cool_lock_sway.py
 
 bindsym $mod+$alt+l exec $swaylock
 
