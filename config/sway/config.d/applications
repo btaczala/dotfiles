@@ -21,8 +21,8 @@ bindsym $mod+n exec makoctl dismiss
 bindsym $mod+Shift+n exec makoctl dismiss --all
 
 exec clipman -d 1>> /tmp/clipman.log 2>&1 &
-exec kanshi >> /tmp/kanshi.log 2>&1 &
 exec redshift >> /tmp/redshift.log 2>&1 &
+exec_always pkill kanshi; exec kanshi
 
 # brightness
 bindsym XF86MonBrightnessDown exec /usr/bin/brightnessctl s 10%-
@@ -35,5 +35,7 @@ bindsym XF86AudioRaiseVolume exec ponymix increase 5
 bindsym $mod+f7 exec playerctl play-pause
 bindsym $mod+f5 exec ponymix decrease 5
 bindsym $mod+f6 exec ponymix increase 5
+
+bindsym $mod+minus exec termite -e 'tmux attach-session -tscratchpad' -t scratchpad
 
 exec xrandr --dpi 192

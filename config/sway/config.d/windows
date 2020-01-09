@@ -1,0 +1,10 @@
+# vim: ft=i3config
+# assignments
+
+for_window [class=mpv] floating enable
+for_window [class=feh] floating enable
+for_window [class="Qt Application Manager"] floating enable
+for_window [app_id="pavucontrol"] floating enable
+for_window [title="scratchpad"] floating enable, sticky enable
+#for_window [app_id="firefox" title="Picture-in-Picture"] floating enable, sticky enable
+
