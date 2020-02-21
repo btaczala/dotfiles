@@ -10,7 +10,7 @@
       fi']
 
 - link:
-    ~/.tmux.conf: tmux/.tmux.conf
+    ~/.tmux.conf: tmux/tmux.conf
     ~/.config/termite: config/termite
     ~/.config/rofi-pass/config: config/rofi-pass/config
     ~/.config/kanshi: config/kanshi
