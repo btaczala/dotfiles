@@ -5,25 +5,6 @@
 # Read `man 5 sway-input` for more information about this section.
 #
 
-#thinkpad keyboard
-input "1:1:AT_Translated_Set_2_keyboard" {
-    xkb_layout pl,us
-    xkb_options caps:escape
-}
-
-# hykker keyboard
-input "9610:26:Gaming_KB__Gaming_KB" {
-    xkb_layout pl,us
-    xkb_options caps:escape
-}
-
-input "1133:49960:Logitech_USB_Keyboard" {
-    xkb_layout pl,us
-    xkb_options caps:escape
-}
-
-input "6940:6933:ckb1:_Corsair_STRAFE_Gaming_Keyboard_vKB" {
-    xkb_layout pl,us
-    xkb_options caps:escape
-}
+input * xkb_layout "pl,us"
+input * xkb_options caps:escape
 
