@@ -1,5 +1,5 @@
 work {
-    output "Dell Inc. DELL U2719D 5J1LLS2" mode 2560x1440 position 0,0
+    output "Dell Inc. DELL U2719D 5J1LLS2" mode 2560x1440 transform normal position 0,188
     output "Dell Inc. DELL U2415 7MT0185F1HTS" mode 1920x1200 position 2560,0 transform 90
     output eDP-1 disable
 }

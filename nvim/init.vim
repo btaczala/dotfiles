@@ -128,7 +128,7 @@ syntax enable
 " Mapping
 nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <leader>n :NERDTreeToggle <CR>
-nnoremap <leader>f :GrepperRg 
+nnoremap <leader>f :GrepperAg 
 nnoremap <leader>b :Buffers <CR>
 nnoremap <leader>a :Dispatch <CR>
 nnoremap <leader>t :TagbarToggle <CR>
@@ -144,6 +144,8 @@ noremap <F5> :set list!<CR>
 inoremap <F5> <C-o>:set list!<CR>
 cnoremap <F5> <C-c>:set list!<CR>
 
+" remove trailing whitespaces
+"autocmd BufWritePre * %s/\s\+$//e
 autocmd FileType c,cpp nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
 autocmd FileType c,cpp vnoremap <buffer><Leader>cf :ClangFormat<CR>
 autocmd FileType qml nnoremap <Leader>cf :!qmlfmt -w %<CR>
@@ -175,13 +177,19 @@ endif
 
 " functions
 if exists("*ToggleBackground") == 0
-	function ToggleBackground()
-		if &background == "dark"
-			set background=light
-		else
-			set background=dark
-		endif
-	endfunction
+    function ToggleBackground()
+        if &background == "dark"
+            set background=light
+        else
+            set background=dark
+        endif
+    endfunction
 
-	command BG call ToggleBackground()
+    command BG call ToggleBackground()
 endif
+
+fun! TrimWhitespace()
+    let l:save = winsaveview()
+    keeppatterns %s/\s\+$//e
+    call winrestview(l:save)
+endfun

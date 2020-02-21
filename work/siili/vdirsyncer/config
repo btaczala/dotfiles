@@ -35,5 +35,5 @@ fileext = ".ics"
 type = "caldav"
 url = "http://localhost:1080/users/bartosz.taczala@qt.io/calendar/"
 username = "bartosz.taczala@qt.io"
-password.fetch = ["command", "~/dotfiles/work/siili/get_qt_pass.sh"]
+password.fetch = ["command", "/usr/bin/pass", "siili/qt/intranet.qt.io/bataczal"]
 

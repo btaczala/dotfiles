@@ -26,3 +26,4 @@
     ~/.config/khal: work/siili/khal
     ~/.config/zathura: config/zathura
     ~/.config/mimeapps.list: config/mimeapps.list
+    ~/.local/share/applications/run_windows.desktop: vms/run_windows.desktop

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-packages=('sway-git' 'xorg-xprop' 'pass' 'rofi' 'greenclip' 'rofi-greenclip' 'rofi-pass' 'pinentry-rofi' 'ripgrep' 'vifm' 'python-pywal')
+packages=('sway-git' 'xorg-xprop' 'pass' 'rofi' 'greenclip' 'rofi-greenclip' 'rofi-pass' 'pinentry-rofi' 'ripgrep' 'vifm' 'python-pywal' 'nohang-git')
 
 function install_yay() {
     package="yay"

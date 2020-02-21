@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Exec=/home/bartek/dotfiles/vms/run_win10.sh
+Path=/home/bartek/vms
+Name=Run Windows under QEMU
+GenericName=Run Windows under QEMU

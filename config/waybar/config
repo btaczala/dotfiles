@@ -2,9 +2,9 @@
     "layer": "top",
     "position": "top",
     "height": 26,
-    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-left": ["sway/workspaces", "idle_inhibitor"],
     "modules-center": ["sway/window"],
-    "modules-right": ["pulseaudio", "network", "battery", "clock"],
+    "modules-right": ["pulseaudio", "custom/vpn", "network", "battery", "clock"],
     "sway/workspaces": {
         "format": "{name}:{icon}",
         "format-icons": {
@@ -20,8 +20,12 @@
             "default": ""
         }
     },
-    "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>"
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
     },
     "clock": {
         "format": "{:%Y-%m-%d %H:%M}",
@@ -39,6 +43,12 @@
         "format-charging": "<span font='Font Awesome 5 Free'></span>  <span font='Font Awesome 5 Free 12'>{icon}</span>  {capacity}% - {time}",
         "format-full":  "<span font='Font Awesome 5 Free'></span>  <span font='Font Awesome 5 Free 12'>{icon}</span>  {capacity}% - Charged",
         "interval": 30
+    },
+    "custom/vpn": {
+        "format": "{}",
+        "interval": 5,
+        "exec": "$HOME/dotfiles/scripts/vpn.sh",
+        "exec-if": "pgrep openconnect"
     },
     "network": {
         "format-wifi": " {essid} ({signalStrength}%)",

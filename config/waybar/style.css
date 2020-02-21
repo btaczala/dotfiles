@@ -34,6 +34,10 @@ window#waybar {
     margin: 0 7px;
 }
 
+#custom-vpn {
+    background: rgba(80, 116, 21, 1)
+}
+
 #clock {
     background-color: rgba(0, 0, 0, 0);
 }
