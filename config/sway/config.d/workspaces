@@ -3,7 +3,7 @@ set $ws1 mails
 set $ws2 browser
 set $ws3 slack
 set $ws4 system
-set $ws5 dev
+set $ws5 windows
 set $ws6 code
 set $ws7 music
 set $ws8 docs
