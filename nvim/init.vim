@@ -23,12 +23,8 @@ if has('mac')
     let g:python2_host_prog = '/usr/local/bin/python'
     let g:python3_host_prog = '/usr/local/bin/python3'
 endif
-let $FZF_DEFAULT_COMMAND = 'rg --files --follow --glob "!.git/*" --glob "!build*/*"'
+let $FZF_DEFAULT_COMMAND = 'rg --files --follow --glob "!.git/*" --glob "!build*/*" --glob "!3rdParty*/*" '
 
-" Ycm
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_server_log_level = 'debug'
-let g:ycm_global_ycm_extra_conf = '~/dotfiles/ycm_extra_conf.py'
 let g:UltiSnipsExpandTrigger="<c-e>"
 let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME.'/dotfiles/vim/my-snips']
 let g:rg_command = 'rg --vimgrep -S'
@@ -91,7 +87,6 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'vhdirk/vim-cmake'
 Plug 'richq/vim-cmake-completion'
 Plug 'pboettch/vim-cmake-syntax'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --system-libclang --rust-completer --go-completer' }
 Plug 'tpope/vim-dispatch'
 Plug 'rhysd/vim-clang-format'
 Plug 'honza/vim-snippets'
@@ -117,8 +112,15 @@ Plug 'mhinz/vim-grepper'
 Plug 'mboughaba/i3config.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'arzg/vim-colors-xcode'
 Plug 'itchyny/lightline.vim'
-Plug 'majutsushi/tagbar'
+Plug 'liuchengxu/vista.vim'
+
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Initialize plugin system
 call plug#end()
@@ -126,14 +128,14 @@ call plug#end()
 "set t_Co=256
 syntax enable
 " Mapping
-nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>g :call LanguageClient_textDocument_definition()<CR>
 nnoremap <leader>n :NERDTreeToggle <CR>
 nnoremap <leader>f :GrepperAg 
 nnoremap <leader>b :Buffers <CR>
 nnoremap <leader>a :Dispatch <CR>
 nnoremap <leader>t :TagbarToggle <CR>
 nnoremap <Leader>q :Bdelete<CR>
-nnoremap <Leader>s :BG<CR>
+nnoremap <Leader>s :Vista finder<CR>
 
 map <C-P> :FZF<CR>
 map <C-B> :Buffers<CR>
@@ -193,3 +195,22 @@ fun! TrimWhitespace()
     keeppatterns %s/\s\+$//e
     call winrestview(l:save)
 endfun
+
+" LSP
+let g:LanguageClient_serverCommands = {
+  \ 'cpp': ['clangd'],
+  \ }
+let g:LanguageClient_autoStart = 1
+let g:LanguageClient_serverStderr = '/tmp/clangd.stderr'
+let g:deoplete#enable_at_startup = 1
+set signcolumn=yes
+set completefunc=LanguageClient#complete
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+let g:vista#renderer#enable_icon = 1
+
+" The default icons can't be suitable for all the filetypes, you can extend it as you wish.
+let g:vista#renderer#icons = {
+\   "function": "\uf794",
+\   "variable": "\uf71b",
+\  }
