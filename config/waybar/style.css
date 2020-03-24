@@ -42,6 +42,41 @@ window#waybar {
     background-color: rgba(0, 0, 0, 0);
 }
 
+#cpu {
+    background-color: #B4FF00;
+    color: black;
+}
+
+#cpu.low {
+    background-color: #B4FF00;
+    color: black;
+}
+
+#cpu.medium {
+    background-color: #FFC300;
+    color: black;
+}
+
+#cpu.high {
+    background-color: #FF3200;
+    color: black;
+}
+
+#memory.low {
+    background-color: #B4FF00;
+    color: black;
+}
+
+#memory.medium {
+    background-color: #FFC300;
+    color: black;
+}
+
+#memory.high {
+    background-color: #FF3200;
+    color: black;
+}
+
 #pulseaudio {
     background: rgba(0, 0, 0, 0);
     color: white;
@@ -56,4 +91,29 @@ window#waybar {
 #custom-spotify {
     background: rgba(0, 0, 0, 0);
     color: white;
+}
+
+#battery.warning:not(.charging) {
+    background: #f53c3c;
+    color: white;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#network {
+    background: transparent;
+    color: white
+}
+
+#pulseaudio {
+    background: transparent;
+    color: white;
+}
+
+#pulseaudio.muted {
+    border-bottom: 3px solid @color1;
+    color: green;
 }
