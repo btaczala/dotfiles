@@ -23,6 +23,7 @@
 	ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
 	fl = log -u
     added = difftool --cached
+    fbr = fzf-branch
 [push]
 	default = simple
 [gitreview]
