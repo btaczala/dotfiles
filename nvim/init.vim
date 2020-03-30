@@ -197,9 +197,15 @@ fun! TrimWhitespace()
 endfun
 
 " LSP
-let g:LanguageClient_serverCommands = {
-  \ 'cpp': ['clangd'],
-  \ }
+if has('mac')
+    let g:LanguageClient_serverCommands = {
+      \ 'cpp': ['/usr/local/Cellar/llvm/9.0.1/bin/clangd'],
+      \ }
+else
+    let g:LanguageClient_serverCommands = {
+      \ 'cpp': ['clangd'],
+      \ }
+endif
 let g:LanguageClient_autoStart = 1
 let g:LanguageClient_serverStderr = '/tmp/clangd.stderr'
 let g:deoplete#enable_at_startup = 1
