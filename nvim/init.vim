@@ -14,7 +14,7 @@ set spellfile=~/dotfiles/vim/en.utf-8.add
 set nu
 set rnu
 set modeline
-set modelines=1
+set modelines=0
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.gcno,*.gcda,*.cpp.o,CMakeLists.txt.user
 set wildignore+=*/build*/*
 set splitright
@@ -55,10 +55,17 @@ autocmd FileType sh nnoremap <buffer><Leader>cf :Shfmt<CR>
 
 
 " LSP
-let g:LanguageClient_serverCommands = {
-  \ 'cpp': ['clangd'],
-  \ 'c': ['clangd'],
-  \ }
+if has('mac')
+    let g:LanguageClient_serverCommands = {
+      \ 'cpp': ['/usr/local/Cellar/llvm/9.0.1/bin/clangd'],
+      \ 'c': ['/usr/local/Cellar/llvm/9.0.1/bin/clangd'],
+      \ }
+else
+    let g:LanguageClient_serverCommands = {
+      \ 'cpp': ['clangd'],
+      \ 'c': ['clangd'],
+      \ }
+endif
 let g:LanguageClient_autoStart = 1
 let g:LanguageClient_serverStderr = '/tmp/clangd.stderr'
 let g:deoplete#enable_at_startup = 1
