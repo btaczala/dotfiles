@@ -11,3 +11,4 @@ for_window [app_id="firefox" title="Picture-in-Picture"] floating enable, sticky
 for_window [app_id="firefox" title="NBA - Mozilla Firefox"] floating enable, sticky enable
 for_window [app_id="org.qutebrowser.qutebrowser"] move to workspace browser
 for_window [title="^QEMU$"] move to workspace windows, floating enable
+for_window [title="screensaver"] fullscreen
