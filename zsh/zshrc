@@ -126,3 +126,6 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 export LS_COLORS="*.txt=0;0"
 
 [ -f ~/.resh/shellrc ] && source ~/.resh/shellrc
+[ -f ~/dotfiles/zsh/forgit.plugin.zsh ] && source ~/dotfiles/zsh/forgit.plugin.zsh
+
+
