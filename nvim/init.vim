@@ -64,6 +64,7 @@ else
     let g:LanguageClient_serverCommands = {
       \ 'cpp': ['clangd'],
       \ 'c': ['clangd'],
+      \ 'python': ['/usr/bin/pyls'],
       \ }
 endif
 let g:LanguageClient_autoStart = 1
