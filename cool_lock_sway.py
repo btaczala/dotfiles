@@ -115,7 +115,7 @@ if playing_player:
 # swaylockCmd.extend(images)
 file=random.choice(os.listdir("%s" % os.path.expanduser("~/ss")))
 print(file)
-p = subprocess.Popen(['mpv', '--hwdec=vaapi', '--title=screensaver', "%s" % os.path.expanduser("~/ss/%s" % file)])
+p = subprocess.Popen(['mpv', '--hwdec=vaapi', '--loop=inf', '--title=screensaver', "%s" % os.path.expanduser("~/ss/%s" % file)])
 # subprocess.call(mpv)
 swaylockCmd.extend(["-c", "00000005"])
 print(swaylockCmd)
