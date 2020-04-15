@@ -18,3 +18,8 @@ home {
     output "Goldstar Company Ltd W2452 0x0000609B" mode 1920x1200 position 0,0
     output eDP-1 disable
 }
+
+home2 {
+    output "Dell Inc. DELL U2719D 5J1LLS2" mode 2560x1440 position 0,0
+    output eDP-1 disable
+}
