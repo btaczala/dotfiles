@@ -12,3 +12,4 @@ for_window [app_id="firefox" title="NBA - Mozilla Firefox"] floating enable, sti
 for_window [app_id="org.qutebrowser.qutebrowser"] move to workspace browser
 for_window [title="^QEMU$"] move to workspace windows, floating enable
 for_window [title="screensaver"] fullscreen
+for_window [title="mpv_youtube"] floating enable
