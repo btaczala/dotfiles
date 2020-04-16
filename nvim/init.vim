@@ -47,7 +47,7 @@ let g:cargo_makeprg_params = 'build'
 autocmd FileType c,cpp nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
 autocmd FileType c,cpp vnoremap <buffer><Leader>cf :ClangFormat<CR>
 autocmd FileType qml nnoremap <Leader>cf :!qmlfmt -w %<CR>
-autocmd FileType qml nnoremap <Leader>cs :!qmlscene % -style material<CR><Paste>
+autocmd FileType qml nnoremap <Leader>cs :Dispatch qmlscene %<CR><Paste>
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType cmake nnoremap <buffer><Leader>cf :!cmake-format -i %<CR>
 autocmd FileType rust nnoremap <buffer><Leader>cf :RustFmt<CR>

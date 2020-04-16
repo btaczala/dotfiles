@@ -27,7 +27,6 @@ if has('mac')
     endif
 else
     let color = system('cat ~/.current_color')
-
     if color =~# "light"
         set background=light
     else

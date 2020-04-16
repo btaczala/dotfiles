@@ -8,7 +8,7 @@ nnoremap <leader>t :TagbarToggle <CR>
 nnoremap <Leader>q :Bdelete<CR>
 nnoremap <Leader>s :Vista finder<CR>
 
-map <C-P> :FZF<CR>
+map <C-P> :Files<CR>
 map <C-B> :Buffers<CR>
 map <F2> :bprevious<CR>
 map <F3> :bnext<CR>
