@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import pgrep, json
-import subprocess, os, random
+import subprocess, os
 import tempfile, time
 import gi
 gi.require_version('Playerctl', '2.0')
@@ -11,24 +11,11 @@ from PIL import ImageFilter, Image
 rick="~/dotfiles/rick.png"
 background="~/dotfiles/walls/trees.jpg"
 swaylockCmd=['swaylock']
-mpv=['mpv']
 player = Playerctl.Player()
-manager = Playerctl.PlayerManager()
-
 sway_background = tempfile.NamedTemporaryFile()
 
-# check which player is playing
-playing_player=""
-
-for name in manager.props.player_names:
-    localPlayer = Playerctl.Player.new_from_name(name)
-    localStatus = localPlayer.get_property('status')
-    print('Status {:s} is {:s}'.format(name.name, localStatus))
-    if localStatus.startswith("Playing"):
-        playing_player = name
-
+status = player.get_property('status')
 sw = pgrep.pgrep("swaylock")
-
 if sw:
     exit
 
@@ -81,17 +68,6 @@ def blend_rick2(im, rick):
 def blur(image, blur):
     return image.filter(ImageFilter.GaussianBlur(blur))
 
-def pause_player(name):
-    print('Pausing {:s} '.format(name.name))
-    player = Playerctl.Player.new_from_name(name)
-    player.pause()
-
-def play_player(name):
-    print('Playing {:s} '.format(name.name))
-    player = Playerctl.Player.new_from_name(name)
-    player.play()
-
-
 @timing
 def prepare_backgroud():
     blur_radius = 5
@@ -109,20 +85,11 @@ def prepare_backgroud():
     return args
 
 images = prepare_backgroud()
-if playing_player:
-    pause_player(playing_player)
+if status.startswith("Playing"):
+    player.pause()
 
-# swaylockCmd.extend(images)
-file=random.choice(os.listdir("%s" % os.path.expanduser("~/ss")))
-print(file)
-p = subprocess.Popen(['mpv', '--hwdec=vaapi', '--loop=inf', '--title=screensaver', "%s" % os.path.expanduser("~/ss/%s" % file)])
-# subprocess.call(mpv)
-swaylockCmd.extend(["-c", "00000005"])
-print(swaylockCmd)
+swaylockCmd.extend(images)
 subprocess.call(swaylockCmd)
 
-
-print("kill")
-p.kill()
-if playing_player:
-    play_player(playing_player)
+if status.startswith("Playing"):
+    player.play()
