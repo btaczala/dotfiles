@@ -28,3 +28,4 @@
     ~/.config/tmuxinator: config/tmuxinator
     ~/.config/mimeapps.list: config/mimeapps.list
     ~/.local/share/applications/run_windows.desktop: vms/run_windows.desktop
+    ~/.config/vifm/vifmrc: config/vifm/vifmrc
