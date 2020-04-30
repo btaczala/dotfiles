@@ -57,8 +57,9 @@ autocmd FileType sh nnoremap <buffer><Leader>cf :Shfmt<CR>
 " LSP
 if has('mac')
     let g:LanguageClient_serverCommands = {
-      \ 'cpp': ['/usr/local/Cellar/llvm/9.0.1/bin/clangd'],
-      \ 'c': ['/usr/local/Cellar/llvm/9.0.1/bin/clangd'],
+      \ 'cpp': ['/usr/local/Cellar/llvm/10.0.0_1/bin/clangd'],
+      \ 'c': ['/usr/local/Cellar/llvm/10.0.0_1/bin/clangd'],
+      \ 'cmake': ['/usr/local/bin/cmake-language-server'],
       \ }
 else
     let g:LanguageClient_serverCommands = {
