@@ -7,21 +7,20 @@
 }
 
 window#waybar {
-    background: rgba(0, 0, 9, 0.8);
+    background: rgba(0, 0, 9, 0.4);
     border-bottom: 2px solid rgba(255, 255, 255, 0.15);
     color: white;
 }
 
 #workspaces button {
-    padding: 0 0px;
-    background: transparent;
+    padding: 0 2px;
+    background: rgba(0, 0, 9, 0.0);
     color: white;
     border-bottom: 0px solid transparent;
 }
 
 #workspaces button.focused {
-    background: rgba(255, 255, 255, 0.15);
-    border-bottom: 3px solid #90a959
+    border-bottom: 3px solid rgb(128,255,0)
 }
 
 #mode {

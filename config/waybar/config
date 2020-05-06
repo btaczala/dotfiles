@@ -7,15 +7,17 @@
     "modules-right": ["cpu", "memory", "pulseaudio", "custom/vpn", "network", "battery", "clock"],
     "sway/workspaces": {
         "all-outputs": false,
-        "format": "{name}:{icon}",
+        "format": "{icon} {name}",
         "format-icons": {
             "mails" : "",
-            "dev": "",
-            "system": "",
-            "browser": "",
-            "3": "",
-            "music": "",
+            "browser": "",
             "slack": "",
+            "system": "",
+            "windows": "",
+            "code": "",
+            "music": "",
+            "docs": "",
+            "priv": "",
             "urgent": "",
             "focused": "",
             "default": ""
@@ -48,8 +50,9 @@
         }
     },
     "clock": {
+        "interval": 1,
         "format": "{:%Y-%m-%d %H:%M}",
-        "format-alt": "{:%Y-%m-%d}"
+        "format-alt": "{:%H:%M:%S}"
     },
     "battery": {
         "bat": "BAT0",
@@ -58,7 +61,7 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "<span font='Font Awesome 5 Free 10'>{icon}</span> {capacity}%",
+        "format": "{icon} {capacity}%",
         "format-icons": ["", "", "", "", ""],
         "format-charging": "<span font='Font Awesome 5 Free'></span>  <span font='Font Awesome 5 Free 12'>{icon}</span>  {capacity}%",
         "format-full":  "<span font='Font Awesome 5 Free'></span>  <span font='Font Awesome 5 Free 12'>{icon}</span>  {capacity}% - Charged",

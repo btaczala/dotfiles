@@ -13,14 +13,14 @@ bindsym $mod+Return exec $term
 bindsym $mod+m exec ~/dotfiles/scripts/playerctl_dmenu.sh
 bindsym $mod+g exec swaymsg \[con_id=$(swaymsg -t get_tree | jq -r '.nodes | .[] | .nodes | . [] | select(.nodes != null) | .nodes | .[] | select(.name != null) | "\(.id?) \(.name?)"' | rofi -dmenu -i | awk '{print $1}')] focus
 
-bindsym $mod+c exec clipman -s --selector=rofi
+bindsym $mod+c exec clipman pick -t rofi
 
 # notifications
 exec mako
 bindsym $mod+n exec makoctl dismiss
 bindsym $mod+Shift+n exec makoctl dismiss --all
 
-exec clipman -d 1>> /tmp/clipman.log 2>&1 &
+exec wl-paste -t text --watch clipman store 1>> /tmp/clipman.log 2>&1 &
 exec redshift >> /tmp/redshift.log 2>&1 &
 exec_always pkill kanshi; exec kanshi
 
