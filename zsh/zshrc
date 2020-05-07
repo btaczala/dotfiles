@@ -106,14 +106,17 @@ function preexec() {
     title "$1" "%m:%35<...<%~"
 }
 
-source $HOME/dotfiles/zsh/fzf-marks.plugin.zsh
-source $HOME/dotfiles/zsh/my_fzf.sh
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^xe' edit-command-line
+bindkey '^x^e' edit-command-line
+
+#source $HOME/dotfiles/zsh/fzf-marks.plugin.zsh
+#source $HOME/dotfiles/zsh/my_fzf.sh
 
 stty -ixon
 
 fpath=($fpath ~/dotfiles/zsh/completion)
-
-unset -f make
 
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
 # For OSX
@@ -125,7 +128,6 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # text file are to light for light theme
 export LS_COLORS="*.txt=0;0"
 
-[ -f ~/.resh/shellrc ] && source ~/.resh/shellrc
 [ -f ~/dotfiles/zsh/forgit.plugin.zsh ] && source ~/dotfiles/zsh/forgit.plugin.zsh
 
 
