@@ -1,7 +1,6 @@
 " Mapping
-nnoremap <leader>g :call LanguageClient_textDocument_definition()<CR>
 nnoremap <leader>n :NERDTreeToggle <CR>
-nnoremap <leader>f :GrepperAg 
+nnoremap <leader>f :Grepper<CR>
 nnoremap <leader>b :Buffers <CR>
 nnoremap <leader>a :Dispatch <CR>
 nnoremap <leader>t :TagbarToggle <CR>

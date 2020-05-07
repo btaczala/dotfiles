@@ -52,31 +52,12 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType cmake nnoremap <buffer><Leader>cf :!cmake-format -i %<CR>
 autocmd FileType rust nnoremap <buffer><Leader>cf :RustFmt<CR>
 autocmd FileType sh nnoremap <buffer><Leader>cf :Shfmt<CR>
+autocmd FileType c,cpp setlocal keywordprg=:Cppman
 
-
-" LSP
-if has('mac')
-    let g:LanguageClient_serverCommands = {
-      \ 'cpp': ['/usr/local/Cellar/llvm/10.0.0_1/bin/clangd'],
-      \ 'c': ['/usr/local/Cellar/llvm/10.0.0_1/bin/clangd'],
-      \ 'cmake': ['/usr/local/bin/cmake-language-server'],
-      \ }
-else
-    let g:LanguageClient_serverCommands = {
-      \ 'cpp': ['clangd'],
-      \ 'c': ['clangd'],
-      \ 'python': ['/usr/bin/pyls'],
-      \ }
-endif
-let g:LanguageClient_autoStart = 1
-let g:LanguageClient_serverStderr = '/tmp/clangd.stderr'
-let g:deoplete#enable_at_startup = 1
-set signcolumn=yes
-set completefunc=LanguageClient#complete
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 let g:vista#renderer#enable_icon = 0
 set guifont=SauceCodePro\ Nerd\ Font\ Mono
 
+source $HOME/dotfiles/nvim/languageclient.vim
 source $HOME/dotfiles/nvim/lightline.vim
 source $HOME/dotfiles/nvim/bindings.vim

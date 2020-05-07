@@ -45,7 +45,7 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'https://github.com/skywind3000/vim-cppman'
 
 " Initialize plugin system
 call plug#end()
-
