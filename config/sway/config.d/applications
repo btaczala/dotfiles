@@ -20,7 +20,7 @@ exec mako
 bindsym $mod+n exec makoctl dismiss
 bindsym $mod+Shift+n exec makoctl dismiss --all
 
-exec wl-paste -t text --watch clipman store 1>> /tmp/clipman.log 2>&1 &
+exec wl-paste -t text --watch clipman store --max-items=1000 1>> /tmp/clipman.log 2>&1 &
 exec redshift >> /tmp/redshift.log 2>&1 &
 exec_always pkill kanshi; exec kanshi
 
