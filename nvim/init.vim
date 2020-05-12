@@ -22,6 +22,7 @@ set makeprg=ninja\ -C\ build
 
 syntax enable
 set exrc
+set secure
 
 let mapleader = ","
 if has('mac')

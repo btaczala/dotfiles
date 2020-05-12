@@ -1,8 +1,8 @@
 " LSP
 if has('mac')
     let g:LanguageClient_serverCommands = {
-      \ 'cpp': ['/usr/local/Cellar/llvm/10.0.0_1/bin/clangd'],
-      \ 'c': ['/usr/local/Cellar/llvm/10.0.0_1/bin/clangd'],
+      \ 'cpp': ['/usr/local/bin/ccls', '--log-file=/tmp/ccls.log'],
+      \ 'c': ['/usr/local/bin/ccls'],
       \ 'cmake': ['/usr/local/bin/cmake-language-server'],
       \ }
 else
@@ -21,6 +21,7 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 function SetLSPShortcuts()
   nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
+  nnoremap <leader>ll :call LanguageClient#textDocument_hover()<CR>
   nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
   nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
   nnoremap <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
