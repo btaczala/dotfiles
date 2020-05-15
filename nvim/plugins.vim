@@ -39,12 +39,8 @@ Plug 'arzg/vim-colors-xcode'
 Plug 'itchyny/lightline.vim'
 Plug 'liuchengxu/vista.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'https://github.com/skywind3000/vim-cppman'
 
 " Initialize plugin system
