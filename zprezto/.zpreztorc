@@ -11,7 +11,8 @@ zstyle ':prezto:load' pmodule \
   'utility' \
   'completion' \
   'rsync' \
+  'contrib-prompt' \
   'prompt'
 
-zstyle ':prezto:module:prompt' theme 'damoekri'
+zstyle ':prezto:module:prompt' theme 'spaceship'
 zstyle ':prezto:module:utility:make' color 'no'

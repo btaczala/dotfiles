@@ -1,5 +1,6 @@
 source ~/.zprezto/init.zsh
 host=`uname`
+
 if [[ "$host" == "Darwin" ]]; then
     source ~/.zprezto/init.zsh
     source ~/.zprezto/runcoms/zshrc
@@ -130,4 +131,5 @@ export LS_COLORS="*.txt=0;0"
 
 [ -f ~/dotfiles/zsh/forgit.plugin.zsh ] && source ~/dotfiles/zsh/forgit.plugin.zsh
 
-
+export STARSHIP_CONFIG=$HOME/dotfiles/config/starship.toml
+eval "$(starship init zsh)"
