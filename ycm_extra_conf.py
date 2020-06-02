@@ -1,25 +1,42 @@
-# Copyright (C) 2014 Google Inc.
+# This file is NOT licensed under the GPLv3, which is the license for the rest
+# of YouCompleteMe.
 #
-# This file is part of ycmd.
+# Here's the license text for this file:
 #
-# ycmd is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
+# This is free and unencumbered software released into the public domain.
 #
-# ycmd is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
+# Anyone is free to copy, modify, publish, use, compile, sell, or
+# distribute this software, either in source code form or as a compiled
+# binary, for any purpose, commercial or non-commercial, and by any
+# means.
 #
-# You should have received a copy of the GNU General Public License
-# along with ycmd.  If not, see <http://www.gnu.org/licenses/>.
+# In jurisdictions that recognize copyright laws, the author or authors
+# of this software dedicate any and all copyright interest in the
+# software to the public domain. We make this dedication for the benefit
+# of the public at large and to the detriment of our heirs and
+# successors. We intend this dedication to be an overt act of
+# relinquishment in perpetuity of all present and future rights to this
+# software under copyright law.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+# IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+# OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+# ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+# OTHER DEALINGS IN THE SOFTWARE.
+#
+# For more information, please refer to <http://unlicense.org/>
 
+from distutils.sysconfig import get_python_inc
+import platform
 import os
+import subprocess
 import ycm_core
-import logging
-from sys import platform as _platform
 
+DIR_OF_THIS_SCRIPT = os.path.abspath( os.path.dirname( __file__ ) )
+DIR_OF_THIRD_PARTY = os.path.join( DIR_OF_THIS_SCRIPT, 'third_party' )
+SOURCE_EXTENSIONS = [ '.cpp', '.cxx', '.cc', '.c', '.m', '.mm' ]
 
 # These are the compilation flags that will be used in case there's no
 # compilation database set (by default, one is not set).
@@ -28,50 +45,69 @@ flags = [
 '-Wall',
 '-Wextra',
 '-Werror',
+'-Wno-long-long',
+'-Wno-variadic-macros',
 '-fexceptions',
 '-DNDEBUG',
-# THIS IS IMPORTANT! Without a "-std=<something>" flag, clang won't know which
-# language to use when compiling headers. So it will guess. Badly. So C++
-# headers will be compiled as C headers. You don't want that so ALWAYS specify
-# a "-std=<something>".
-# For a C project, you would set this to something like 'c99' instead of
-# 'c++11'.
-'-std=c++11',
-# ...and the same thing goes for the magic -x option which specifies the
-# language that the files to be compiled are written in. This is mostly
-# relevant for c++ headers.
+# You 100% do NOT need -DUSE_CLANG_COMPLETER and/or -DYCM_EXPORT in your flags;
+# only the YCM source code needs it.
+'-DUSE_CLANG_COMPLETER',
+'-DYCM_EXPORT=',
+# THIS IS IMPORTANT! Without the '-x' flag, Clang won't know which language to
+# use when compiling headers. So it will guess. Badly. So C++ headers will be
+# compiled as C headers. You don't want that so ALWAYS specify the '-x' flag.
 # For a C project, you would set this to 'c' instead of 'c++'.
 '-x',
 'c++',
 '-isystem',
-'/usr/include',
+'cpp/pybind11',
 '-isystem',
-'/usr/local/include',
+'cpp/BoostParts',
 '-isystem',
-'/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/cstring',
+get_python_inc(),
 '-isystem',
-'/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include',
+'cpp/llvm/include',
+'-isystem',
+'cpp/llvm/tools/clang/include',
+'-I',
+'cpp/ycm',
+'-I',
+'cpp/ycm/ClangCompleter',
+'-isystem',
+'cpp/ycm/tests/gmock/gtest',
+'-isystem',
+'cpp/ycm/tests/gmock/gtest/include',
+'-isystem',
+'cpp/ycm/tests/gmock',
+'-isystem',
+'cpp/ycm/tests/gmock/include',
+'-isystem',
+'cpp/ycm/benchmarks/benchmark/include',
 ]
+
+# Clang automatically sets the '-std=' flag to 'c++14' for MSVC 2015 or later,
+# which is required for compiling the standard library, and to 'c++11' for older
+# versions.
+if platform.system() != 'Windows':
+  flags.append( '-std=c++11' )
 
 
 # Set this to the absolute path to the folder (NOT the file!) containing the
 # compile_commands.json file to use that instead of 'flags'. See here for
 # more details: http://clang.llvm.org/docs/JSONCompilationDatabase.html
 #
+# You can get CMake to generate this file for you by adding:
+#   set( CMAKE_EXPORT_COMPILE_COMMANDS 1 )
+# to your CMakeLists.txt file.
+#
 # Most projects will NOT need to set this to anything; you can just change the
-# 'flags' list of compilation flags.
-compilation_database_folder = 'build'
-logger = logging.getLogger('ycm-extra-conf')
+# 'flags' list of compilation flags. Notice that YCM itself uses that approach.
+compilation_database_folder = os.getcwd()
 
 if os.path.exists( compilation_database_folder ):
   database = ycm_core.CompilationDatabase( compilation_database_folder )
 else:
   database = None
-
-SOURCE_EXTENSIONS = [ '.cpp', '.cxx', '.cc', '.c', '.m', '.mm' ]
-
-def DirectoryOfThisScript():
-  return os.path.dirname( os.path.abspath( __file__ ) )
 
 
 def IsHeaderFile( filename ):
@@ -79,43 +115,86 @@ def IsHeaderFile( filename ):
   return extension in [ '.h', '.hxx', '.hpp', '.hh' ]
 
 
-def GetCompilationInfoForFile( filename ):
-  # The compilation_commands.json file generated by CMake does not have entries
-  # for header files. So we do our best by asking the db for flags for a
-  # corresponding source file, if any. If one exists, the flags for that file
-  # should be good enough.
+def FindCorrespondingSourceFile( filename ):
   if IsHeaderFile( filename ):
     basename = os.path.splitext( filename )[ 0 ]
     for extension in SOURCE_EXTENSIONS:
       replacement_file = basename + extension
       if os.path.exists( replacement_file ):
-        compilation_info = database.GetCompilationInfoForFile(
-          replacement_file )
-        if compilation_info.compiler_flags_:
-          return compilation_info
-    return None
-  return database.GetCompilationInfoForFile( filename )
+        return replacement_file
+  return filename
 
 
-# This is the entry point; this function is called by ycmd to produce flags for
-# a file.
-def FlagsForFile( filename, **kwargs ):
-  if not database:
+def Settings( **kwargs ):
+  if kwargs[ 'language' ] == 'cfamily':
+    # If the file is a header, try to find the corresponding source file and
+    # retrieve its flags from the compilation database if using one. This is
+    # necessary since compilation databases don't have entries for header files.
+    # In addition, use this source file as the translation unit. This makes it
+    # possible to jump from a declaration in the header file to its definition
+    # in the corresponding source file.
+    filename = FindCorrespondingSourceFile( kwargs[ 'filename' ] )
+    print(filename)
+
+    if not database:
+      print(flags)
+      return {
+        'flags': flags,
+        'include_paths_relative_to_dir': DIR_OF_THIS_SCRIPT,
+        'override_filename': filename
+      }
+
+    compilation_info = database.GetCompilationInfoForFile( filename )
+    if not compilation_info.compiler_flags_:
+      return {}
+
+    # Bear in mind that compilation_info.compiler_flags_ does NOT return a
+    # python list, but a "list-like" StringVec object.
+    final_flags = list( compilation_info.compiler_flags_ )
+
+    # NOTE: This is just for YouCompleteMe; it's highly likely that your project
+    # does NOT need to remove the stdlib flag. DO NOT USE THIS IN YOUR
+    # ycm_extra_conf IF YOU'RE NOT 100% SURE YOU NEED IT.
+    try:
+      final_flags.remove( '-stdlib=libc++' )
+    except ValueError:
+      pass
+
+    final_flags.insert(10,'-D__X86_64__')
+    print("real final", final_flags)
     return {
-      'flags': flags,
-      'include_paths_relative_to_dir': DirectoryOfThisScript()
+      'flags': final_flags,
+      'include_paths_relative_to_dir': compilation_info.compiler_working_dir_,
+      'override_filename': filename
     }
+  return {}
 
-  compilation_info = GetCompilationInfoForFile( filename )
-  if _platform == "darwin":
-      compilation_info.compiler_flags_.append('-I//Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/')
-      compilation_info.compiler_flags_.append('-I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/10.0.0/include/')
-  if not compilation_info:
-    return None
 
-  # Bear in mind that compilation_info.compiler_flags_ does NOT return a
-  # python list, but a "list-like" StringVec object.
-  return {
-    'flags': list( compilation_info.compiler_flags_ ),
-    'include_paths_relative_to_dir': compilation_info.compiler_working_dir_
-  }
+def GetStandardLibraryIndexInSysPath( sys_path ):
+  for path in sys_path:
+    if os.path.isfile( os.path.join( path, 'os.py' ) ):
+      return sys_path.index( path )
+  raise RuntimeError( 'Could not find standard library path in Python path.' )
+
+
+def PythonSysPath( **kwargs ):
+  sys_path = kwargs[ 'sys_path' ]
+  for folder in os.listdir( DIR_OF_THIRD_PARTY ):
+    if folder == 'python-future':
+      folder = os.path.join( folder, 'src' )
+      sys_path.insert( GetStandardLibraryIndexInSysPath( sys_path ) + 1,
+                       os.path.realpath( os.path.join( DIR_OF_THIRD_PARTY,
+                                                       folder ) ) )
+      continue
+
+    if folder == 'cregex':
+      interpreter_path = kwargs[ 'interpreter_path' ]
+      major_version = subprocess.check_output( [
+        interpreter_path, '-c', 'import sys; print( sys.version_info[ 0 ] )' ]
+      ).rstrip().decode( 'utf8' )
+      folder = os.path.join( folder, 'regex_{}'.format( major_version ) )
+
+    sys_path.insert( 0, os.path.realpath( os.path.join( DIR_OF_THIRD_PARTY,
+                                                        folder ) ) )
+  return sys_path
+

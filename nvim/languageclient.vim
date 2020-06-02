@@ -5,6 +5,7 @@ endif
 
 function SetLSPShortcuts()
   nnoremap <leader>ld :YcmCompleter GoToDefinition<CR>
+  nnoremap <leader>lD :YcmCompleter GoToDeclaration<CR>
   nnoremap <leader>ll :YcmCompleter GetDoc<CR>
   nnoremap <leader>lr :YcmCompleter GoToReferences<CR>
   nnoremap <leader>lf :YcmCompleter FixIt<CR>
@@ -14,4 +15,3 @@ augroup LSP
   autocmd!
   autocmd FileType cpp,c call SetLSPShortcuts()
 augroup END
-

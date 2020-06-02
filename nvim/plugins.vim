@@ -39,7 +39,7 @@ Plug 'arzg/vim-colors-xcode'
 Plug 'itchyny/lightline.vim'
 Plug 'liuchengxu/vista.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
 
 Plug 'https://github.com/skywind3000/vim-cppman'
 
