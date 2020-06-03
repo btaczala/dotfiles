@@ -1,4 +1,4 @@
-let g:ycm_global_ycm_extra_conf = '$HOME/dotfiles/ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '$HOME/dotfiles/youcompleteme/ycm_extra_conf.py'
 if has('mac')
     let g:ycm_clangd_binary_path = '/usr/local/Cellar/llvm/10.0.0_3/bin/clangd'
 endif
