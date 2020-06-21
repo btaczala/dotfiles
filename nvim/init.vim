@@ -62,3 +62,4 @@ set guifont=SauceCodePro\ Nerd\ Font\ Mono
 source $HOME/dotfiles/nvim/languageclient.vim
 source $HOME/dotfiles/nvim/lightline.vim
 source $HOME/dotfiles/nvim/bindings.vim
+source $HOME/dotfiles/nvim/fzf-branch-checkout.vim
