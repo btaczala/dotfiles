@@ -42,6 +42,7 @@ let g:shfmt_extra_args = '-i 4'
 " rust
 let g:cargo_makeprg_params = 'build'
 
+let g:fzf_preview_window = 'right:60%'
 
 " remove trailing whitespaces
 "autocmd BufWritePre * %s/\s\+$//e
