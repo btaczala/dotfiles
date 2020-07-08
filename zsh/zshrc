@@ -6,6 +6,7 @@ if [[ "$host" == "Darwin" ]]; then
     source ~/.zprezto/runcoms/zshrc
     source ~/dotfiles/zprezto/.zpreztorc
     export PATH=/usr/local/bin:/opt/local/bin:/opt/local/sbin:$PATH
+    export PATH=$HOME/dotfiles/bin:$PATH
     export TERM='xterm-256color'
     # MacOS: Bug that causes a lot of programs to show "Warning: Failed to set locale category .."
     # https://discourse.brew.sh/t/failed-to-set-locale-category-lc-numeric-to-en-ru/5092/6
@@ -108,24 +109,23 @@ function precmd() {
 function preexec() {
     title "$1" "%m:%35<...<%~"
 }
-
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^xe' edit-command-line
 bindkey '^x^e' edit-command-line
 
 #source $HOME/dotfiles/zsh/fzf-marks.plugin.zsh
-#source $HOME/dotfiles/zsh/my_fzf.sh
+source $HOME/dotfiles/zsh/my_fzf.sh
+source $HOME/dotfiles/zsh/zsh-interactive-cd.plugin.zsh
 
 stty -ixon
 
-fpath=($fpath ~/dotfiles/zsh/completion)
+fpath=($fpath $HOME/dotfiles/zsh/completion)
+autoload -Uz compinit && compinit
 
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
 # For OSX
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 # text file are to light for light theme

@@ -30,7 +30,7 @@ if has('mac')
     let g:python2_host_prog = '/usr/local/bin/python'
     let g:python3_host_prog = '/usr/local/bin/python3'
 endif
-let $FZF_DEFAULT_COMMAND = 'rg --files --follow --glob "!.git/*" --glob "!build*/*" --glob "!3rdParty*/*" '
+let $FZF_DEFAULT_COMMAND = 'rg --files --follow --glob "!.git/*" --glob "!build/*" --glob "!3rdParty*/*" '
 
 let g:UltiSnipsExpandTrigger="<c-e>"
 let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME.'/dotfiles/vim/my-snips']
