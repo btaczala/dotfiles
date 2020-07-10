@@ -30,3 +30,4 @@
     ~/.local/share/applications/run_windows.desktop: vms/run_windows.desktop
     ~/.config/vifm/vifmrc: config/vifm/vifmrc
     ~/.config/bat/config: config/bat/config
+    ~/.gitignore: git/gitignore

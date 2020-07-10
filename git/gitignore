@@ -1,0 +1,6 @@
+compile_commands.json
+.clangd
+.nvimrc
+.ccls-cache
+*.pro.user
+build-*
