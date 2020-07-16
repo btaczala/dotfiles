@@ -1,14 +1,21 @@
-let g:ycm_global_ycm_extra_conf = '$HOME/dotfiles/youcompleteme/ycm_extra_conf.py'
-if has('mac')
-    let g:ycm_clangd_binary_path = '/usr/local/Cellar/llvm/10.0.0_3/bin/clangd'
-endif
+let g:LanguageClient_serverStderr = '/tmp/clangd.stderr'
+let g:LanguageClient_serverCommands = {
+  \ 'cpp': ['/usr/local/Cellar/llvm/10.0.0_3/bin/clangd'],
+  \ }
+
+let g:deoplete#enable_at_startup = 1
 
 function SetLSPShortcuts()
-  nnoremap <leader>ld :YcmCompleter GoToDefinition<CR>
-  nnoremap <leader>lD :YcmCompleter GoToDeclaration<CR>
-  nnoremap <leader>ll :YcmCompleter GetDoc<CR>
-  nnoremap <leader>lr :YcmCompleter GoToReferences<CR>
-  nnoremap <leader>lf :YcmCompleter FixIt<CR>
+  nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
+  nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
+  nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
+  nnoremap <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
+  nnoremap <leader>lx :call LanguageClient#textDocument_references()<CR>
+  nnoremap <leader>la :call LanguageClient#textDocument_codeAction()<CR>
+  nnoremap <leader>lc :call LanguageClient#textDocument_completion()<CR>
+  nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
+  nnoremap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
+  nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
 endfunction()
 
 augroup LSP

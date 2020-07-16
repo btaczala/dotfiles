@@ -3,9 +3,7 @@ nnoremap <leader>n :NERDTreeToggle <CR>
 nnoremap <leader>f :Grepper<CR>
 nnoremap <leader>b :Buffers <CR>
 nnoremap <leader>a :Dispatch <CR>
-nnoremap <leader>t :TagbarToggle <CR>
 nnoremap <Leader>q :Bdelete<CR>
-nnoremap <Leader>s :Vista finder<CR>
 
 map <C-P> :Files<CR>
 map <C-B> :Buffers<CR>

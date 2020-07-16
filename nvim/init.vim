@@ -56,8 +56,6 @@ autocmd FileType rust nnoremap <buffer><Leader>cf :RustFmt<CR>
 autocmd FileType sh nnoremap <buffer><Leader>cf :Shfmt<CR>
 autocmd FileType c,cpp setlocal keywordprg=:Cppman
 
-
-let g:vista#renderer#enable_icon = 0
 set guifont=SauceCodePro\ Nerd\ Font\ Mono
 
 source $HOME/dotfiles/nvim/languageclient.vim
