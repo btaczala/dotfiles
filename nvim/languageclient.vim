@@ -16,7 +16,7 @@ function SetLSPShortcuts()
   nnoremap <leader>la :call LanguageClient#textDocument_codeAction()<CR>
   nnoremap <leader>lc :call LanguageClient#textDocument_completion()<CR>
   nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
-  nnoremap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
+  nnoremap <leader>s :call LanguageClient_textDocument_documentSymbol()<CR>
   nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
 endfunction()
 
