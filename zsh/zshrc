@@ -115,15 +115,11 @@ export LS_COLORS="*.txt=0;0"
 export STARSHIP_CONFIG=$HOME/dotfiles/config/starship.toml
 eval "$(starship init zsh)"
 
-if [[ "$host" == "Darwin" ]]; then
-    bindkey "[D" backward-word
-    bindkey "[C" forward-word
-    bindkey "^[a" beginning-of-line
-    bindkey "^[e" end-of-line
-fi
-
 if [[ ! ( $(darkMode) =~ 'Dark' ) ]]; then
   kitty @ --to unix:/tmp/kitty set-colors --all --configured ~/.config/kitty/kitty-themes/themes/AtomOneLight.conf
 else
   kitty @ --to unix:/tmp/kitty set-colors --reset
 fi
+
+bindkey "^[[1;3C" forward-word
+bindkey "^[[1;3D" backward-word
