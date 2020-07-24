@@ -17,6 +17,7 @@
     ~/.vimrc: vim/.vimrc
     ~/.Xresources: Xconfig/Xresources
     ~/.zshrc: zsh/zshrc
+    ~/.zshenv: zsh/zshenv
     ~/.gitconfig: work/git/gitconfig
     ~/.gdbinit: gdbinit
     ~/.config/nvim/init.vim:
