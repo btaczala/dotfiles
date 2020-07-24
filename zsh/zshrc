@@ -12,28 +12,7 @@ if [[ "$host" == "Darwin" ]]; then
     # https://discourse.brew.sh/t/failed-to-set-locale-category-lc-numeric-to-en-ru/5092/6
     export LC_ALL=en_US.UTF-8
 
-    # from http://apas.gr/2018/11/dark-mode-macos-safari-iterm-vim/
-    sith() {
-        val=$(defaults read -g AppleInterfaceStyle 2>/dev/null)
-        if [[ $val == "Dark" ]]; then
-            i
-        fi
-    }
-
-    i() {
-        if [[ $ITERM_PROFILE == "light" ]]; then
-            echo -ne "\033]50;SetProfile=dark\a"
-            export ITERM_PROFILE="dark"
-        else
-            echo -ne "\033]50;SetProfile=light\a"
-            export ITERM_PROFILE="light"
-        fi
-    }
-
-    sith
-
     alias bat="bat --theme=\$(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo default || echo GitHub)"
-
 else
     if [[ `export | grep TMUX` ]]; then
     else
@@ -135,3 +114,16 @@ export LS_COLORS="*.txt=0;0"
 
 export STARSHIP_CONFIG=$HOME/dotfiles/config/starship.toml
 eval "$(starship init zsh)"
+
+if [[ "$host" == "Darwin" ]]; then
+    bindkey "[D" backward-word
+    bindkey "[C" forward-word
+    bindkey "^[a" beginning-of-line
+    bindkey "^[e" end-of-line
+fi
+
+if [[ ! ( $(darkMode) =~ 'Dark' ) ]]; then
+  kitty @ --to unix:/tmp/kitty set-colors --all --configured ~/.config/kitty/kitty-themes/themes/AtomOneLight.conf
+else
+  kitty @ --to unix:/tmp/kitty set-colors --reset
+fi

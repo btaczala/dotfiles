@@ -17,21 +17,9 @@ let g:PaperColor_Theme_Options = {
   \   }
   \ }
 
-if has('mac')
-    let iterm_profile = $ITERM_PROFILE
-    colorscheme PaperColor
-    if iterm_profile == "dark"
-        set background=dark
-    else
-        set background=light        " Set solarized background color
-    endif
-else
-    let color = system('cat ~/.current_color')
-    if color =~# "light"
-        set background=light
-    else
-        set background=dark
-    endif
+set background=light
+if system('darkMode') =~ "Dark"
+    set background=dark
 endif
 
 " functions
