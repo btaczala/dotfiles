@@ -62,32 +62,6 @@ else
     source ~/dotfiles/zprezto/.zpreztorc
 fi
 
-function title() {
-    # escape '%' chars in $1, make nonprintables visible
-    local a=${(V)1//\%/\%\%}
-
-    # Truncate command, and join lines.
-    a=$(print -Pn "%40>...>$a" | tr -d "\n")
-    case $TERM in
-        screen*)
-            print -Pn "\e]2;$a @ $2\a" # plain xterm title
-            print -Pn "\ek$a\e\\"      # screen title (in ^A")
-            print -Pn "\e_$2   \e\\"   # screen location
-            ;;
-        xterm*)
-            print -Pn "\e]2;$a @ $2\a" # plain xterm title
-            ;;
-    esac
-}
-
-# precmd is called just before the prompt is printed
-function precmd() {
-    title "zsh" "%m:%55<...<%~"
-}
-# preexec is called just before any command line is executed
-function preexec() {
-    title "$1" "%m:%35<...<%~"
-}
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^xe' edit-command-line
@@ -106,14 +80,7 @@ autoload -Uz compinit && compinit
 # For OSX
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-# text file are to light for light theme
-export LS_COLORS="*.txt=0;0"
-
 [ -f ~/dotfiles/zsh/forgit.plugin.zsh ] && source ~/dotfiles/zsh/forgit.plugin.zsh
-
-export STARSHIP_CONFIG=$HOME/dotfiles/config/starship.toml
-eval "$(starship init zsh)"
 
 if [[ ! ( $(darkMode) =~ 'Dark' ) ]]; then
   kitty @ --to unix:/tmp/kitty set-colors --all --configured ~/.config/kitty/kitty-themes/themes/AtomOneLight.conf
@@ -123,3 +90,6 @@ fi
 
 bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f $HOME/dotfiles/zsh/p10k.zsh ]] || source $HOME/dotfiles/zsh/p10k.zsh

@@ -14,5 +14,5 @@ zstyle ':prezto:load' pmodule \
   'contrib-prompt' \
   'prompt'
 
-zstyle ':prezto:module:prompt' theme 'spaceship'
+zstyle ':prezto:module:prompt' theme 'powerlevel10k'
 zstyle ':prezto:module:utility:make' color 'no'
