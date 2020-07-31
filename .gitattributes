@@ -1,3 +1,4 @@
 netrc filter=git-crypt diff=git-crypt
 *.key filter=git-crypt diff=git-crypt
 work/siili/projects/** filter=git-crypt diff=git-crypt
+installers/task_warrior.sh filter=git-crypt diff=git-crypt
