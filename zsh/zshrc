@@ -82,10 +82,12 @@ autoload -Uz compinit && compinit
 
 [ -f ~/dotfiles/zsh/forgit.plugin.zsh ] && source ~/dotfiles/zsh/forgit.plugin.zsh
 
-if [[ ! ( $(darkMode) =~ 'Dark' ) ]]; then
-  kitty @ --to unix:/tmp/kitty set-colors --all --configured ~/.config/kitty/kitty-themes/themes/AtomOneLight.conf
-else
-  kitty @ --to unix:/tmp/kitty set-colors --reset
+if [[ "$host" == "Darwin" ]]; then
+    if [[ ! ( $(darkMode) =~ 'Dark' ) ]]; then
+      kitty @ --to unix:/tmp/kitty set-colors --all --configured ~/.config/kitty/kitty-themes/themes/AtomOneLight.conf
+    else
+      kitty @ --to unix:/tmp/kitty set-colors --reset
+    fi
 fi
 
 bindkey "^[[1;3C" forward-word
