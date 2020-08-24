@@ -8,6 +8,10 @@
       '[[ -d ~/.zprezto ]] ||
         git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
       fi']
+    - [
+      '[[ ! -d $ZPREZTODIR/contrib ]] ||
+        git clone --recurse-submodules https://github.com/belak/prezto-contrib contrib
+      fi']
 
 - link:
     ~/.tmux.conf: tmux/tmux.conf
