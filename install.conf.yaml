@@ -7,11 +7,15 @@
     - [
       '[[ -d ~/.zprezto ]] ||
         git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-      fi']
+      ']
     - [
       '[[ ! -d $ZPREZTODIR/contrib ]] ||
         git clone --recurse-submodules https://github.com/belak/prezto-contrib contrib
-      fi']
+      ']
+    - [
+      '[[ -d $HOME/dotfiles-projects ]] ||
+        git clone git@gitlab.siilicloud.com:bartosz.taczala/dotfiles-projects.git "$HOME/dotfiles-projects"
+      ']
 
 - link:
     ~/.tmux.conf: tmux/tmux.conf
@@ -27,7 +31,6 @@
     ~/.config/nvim/init.vim:
       create: true
       path: nvim/init.vim
-    ~/.config/vdirsyncer: work/siili/vdirsyncer
     ~/.config/khal: work/siili/khal
     ~/.config/zathura: config/zathura
     ~/.config/tmuxinator: config/tmuxinator
