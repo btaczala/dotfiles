@@ -35,6 +35,11 @@ let $FZF_DEFAULT_COMMAND = 'rg --files --follow --glob "!.git/*" --glob "!build/
 let g:UltiSnipsExpandTrigger="<c-e>"
 let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME.'/dotfiles/vim/my-snips']
 let g:rg_command = 'rg --vimgrep -S'
+if has('mac')
+    let g:notes_directories = ['~/Library/Mobile\ Documents/com\~apple\~CloudDocs/Documents/notes']
+endif
+let g:notes_unicode_enabled = 0
+let g:notes_tab_indents = 0
 
 " Shfmt 4 spaces
 let g:shfmt_extra_args = '-i 4'
