@@ -44,3 +44,8 @@ namespace
 Bsp
 Xilinx
 renderToFb
+blitting
+LBO
+HW
+M7
+FreeType
