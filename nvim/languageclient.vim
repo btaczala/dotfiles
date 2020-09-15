@@ -1,7 +1,7 @@
 let g:LanguageClient_serverStderr = '/tmp/clangd.stderr'
 let g:LanguageClient_serverCommands = {
-  \ 'cpp': ['/usr/local/Cellar/llvm/10.0.1/bin/clangd'],
-  \ 'c': ['/usr/local/Cellar/llvm/10.0.1/bin/clangd'],
+  \ 'cpp': ['/usr/local/Cellar/llvm/10.0.1/bin/clangd', '--compile-commands-dir=$PWD/build'],
+  \ 'c': ['/usr/local/Cellar/llvm/10.0.1/bin/clangd', '--compile-commands-dir=$PWD/build'],
   \ 'sh': ['bash-language-server', 'start'],
   \ }
 
