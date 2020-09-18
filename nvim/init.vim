@@ -29,6 +29,9 @@ if has('mac')
     let g:python_host_prog='/usr/local/bin/python3'
     let g:python2_host_prog = '/usr/local/bin/python'
     let g:python3_host_prog = '/usr/local/bin/python3'
+elseif has('win32')
+    let g:python2_host_prog = 'C:\Python27\python.exe'
+    let g:python3_host_prog = 'C:\Python38\python.exe'
 endif
 let $FZF_DEFAULT_COMMAND = 'rg --files --follow --glob "!.git/*" --glob "!build/*" --glob "!3rdParty*/*" '
 

@@ -1,10 +1,17 @@
 let g:LanguageClient_serverStderr = '/tmp/clangd.stderr'
-let g:LanguageClient_serverCommands = {
-  \ 'cpp': ['/usr/local/Cellar/llvm/10.0.1/bin/clangd', '--compile-commands-dir=$PWD/build'],
-  \ 'c': ['/usr/local/Cellar/llvm/10.0.1/bin/clangd', '--compile-commands-dir=$PWD/build'],
-  \ 'sh': ['bash-language-server', 'start'],
-  \ }
-
+if has('mac')
+    let g:LanguageClient_serverCommands = {
+      \ 'cpp': ['/usr/local/Cellar/llvm/10.0.1_1/bin/clangd', '--compile-commands-dir=$PWD/build'],
+      \ 'c': ['/usr/local/Cellar/llvm/10.0.1_1/bin/clangd', '--compile-commands-dir=$PWD/build'],
+      \ 'sh': ['bash-language-server', 'start'],
+      \ }
+elseif has('windows')
+    let g:LanguageClient_serverCommands = {
+      \ 'cpp': ['C:\Program Files\LLVM\bin\clangd'],
+      \ 'c': ['C:\Program Files\LLVM\bin\clangd'],
+      \ }
+else
+endif
 let g:deoplete#enable_at_startup = 1
 
 function SetLSPShortcuts()
