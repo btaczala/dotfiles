@@ -5,7 +5,7 @@ if has('mac')
       \ 'c': ['/usr/local/Cellar/llvm/10.0.1_1/bin/clangd', '--compile-commands-dir=$PWD/build'],
       \ 'sh': ['bash-language-server', 'start'],
       \ }
-elseif has('windows')
+elseif has('win32')
     let g:LanguageClient_serverStderr = 'C:\clangd.stderr'
     let g:LanguageClient_serverCommands = {
       \ 'cpp': ['C:\Program Files\LLVM\bin\clangd'],
