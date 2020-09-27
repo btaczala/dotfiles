@@ -46,5 +46,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 Plug 'https://github.com/skywind3000/vim-cppman'
 
+Plug 'rust-lang/rust.vim'
+
 " Initialize plugin system
 call plug#end()
