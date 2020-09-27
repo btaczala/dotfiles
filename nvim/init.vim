@@ -18,7 +18,6 @@ set modelines=0
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.gcno,*.gcda,*.cpp.o,CMakeLists.txt.user
 set wildignore+=*/build*/*
 set splitright
-set makeprg=ninja\ -C\ build
 
 syntax enable
 set exrc
@@ -54,15 +53,11 @@ let g:fzf_preview_window = 'right:60%'
 
 " remove trailing whitespaces
 "autocmd BufWritePre * %s/\s\+$//e
-autocmd FileType c,cpp nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
-autocmd FileType c,cpp vnoremap <buffer><Leader>cf :ClangFormat<CR>
 autocmd FileType qml nnoremap <Leader>cf :!qmlfmt -w %<CR>
 autocmd FileType qml nnoremap <Leader>cs :Dispatch qmlscene %<CR><Paste>
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType cmake nnoremap <buffer><Leader>cf :!cmake-format -i %<CR>
-autocmd FileType rust nnoremap <buffer><Leader>cf :RustFmt<CR>
 autocmd FileType sh nnoremap <buffer><Leader>cf :Shfmt<CR>
-autocmd FileType c,cpp setlocal keywordprg=:Cppman
 
 set guifont=SauceCodePro\ Nerd\ Font\ Mono
 
@@ -70,3 +65,5 @@ source $HOME/dotfiles/nvim/languageclient.vim
 source $HOME/dotfiles/nvim/lightline.vim
 source $HOME/dotfiles/nvim/bindings.vim
 source $HOME/dotfiles/nvim/fzf-branch-checkout.vim
+source $HOME/dotfiles/nvim/cpp.vim
+source $HOME/dotfiles/nvim/rust.vim
