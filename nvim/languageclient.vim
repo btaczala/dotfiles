@@ -4,6 +4,7 @@ if has('mac')
       \ 'cpp': ['/usr/local/Cellar/llvm/10.0.1_1/bin/clangd', '--compile-commands-dir=$PWD/build'],
       \ 'c': ['/usr/local/Cellar/llvm/10.0.1_1/bin/clangd', '--compile-commands-dir=$PWD/build'],
       \ 'sh': ['bash-language-server', 'start'],
+      \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
       \ }
 elseif has('win32')
     let g:LanguageClient_serverStderr = 'C:\clangd.stderr'
