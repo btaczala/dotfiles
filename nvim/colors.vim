@@ -17,10 +17,20 @@ let g:PaperColor_Theme_Options = {
   \   }
   \ }
 
-set background=light
-if system('darkMode') =~ "Dark"
-    set background=dark
-endif
+
+function! SwitchBackgroudIfNeeded(...)
+    if has('mac')
+        let s:mode = systemlist("defaults read -g AppleInterfaceStyle")[0]
+        if s:mode ==? "dark"
+            let s:new_bg = "dark"
+        else
+            let s:new_bg = "light"
+        endif
+        if &background !=? s:new_bg
+            let &background = s:new_bg
+        endif
+    endif
+endfunction
 
 " functions
 if exists("*ToggleBackground") == 0
@@ -42,3 +52,4 @@ fun! TrimWhitespace()
 endfun
 
 colorscheme PaperColor
+autocmd  FocusGained  *   :call SwitchBackgroudIfNeeded()
