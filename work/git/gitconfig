@@ -15,7 +15,7 @@
 	editor = nvim
 	autocrlf = input
 	excludesfile = ~/.gitignore
-    pager = delta --light
+    pager = delta
 [alias]
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
@@ -53,7 +53,6 @@
     tool = nvimdiff4
 
 [delta]
-    syntax-theme = ansi-light
     line-numbers = true
 
 [interactive]
