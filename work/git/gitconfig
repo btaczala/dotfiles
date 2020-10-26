@@ -15,7 +15,7 @@
 	editor = nvim
 	autocrlf = input
 	excludesfile = ~/.gitignore
-    pager = delta
+    pager = delta --light
 [alias]
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
@@ -53,9 +53,8 @@
     tool = nvimdiff4
 
 [delta]
-    plus-color = "#012800"
-    minus-color = "#340001"
-    syntax-theme = Monokai Extended
+    syntax-theme = ansi-light
+    line-numbers = true
 
 [interactive]
     diffFilter = delta --color-only
