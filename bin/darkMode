@@ -1,0 +1,4 @@
+#!/bin/bash
+if [[ "$host" == "Darwin" ]]; then
+    2>/dev/null defaults read -g AppleInterfaceStyle
+fi

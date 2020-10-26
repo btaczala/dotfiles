@@ -10,8 +10,6 @@ if [[ "$host" == "Darwin" ]]; then
     # MacOS: Bug that causes a lot of programs to show "Warning: Failed to set locale category .."
     # https://discourse.brew.sh/t/failed-to-set-locale-category-lc-numeric-to-en-ru/5092/6
     export LC_ALL=en_US.UTF-8
-
-    alias bat="bat --theme=\$(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo default || echo GitHub)"
 else
     if [[ `export | grep TMUX` ]]; then
     else
@@ -43,6 +41,7 @@ alias tmks='tmux kill-server'
 
 # task warrior aliases
 alias t='task'
+alias tw='timew'
 
 export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
@@ -69,9 +68,7 @@ fpath=($fpath $HOME/dotfiles/zsh/completion)
 autoload -Uz compinit && compinit
 
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
-# For OSX
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 [ -f ~/dotfiles/zsh/forgit.plugin.zsh ] && source ~/dotfiles/zsh/forgit.plugin.zsh
 
 if [[ "$host" == "Darwin" ]]; then
