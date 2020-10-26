@@ -34,7 +34,6 @@ Plug 'lyuts/vim-rtags'
 Plug 'mhinz/vim-grepper'
 Plug 'mboughaba/i3config.vim'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'NLKNguyen/papercolor-theme'
 Plug 'arzg/vim-colors-xcode'
 Plug 'itchyny/lightline.vim'
 Plug 'nathanaelkane/vim-indent-guides'
@@ -49,6 +48,9 @@ Plug 'https://github.com/skywind3000/vim-cppman'
 Plug 'blindFS/vim-taskwarrior'
 
 Plug 'rust-lang/rust.vim'
+" color themes
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'jsit/toast.vim'
 
 " Initialize plugin system
 call plug#end()

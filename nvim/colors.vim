@@ -51,6 +51,6 @@ fun! TrimWhitespace()
     call winrestview(l:save)
 endfun
 
-colorscheme PaperColor
+colorscheme toast
 call SwitchBackgroudIfNeeded()
 autocmd  FocusGained  *   :call SwitchBackgroudIfNeeded()
