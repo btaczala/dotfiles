@@ -52,4 +52,5 @@ fun! TrimWhitespace()
 endfun
 
 colorscheme PaperColor
+call SwitchBackgroudIfNeeded()
 autocmd  FocusGained  *   :call SwitchBackgroudIfNeeded()
