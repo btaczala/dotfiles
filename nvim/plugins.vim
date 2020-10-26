@@ -37,6 +37,7 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'arzg/vim-colors-xcode'
 Plug 'itchyny/lightline.vim'
+Plug 'nathanaelkane/vim-indent-guides'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
@@ -45,6 +46,7 @@ Plug 'autozimu/LanguageClient-neovim', {
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 Plug 'https://github.com/skywind3000/vim-cppman'
+Plug 'blindFS/vim-taskwarrior'
 
 Plug 'rust-lang/rust.vim'
 
