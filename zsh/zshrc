@@ -1,9 +1,8 @@
 source ~/.zprezto/init.zsh
+source ~/.zprezto/runcoms/zshrc
 host=`uname`
 
 if [[ "$host" == "Darwin" ]]; then
-    source ~/.zprezto/init.zsh
-    source ~/.zprezto/runcoms/zshrc
     source ~/dotfiles/zprezto/.zpreztorc
     export PATH=/usr/local/bin:/opt/local/bin:/opt/local/sbin:$PATH
     export PATH=$HOME/dotfiles/bin:$PATH
@@ -18,9 +17,6 @@ else
     else
         export TERM='xterm-256color'
     fi
-    source ~/.zprezto/init.zsh
-    source ~/.zprezto/runcoms/zshrc
-    source ~/dotfiles/zprezto/.zpreztorc
 fi
 
 export EDITOR=nvim
@@ -53,14 +49,10 @@ export PATH=$PATH:$GOPATH/bin
 
 if [[ "$host" == "Darwin" ]]; then
     export CLICOLOR=YES
-    source ~/.zprezto/init.zsh
-    source ~/.zprezto/runcoms/zshrc
-    source ~/dotfiles/zprezto/.zpreztorc
-else
-    source ~/.zprezto/init.zsh
-    source ~/.zprezto/runcoms/zshrc
-    source ~/dotfiles/zprezto/.zpreztorc
 fi
+
+source ~/.zprezto/init.zsh
+source ~/dotfiles/zprezto/.zpreztorc
 
 autoload -U edit-command-line
 zle -N edit-command-line
@@ -84,7 +76,7 @@ autoload -Uz compinit && compinit
 
 if [[ "$host" == "Darwin" ]]; then
     if [[ ! ( $(darkMode) =~ 'Dark' ) ]]; then
-      kitty @ --to unix:/tmp/kitty set-colors --all --configured ~/.config/kitty/kitty-themes/themes/AtomOneLight.conf
+      kitty @ --to unix:/tmp/kitty set-colors --all --configured ~/.config/kitty/kitty-themes/themes/Tango_Light.conf
     else
       kitty @ --to unix:/tmp/kitty set-colors --reset
     fi
@@ -99,4 +91,9 @@ bindkey "^[[1;3D" backward-word
 # rust env
 if [ -f $HOME/.cargo/env ]; then
     source $HOME/.cargo/env
+fi
+
+# git fuzzy
+if [ -d $HOME/dev/git-fuzzy ]; then
+    export PATH="$PATH:$HOME/dev/git-fuzzy/bin"
 fi
