@@ -12,6 +12,7 @@ zstyle ':prezto:load' pmodule \
   'completion' \
   'rsync' \
   'contrib-prompt' \
+  'fzf-tab' \
   'prompt'
 
 zstyle ':prezto:module:prompt' theme 'powerlevel10k'
