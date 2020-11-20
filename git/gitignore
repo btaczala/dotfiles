@@ -1,6 +1,7 @@
 compile_commands.json
 .clangd
 .nvimrc
+.cache
 .ccls-cache
 *.pro.user
 build-*
@@ -9,3 +10,4 @@ justfile
 .env
 cypress-binaries
 compile_flags.txt
+.ycm_extra_conf.py

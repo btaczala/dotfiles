@@ -38,11 +38,7 @@ Plug 'arzg/vim-colors-xcode'
 Plug 'itchyny/lightline.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --clangd-completer'  }
 
 Plug 'https://github.com/skywind3000/vim-cppman'
 Plug 'blindFS/vim-taskwarrior'
