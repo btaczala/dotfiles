@@ -11,6 +11,7 @@ map <C-B> :Buffers<CR>
 map <F2> :bprevious<CR>
 map <F3> :bnext<CR>
 nmap <leader>cp :let @+ = expand("%")<CR>
+nmap <leader>CP :let @+ = expand("%:p")<CR>
 noremap <F5> :set list!<CR>
 inoremap <F5> <C-o>:set list!<CR>
 cnoremap <F5> <C-c>:set list!<CR>
