@@ -9,8 +9,11 @@ export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
 zplug "plugins/git",   from:oh-my-zsh
 zplug "lib/clipboard", from:oh-my-zsh, if:"[[ $OSTYPE == *darwin* ]]"
+zplug "agkozak/zsh-z"
 
 zplug romkatv/powerlevel10k, as:theme, depth:1
+zplug load
+unalias grm
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
@@ -20,37 +23,32 @@ if ! zplug check --verbose; then
 fi
 
 # Then, source plugins and add commands to $PATH
-zplug load
 
 export EDITOR=nvim
 export BROWSER=firefox
+export PATH=$HOME/dotfiles/bin:/usr/local/bin:$PATH
 
 source $HOME/dotfiles/zsh/aliases.zsh
+source $HOME/dotfiles/zsh/my_fzf.sh
+[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/dotfiles/zsh/forgit.plugin.zsh ] && source ~/dotfiles/zsh/forgit.plugin.zsh
+[[ ! -f $HOME/dotfiles/zsh/p10k.zsh ]] || source $HOME/dotfiles/zsh/p10k.zsh
 
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^xe' edit-command-line
 bindkey '^x^e' edit-command-line
-
-source $HOME/dotfiles/zsh/my_fzf.sh
+bindkey "^[[1;3C" forward-word
+bindkey "^[[1;3D" backward-word
 
 fpath=($fpath $HOME/dotfiles/zsh/completion)
 autoload -Uz compinit && compinit
 
-[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -f ~/dotfiles/zsh/forgit.plugin.zsh ] && source ~/dotfiles/zsh/forgit.plugin.zsh
-
-if [[ "$host" == "Darwin" ]]; then
+if [[ "$(uname)" == "Darwin" ]]; then
     if [[ ! ( $(darkMode) =~ 'Dark' ) ]]; then
       kitty @ --to unix:/tmp/kitty set-colors --all --configured ~/.config/kitty/kitty-themes/themes/Tango_Light.conf
     else
       kitty @ --to unix:/tmp/kitty set-colors --reset
     fi
 fi
-
-bindkey "^[[1;3C" forward-word
-bindkey "^[[1;3D" backward-word
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f $HOME/dotfiles/zsh/p10k.zsh ]] || source $HOME/dotfiles/zsh/p10k.zsh

@@ -5,5 +5,5 @@ delta_command=$(fd '^delta$' -t x --type symlink /usr/local/bin)
 if [[ ! ( $(darkMode) =~ 'Dark' ) ]]; then
     $delta_command --light $@
 else
-    $delta_command $@
+    $delta_command --dark $@
 fi
