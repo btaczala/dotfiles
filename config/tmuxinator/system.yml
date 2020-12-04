@@ -44,12 +44,10 @@ windows:
   - dotfiles:
       layout: main-horizontal
       panes:
-        - cd dotfiles
         - cd dotfiles && nvim
   - dotfiles-projects:
       layout: main-horizontal
       panes:
-        - cd dotfiles-projects
         - cd dotfiles-projects && nvim
   - logs:
       layout: main-horizontal
