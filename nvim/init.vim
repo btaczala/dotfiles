@@ -1,5 +1,6 @@
 source $HOME/dotfiles/nvim/plugins.vim
 source $HOME/dotfiles/nvim/colors.vim
+source $HOME/dotfiles/nvim/session.vim
 
 set smartindent
 set autoindent
