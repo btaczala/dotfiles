@@ -49,7 +49,6 @@ windows:
       layout: main-horizontal
       panes:
         - cd dotfiles-projects && nvim
-  - logs:
-      layout: main-horizontal
+  - mails:
       panes:
-        - journalctl -f
+        - $HOME/dotfiles/bin/aerc
