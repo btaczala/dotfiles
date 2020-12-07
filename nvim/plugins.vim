@@ -38,8 +38,13 @@ Plug 'arzg/vim-colors-xcode'
 Plug 'itchyny/lightline.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
-Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --clangd-completer'  }
 Plug 'xolox/vim-session'
+
+Plug 'neoclide/coc.nvim', {'for':['zig','cmake','rust',
+     \'java','json', 'haskell', 'ts','sh', 'cs',
+     \'yaml', 'c', 'cpp', 'd', 'go',
+     \'python', 'dart', 'javascript', 'vim'], 'branch': 'release'}
+Plug 'clangd/coc-clangd', {'do': 'yarn install --frozen-lockfile'}
 
 Plug 'https://github.com/skywind3000/vim-cppman'
 Plug 'blindFS/vim-taskwarrior'
