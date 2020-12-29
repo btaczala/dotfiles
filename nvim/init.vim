@@ -8,6 +8,8 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set encoding=utf8
+set updatetime=1000
+set cursorline
 
 set nospell "no spell by default
 set spelllang=en_us,pl
@@ -66,5 +68,6 @@ source $HOME/dotfiles/nvim/languageclient.vim
 source $HOME/dotfiles/nvim/lightline.vim
 source $HOME/dotfiles/nvim/bindings.vim
 source $HOME/dotfiles/nvim/fzf-branch-checkout.vim
+source $HOME/dotfiles/nvim/persistentundo.vim
 source $HOME/dotfiles/nvim/cpp.vim
 source $HOME/dotfiles/nvim/rust.vim
