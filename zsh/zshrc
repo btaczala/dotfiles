@@ -10,23 +10,19 @@ source $ZPLUG_HOME/init.zsh
 zplug "plugins/git",   from:oh-my-zsh
 zplug "lib/clipboard", from:oh-my-zsh, if:"[[ $OSTYPE == *darwin* ]]"
 zplug "agkozak/zsh-z"
+zplug "zsh-users/zsh-completions"
 
 zplug romkatv/powerlevel10k, as:theme, depth:1
 zplug load
 unalias grm
 
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-fi
-
-# Then, source plugins and add commands to $PATH
-
 export EDITOR=nvim
 export BROWSER=firefox
 export PATH=$HOME/dotfiles/bin:/usr/local/bin:$PATH
+
+if [ -d $HOME/dev/git-fuzzy/bin ]; then
+    export PATH=$HOME/dev/git-fuzzy/bin:$PATH
+fi
 
 source $HOME/dotfiles/zsh/aliases.zsh
 source $HOME/dotfiles/zsh/my_fzf.sh
@@ -37,18 +33,8 @@ source $HOME/dotfiles/zsh/my_fzf.sh
 
 autoload -U edit-command-line
 zle -N edit-command-line
-#bindkey '^xe' edit-command-line
-#bindkey '^x^e' edit-command-line
-bindkey "^[[1;3C" forward-word
-bindkey "^[[1;3D" backward-word
+bindkey '^xe' edit-command-line
+bindkey '^x^e' edit-command-line
 
 fpath=($fpath $HOME/dotfiles/zsh/completion)
 autoload -Uz compinit && compinit
-
-if [[ "$(uname)" == "Darwin" ]]; then
-    if [[ ! ( $(darkMode) =~ 'Dark' ) ]]; then
-      kitty @ --to unix:/tmp/kitty set-colors --all --configured ~/.config/kitty/kitty-themes/themes/Tango_Light.conf
-    else
-      kitty @ --to unix:/tmp/kitty set-colors --reset
-    fi
-fi
