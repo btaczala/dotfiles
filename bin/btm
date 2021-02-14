@@ -1,0 +1,10 @@
+#!/bin/bash
+
+btm_command=$(fd '^btm$' -t x --type symlink /usr/local/bin)
+
+if [[ ! ( $(darkMode) =~ 'Dark' ) ]]; then
+    $btm_command --color gruvbox-light $@
+else
+    $btm_command --color default $@
+fi
+
