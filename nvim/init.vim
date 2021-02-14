@@ -38,7 +38,7 @@ endif
 let $FZF_DEFAULT_COMMAND = 'rg --files --follow --glob "!.git/*" --glob "!build/*" --glob "!3rdParty*/*" '
 
 let g:UltiSnipsExpandTrigger="<c-e>"
-let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME.'/dotfiles/vim/my-snips']
+let g:UltiSnipsSnippetStorageDirectoryForUltiSnipsEdit="$HOME/dotfiles/vim/my-snips"
 let g:rg_command = 'rg --vimgrep -S'
 if has('mac')
     let g:notes_directories = ['~/Library/Mobile\ Documents/com\~apple\~CloudDocs/Documents/notes']
