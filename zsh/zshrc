@@ -11,6 +11,7 @@ zplug "plugins/git",   from:oh-my-zsh
 zplug "lib/clipboard", from:oh-my-zsh, if:"[[ $OSTYPE == *darwin* ]]"
 zplug "agkozak/zsh-z"
 zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-history-substring-search"
 
 zplug romkatv/powerlevel10k, as:theme, depth:1
 zplug load
@@ -19,6 +20,14 @@ unalias grm
 export EDITOR=nvim
 export BROWSER=firefox
 export PATH=$HOME/dotfiles/bin:/usr/local/bin:$PATH
+export HISTSIZE=100000
+export SAVEHIST=100000
+# don't save duplicates
+setopt hist_ignore_all_dups
+# don't save with space in front
+setopt hist_ignore_space
+setopt appendhistory
+setopt inc_append_history
 
 if [ -d $HOME/dev/git-fuzzy/bin ]; then
     export PATH=$HOME/dev/git-fuzzy/bin:$PATH
@@ -38,3 +47,6 @@ bindkey '^x^e' edit-command-line
 
 fpath=($fpath $HOME/dotfiles/zsh/completion)
 autoload -Uz compinit && compinit
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
