@@ -1,21 +1,27 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
+#zmodload zsh/zprof
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
+export ZPLUG_USE_CACHE=true
+export ZPLUG_CACHE_DIR=$HOME/.cache/zplug
 zplug "plugins/git",   from:oh-my-zsh
 zplug "lib/clipboard", from:oh-my-zsh, if:"[[ $OSTYPE == *darwin* ]]"
 zplug "agkozak/zsh-z"
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-history-substring-search"
+zplug "ytakahashi/igit"
+zplug 'unixorn/fzf-zsh-plugin'
 
 zplug romkatv/powerlevel10k, as:theme, depth:1
 zplug load
-unalias grm
+#unalias grm
+alias ll='ls -lah'
 
 export EDITOR=nvim
 export BROWSER=firefox
@@ -35,8 +41,6 @@ fi
 
 source $HOME/dotfiles/zsh/aliases.zsh
 source $HOME/dotfiles/zsh/my_fzf.sh
-[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/dotfiles/zsh/forgit.plugin.zsh ] && source ~/dotfiles/zsh/forgit.plugin.zsh
 [[ ! -f $HOME/dotfiles/zsh/p10k.zsh ]] || source $HOME/dotfiles/zsh/p10k.zsh
 
@@ -50,3 +54,7 @@ autoload -Uz compinit && compinit
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+$HOME/dotfiles/bin/mac_change_dark_mode.sh
