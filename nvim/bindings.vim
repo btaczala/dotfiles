@@ -5,6 +5,7 @@ nnoremap <leader>b :Buffers <CR>
 nnoremap <leader>a :Dispatch <CR>
 nnoremap <Leader>q :Bdelete<CR>
 nnoremap <Leader>g :Gstatus<CR>
+nnoremap <Leader>h :History:<CR>
 
 map <C-P> :Files<CR>
 map <C-B> :Buffers<CR>

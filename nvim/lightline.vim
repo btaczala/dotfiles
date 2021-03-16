@@ -2,13 +2,12 @@ let g:lightline = {
       \ 'colorscheme': 'PaperColor',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'currentfunction','gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
       \ },
       \ 'component_function': {
       \   'filename': 'LightlineFilename',
       \   'gitbranch': 'fugitive#head',
 	  \   'cocstatus': 'coc#status',
-      \   'currentfunction': 'CocCurrentFunction'
       \ }
       \ }
 
@@ -21,8 +20,3 @@ function! LightlineFilename()
   return expand('%')
 endfunction
 
-function! CocCurrentFunction()
-    return get(b:, 'coc_current_function', '')
-endfunction
-
-autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()

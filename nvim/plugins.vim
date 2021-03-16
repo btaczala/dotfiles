@@ -39,19 +39,20 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'xolox/vim-session'
 
-Plug 'neoclide/coc.nvim', {'for':['zig','cmake','rust',
-     \'java','json', 'haskell', 'ts','sh', 'cs',
-     \'yaml', 'c', 'cpp', 'd', 'go',
-     \'python', 'dart', 'javascript', 'vim'], 'branch': 'release'}
-Plug 'clangd/coc-clangd', {'do': 'yarn install --frozen-lockfile'}
-
 Plug 'https://github.com/skywind3000/vim-cppman'
 Plug 'blindFS/vim-taskwarrior'
+Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --clangd-completer --clang-completer'  }
+Plug 'liuchengxu/vista.vim'
 
 Plug 'rust-lang/rust.vim'
 " color themes
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'jsit/toast.vim'
+Plug 'Luxed/ayu-vim'
+Plug 'lervag/vimtex'
+
+" c++
+Plug 'octol/vim-cpp-enhanced-highlight'
 
 " Initialize plugin system
 call plug#end()

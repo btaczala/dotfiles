@@ -28,14 +28,15 @@ set secure
 
 let mapleader = ","
 if has('mac')
-    let g:python_host_prog='/usr/local/bin/python3'
+    let g:loaded_python_provider = 0
+    let g:python_host_prog='/usr/bin/python'
     let g:python2_host_prog = '/usr/bin/python'
     let g:python3_host_prog = '/usr/local/bin/python3'
 elseif has('win32')
     let g:python2_host_prog = 'C:\Python27\python.exe'
     let g:python3_host_prog = 'C:\Python38\python.exe'
 endif
-let $FZF_DEFAULT_COMMAND = 'rg --files --follow --glob "!.git/*" --glob "!build/*" --glob "!3rdParty*/*" '
+let $FZF_DEFAULT_COMMAND = 'rg --files --follow -s --glob "!.git/*" --glob "!build/*" --glob "!3rdParty*/*" '
 
 let g:UltiSnipsExpandTrigger="<c-e>"
 let g:UltiSnipsSnippetStorageDirectoryForUltiSnipsEdit="$HOME/dotfiles/vim/my-snips"
@@ -54,6 +55,7 @@ let g:cargo_makeprg_params = 'build'
 
 let g:fzf_preview_window = 'right:60%'
 
+let g:ycm_confirm_extra_conf = 0
 " remove trailing whitespaces
 "autocmd BufWritePre * %s/\s\+$//e
 autocmd FileType qml nnoremap <Leader>cf :!qmlfmt -w %<CR>
