@@ -73,3 +73,5 @@ source $HOME/dotfiles/nvim/fzf-branch-checkout.vim
 source $HOME/dotfiles/nvim/persistentundo.vim
 source $HOME/dotfiles/nvim/cpp.vim
 source $HOME/dotfiles/nvim/rust.vim
+
+set modelines=4
