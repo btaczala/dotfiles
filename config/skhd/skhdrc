@@ -1,4 +1,4 @@
-cmd - return : $HOME/dotfiles/bin/spawn_iterm2.sh
+cmd - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance -d ~
 
 cmd + shift - x : yabai -m space --focus recent
 cmd + shift - 1 : yabai -m space --focus 1
