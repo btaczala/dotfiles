@@ -52,7 +52,6 @@ Plug 'Luxed/ayu-vim'
 Plug 'lervag/vimtex'
 
 " c++
-Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'matze/vim-meson'
 
 " Initialize plugin system
