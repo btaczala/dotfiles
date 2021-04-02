@@ -12,6 +12,11 @@ cmd + shift - 8 : yabai -m space --focus 8
 cmd + shift - 9 : yabai -m space --focus 9
 cmd + shift - 0 : yabai -m space --focus 10
 
+cmd + shift - h : yabai -m window --focus west
+cmd + shift - l : yabai -m window --focus east
+cmd + shift - j : yabai -m window --focus south
+cmd + shift - k : yabai -m window --focus north
+
 alt + shift - 1 : yabai -m window --space 1
 alt + shift - 2 : yabai -m window --space 2
 alt + shift - 3 : yabai -m window --space 3
