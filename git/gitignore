@@ -6,7 +6,7 @@ compile_commands.json
 *.pro.user
 build-*
 build
-justfile
+justfile*
 .env
 cypress-binaries
 compile_flags.txt

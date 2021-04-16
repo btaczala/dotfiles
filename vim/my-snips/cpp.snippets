@@ -16,15 +16,12 @@ int main(int argc, char* argv[]) {
 $0
 endsnippet
 
-snippet tfun
-template<typename ${1:T}>
-$2 $3($4) {
-/* ... */
-}
-$0
+snippet pretty_this_function
+std::printf("[%s] \n", __PRETTY_FUNCTION__);
 endsnippet
 
-snippet pretty_this_function
-printf("[%s] \n", __PRETTY_FUNCTION__);
+snippet beginend "$1.begin(), $1.end() (beginend)"
+${1:v}${1/^.*?(-)?(>)?$/(?2::(?1:>:.))/}begin(), $1${1/^.*?(-)?(>)?$/(?2::(?1:>:.))/}end()
 endsnippet
+
 

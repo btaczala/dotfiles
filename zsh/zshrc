@@ -22,6 +22,7 @@ zplug romkatv/powerlevel10k, as:theme, depth:1
 zplug load
 #unalias grm
 alias ll='ls -lah'
+alias j=just
 
 export EDITOR=nvim
 export BROWSER=firefox
@@ -52,12 +53,11 @@ bindkey '^x^e' edit-command-line
 fpath=($fpath $HOME/dotfiles/zsh/completion)
 autoload -Uz compinit && compinit
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
 
 # kitty set colors
 $HOME/dotfiles/bin/mac_change_dark_mode.sh

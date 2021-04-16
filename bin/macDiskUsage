@@ -1,0 +1,6 @@
+#!/bin/bash
+
+free=$(diskutil info /dev/disk1s5 | grep Free | awk '{print $4$5}')
+total=$(diskutil info /dev/disk1s5 | grep Total | awk '{print $4$5}')
+
+echo $free/$total
