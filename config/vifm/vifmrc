@@ -1,30 +1,21 @@
-" vim: filetype=vifm :
+" vim: filetype=vim :
 
 filetype * xdg-open
 
 nnoremap ,c :write | execute ':!%n${EDITOR:-vim} $MYVIFMRC' | restart<cr>
+nnoremap <c-f> :FZFfind<cr>
 
 highlight clear
+set vicmd="nvim"
 
-highlight Win cterm=none ctermfg=236 ctermbg=255
-highlight Directory cterm=bold ctermfg=21 ctermbg=255
-highlight Link cterm=bold ctermfg=39 ctermbg=default
+fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
+		   \ kitty icat --transfer-mode=file --place=%pwx%ph@%pxx%py %c
+		   \ %pc
+		   \ kitty icat --transfer-mode=file --clear
 
-highlight BrokenLink cterm=bold ctermfg=red ctermbg=default
-highlight Socket cterm=bold ctermfg=magenta ctermbg=default
-highlight Device cterm=bold ctermfg=blue ctermbg=default
 
-highlight Fifo cterm=bold ctermfg=cyan ctermbg=default
-highlight Executable cterm=bold ctermfg=red ctermbg=default
-highlight Selected cterm=bold ctermfg=200 ctermbg=default
-
-highlight CurrLine cterm=bold ctermfg=255 ctermbg=27
-highlight TopLine cterm=none ctermfg=236 ctermbg=255
-highlight TopLineSel cterm=bold ctermfg=236 ctermbg=255
-
-highlight StatusLine cterm=bold ctermfg=236 ctermbg=255
-highlight WildMenu cterm=underline,reverse ctermfg=236 ctermbg=255
-highlight CmdLine cterm=none ctermfg=236 ctermbg=255
-
-highlight ErrorMsg cterm=none ctermfg=red ctermbg=236
-highlight Border cterm=none ctermfg=236 ctermbg=255
+command! FZFfind : set noquickview
+                \| let $FZF_PICK = term('fzf --height 10 2>/dev/tty')
+                \| if $FZF_PICK != ''
+                \|     execute 'goto' fnameescape($FZF_PICK)
+                \| endif

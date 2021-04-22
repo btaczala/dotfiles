@@ -29,6 +29,7 @@ export BROWSER=firefox
 export PATH=$HOME/dotfiles/bin:/usr/local/bin:$PATH
 export HISTSIZE=100000
 export SAVEHIST=100000
+export VIFM=$HOME/dotfiles/config/vifm/vifmrc
 # don't save duplicates
 setopt hist_ignore_all_dups
 # don't save with space in front

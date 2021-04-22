@@ -50,6 +50,7 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'jsit/toast.vim'
 Plug 'Luxed/ayu-vim'
 Plug 'lervag/vimtex'
+Plug 'Yggdroot/indentLine'
 
 " c++
 Plug 'matze/vim-meson'

@@ -1,0 +1,7 @@
+#!/bin/bash
+command=$(fd '^vifm$' -t x --type symlink /usr/local/bin)
+if [[ ! ( $(darkMode) =~ 'Dark' ) ]]; then
+    $command +'colorscheme dwmlight'
+else
+    $command
+fi

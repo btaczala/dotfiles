@@ -3,19 +3,6 @@
       relink: true
       create: true
 - clean: ['~']
-- shell:
-    - [
-      '[[ -d ~/.zprezto ]] ||
-        git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-      ']
-    - [
-      '[[ ! -d $ZPREZTODIR/contrib ]] ||
-        git clone --recurse-submodules https://github.com/belak/prezto-contrib contrib
-      ']
-    - [
-      '[[ -d $HOME/dotfiles-projects ]] ||
-        git clone git@gitlab.siilicloud.com:bartosz.taczala/dotfiles-projects.git "$HOME/dotfiles-projects"
-      ']
 
 - link:
     ~/.tmux.conf: tmux/tmux.conf
@@ -36,9 +23,30 @@
     ~/.config/tmuxinator: config/tmuxinator
     ~/.config/mimeapps.list: config/mimeapps.list
     ~/.local/share/applications/run_windows.desktop: vms/run_windows.desktop
-    ~/.config/vifm/vifmrc: config/vifm/vifmrc
+    ~/.vifm/vifmrc: config/vifm/vifmrc
     ~/.config/bat/config: config/bat/config
     ~/.config/kitty: config/kitty
     ~/.gitignore: git/gitignore
     ~/.yabairc: config/yabai/yabairc
     ~/.skhdrc: config/skhd/skhdrc
+- shell:
+    - [
+      '[[ -d ~/.zprezto ]] ||
+        git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+      ']
+    - [
+      '[[ ! -d $ZPREZTODIR/contrib ]] ||
+        git clone --recurse-submodules https://github.com/belak/prezto-contrib contrib
+      ']
+    - [
+      '[[ -d $HOME/dotfiles-projects ]] ||
+        git clone git@gitlab.siilicloud.com:bartosz.taczala/dotfiles-projects.git "$HOME/dotfiles-projects"
+      ']
+    - [
+      '[[ -d $HOME/.config/vifm/colors ]] ||
+        git clone https://github.com/vifm/vifm-colors "$HOME/.config/vifm/colors"
+      ']
+    - [
+      '[[ -d $HOME/.config/kitty/kitty-themes ]] ||
+        git clone https://github.com/dexpota/kitty-themes.git "$HOME/.config/kitty/kitty-themes"
+      ']
