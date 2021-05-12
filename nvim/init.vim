@@ -53,9 +53,10 @@ let g:shfmt_extra_args = '-i 4'
 " rust
 let g:cargo_makeprg_params = 'build'
 
-let g:fzf_preview_window = 'right:60%'
+let g:fzf_preview_window = ['up:40%:hidden', 'ctrl-/']
 
 let g:ycm_confirm_extra_conf = 0
+let g:ycm_global_ycm_extra_conf = '/Users/bartektaczala/dotfiles/youcompleteme/ycm_extra_conf.py'
 " remove trailing whitespaces
 "autocmd BufWritePre * %s/\s\+$//e
 autocmd FileType qml nnoremap <Leader>cf :!qmlfmt -w %<CR>

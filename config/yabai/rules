@@ -2,11 +2,16 @@
 
 yabai -m rule --add app="^System Preferences$" manage=off
 yabai -m rule --add title="^QUL.*$" manage=off
+yabai -m rule --add title="^FaceTime$" manage=off
 yabai -m rule --add app="^Problem\ Reporter.*" manage=off
 yabai -m rule --add app="^Finder.*" manage=off
 
-yabai -m rule --add app="^Microsoft Outlook$" space=4
+yabai -m rule --add app="^Microsoft Teams$" space=2
+yabai -m rule --add app="^Slack$" space=2
+
+yabai -m rule --add app="^Microsoft Outlook$" space=3
 yabai -m rule --add app="^Spotify$" space=9
+yabai -m rule --add app="^Parallels Desktop$" space=4
 
 yabai -m signal --add \
       event=application_activated \
