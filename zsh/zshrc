@@ -43,7 +43,6 @@ if [ -d $HOME/dev/git-fuzzy/bin ]; then
 fi
 
 source $HOME/dotfiles/zsh/aliases.zsh
-source $HOME/dotfiles/zsh/my_fzf.sh
 [ -f ~/dotfiles/zsh/forgit.plugin.zsh ] && source ~/dotfiles/zsh/forgit.plugin.zsh
 [[ ! -f $HOME/dotfiles/zsh/p10k.zsh ]] || source $HOME/dotfiles/zsh/p10k.zsh
 

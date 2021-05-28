@@ -13,7 +13,7 @@
     ~/.Xresources: Xconfig/Xresources
     ~/.zshrc: zsh/zshrc
     ~/.zshenv: zsh/zshenv
-    ~/.gitconfig: work/git/gitconfig
+    ~/.gitconfig: git/gitconfig
     ~/.gdbinit: gdbinit
     ~/.config/nvim/init.vim:
       create: true
@@ -37,10 +37,6 @@
     - [
       '[[ ! -d $ZPREZTODIR/contrib ]] ||
         git clone --recurse-submodules https://github.com/belak/prezto-contrib contrib
-      ']
-    - [
-      '[[ -d $HOME/dotfiles-projects ]] ||
-        git clone git@gitlab.siilicloud.com:bartosz.taczala/dotfiles-projects.git "$HOME/dotfiles-projects"
       ']
     - [
       '[[ -d $HOME/.config/vifm/colors ]] ||
