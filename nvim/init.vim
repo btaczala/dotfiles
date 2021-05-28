@@ -53,7 +53,7 @@ let g:shfmt_extra_args = '-i 4'
 " rust
 let g:cargo_makeprg_params = 'build'
 
-let g:fzf_preview_window = ['up:40%:hidden', 'ctrl-/']
+let g:fzf_preview_window = ['right:70%:hidden', 'ctrl-/']
 
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_global_ycm_extra_conf = '/Users/bartektaczala/dotfiles/youcompleteme/ycm_extra_conf.py'
@@ -68,11 +68,12 @@ autocmd FileType sh nnoremap <buffer><Leader>cf :Shfmt<CR>
 set guifont=SauceCodePro\ Nerd\ Font\ Mono
 
 source $HOME/dotfiles/nvim/languageclient.vim
-source $HOME/dotfiles/nvim/lightline.vim
+source $HOME/dotfiles/nvim/statusline.vim
 source $HOME/dotfiles/nvim/bindings.vim
 source $HOME/dotfiles/nvim/fzf-branch-checkout.vim
 source $HOME/dotfiles/nvim/persistentundo.vim
 source $HOME/dotfiles/nvim/cpp.vim
 source $HOME/dotfiles/nvim/rust.vim
+source $HOME/dotfiles/nvim/cmake.vim
 
 set modelines=4

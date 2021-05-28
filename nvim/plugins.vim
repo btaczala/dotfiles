@@ -7,9 +7,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'arakashic/chromatica.nvim'
 Plug 'roxma/vim-tmux-clipboard'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'vhdirk/vim-cmake'
-Plug 'richq/vim-cmake-completion'
-Plug 'pboettch/vim-cmake-syntax'
+Plug 'cdelledonne/vim-cmake'
 Plug 'tpope/vim-dispatch'
 Plug 'rhysd/vim-clang-format'
 Plug 'honza/vim-snippets'
@@ -34,14 +32,14 @@ Plug 'mhinz/vim-grepper'
 Plug 'mboughaba/i3config.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'arzg/vim-colors-xcode'
-Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'xolox/vim-session'
 
 Plug 'https://github.com/skywind3000/vim-cppman'
 Plug 'blindFS/vim-taskwarrior'
-Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --clangd-completer --clang-completer'  }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'liuchengxu/vista.vim'
 
 Plug 'rust-lang/rust.vim'
@@ -54,6 +52,9 @@ Plug 'Yggdroot/indentLine'
 
 " c++
 Plug 'matze/vim-meson'
+
+" zig
+Plug 'ziglang/zig.vim'
 
 " Initialize plugin system
 call plug#end()

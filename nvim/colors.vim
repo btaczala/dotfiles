@@ -15,6 +15,13 @@ function! SwitchBackgroudIfNeeded(...)
             let s:new_bg = "light"
         endif
         if &background !=? s:new_bg
+            let g:PaperColor_Theme_Options = {
+            \   'theme': {
+            \     'default': {
+            \       'transparent_background': 1
+            \     }
+            \   }
+            \ }
             let &background = s:new_bg
         endif
     endif

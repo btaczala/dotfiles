@@ -23,6 +23,7 @@ zplug load
 #unalias grm
 alias ll='ls -lah'
 alias j=just
+alias icat="kitty +kitten icat"
 
 export EDITOR=nvim
 export BROWSER=firefox
