@@ -15,10 +15,8 @@
     ~/.zshenv: zsh/zshenv
     ~/.gitconfig: git/gitconfig
     ~/.gdbinit: gdbinit
-    ~/.config/nvim/init.vim:
-      create: true
-      path: nvim/init.vim
     ~/.config/khal: work/siili/khal
+    ~/.config/nvim: config/nvim
     ~/.config/zathura: config/zathura
     ~/.config/tmuxinator: config/tmuxinator
     ~/.config/mimeapps.list: config/mimeapps.list

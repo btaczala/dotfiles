@@ -1,0 +1,11 @@
+extends c
+
+snippet test_platform_ifdef
+#ifdef TEST_PLATFORM
+${1}
+#endif
+endsnippet
+
+snippet pretty_this_function
+printf("[%s] \r\n", __PRETTY_FUNCTION__);
+endsnippet
