@@ -17,6 +17,7 @@ zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-history-substring-search"
 zplug "ytakahashi/igit"
 zplug 'unixorn/fzf-zsh-plugin'
+zplug "chitoku-k/fzf-zsh-completions"
 
 zplug romkatv/powerlevel10k, as:theme, depth:1
 zplug load
