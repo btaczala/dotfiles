@@ -17,7 +17,7 @@
       }
     }
   },
-  "clangd.path": "/usr/local/Cellar/llvm/12.0.0_1/bin/clangd",
+  "clangd.path": "/usr/local/Cellar/llvm/12.0.1/bin/clangd",
   "clangd.arguments": ["--log=verbose", "--pretty"],
   "coc.preferences.currentFunctionSymbolAutoUpdate": true
 }

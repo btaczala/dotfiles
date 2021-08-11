@@ -3,8 +3,9 @@ function LC_coc_maps()
     nmap <leader>lD <Plug>(coc-implementation)
     nmap <leader>lx <Plug>(coc-references)
     nmap <leader>lf <Plug>(coc-codeaction)
-    nmap <leader>la :YcmCompleter GoToInclude<CR>
+    nmap <leader>la :CocCommand clangd.switchSourceHeader<CR>
     nmap <leader>lr <Plug>(coc-rename)
+    nmap <leader>ls :CocList outline<CR>
 endfunction
 
 function LC_maps()
@@ -17,7 +18,6 @@ function LC_maps()
 endfunction
 
 nmap <leader>v :Vista!!<CR>
-nmap <leader>ls :BTags<CR>
 
 autocmd FileType cpp,c,sh,cmake,rust,zig call LC_coc_maps()
 autocmd BufNewFile,BufRead *.zig set filetype=zig

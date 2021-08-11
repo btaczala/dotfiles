@@ -18,6 +18,7 @@ zplug "zsh-users/zsh-history-substring-search"
 zplug "ytakahashi/igit"
 zplug 'unixorn/fzf-zsh-plugin'
 zplug "chitoku-k/fzf-zsh-completions"
+zplug "svenXY/timewarrior"
 
 zplug romkatv/powerlevel10k, as:theme, depth:1
 zplug load
@@ -36,8 +37,7 @@ export VIFM=$HOME/dotfiles/config/vifm/vifmrc
 setopt hist_ignore_all_dups
 # don't save with space in front
 setopt hist_ignore_space
-setopt appendhistory
-setopt inc_append_history
+setopt share_history
 
 if [ -d $HOME/dev/git-fuzzy/bin ]; then
     export PATH=$HOME/dev/git-fuzzy/bin:$PATH
@@ -57,6 +57,7 @@ autoload -Uz compinit && compinit
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ ! -f ~/dotfiles/zsh/my_fzf.sh ]] || source ~/dotfiles/zsh/my_fzf.sh
 
 export LANG=en_US.UTF-8
 export LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
