@@ -4,7 +4,7 @@ nnoremap <leader>f :Grepper<CR>
 nnoremap <leader>b :Buffers <CR>
 nnoremap <leader>a :Dispatch <CR>
 nnoremap <Leader>q :Bdelete<CR>
-nnoremap <Leader>g :Gstatus<CR>
+nnoremap <Leader>g :Git<CR>
 nnoremap <Leader>h :History:<CR>
 
 map <C-P> :Files<CR>

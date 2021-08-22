@@ -35,6 +35,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'xolox/vim-session'
+Plug 'darfink/vim-plist'
 
 Plug 'https://github.com/skywind3000/vim-cppman'
 Plug 'blindFS/vim-taskwarrior'
@@ -51,6 +52,7 @@ Plug 'Yggdroot/indentLine'
 
 " c++
 Plug 'matze/vim-meson'
+Plug 'ilyachur/cmake4vim'
 
 " zig
 Plug 'ziglang/zig.vim'
