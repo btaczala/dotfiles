@@ -2,3 +2,4 @@
 *.swp
 config/qutebrowser/qsettings/*.*
 config/kitty/kitty-themes
+config/nvim/plugged
