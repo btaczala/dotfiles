@@ -4,13 +4,39 @@ dn.run(
 {
 	onchange = function(mode)
         if mode == "dark" then
-            vim.g.neon_style = "dark"
+            require('github-theme').setup({
+                  themeStyle = "dark",
+            })
         else
-            vim.g.neon_style = "light"
+            require('github-theme').setup({
+                  themeStyle = "light",
+            })
         end
 	end
 })
 dn.update()
 
-vim.g.neon_transparent = true
-vim.cmd[[colorscheme neon]]
+vim.g.tokyonight_style = "day"
+vim.g.tokyonight_transparent = true
+
+require('lualine').setup {
+  options = {
+    theme = 'tokyonight'
+  },
+  sections = {
+    lualine_a = {'FugitiveHead', 'diff'},
+    lualine_b = {{'filename', path = 1}},
+    lualine_c = {"os.data('%a')", 'data', require'lsp-status'.status},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {{'filename', path = 1}},
+    lualine_c = {},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
+  }
+}
+
+require('github-theme').setup({
+      themeStyle = "light",
+})

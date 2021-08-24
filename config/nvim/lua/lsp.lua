@@ -15,25 +15,15 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<leader>lf', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   buf_set_keymap('n', '<leader>lr', '<cmd>lua vim.lsp.buf.renamecode_action()<CR>', opts)
   buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  buf_set_keymap('n', '<leader>cf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  buf_set_keymap('n', '<leader>la', '<cmd>ClangdSwitchSourceHeader<CR>', opts)
 end
 
 local servers = {'cmake', 'clangd'}
 for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup{coq.lsp_ensure_capabilities {
-    on_attach = on_attach,
-    flags = {
-      debounce_text_changes = 150,
-    }
-  }}
+    lspconfig[lsp].setup(
+      require("coq")().lsp_ensure_capabilities({ on_attach = on_attach })
+    )
 end
 
 lsp_status.register_progress()
-
--- Some arbitrary servers
-require('lualine').setup {
-  options = {
-    theme = 'neon'
-  },
-  sections = {lualine_c = {"os.data('%a')", 'data', require'lsp-status'.status}}
-}
-

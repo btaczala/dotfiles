@@ -13,3 +13,8 @@ map("n", "<C-P>", ":Telescope find_files<CR>")
 map("n", "<Leader>b", ":Telescope buffers<CR>")
 map("n", "<Leader>q", ":lua require('bufdelete').bufdelete(0, true)<CR>")
 map("n", "<Leader>g", ":Git<CR>")
+map("n", "<Leader>a", ":Dispatch<CR>")
+
+vim.api.nvim_set_keymap("v", "<leader>cc", "<Plug>kommentary_visual_default<C-c>", {})
+vim.api.nvim_set_keymap("n", "<leader>cic", "<Plug>kommentary_line_increase", {})
+vim.api.nvim_set_keymap("n", "<leader>cc", "<Plug>kommentary_line_default", {})

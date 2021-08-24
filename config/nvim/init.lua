@@ -2,12 +2,19 @@ local g = vim.g -- a table to access global variables
 local opt = vim.opt -- to set options
 
 g.mapleader = ","
-
+vim.g.coq_settings = {
+  auto_start = 'shut-up',
+  keymap = {
+    recommended = true,
+    jump_to_mark = ''
+  }
+}
 require('plugins')
 require('options')
+require('lsp')
 require('mappings')
 require('colors')
-require('lsp')
+require('projects')
 
 -- treesitter
 local ts = require("nvim-treesitter.configs")
@@ -18,6 +25,8 @@ local neogit = require('neogit')
 neogit.setup {}
 
 -- kommentary
+--
+vim.g.kommentary_create_default_mappings = false
 require('kommentary.config').configure_language("cpp", {
     prefer_single_line_comments = true,
 })
@@ -38,3 +47,5 @@ require('telescope').setup{
     }
   }
 }
+require('auto-session').setup()
+require'lspsaga'.init_lsp_saga()
