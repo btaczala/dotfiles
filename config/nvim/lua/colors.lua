@@ -1,27 +1,50 @@
-local dn = require('dark_notify')
 -- theme change on MacOS
-dn.run(
-{
-	onchange = function(mode)
-        if mode == "dark" then
-            require('github-theme').setup({
-                  themeStyle = "dark",
-            })
-        else
-            require('github-theme').setup({
-                  themeStyle = "light",
-            })
+if vim.fn.has("mac") == 1 then
+    local dn = require('dark_notify')
+    dn.run(
+    {
+        onchange = function(mode)
+            if mode == "dark" then
+                require('github-theme').setup({
+                      themeStyle = "dark",
+                })
+            else
+                require('github-theme').setup({
+                      themeStyle = "light",
+                })
+            end
         end
-	end
-})
-dn.update()
+    })
+    dn.update()
+end
 
-vim.g.tokyonight_style = "day"
-vim.g.tokyonight_transparent = true
+
+if vim.fn.has("mac") == 1 then
+    local handle = io.popen("$HOME/dotfiles/bin/darkMode")
+    local darkMode = handle:read("*a")
+    if string.find(darkMode, "Dark") then
+        print("Dark mode activated")
+        require('github-theme').setup({
+              themeStyle = "dark",
+              transparent = true
+        })
+    else
+        print("Dark mode is not on?", darkMode)
+        require('github-theme').setup({
+              themeStyle = "light",
+              transparent = true
+        })
+    end
+else
+    require('github-theme').setup({
+          themeStyle = "light",
+          transparent = true
+    })
+end
 
 require('lualine').setup {
   options = {
-    theme = 'tokyonight'
+    theme = 'github'
   },
   sections = {
     lualine_a = {'FugitiveHead', 'diff'},
@@ -35,7 +58,3 @@ require('lualine').setup {
     lualine_x = {'encoding', 'fileformat', 'filetype'},
   }
 }
-
-require('github-theme').setup({
-      themeStyle = "light",
-})

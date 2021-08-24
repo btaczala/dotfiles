@@ -2,7 +2,9 @@ local Plug = vim.fn['plug#']
 
 vim.call('plug#begin', '~/.config/nvim/plugged')
 Plug 'nvim-lua/plenary.nvim'
-Plug 'cormacrelf/dark-notify'
+if vim.fn.has("mac") == 1 then
+  Plug 'cormacrelf/dark-notify'
+end
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'nvim-treesitter/nvim-treesitter'
