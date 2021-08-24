@@ -26,7 +26,6 @@ require('lualine').setup {
   sections = {
     lualine_a = {'FugitiveHead', 'diff'},
     lualine_b = {{'filename', path = 1}},
-    lualine_c = {"os.data('%a')", 'data', require'lsp-status'.status},
     lualine_x = {'encoding', 'fileformat', 'filetype'},
   },
   inactive_sections = {
