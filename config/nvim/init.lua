@@ -49,3 +49,7 @@ require('telescope').setup{
 }
 require('auto-session').setup()
 require'lspsaga'.init_lsp_saga()
+g.cmake_build_dir_prefix = "build-"
+g.cmake_usr_args = "-GNinja"
+g.cmake_compile_commands = true
+g.cmake_compile_commands_link = "./"
