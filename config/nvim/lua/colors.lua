@@ -49,6 +49,7 @@ require('lualine').setup {
   sections = {
     lualine_a = {'FugitiveHead', 'diff'},
     lualine_b = {{'filename', path = 1}},
+    lualine_c = {},
     lualine_x = {'encoding', 'fileformat', 'filetype'},
   },
   inactive_sections = {
