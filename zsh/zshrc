@@ -22,10 +22,10 @@ autoload -Uz _zinit
 zinit ice depth"1"
 zinit light romkatv/powerlevel10k
 zinit light zsh-users/zsh-completions
-zinit light chitoku-k/fzf-zsh-completions
 
 zinit light junegunn/fzf
 zinit light unixorn/fzf-zsh-plugin
+zinit light svenXY/timewarrior
 
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
@@ -70,16 +70,16 @@ function source_if_present() {
     [[ ! -f $1 ]] || source $1
 }
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 source_if_present $HOME/dotfiles/zsh/my_fzf.sh
 source_if_present $HOME/dotfiles/zsh/aliases.zsh
 source_if_present $HOME/dotfiles/zsh/forgit.plugin.zsh
 source_if_present $HOME/dotfiles/zsh/p10k.zsh
 source_if_present /usr/local/Cellar/fzf/0.27.2/shell/key-bindings.zsh
+source_if_present $HOME/.zinit/plugins/svenXY---timewarrior/timewarrior.plugin.zsh
 
 export LANG=en_US.UTF-8
 export LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
 
 # kitty set colors
-# $HOME/dotfiles/bin/mac_change_dark_mode.sh
+$HOME/dotfiles/bin/mac_change_dark_mode.sh
 

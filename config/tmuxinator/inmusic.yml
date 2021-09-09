@@ -45,5 +45,9 @@ root: ~/Projects/inmusic
 # attach: false
 
 windows:
-  - editor-app: cd klingnet-app && source ~/Projects/inmusic/esp-idf/export.sh && nvim
-  - build-app: cd klingnet-app && source ~/Projects/inmusic/esp-idf/export.sh
+  - editor-app: cd klingnet-app && source ~/Projects/inmusic/klingnet-build/esp-idf/export.sh && nvim
+  - build-app: cd klingnet-app && source ~/Projects/inmusic/klingnet-build/esp-idf/export.sh
+  - editor-mcu: cd klingnet-mcu && nvim
+  - build-mcu: cd klingnet-mcu 
+  - editor-lib: cd klingnet-lib && nvim
+  - build-lib: cd klingnet-lib
