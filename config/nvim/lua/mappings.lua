@@ -7,10 +7,10 @@ local function map(mode, lhs, rhs, opts)
 end
 
 -- mappings
-map("n", "<Leader>f", ":Telescope live_grep<CR>")
-map("n", "<Leader>h", ":Telescope command_history<CR>")
-map("n", "<C-P>", ":Telescope find_files<CR>")
-map("n", "<Leader>b", ":Telescope buffers<CR>")
+map("n", "<Leader>f", ":FzfLua live_grep<CR>")
+map("n", "<Leader>h", ":FzfLua command_history<CR>")
+map("n", "<C-P>", ":FzfLua files<CR>")
+map("n", "<Leader>b", ":FzfLua buffers<CR>")
 map("n", "<Leader>q", ":lua require('bufdelete').bufdelete(0, true)<CR>")
 map("n", "<Leader>g", ":Git<CR>")
 map("n", "<Leader>a", ":Dispatch<CR>")

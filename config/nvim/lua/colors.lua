@@ -7,10 +7,12 @@ if vim.fn.has("mac") == 1 then
             if mode == "dark" then
                 require('github-theme').setup({
                       themeStyle = "dark",
+                      transparent = true,
                 })
             else
                 require('github-theme').setup({
                       themeStyle = "light",
+                      transparent = true,
                 })
             end
         end
@@ -50,7 +52,9 @@ require('lualine').setup {
     lualine_a = {'FugitiveHead', 'diff'},
     lualine_b = {{'filename', path = 1}},
     lualine_c = {},
-    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_x = {'encoding', 'filetype'},
+    lualine_y = {},
+    lualine_z = {},
   },
   inactive_sections = {
     lualine_a = {},
