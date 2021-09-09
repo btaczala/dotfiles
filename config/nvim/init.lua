@@ -20,10 +20,6 @@ require('projects')
 local ts = require("nvim-treesitter.configs")
 ts.setup({ ensure_installed = "maintained", highlight = { enable = true } })
 
--- neogit
-local neogit = require('neogit')
-neogit.setup {}
-
 -- kommentary
 --
 vim.g.kommentary_create_default_mappings = false

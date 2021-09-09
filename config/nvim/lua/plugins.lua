@@ -10,8 +10,10 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'hoob3rt/lualine.nvim'
 Plug 'folke/tokyonight.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'TimUntersberger/neogit'
+-- fzf
+Plug 'vijaymarupudi/nvim-fzf'
+Plug 'ibhagwan/fzf-lua'
+Plug 'kyazdani42/nvim-web-devicons'
 -- lsp 
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/lsp-status.nvim'
