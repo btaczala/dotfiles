@@ -41,6 +41,10 @@ zinit light-mode for \
 alias ll='ls -lah'
 alias j=just
 alias icat="kitty +kitten icat"
+alias gco='git checkout'
+alias gc='git commit'
+alias gst='git status'
+alias gb='git branch'
 
 export EDITOR=nvim
 export BROWSER=firefox

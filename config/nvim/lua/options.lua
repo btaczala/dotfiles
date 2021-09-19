@@ -15,3 +15,19 @@ opt.tabstop = 4
 opt.shiftwidth = 4
 opt.expandtab = true
 opt.exrc = true
+opt.signcolumn = "yes"
+opt.swapfile = false
+opt.backup = false
+opt.undodir = os.getenv("HOME") .. "/.cache/nvim/undodir/"
+opt.undofile = true
+opt.incsearch = true
+
+opt.foldexpr = "nvim_treesitter#foldexpr()"
+opt.foldlevel = 99
+opt.foldmethod = "expr"
+opt.foldminlines = 1
+
+-- hide line numbers in terminal windows
+vim.api.nvim_exec([[
+   au BufEnter term://* setlocal nonumber
+]], false)
