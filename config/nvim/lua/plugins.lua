@@ -20,11 +20,9 @@ Plug 'nvim-lua/lsp-status.nvim'
 Plug 'glepnir/lspsaga.nvim'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'hrsh7th/cmp-buffer'
--- Plug 'ms-jpq/coq_nvim'
--- Plug ('ms-jpq/coq.artifacts', {branch = 'artifacts'})
 
 Plug 'b3nj5m1n/kommentary'
 Plug 'famiu/bufdelete.nvim'
