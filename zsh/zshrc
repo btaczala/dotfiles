@@ -45,6 +45,7 @@ alias gco='git checkout'
 alias gc='git commit'
 alias gst='git status'
 alias gb='git branch'
+alias ssh="kitty +kitten ssh"
 
 export EDITOR=nvim
 export BROWSER=firefox
@@ -86,4 +87,10 @@ export LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
 
 # kitty set colors
 $HOME/dotfiles/bin/mac_change_dark_mode.sh
+
+# macos: add clangd installed from brew to path
+if [[ "$(uname)" == "Darwin" ]]; then
+    clang_path=$(fd -t x "^clangd$" /usr/local --exact-depth 5 -x dirname {})
+    export PATH=$PATH:$clang_path
+fi
 
