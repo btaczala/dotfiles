@@ -48,3 +48,18 @@ g.cmake_build_dir_prefix = "build-"
 g.cmake_usr_args = "-GNinja"
 g.cmake_compile_commands = true
 g.cmake_compile_commands_link = "./"
+
+vim.api.nvim_command(
+[[
+    autocmd FileType qml nnoremap <Leader>cf :!qmlformat -i %<CR>
+]])
+
+vim.api.nvim_command(
+[[
+    au BufNewFile,BufRead Jenkinsfile setf groovy
+]])
+
+vim.api.nvim_command(
+[[
+    autocmd FileType just nnoremap <Leader>cf :!just --fmt -f % --unstable<CR>
+]])

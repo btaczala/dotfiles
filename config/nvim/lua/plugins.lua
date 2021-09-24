@@ -12,7 +12,6 @@ Plug 'hoob3rt/lualine.nvim'
 Plug 'folke/tokyonight.nvim'
 -- fzf
 Plug 'vijaymarupudi/nvim-fzf'
-Plug 'ibhagwan/fzf-lua'
 Plug 'kyazdani42/nvim-web-devicons'
 -- lsp 
 Plug 'neovim/nvim-lspconfig'
@@ -42,4 +41,9 @@ Plug 'junegunn/fzf.vim'
 Plug 'ilyachur/cmake4vim'
 Plug 'tpope/vim-dispatch'
 Plug 'peterhoeg/vim-qml'
+Plug 'dense-analysis/ale'
+Plug 'liuchengxu/vista.vim'
+
+Plug 'vmchale/just-vim'
+
 vim.call('plug#end')
