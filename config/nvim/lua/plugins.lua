@@ -8,8 +8,8 @@ end
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'hoob3rt/lualine.nvim'
 Plug 'folke/tokyonight.nvim'
+Plug 'famiu/feline.nvim'
 -- fzf
 Plug 'vijaymarupudi/nvim-fzf'
 Plug 'kyazdani42/nvim-web-devicons'
@@ -26,6 +26,7 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'b3nj5m1n/kommentary'
 Plug 'famiu/bufdelete.nvim'
 Plug 'tpope/vim-fugitive'
+Plug 'lewis6991/gitsigns.nvim'
 Plug 'rmagatti/auto-session'
 
 -- colorschemes
