@@ -45,7 +45,7 @@ alias gco='git checkout'
 alias gc='git commit'
 alias gst='git status'
 alias gb='git branch'
-alias ssh="kitty +kitten ssh"
+alias ssh="kitty +kitten ssh use-python"
 
 export EDITOR=nvim
 export BROWSER=firefox
