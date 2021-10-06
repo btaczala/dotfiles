@@ -16,6 +16,7 @@ require('mappings')
 require('colors')
 require('projects')
 require('statusline')
+require('debugging')
 
 -- treesitter
 local ts = require("nvim-treesitter.configs")
@@ -49,8 +50,6 @@ g.cmake_build_dir_prefix = "build-"
 g.cmake_usr_args = "-GNinja"
 g.cmake_compile_commands = true
 g.cmake_compile_commands_link = "./"
-
-require('gitsigns').setup()
 
 vim.api.nvim_command(
 [[

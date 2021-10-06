@@ -1,50 +1,58 @@
-local Plug = vim.fn['plug#']
+return require('packer').startup(function()
+    use 'wbthomason/packer.nvim'
 
-vim.call('plug#begin', '~/.config/nvim/plugged')
-Plug 'nvim-lua/plenary.nvim'
-if vim.fn.has("mac") == 1 then
-  Plug 'cormacrelf/dark-notify'
-end
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'folke/tokyonight.nvim'
-Plug 'famiu/feline.nvim'
--- fzf
-Plug 'vijaymarupudi/nvim-fzf'
-Plug 'kyazdani42/nvim-web-devicons'
--- lsp 
-Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/lsp-status.nvim'
-Plug 'glepnir/lspsaga.nvim'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'L3MON4D3/LuaSnip'
-Plug 'saadparwaiz1/cmp_luasnip'
-Plug 'hrsh7th/cmp-buffer'
+    use 'nvim-telescope/telescope.nvim'
+    use 'christoomey/vim-tmux-navigator'
+    use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+    use 'famiu/feline.nvim'
+    use 'vmchale/just-vim'
+    use 'peterhoeg/vim-qml'
+    use 'famiu/bufdelete.nvim'
+    use 'rmagatti/auto-session'
+    use {'tpope/vim-dispatch', opt = true, cmd = {'Dispatch', 'Make', 'Focus', 'Start'}}
 
-Plug 'b3nj5m1n/kommentary'
-Plug 'famiu/bufdelete.nvim'
-Plug 'tpope/vim-fugitive'
-Plug 'lewis6991/gitsigns.nvim'
-Plug 'rmagatti/auto-session'
+    -- fzf
+    use 'vijaymarupudi/nvim-fzf'
+    use 'kyazdani42/nvim-web-devicons'
+    use 'junegunn/fzf'
+    use 'junegunn/fzf.vim'
 
--- colorschemes
-Plug 'rafamadriz/neon'
-Plug 'Pocco81/Catppuccino.nvim'
-Plug 'marko-cerovac/material.nvim'
-Plug 'folke/tokyonight.nvim'
-Plug 'projekt0n/github-nvim-theme'
+    -- lsp 
+    use 'neovim/nvim-lspconfig'
+    use 'nvim-lua/lsp-status.nvim'
+    use 'glepnir/lspsaga.nvim'
+    use 'hrsh7th/nvim-cmp'
+    use 'hrsh7th/cmp-nvim-lsp'
+    use 'L3MON4D3/LuaSnip'
+    use 'saadparwaiz1/cmp_luasnip'
+    use 'hrsh7th/cmp-buffer'
 
--- C++
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'ilyachur/cmake4vim'
-Plug 'tpope/vim-dispatch'
-Plug 'peterhoeg/vim-qml'
-Plug 'dense-analysis/ale'
-Plug 'liuchengxu/vista.vim'
+    -- MacOS
+    use 'cormacrelf/dark-notify'
 
-Plug 'vmchale/just-vim'
+    -- Coding
+    use 'b3nj5m1n/kommentary'
+    use {
+      'w0rp/ale',
+      ft = {'sh', 'zsh', 'bash', 'cmake', 'html', 'markdown', 'racket', 'vim', 'tex'},
+      cmd = 'ALEEnable',
+      config = 'vim.cmd[[ALEEnable]]'
+    }
+    use 'liuchengxu/vista.vim'
+    use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+    use 'ilyachur/cmake4vim'
 
-vim.call('plug#end')
+    -- Git
+    use 'tpope/vim-fugitive'
+    use {
+      'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' },
+      config = function() require('gitsigns').setup() end
+    }
+
+    -- colorschemes
+    use 'rafamadriz/neon'
+    use 'Pocco81/Catppuccino.nvim'
+    use 'marko-cerovac/material.nvim'
+    use 'folke/tokyonight.nvim'
+    use 'projekt0n/github-nvim-theme'
+end)
