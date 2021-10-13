@@ -90,7 +90,8 @@ $HOME/dotfiles/bin/mac_change_dark_mode.sh
 
 # macos: add clangd installed from brew to path
 if [[ "$(uname)" == "Darwin" ]]; then
-    clang_path=$(fd -t x "^clangd$" /usr/local --exact-depth 5 -x dirname {})
+    clang_path=$(fd -t x -1 "^clangd$" /usr/local --exact-depth 5)
+    clang_path=$(dirname $clang_path)
     export PATH=$PATH:$clang_path
 fi
 
