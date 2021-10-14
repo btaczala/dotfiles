@@ -1,0 +1,15 @@
+# set ft=ruby
+# development
+brew "llvm"
+brew "cmake"
+brew "neovim"
+cask "kitty"
+
+# dev fonts
+tap "homebrew/cask-fonts"
+cask "font-hack-nerd-font"
+
+# sport
+cask "trainerroad"
+
+# utils

@@ -9,6 +9,9 @@ brew install ninja just llvm freetype ccache git-delta conan rg
 # cask
 brew install --cask rectangle spotify
 
+# python
+brew install flake8 pylint pyright
+
 hook_file=$(fd on-modify.timewarrior -t f /usr/local/)
 
 mkdir -p $HOME/.task/hooks/
