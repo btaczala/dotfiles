@@ -2,6 +2,7 @@ return require('packer').startup(function()
     use 'wbthomason/packer.nvim'
 
     use 'nvim-telescope/telescope.nvim'
+    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     use 'christoomey/vim-tmux-navigator'
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
     use 'famiu/feline.nvim'
@@ -10,6 +11,13 @@ return require('packer').startup(function()
     use 'famiu/bufdelete.nvim'
     use 'rmagatti/auto-session'
     use {'tpope/vim-dispatch', opt = true, cmd = {'Dispatch', 'Make', 'Focus', 'Start'}}
+    use {
+      "AckslD/nvim-neoclip.lua",
+      requires = {'tami5/sqlite.lua', module = 'sqlite'},
+      config = function()
+        require('neoclip').setup()
+      end,
+    }
 
     -- fzf
     use 'vijaymarupudi/nvim-fzf'
@@ -31,16 +39,25 @@ return require('packer').startup(function()
     use 'cormacrelf/dark-notify'
 
     -- Coding
-    use 'b3nj5m1n/kommentary'
+    use {
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup()
+        end
+    }
+
     use {
       'w0rp/ale',
-      ft = {'sh', 'zsh', 'bash', 'cmake', 'html', 'markdown', 'racket', 'vim', 'tex'},
+      ft = {'sh', 'zsh', 'cpp', 'bash', 'cmake', 'html', 'markdown', 'racket', 'vim', 'tex'},
       cmd = 'ALEEnable',
       config = 'vim.cmd[[ALEEnable]]'
     }
+
     use 'liuchengxu/vista.vim'
     use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
-    use 'ilyachur/cmake4vim'
+    use 'nvim-telescope/telescope-dap.nvim'
+    use({ 'mrjones2014/dash.nvim', requires = { 'nvim-telescope/telescope.nvim' } })
+    use({ 'Shatur/neovim-cmake', requires = { 'skywind3000/asyncrun.vim', 'mfussenegger/nvim-dap', 'nvim-telescope/telescope.nvim' } })
 
     -- Git
     use 'tpope/vim-fugitive'

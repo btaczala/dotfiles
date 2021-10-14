@@ -57,6 +57,31 @@ end
 -- LuaFormatter off
 
 local comps = {
+    async = {
+        status = {
+            provider = function()
+                local icon = ""
+                if vim.g.asyncrun_status == "running" then
+                    icon = ""
+                elseif vim.g.asyncrun_status == "success" then
+                    icon = ""
+                elseif vim.g.asyncrun_status == "failure" then
+                    icon = ""
+                end
+                return ' ' .. icon .. ' ' .. vim.g.asyncrun_status .. ' '
+            end,
+            hl = function()
+                if vim.g.asyncrun_status == "running" then
+                    return { fg = colors.yellow }
+                elseif vim.g.asyncrun_status == "success" then
+                    return { fg = colors.green }
+                elseif vim.g.asyncrun_status == "failure" then
+                    return { fg = colors.red }
+                end
+            end,
+        }
+    },
+
     vi_mode = {
         left = {
             provider = function()
@@ -88,7 +113,12 @@ local comps = {
     },
     file = {
         info = {
-            provider = 'file_info',
+            provider = {
+                name = 'file_info',
+                opts = {
+                    type = 'short-path'
+                }
+            },
             file_modified_icon = '',
             hl = {
                 fg = colors.blue,
@@ -245,12 +275,14 @@ table.insert(components.inactive, {})
 table.insert(components.inactive, {})
 
 table.insert(components.active[1], comps.vi_mode.left)
+table.insert(components.active[1], comps.async.status)
 table.insert(components.active[1], comps.file.info)
 table.insert(components.active[1], comps.git.branch)
 table.insert(components.active[1], comps.git.add)
 table.insert(components.active[1], comps.git.change)
 table.insert(components.active[1], comps.git.remove)
 table.insert(components.inactive[1], comps.vi_mode.left)
+table.insert(components.inactive[1], comps.async.status)
 table.insert(components.inactive[1], comps.file.info)
 table.insert(components.active[3], comps.diagnos.err)
 table.insert(components.active[3], comps.diagnos.warn)

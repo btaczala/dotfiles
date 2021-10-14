@@ -1,7 +1,12 @@
+local api = vim.api
+local util = vim.lsp.util
+local callbacks = vim.lsp.callbacks
+local log = vim.lsp.log
+
 local dap = require('dap')
 dap.adapters.lldb = {
   type = 'executable',
-  command = '/usr/local/Cellar/llvm/12.0.1/bin/lldb-vscode',
+  command = '/usr/local/Cellar/llvm@12/12.0.1_1/bin/lldb-vscode',
   name = "lldb"
 }
 
@@ -15,7 +20,7 @@ dap.configurations.cpp = {
       return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
     end,
     cwd = '${workspaceFolder}',
-    stopOnEntry = false,
+    stopOnEntry = true,
     args = {},
 
     -- if you change `runInTerminal` to true, you might need to change the yama/ptrace_scope setting:
@@ -72,3 +77,8 @@ require("dapui").setup({
   windows = { indent = 1 },
 })
 
+function startDebugging()
+  require("dapui").open()
+  require("dap").continue()
+  require('telescope').extensions.dap.configurations()
+end
