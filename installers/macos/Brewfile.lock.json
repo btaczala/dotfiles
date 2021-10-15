@@ -115,6 +115,30 @@
         "options": {
           "full_name": "font-hack-nerd-font"
         }
+      },
+      "kitty": {
+        "version": "0.23.1",
+        "options": {
+          "full_name": "kitty"
+        }
+      },
+      "trainerroad": {
+        "version": "2021.32.0.141",
+        "options": {
+          "full_name": "trainerroad"
+        }
+      },
+      "signal": {
+        "version": "5.20.0",
+        "options": {
+          "full_name": "signal"
+        }
+      },
+      "whatsapp": {
+        "version": "2.2138.13",
+        "options": {
+          "full_name": "whatsapp"
+        }
       }
     }
   },
@@ -123,7 +147,7 @@
       "big_sur": {
         "HOMEBREW_VERSION": "3.2.16",
         "HOMEBREW_PREFIX": "/usr/local",
-        "Homebrew/homebrew-core": "254073ae6da843964dcc7835f1e2b4de33786f77",
+        "Homebrew/homebrew-core": "6b9d541b4d6fdfe6459d51ee26cd7d5b7fa69122",
         "CLT": "13.0.0.0.1.1630607135",
         "Xcode": "13.0",
         "macOS": "11.6"

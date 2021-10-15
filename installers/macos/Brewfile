@@ -13,3 +13,5 @@ cask "font-hack-nerd-font"
 cask "trainerroad"
 
 # utils
+cask "signal"
+cask "whatsapp"
