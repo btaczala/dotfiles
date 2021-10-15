@@ -113,13 +113,11 @@ local comps = {
     },
     file = {
         info = {
-            provider = {
-                name = 'file_info',
-                opts = {
-                    type = 'short-path'
-                }
-            },
-            file_modified_icon = '',
+            provider = function()
+                local fname = vim.fn.expand('%')
+                return fname
+            end,
+            file_modified_icon = 'פֿ',
             hl = {
                 fg = colors.blue,
                 style = 'bold'

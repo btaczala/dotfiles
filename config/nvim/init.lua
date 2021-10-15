@@ -65,10 +65,22 @@ vim.api.nvim_command(
     autocmd FileType just nnoremap <Leader>cf :!just --fmt -f % --unstable<CR>
 ]])
 
+vim.api.nvim_command(
+[[
+    autocmd FileType cmake map <Leader>cf :!cmake-format -i %<CR>
+]])
+
 vim.cmd([[
   augroup packer_user_config
     autocmd!
     autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+  augroup end
+]])
+
+vim.cmd([[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost /Users/btaczala/dotfiles/installers/macos/Brewfile | Dispatch brew bundle --file /Users/btaczala/dotfiles/installers/macos/Brewfile
   augroup end
 ]])
 
