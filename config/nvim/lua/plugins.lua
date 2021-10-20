@@ -1,4 +1,10 @@
-return require('packer').startup(function()
+local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
+
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+  vim.fn.execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
+end
+
+require('packer').startup(function()
     use 'wbthomason/packer.nvim'
 
     use 'nvim-telescope/telescope.nvim'
@@ -18,6 +24,7 @@ return require('packer').startup(function()
         require('neoclip').setup()
       end,
     }
+    use {"akinsho/toggleterm.nvim"}
 
     -- fzf
     use 'vijaymarupudi/nvim-fzf'
