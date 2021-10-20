@@ -9,6 +9,7 @@ vim.g.coq_settings = {
     jump_to_mark = ''
   }
 }
+
 require('plugins')
 require('options')
 require('lsp')
@@ -26,6 +27,7 @@ ts.setup({ ensure_installed = "maintained", highlight = { enable = true } })
 require('Comment').setup()
 require('neoclip').setup()
 require('gitsigns').setup()
+require("toggleterm").setup{}
 
 -- telescope
 local actions = require('telescope.actions')
@@ -57,12 +59,17 @@ vim.api.nvim_command(
 
 vim.api.nvim_command(
 [[
+    autocmd FileType qml nnoremap <Leader>qq :!qmlscene %<CR>
+]])
+
+vim.api.nvim_command(
+[[
     au BufNewFile,BufRead Jenkinsfile setf groovy
 ]])
 
 vim.api.nvim_command(
 [[
-    autocmd FileType just nnoremap <Leader>cf :!just --fmt -f % --unstable<CR>
+    autocmd FileType just map <Leader>cf :!just --fmt -f % --unstable<CR>
 ]])
 
 vim.api.nvim_command(
@@ -73,7 +80,7 @@ vim.api.nvim_command(
 vim.cmd([[
   augroup packer_user_config
     autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+    autocmd BufWritePost /Users/btaczala/dotfiles/config/nvim/lua/plugins.lua source <afile> | PackerInstall
   augroup end
 ]])
 

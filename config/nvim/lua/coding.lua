@@ -14,9 +14,9 @@ end
 
 require('cmake').setup({
   parameters_file = 'neovim.json',
-  build_dir = '{cwd}/build-{build_type}',
+  build_dir = '{cwd}/build-macos',
   default_projects_path = '~/Projects',
-  configure_arguments = '-D CMAKE_EXPORT_COMPILE_COMMANDS=1 -GNinja -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DCMAKE_C_COMPILER_LAUNCHER=ccache',
+  configure_arguments = '-D CMAKE_EXPORT_COMPILE_COMMANDS=1 -G"Ninja Multi-Config" -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DCMAKE_C_COMPILER_LAUNCHER=ccache',
   build_arguments = '',
   asyncrun_options = { save = 2, post = ":lua COpenOnFailure()" },
   target_asyncrun_options = {}, -- AsyncRun options that will be passed on target execution. See https://github.com/skywind3000/asyncrun.vim#manual
