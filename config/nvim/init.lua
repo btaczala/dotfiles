@@ -28,6 +28,7 @@ require('Comment').setup()
 require('neoclip').setup()
 require('gitsigns').setup()
 require("toggleterm").setup{}
+require('auto-session').setup()
 
 -- telescope
 local actions = require('telescope.actions')
@@ -44,13 +45,31 @@ require('telescope').setup{
         ["<C-k>"] = actions.move_selection_previous
       }
     }
+  },
+  extensions = {
+    dash = {
+      -- configure path to Dash.app if installed somewhere other than /Applications/Dash.app
+      -- debounce while typing, in milliseconds, defaults to 750 (0.75 seconds)
+      debounce = 750,
+      -- map filetype strings to the keywords you've configured for docsets in Dash
+      -- setting to false will disable filtering by filetype for that filetype
+      -- filetypes not included in this table will not filter the query by filetype
+      -- check lua/dash/utils/config.lua to see all defaults
+      -- the values you pass for file_type_keywords are merged with the defaults
+      -- to disable filtering for all filetypes,
+      -- set file_type_keywords = false
+      file_type_keywords = {
+        dashboard = false,
+        NvimTree = false,
+        TelescopePrompt = false,
+        terminal = false,
+        packer = false,
+        -- you can also do a string, for example,
+        -- bash = 'sh'
+      },
+    }
   }
 }
-require('auto-session').setup()
-g.cmake_build_dir_prefix = "build-"
-g.cmake_usr_args = "-GNinja"
-g.cmake_compile_commands = true
-g.cmake_compile_commands_link = "./"
 
 vim.api.nvim_command(
 [[
@@ -91,28 +110,13 @@ vim.cmd([[
   augroup end
 ]])
 
-require('telescope').setup({
-  extensions = {
-    dash = {
-      -- configure path to Dash.app if installed somewhere other than /Applications/Dash.app
-      -- debounce while typing, in milliseconds, defaults to 750 (0.75 seconds)
-      debounce = 750,
-      -- map filetype strings to the keywords you've configured for docsets in Dash
-      -- setting to false will disable filtering by filetype for that filetype
-      -- filetypes not included in this table will not filter the query by filetype
-      -- check lua/dash/utils/config.lua to see all defaults
-      -- the values you pass for file_type_keywords are merged with the defaults
-      -- to disable filtering for all filetypes,
-      -- set file_type_keywords = false
-      file_type_keywords = {
-        dashboard = false,
-        NvimTree = false,
-        TelescopePrompt = false,
-        terminal = false,
-        packer = false,
-        -- you can also do a string, for example,
-        -- bash = 'sh'
-      },
-    }
-  }
-})
+vim.api.nvim_exec(
+  [[
+  augroup YankHighlight
+    autocmd!
+    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
+  augroup end
+]],
+  false
+)
+
