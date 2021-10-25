@@ -71,31 +71,6 @@ require('telescope').setup{
   }
 }
 
-vim.api.nvim_command(
-[[
-    autocmd FileType qml nnoremap <Leader>cf :!qmlformat -i %<CR>
-]])
-
-vim.api.nvim_command(
-[[
-    autocmd FileType qml nnoremap <Leader>qq :!qmlscene %<CR>
-]])
-
-vim.api.nvim_command(
-[[
-    au BufNewFile,BufRead Jenkinsfile setf groovy
-]])
-
-vim.api.nvim_command(
-[[
-    autocmd FileType just map <Leader>cf :!just --fmt -f % --unstable<CR>
-]])
-
-vim.api.nvim_command(
-[[
-    autocmd FileType cmake map <Leader>cf :!cmake-format -i %<CR>
-]])
-
 vim.cmd([[
   augroup packer_user_config
     autocmd!
@@ -119,4 +94,3 @@ vim.api.nvim_exec(
 ]],
   false
 )
-

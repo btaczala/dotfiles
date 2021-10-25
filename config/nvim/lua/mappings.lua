@@ -12,7 +12,6 @@ map("n", "<Leader>fg", ":Telescope live_grep<CR>")
 map("n", "<Leader>fh", ":Telescope command_history<CR>")
 map("n", "<C-P>", ":Telescope fd<CR>")
 map("n", "<Leader>b", ":Telescope buffers<CR>")
-map("n", "<Leader>p", ":Telescope git_files<CR>")
 map("n", "<Leader>q", ":lua require('bufdelete').bufdelete(0, true)<CR>")
 map("n", "<Leader>g", ":Git<CR>")
 map("n", "<Leader>a", ":CMake build_all<CR>")
@@ -41,3 +40,5 @@ end
 
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
 vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
+
+map("n", "<leader>cf", ":lua format()<CR>")

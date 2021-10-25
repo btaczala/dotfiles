@@ -26,3 +26,22 @@ require('cmake').setup({
 
 require('telescope').load_extension('cmake')
 
+
+function format()
+    if vim.bo.filetype == "qml" then
+        print(string.format("qmlformat -i '%s'", vim.fn.expand('%p')))
+        local file = io.popen(string.format("qmlformat -i '%s'", vim.fn.expand('%')))
+        local output = file:read('*all')
+        file:close()
+        vim.cmd(':e %')
+    elseif vim.bo.filetype == "cmake" then
+        print(string.format("cmake-format -i '%s'", vim.fn.expand('%p')))
+        local file = io.popen(string.format("cmake-format -i '%s'", vim.fn.expand('%')))
+        local output = file:read('*all')
+        file:close()
+        vim.cmd(':e %')
+    else
+        print("lsp format")
+        vim.cmd(":lua vim.lsp.buf.formatting()")
+    end
+end
