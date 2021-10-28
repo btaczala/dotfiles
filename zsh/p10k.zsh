@@ -59,8 +59,7 @@
   # Right prompt segments.
   typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
     command_execution_time    # previous command duration
-    virtualenv                # python virtual environment
-    context                   # user@host
+    timewarrior               # timewarrior
     time                      # current time
   )
 
@@ -188,6 +187,9 @@
 
 # Tell `p10k configure` which file it should overwrite.
 typeset -g POWERLEVEL9K_CONFIG_FILE=${${(%):-%x}:a}
+
+typeset -g POWERLEVEL9K_TIMEWARRIOR_FOREGROUND=4
+typeset -g POWERLEVEL9K_TIMEWARRIOR_VISUAL_IDENTIFIER_EXPANSION=''
 
 (( ${#p10k_config_opts} )) && setopt ${p10k_config_opts[@]}
 'builtin' 'unset' 'p10k_config_opts'
