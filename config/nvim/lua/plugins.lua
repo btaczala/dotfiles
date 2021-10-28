@@ -28,6 +28,7 @@ require('packer').startup(function()
     }
     use {"akinsho/toggleterm.nvim"}
     use {"norcalli/nvim-colorizer.lua"}
+    use 'rcarriga/nvim-notify'
 
     -- fzf
     use 'vijaymarupudi/nvim-fzf'

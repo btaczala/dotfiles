@@ -8,7 +8,9 @@ end
 
 function COpenOnFailure()
  if vim.g.asyncrun_status == "failure" then
-   vim.cmd('copen')
+   require("notify")("Compilation failed", "error", {timeout = 3000})
+ else
+   require("notify")("OK", "info", {timeout = 1000})
   end
 end
 
