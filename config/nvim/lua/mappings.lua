@@ -15,7 +15,8 @@ map("n", "<Leader>b", ":Telescope buffers<CR>")
 map("n", "<Leader>q", ":lua require('bufdelete').bufdelete(0, true)<CR>")
 map("n", "<Leader>g", ":Git<CR>")
 map("n", "<Leader>a", ":CMake build_all<CR>")
-map("n", "<Leader>r", ":CMake build_and_run<CR>")
+map("n", "<Leader>rr", ":CMake build_and_run<CR>")
+map("n", "<Leader>rd", ":CMake build_and_debug<CR>")
 map("n", "<leader>cp", ":let @+ = expand(\"%\")<CR>")
 map("n", "<leader>CP", ":let @+ = expand(\"%:p\")<CR>")
 
@@ -24,6 +25,7 @@ map("n", "<leader>do", ":lua require(\"dapui\").toggle()<CR>")
 map("n", "<leader>dx", ":lua require(\"dapui\").close()<CR>")
 map("n", "<leader>db", ":lua require'dap'.toggle_breakpoint()<CR>")
 map("n", "<leader>dc", ":lua require'dap'.continue()<CR>")
+map("n", "<leader>dq", ":lua require'dap'.run_to_cursor()<CR>")
 
 -- terminal
 map("n", "<leader>tt", ":ToggleTerm<CR>")
