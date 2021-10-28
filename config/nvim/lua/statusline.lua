@@ -294,23 +294,6 @@ table.insert(components.active[3], comps.scroll_bar)
 table.insert(components.active[3], comps.vi_mode.right)
 
 
--- TreeSitter
--- local ts_utils = require("nvim-treesitter.ts_utils")
--- local ts_parsers = require("nvim-treesitter.parsers")
--- local ts_queries = require("nvim-treesitter.query")
---[[ table.insert(components.active[2], {
-  provider = function()
-    local node = require("nvim-treesitter.ts_utils").get_node_at_cursor()
-    return ("%d:%s [%d, %d] - [%d, %d]")
-      :format(node:symbol(), node:type(), node:range())
-  end,
-  enabled = function()
-    local ok, ts_parsers = pcall(require, "nvim-treesitter.parsers")
-    return ok and ts_parsers.has_parser()
-  end
-}) ]]
-
--- require'feline'.setup {}
 require'feline'.setup {
     colors = { bg = colors.bg, fg = colors.fg },
     components = components,
@@ -320,6 +303,8 @@ require'feline'.setup {
             'packer',
             'NvimTree',
             'fugitive',
+            'dapui.*',
+            'dap.*',
             'fugitiveblame'
         },
         buftypes = {'terminal'},
