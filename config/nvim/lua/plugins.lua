@@ -16,6 +16,8 @@ require('packer').startup(function()
     use 'peterhoeg/vim-qml'
     use 'famiu/bufdelete.nvim'
     use 'rmagatti/auto-session'
+    use 'onsails/lspkind-nvim'
+    use 'rafamadriz/friendly-snippets'
     use {'tpope/vim-dispatch', opt = true, cmd = {'Dispatch', 'Make', 'Focus', 'Start'}}
     use {
       "AckslD/nvim-neoclip.lua",
@@ -25,6 +27,7 @@ require('packer').startup(function()
       end,
     }
     use {"akinsho/toggleterm.nvim"}
+    use {"norcalli/nvim-colorizer.lua"}
 
     -- fzf
     use 'vijaymarupudi/nvim-fzf'

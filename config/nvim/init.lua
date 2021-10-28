@@ -2,13 +2,6 @@ local g = vim.g -- a table to access global variables
 local opt = vim.opt -- to set options
 
 g.mapleader = ","
-vim.g.coq_settings = {
-  auto_start = 'shut-up',
-  keymap = {
-    recommended = true,
-    jump_to_mark = ''
-  }
-}
 
 require('plugins')
 require('options')
@@ -19,6 +12,7 @@ require('projects')
 require('statusline')
 require('debugging')
 require('coding')
+require('snippets')
 
 -- treesitter
 local ts = require("nvim-treesitter.configs")
@@ -29,6 +23,7 @@ require('neoclip').setup()
 require('gitsigns').setup()
 require("toggleterm").setup{}
 require('auto-session').setup()
+require'colorizer'.setup()
 
 -- telescope
 local actions = require('telescope.actions')
@@ -94,3 +89,7 @@ vim.api.nvim_exec(
 ]],
   false
 )
+vim.api.nvim_command(
+[[
+    autocmd FileType qml nnoremap <Leader>qq :!qmlscene %<CR>
+]])

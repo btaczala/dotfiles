@@ -1,0 +1,18 @@
+{
+  "for": {
+    "prefix": "for",
+    "body": [
+      "for (${1:size_t} ${2:i} = ${3:0}; $2 < ${4:length}; $2++) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Code snippet rof 'for' loop"
+  },
+  "qt_property": {
+    "prefix": "qproperty",
+    "body": [
+      "Q_PROPERTY(${1:PropertyType} ${2:name} READ $2 WRITE set$2 NOTIFY $2Changed);"
+    ],
+    "description": "Code snippet for 'for' loop"
+  }
+}
