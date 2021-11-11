@@ -83,5 +83,5 @@ vim.api.nvim_exec(
 	false
 )
 vim.api.nvim_command([[
-    autocmd FileType qml nnoremap <Leader>qq :!qmlscene %<CR>
+    autocmd FileType qml nnoremap <Leader>qq :Dispatch qmlscene %<CR>
 ]])
