@@ -34,7 +34,9 @@ null_ls.config({
 	-- you must define at least one source for the plugin to work
 	sources = {
 		null_ls.builtins.formatting.stylua,
+		null_ls.builtins.diagnostics.qmllint,
 		null_ls.builtins.formatting.cmake_format,
+		null_ls.builtins.formatting.qmlformat,
 	},
 })
 

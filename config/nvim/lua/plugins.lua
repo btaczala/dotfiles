@@ -12,6 +12,7 @@ require("packer").startup(function()
 	use("christoomey/vim-tmux-navigator")
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 	use("famiu/feline.nvim")
+	use("SmiteshP/nvim-gps")
 	use("vmchale/just-vim")
 	use("peterhoeg/vim-qml")
 	use("famiu/bufdelete.nvim")
@@ -43,7 +44,6 @@ require("packer").startup(function()
 			require("colorizer").setup()
 		end,
 	})
-	use("rcarriga/nvim-notify")
 
 	-- fzf
 	use("vijaymarupudi/nvim-fzf")
@@ -76,20 +76,13 @@ require("packer").startup(function()
 		end,
 	})
 
-	use({
-		"w0rp/ale",
-		ft = { "sh", "zsh", "cpp", "bash", "cmake", "html", "markdown", "racket", "vim", "tex" },
-		cmd = "ALEEnable",
-		config = "vim.cmd[[ALEEnable]]",
-	})
-
 	use("liuchengxu/vista.vim")
 	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
 	use("nvim-telescope/telescope-dap.nvim")
 	use({ "mrjones2014/dash.nvim", requires = { "nvim-telescope/telescope.nvim" } })
 	use({
 		"Shatur/neovim-cmake",
-		requires = { "skywind3000/asyncrun.vim", "mfussenegger/nvim-dap", "nvim-telescope/telescope.nvim" },
+		requires = { "nvim-lua/plenary.nvim", "mfussenegger/nvim-dap", "nvim-telescope/telescope.nvim" },
 	})
 
 	-- Git
