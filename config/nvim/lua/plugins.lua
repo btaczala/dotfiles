@@ -12,6 +12,16 @@ require("packer").startup(function()
 	use("christoomey/vim-tmux-navigator")
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 	use("famiu/feline.nvim")
+	use({
+		"nvim-lualine/lualine.nvim",
+		requires = {
+			{
+				"kyazdani42/nvim-web-devicons",
+				opt = true,
+			},
+			"arkav/lualine-lsp-progress",
+		},
+	})
 	use("SmiteshP/nvim-gps")
 	use("vmchale/just-vim")
 	use("peterhoeg/vim-qml")
