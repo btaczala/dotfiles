@@ -18,13 +18,6 @@ require("snippets")
 local ts = require("nvim-treesitter.configs")
 ts.setup({ ensure_installed = "maintained", highlight = { enable = true } })
 
-require("Comment").setup()
-require("neoclip").setup()
-require("gitsigns").setup()
-require("toggleterm").setup({})
-require("auto-session").setup()
-require("colorizer").setup()
-
 -- telescope
 local actions = require("telescope.actions")
 require("telescope").load_extension("neoclip")
