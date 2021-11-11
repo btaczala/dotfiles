@@ -23,7 +23,17 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
-local servers = {'cmake', 'clangd', 'pyright'}
+null_ls = require("null-ls")
+
+null_ls.config({
+    -- you must define at least one source for the plugin to work
+    sources = { 
+        null_ls.builtins.formatting.stylua,
+        null_ls.builtins.formatting.cmake_format
+    }
+})
+
+local servers = {'cmake', 'clangd', 'pyright', 'null-ls'}
 for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup { 
         on_attach = on_attach,
