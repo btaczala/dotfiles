@@ -89,10 +89,7 @@ local function jdocsnip(args, _, old_state)
 			else
 				inode = i(insert)
 			end
-			vim.list_extend(
-				nodes,
-				{ t({ " * @param " .. arg .. " " }), inode, t({ "", "" }) }
-			)
+			vim.list_extend(nodes, { t({ " * @param " .. arg .. " " }), inode, t({ "", "" }) })
 			param_nodes["arg" .. arg] = inode
 
 			insert = insert + 1
@@ -107,10 +104,7 @@ local function jdocsnip(args, _, old_state)
 			inode = i(insert)
 		end
 
-		vim.list_extend(
-			nodes,
-			{ t({ " * ", " * @return " }), inode, t({ "", "" }) }
-		)
+		vim.list_extend(nodes, { t({ " * ", " * @return " }), inode, t({ "", "" }) })
 		param_nodes.ret = inode
 		insert = insert + 1
 	end
@@ -123,10 +117,7 @@ local function jdocsnip(args, _, old_state)
 		else
 			ins = i(insert)
 		end
-		vim.list_extend(
-			nodes,
-			{ t({ " * ", " * @throws " .. exc .. " " }), ins, t({ "", "" }) }
-		)
+		vim.list_extend(nodes, { t({ " * ", " * @throws " .. exc .. " " }), ins, t({ "", "" }) })
 		param_nodes.ex = ins
 		insert = insert + 1
 	end
@@ -157,8 +148,8 @@ local date_input = function(args, state, fmt)
 end
 
 ls.snippets = {
-    cpp = {
-        s(
+	cpp = {
+		s(
 			"fmt3",
 			fmt("{} {a} {} {1} {}", {
 				t("1"),
@@ -166,10 +157,10 @@ ls.snippets = {
 				a = t("A"),
 			})
 		),
-        s("fmt4", fmt("foo() { return []; }", i(1, "x"), { delimiters = "[]" })),
+		s("fmt4", fmt("foo() { return []; }", i(1, "x"), { delimiters = "[]" })),
 		-- `fmta` is a convenient wrapper that uses `<>` instead of `{}`.
 		s("fmt5", fmta("foo() { return <>; }", i(1, "x"))),
-        s("class", {
+		s("class", {
 			-- Choice: Switch between two different Nodes, first parameter is its position, second a list of nodes.
 			c(1, {
 				t("public "),
@@ -197,7 +188,7 @@ ls.snippets = {
 			i(0),
 			t({ "", "}" }),
 		}),
-    }
+	},
 }
 
 -- autotriggered snippets have to be defined in a separate table, luasnip.autosnippets.
@@ -220,4 +211,3 @@ require("luasnip/loaders/from_vscode").load({ paths = { "/Users/btaczala/dotfile
 
 -- You can also use lazy loading so you only get in memory snippets of languages you use
 require("luasnip/loaders/from_vscode").lazy_load() -- You can pass { paths = "./my-snippets/"} as well
-
