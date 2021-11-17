@@ -38,6 +38,7 @@ null_ls.config({
 		null_ls.builtins.formatting.cmake_format,
 		null_ls.builtins.formatting.qmlformat,
 		null_ls.builtins.formatting.fixjson,
+		null_ls.builtins.formatting.shfmt,
 	},
 })
 

@@ -3,6 +3,8 @@
 brew "llvm"
 brew "cmake"
 brew "neovim"
+brew "cppman"
+brew "shfmt"
 cask "kitty"
 
 # dev fonts
