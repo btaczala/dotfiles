@@ -4,3 +4,4 @@ config/qutebrowser/qsettings/*.*
 config/kitty/kitty-themes
 config/nvim/plugin/
 config/nvim/plugged
+dotbot/*
