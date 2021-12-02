@@ -6,12 +6,21 @@ local function map(mode, lhs, rhs, opts)
 	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
-local Path = require('plenary.path')
+local Path = require("plenary.path")
 require("cmake").setup({
 	parameters_file = "neovim.json",
-    build_dir = Path:new('{cwd}', 'build-macos', ''),
-    default_projects_path = Path:new(vim.loop.os_homedir(), 'Projects'),
-    configure_args = { '-D', 'CMAKE_EXPORT_COMPILE_COMMANDS=1', '-G', 'Ninja Multi-Config', '-D', 'CMAKE_CXX_COMPILER_LAUNCHER=ccache','-D','CMAKE_C_COMPILER_LAUNCHER=ccache'},
+	build_dir = tostring(Path:new("{cwd}", "build")),
+	default_projects_path = tostring(Path:new(vim.loop.os_homedir(), "Projects")),
+	configure_args = {
+		"-D",
+		"CMAKE_EXPORT_COMPILE_COMMANDS=1",
+		"-G",
+		"Ninja Multi-Config",
+		"-D",
+		"CMAKE_CXX_COMPILER_LAUNCHER=ccache",
+		"-D",
+		"CMAKE_C_COMPILER_LAUNCHER=ccache",
+	},
 	build_args = {},
 	dap_configuration = { type = "lldb", request = "launch" },
 	dap_open_command = require("dapui").open,
