@@ -16,3 +16,4 @@ neovim.json
 */3rdParty/*/**
 *~
 .cmake-format.py
+dotbot/*

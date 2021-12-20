@@ -20,7 +20,6 @@ ts.setup({ ensure_installed = "maintained", highlight = { enable = true } })
 
 -- telescope
 local actions = require("telescope.actions")
-require("telescope").load_extension("neoclip")
 require("telescope").setup({
 	defaults = {
 		mappings = {
@@ -35,29 +34,17 @@ require("telescope").setup({
 		},
 	},
 	extensions = {
-		dash = {
-			-- configure path to Dash.app if installed somewhere other than /Applications/Dash.app
-			-- debounce while typing, in milliseconds, defaults to 750 (0.75 seconds)
-			debounce = 750,
-			-- map filetype strings to the keywords you've configured for docsets in Dash
-			-- setting to false will disable filtering by filetype for that filetype
-			-- filetypes not included in this table will not filter the query by filetype
-			-- check lua/dash/utils/config.lua to see all defaults
-			-- the values you pass for file_type_keywords are merged with the defaults
-			-- to disable filtering for all filetypes,
-			-- set file_type_keywords = false
-			file_type_keywords = {
-				dashboard = false,
-				NvimTree = false,
-				TelescopePrompt = false,
-				terminal = false,
-				packer = false,
-				-- you can also do a string, for example,
-				-- bash = 'sh'
-			},
+		fzf = {
+			fuzzy = true, -- false will only do exact matching
+			override_generic_sorter = true, -- override the generic sorter
+			override_file_sorter = true, -- override the file sorter
+			case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+			-- the default case_mode is "smart_case"
 		},
 	},
 })
+require("telescope").load_extension("neoclip")
+require('telescope').load_extension('fzf')
 
 vim.cmd([[
   augroup packer_user_config

@@ -8,7 +8,7 @@ require("packer").startup(function()
 	use("wbthomason/packer.nvim")
 
 	use("nvim-telescope/telescope.nvim")
-	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
+    use({'nvim-telescope/telescope-fzf-native.nvim', run = 'make' })
 	use("christoomey/vim-tmux-navigator")
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 	use("famiu/feline.nvim")
@@ -74,6 +74,17 @@ require("packer").startup(function()
 		"jose-elias-alvarez/null-ls.nvim",
 		requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 	})
+	use({
+		"folke/trouble.nvim",
+		requires = "kyazdani42/nvim-web-devicons",
+		config = function()
+			require("trouble").setup({
+				-- your configuration comes here
+				-- or leave it empty to use the default settings
+				-- refer to the configuration section below
+			})
+		end,
+	})
 
 	-- MacOS
 	use("cormacrelf/dark-notify")
@@ -89,7 +100,6 @@ require("packer").startup(function()
 	use("liuchengxu/vista.vim")
 	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
 	use("nvim-telescope/telescope-dap.nvim")
-	use({ "mrjones2014/dash.nvim", requires = { "nvim-telescope/telescope.nvim" } })
 	use({
 		"Shatur/neovim-cmake",
 		requires = { "nvim-lua/plenary.nvim", "mfussenegger/nvim-dap", "nvim-telescope/telescope.nvim" },
