@@ -17,3 +17,4 @@ cask "trainerroad"
 # utils
 cask "signal"
 cask "whatsapp"
+cask "wezterm"

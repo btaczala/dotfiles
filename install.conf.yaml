@@ -24,6 +24,7 @@
     ~/.vifm/vifmrc: config/vifm/vifmrc
     ~/.config/bat/config: config/bat/config
     ~/.config/kitty: config/kitty
+    ~/.config/wezterm: config/wezterm
     ~/.gitignore: git/gitignore
     ~/.yabairc: config/yabai/yabairc
     ~/.skhdrc: config/skhd/skhdrc
