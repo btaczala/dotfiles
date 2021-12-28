@@ -10,6 +10,7 @@ cask "kitty"
 # dev fonts
 tap "homebrew/cask-fonts"
 cask "font-hack-nerd-font"
+cask "font-iosevka-nerd-font"
 
 # sport
 cask "trainerroad"
