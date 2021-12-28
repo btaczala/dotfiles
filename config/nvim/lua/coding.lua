@@ -1,3 +1,6 @@
+local Path = require("plenary.path")
+local opt = vim.opt -- to set options
+
 local function map(mode, lhs, rhs, opts)
 	local options = { noremap = true }
 	if opts then
@@ -44,5 +47,34 @@ function format()
 	else
 		print("lsp format")
 		vim.cmd(":lua vim.lsp.buf.formatting()")
+	end
+end
+
+local function GetFileName(url)
+	return url:match("^.+/(.+)$")
+end
+
+local function GetFileExtension(url)
+	return url:match("^.+(%..+)$")
+end
+
+local function file_exists(name)
+	local f = io.open(name, "r")
+	if f ~= nil then
+		io.close(f)
+		return true
+	else
+		return false
+	end
+end
+
+function compile()
+	local extension = string.gsub(GetFileExtension(vim.api.nvim_buf_get_name(0)), "%.", "")
+	local filename = GetFileName(vim.api.nvim_buf_get_name(0))
+	print(extension, filename)
+	local cwd = Path.new(vim.fn.getcwd())
+	if Path.exists(cwd.joinpath("/justfile")) then
+		opt.makeprg = "just build"
+		vim.cmd(":Dispatch")
 	end
 end

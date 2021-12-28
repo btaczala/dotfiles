@@ -14,8 +14,8 @@ map("n", "<C-P>", ":Telescope fd<CR>")
 map("n", "<Leader>b", ":Telescope buffers<CR>")
 map("n", "<Leader>q", ":lua require('bufdelete').bufdelete(0, true)<CR>")
 map("n", "<Leader>g", ":Git<CR>")
--- map("n", "<Leader>a", ":CMake build_all<CR>")
-map("n", "<Leader>a", ":Dispatch<CR>")
+-- function compile() defined in coding.lua
+map("n", "<Leader>a", ":lua compile()<CR>")
 map("n", "<Leader>rr", ":CMake build_and_run<CR>")
 map("n", "<Leader>rd", ":CMake build_and_debug<CR>")
 map("n", "<Leader>rt", ":Telescope cmake select_target<CR>")
@@ -28,7 +28,6 @@ map("n", "<leader>dx", ':lua require("dapui").close()<CR>')
 map("n", "<leader>db", ":lua require'dap'.toggle_breakpoint()<CR>")
 map("n", "<leader>dc", ":lua require'dap'.continue()<CR>")
 map("n", "<leader>dq", ":lua require'dap'.run_to_cursor()<CR>")
-
 
 -- terminal
 map("n", "<leader>tt", ":ToggleTerm<CR>")
