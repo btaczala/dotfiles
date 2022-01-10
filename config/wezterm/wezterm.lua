@@ -19,15 +19,10 @@ wezterm.on("window-config-reloaded", function(window, pane)
 end)
 
 return {
-	font = wezterm.font("Iosevka Nerd Font"),
-    font_rules = {
-		{
-			italic = true,
-			font = wezterm.font("Iosevka Nerd Font", {
-                italic = true,
-			}),
-		},
-	},
+    font = wezterm.font_with_fallback({
+         "Iosevka",
+         "Symbols Nerd Font Mono"
+   }),
 	automatically_reload_config = true,
 	enable_tab_bar = true,
 	hide_tab_bar_if_only_one_tab = true,
