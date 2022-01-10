@@ -7,5 +7,6 @@ cd $HOME/.timewarrior
 git fetch
 git pull
 git status
-git commit -a -m "$(date)"
+git add data
+git commit -m "$(date)"
 git push
