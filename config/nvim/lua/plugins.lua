@@ -26,12 +26,6 @@ require("packer").startup(function()
 	use("vmchale/just-vim")
 	use("peterhoeg/vim-qml")
 	use("famiu/bufdelete.nvim")
-	use({
-		"rmagatti/auto-session",
-		config = function()
-			require("auto-session").setup()
-		end,
-	})
 	use("onsails/lspkind-nvim")
 	use("rafamadriz/friendly-snippets")
 	use({ "tpope/vim-dispatch", opt = true, cmd = { "Dispatch", "Make", "Focus", "Start" } })
