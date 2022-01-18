@@ -29,8 +29,6 @@ require("cmake").setup({
 	dap_open_command = require("dapui").open,
 })
 
-require("telescope").load_extension("cmake")
-
 function format()
 	if vim.bo.filetype == "qml" then
 		print(string.format("qmlformat -i '%s'", vim.fn.expand("%p")))

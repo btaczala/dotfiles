@@ -28,23 +28,24 @@ local on_attach = function(client, bufnr)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.offsetEncoding = { "utf-16" }
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
 null_ls = require("null-ls")
 
-null_ls.config({
-	-- you must define at least one source for the plugin to work
+null_ls.setup({
 	sources = {
 		null_ls.builtins.formatting.stylua,
-		null_ls.builtins.diagnostics.qmllint,
 		null_ls.builtins.formatting.cmake_format,
 		null_ls.builtins.formatting.qmlformat,
 		null_ls.builtins.formatting.fixjson,
 		null_ls.builtins.formatting.shfmt,
+		null_ls.builtins.code_actions.gitsigns,
 	},
+	on_attach = on_attach,
 })
 
-local servers = { "cmake", "clangd", "pyright", "null-ls" }
+local servers = { "cmake", "clangd", "pyright" }
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup({
 		on_attach = on_attach,
