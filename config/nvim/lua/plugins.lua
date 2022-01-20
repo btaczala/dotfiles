@@ -8,7 +8,7 @@ require("packer").startup(function()
 	use("wbthomason/packer.nvim")
 
 	use("nvim-telescope/telescope.nvim")
-    use({'nvim-telescope/telescope-fzf-native.nvim', run = 'make' })
+	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 	use("christoomey/vim-tmux-navigator")
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 	use("famiu/feline.nvim")
@@ -46,6 +46,13 @@ require("packer").startup(function()
 		"norcalli/nvim-colorizer.lua",
 		config = function()
 			require("colorizer").setup()
+		end,
+	})
+
+	use({
+		"sidebar-nvim/sidebar.nvim",
+		config = function()
+			require("sidebar-nvim").setup()
 		end,
 	})
 
