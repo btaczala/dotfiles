@@ -19,11 +19,20 @@ wezterm.on("window-config-reloaded", function(window, pane)
 end)
 
 return {
-    font = wezterm.font_with_fallback({
-         "Iosevka",
-         "Symbols Nerd Font Mono"
-   }),
+	font = wezterm.font_with_fallback({
+		"Iosevka",
+		"Symbols Nerd Font Mono",
+	}),
 	automatically_reload_config = true,
 	enable_tab_bar = true,
 	hide_tab_bar_if_only_one_tab = true,
+	window_decorations = "RESIZE",
+	allow_square_glyphs_to_overflow_width = "Always",
+	use_cap_height_to_scale_fallback_fonts = true,
+	window_padding = {
+		left = 0,
+		right = 0,
+		top = 0,
+		bottom = 0,
+	},
 }
