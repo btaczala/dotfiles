@@ -28,3 +28,4 @@ opt.foldlevel = 99
 opt.foldmethod = "expr"
 opt.foldminlines = 1
 opt.termguicolors = true
+opt.timeoutlen = 100

@@ -1,3 +1,4 @@
+local wk = require("which-key")
 local function map(mode, lhs, rhs, opts)
 	local options = { noremap = true }
 	if opts then
@@ -5,6 +6,28 @@ local function map(mode, lhs, rhs, opts)
 	end
 	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
+
+wk.register({
+	t = {
+		name = "Terminal", -- optional group name
+		t = { "<cmd>ToggleTerm<cr>", "Toggle terminal" }, -- create a binding with label
+	},
+	d = {
+		name = "debugging",
+		o = { "<cmd>lua require('dapui').toggle()<cr>", "Open debugging UI" },
+		x = { "<cmd>lua require('dapui').close()<cr>", "Close debugging UI" },
+		b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle breakpoint" },
+		c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
+		q = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run to cursor" },
+	},
+	r = {
+		name = "compile",
+		r = { "<cmd>CMake build_and_run<cr>", "Run program" },
+		d = { "<cmd>CMake build_and_debug<cr>", "Debug a program" },
+		t = { "<cmd>Telescope cmake select_target<cr>", "Select a target" },
+	},
+	a = { "<cmd>lua compile()<cr>", "compile" },
+}, { prefix = "<leader>" })
 
 -- mappings
 map("n", "<Leader>ff", ":Telescope grep_string<CR>")
@@ -14,23 +37,8 @@ map("n", "<C-P>", ":Telescope fd<CR>")
 map("n", "<Leader>b", ":Telescope buffers<CR>")
 map("n", "<Leader>q", ":lua require('bufdelete').bufdelete(0, true)<CR>")
 map("n", "<Leader>g", ":Git<CR>")
--- function compile() defined in coding.lua
-map("n", "<Leader>a", ":lua compile()<CR>")
-map("n", "<Leader>rr", ":CMake build_and_run<CR>")
-map("n", "<Leader>rd", ":CMake build_and_debug<CR>")
-map("n", "<Leader>rt", ":Telescope cmake select_target<CR>")
 map("n", "<leader>cp", ':let @+ = expand("%")<CR>')
 map("n", "<leader>CP", ':let @+ = expand("%:p")<CR>')
-
--- debugging
-map("n", "<leader>do", ':lua require("dapui").toggle()<CR>')
-map("n", "<leader>dx", ':lua require("dapui").close()<CR>')
-map("n", "<leader>db", ":lua require'dap'.toggle_breakpoint()<CR>")
-map("n", "<leader>dc", ":lua require'dap'.continue()<CR>")
-map("n", "<leader>dq", ":lua require'dap'.run_to_cursor()<CR>")
-
--- terminal
-map("n", "<leader>tt", ":ToggleTerm<CR>")
 
 function _G.set_terminal_keymaps()
 	local opts = { noremap = true }
