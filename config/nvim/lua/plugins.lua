@@ -55,6 +55,9 @@ require("packer").startup(function()
 			require("sidebar-nvim").setup()
 		end,
 	})
+	use({
+		"rmagatti/auto-session",
+	})
 
 	-- fzf
 	use("vijaymarupudi/nvim-fzf")
