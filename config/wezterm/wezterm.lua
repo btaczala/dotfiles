@@ -4,7 +4,7 @@ function scheme_for_appearance(appearance)
 	if appearance:find("Dark") then
 		return "Tomorrow Night"
 	else
-		return "Tomorrow"
+		return "Night Owlish Light"
 	end
 end
 
