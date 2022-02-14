@@ -67,9 +67,6 @@ local function file_exists(name)
 end
 
 function compile()
-	local extension = string.gsub(GetFileExtension(vim.api.nvim_buf_get_name(0)), "%.", "")
-	local filename = GetFileName(vim.api.nvim_buf_get_name(0))
-	print(extension, filename)
 	local cwd = Path.new(vim.fn.getcwd())
 	if Path.exists(cwd.joinpath("/justfile")) then
 		opt.makeprg = "just build"
