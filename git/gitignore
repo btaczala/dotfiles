@@ -13,4 +13,6 @@ neovim.json
 .cmake-format.py
 dotbot/*
 3rdParty/catch2/*
+klingnet-shared/3rdParty/*
 3rdParty/**/CMakeLists.txt
+install/*
