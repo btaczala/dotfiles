@@ -69,10 +69,6 @@ vim.api.nvim_exec(
 ]],
 	false
 )
-vim.api.nvim_command([[
-    autocmd FileType qml nnoremap <Leader>qq :Dispatch qmlscene %<CR>
-]])
-
 vim.cmd([[
     au BufNewFile,BufRead Jenkinsfile setf groovy
 ]])

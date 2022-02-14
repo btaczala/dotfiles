@@ -52,3 +52,12 @@ end
 
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
 vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
+
+vim.cmd("autocmd FileType qml lua WhichKeyQml()")
+function WhichKeyQml()
+	wk.register({
+		r = {
+			p = { "<cmd>Dispatch qmlscene %<cr>", "Run qml preview" },
+		},
+	}, { prefix = "<leader>" })
+end
