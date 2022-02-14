@@ -71,6 +71,14 @@ require("packer").startup(function()
 	})
     
 
+	use({
+		"lukas-reineke/indent-blankline.nvim",
+		config = function()
+			require("indent_blankline").setup({
+			})
+		end,
+	})
+
 	-- fzf
 	use("vijaymarupudi/nvim-fzf")
 	use("kyazdani42/nvim-web-devicons")
