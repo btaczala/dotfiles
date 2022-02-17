@@ -29,3 +29,4 @@ opt.foldmethod = "expr"
 opt.foldminlines = 1
 opt.termguicolors = true
 opt.timeoutlen = 100
+opt.clipboard="unnamedplus"
