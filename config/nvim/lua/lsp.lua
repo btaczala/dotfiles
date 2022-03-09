@@ -42,6 +42,8 @@ null_ls.setup({
 		null_ls.builtins.formatting.shfmt,
 		null_ls.builtins.code_actions.gitsigns,
 		null_ls.builtins.formatting.prettier,
+		null_ls.builtins.diagnostics.shellcheck,
+		null_ls.builtins.code_actions.shellcheck,
 	},
 	on_attach = on_attach,
 })
