@@ -31,7 +31,7 @@ wk.register({
 
 -- mappings
 map("n", "<Leader>ff", ":Telescope grep_string<CR>")
-map("n", "<Leader>fg", ":Telescope live_grep<CR>")
+map("n", "<Leader>fg", ":lua require(\"telescope\").extensions.live_grep_raw.live_grep_raw()<CR>")
 map("n", "<Leader>fh", ":Telescope command_history<CR>")
 map("n", "<C-P>", ":Telescope fd<CR>")
 map("n", "<Leader>b", ":Telescope buffers<CR>")

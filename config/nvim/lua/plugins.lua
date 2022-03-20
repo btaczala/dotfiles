@@ -9,6 +9,7 @@ require("packer").startup(function()
 
 	use("nvim-telescope/telescope.nvim")
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
+	use("nvim-telescope/telescope-live-grep-raw.nvim")
 	use("christoomey/vim-tmux-navigator")
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 	use("famiu/feline.nvim")
@@ -52,7 +53,18 @@ require("packer").startup(function()
 	use({
 		"sidebar-nvim/sidebar.nvim",
 		config = function()
-			require("sidebar-nvim").setup()
+			require("sidebar-nvim").setup({
+				sections = { "datetime", "git", "symbols" },
+				symbols = {
+					icon = "ƒ",
+				},
+				buffers = {
+					icon = "",
+					ignored_buffers = {}, -- ignore buffers by regex
+					sorting = "id", -- alternatively set it to "name" to sort by buffer name instead of buf id
+					show_numbers = true, -- whether to also show the buffer numbers
+				},
+			})
 		end,
 	})
 	use({
@@ -69,13 +81,11 @@ require("packer").startup(function()
 			})
 		end,
 	})
-    
 
 	use({
 		"lukas-reineke/indent-blankline.nvim",
 		config = function()
-			require("indent_blankline").setup({
-			})
+			require("indent_blankline").setup({})
 		end,
 	})
 

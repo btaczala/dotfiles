@@ -12,7 +12,7 @@ local function lsp()
 	for _, client in ipairs(clients) do
 		local filetypes = client.config.filetypes
 		if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-			return " " .. client.name
+			return "  " .. client.name
 		end
 	end
 	return msg
@@ -39,7 +39,7 @@ require("lualine").setup({
 		lualine_a = {
 			{ "mode", separator = { left = "" }, right_padding = 2 },
 		},
-		lualine_b = { "filename", { "b:gitsigns_head", icon = "" } },
+		lualine_b = { { "filename", path = 1, shorting_target = 40, { "b:gitsigns_head", icon = "" } } },
 		lualine_c = { "diagnostics" },
 		lualine_x = { lsp, "lsp_progress" },
 		lualine_y = { "filetype", { "diff", source = diff_source } },
@@ -48,7 +48,7 @@ require("lualine").setup({
 		},
 	},
 	inactive_sections = {
-		lualine_a = { "filename" },
+		lualine_a = { { "filename", path = 1, shorting_target = 40 } },
 		lualine_b = {},
 		lualine_c = {},
 		lualine_x = {},
