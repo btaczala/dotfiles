@@ -148,6 +148,7 @@ require("packer").startup(function()
 			require("gitsigns").setup()
 		end,
 	})
+    use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
 
 	-- colorschemes
 	use("rafamadriz/neon")
