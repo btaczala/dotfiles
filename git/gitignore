@@ -16,4 +16,6 @@ dotbot/*
 klingnet-shared/3rdParty/*
 3rdParty/**/CMakeLists.txt
 install/*
+install-hardware/*
+install-console/*
 .DS_Store
