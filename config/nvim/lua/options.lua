@@ -8,6 +8,7 @@ opt.nu = true
 opt.rnu = true
 opt.spell = false
 opt.spelllang = "en_us,pl"
+opt.spellfile = os.getenv("HOME") .. "/dotfiles/config/nvim/spell/en.utf-8.add"
 opt.splitright = true
 opt.smartindent = true
 opt.encoding = "utf8"
