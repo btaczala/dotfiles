@@ -26,7 +26,8 @@ wk.register({
 		d = { "<cmd>CMake build_and_debug<cr>", "Debug a program" },
 		t = { "<cmd>Telescope cmake select_target<cr>", "Select a target" },
 	},
-	a = { "<cmd>lua compile()<cr>", "compile" },
+	a = { "<cmd>CMake build<cr>", "Compile current target" },
+	A = { "<cmd>CMake build_all<cr>", "Compile all" },
 }, { prefix = "<leader>" })
 
 -- mappings

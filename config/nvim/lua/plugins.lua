@@ -10,6 +10,7 @@ require("packer").startup(function()
 	use("nvim-telescope/telescope.nvim")
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 	use("nvim-telescope/telescope-live-grep-raw.nvim")
+	use({ "nvim-telescope/telescope-ui-select.nvim" })
 	use("christoomey/vim-tmux-navigator")
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 	use("famiu/feline.nvim")
@@ -148,7 +149,18 @@ require("packer").startup(function()
 			require("gitsigns").setup()
 		end,
 	})
-    use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
+	use({
+		"TimUntersberger/neogit",
+		requires = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim" },
+		config = function()
+			require("neogit").setup({
+				disable_commit_confirmation = true,
+				integrations = {
+					diffview = true,
+				},
+			})
+		end,
+	})
 
 	-- colorschemes
 	use("rafamadriz/neon")

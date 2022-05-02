@@ -3,10 +3,38 @@ local util = vim.lsp.util
 local callbacks = vim.lsp.callbacks
 local log = vim.lsp.log
 
+local Path = require("plenary.path")
+local fd = require("plenary.scandir")
+local Job = require("plenary.job")
+
+local lldb_exec
+if vim.fn.has("macunix") then
+	local lldb_dir
+	Job
+		:new({
+			command = "brew",
+			args = { "--prefix", "llvm" },
+			on_stdout = function(err, data)
+				lldb_dir = data
+			end,
+		})
+		:sync()
+
+	Job
+		:new({
+			command = "fd",
+			args = { "lldb-vscode", "-t", "x", lldb_dir },
+			on_stdout = function(err, data)
+				lldb_exec = data
+			end,
+		})
+		:sync()
+end
+
 local dap = require("dap")
 dap.adapters.lldb = {
 	type = "executable",
-	command = "/usr/local/Cellar/llvm@12/12.0.1_1/bin/lldb-vscode",
+	command = lldb_exec,
 	name = "lldb",
 }
 

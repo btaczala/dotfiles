@@ -27,3 +27,13 @@ MessageType
 MessagePayload
 nullopt
 SendFunction
+JSON
+href
+https
+json
+html
+flatbuffers
+github
+pixmaps
+isMessageBinary
+sendPixels

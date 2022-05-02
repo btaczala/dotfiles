@@ -65,11 +65,3 @@ local function file_exists(name)
 		return false
 	end
 end
-
-function compile()
-	local cwd = Path.new(vim.fn.getcwd())
-	if Path.exists(cwd.joinpath("/justfile")) then
-		opt.makeprg = "just build"
-		vim.cmd(":Dispatch")
-	end
-end
