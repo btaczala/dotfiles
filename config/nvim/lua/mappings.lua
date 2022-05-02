@@ -37,7 +37,7 @@ map("n", "<Leader>fh", ":Telescope command_history<CR>")
 map("n", "<C-P>", ":Telescope fd<CR>")
 map("n", "<Leader>b", ":Telescope buffers<CR>")
 map("n", "<Leader>q", ":bdelete<CR>")
-map("n", "<Leader>g", ":lua require('neogit').open({ kind = 'split_above' })<CR>")
+map("n", "<Leader>g", ":Git<CR>")
 map("n", "<leader>cp", ':let @+ = expand("%")<CR>')
 map("n", "<leader>CP", ':let @+ = expand("%:p")<CR>')
 
