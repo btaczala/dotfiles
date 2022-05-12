@@ -139,6 +139,7 @@ require("packer").startup(function()
 		"Shatur/neovim-cmake",
 		requires = { "nvim-lua/plenary.nvim", "mfussenegger/nvim-dap", "nvim-telescope/telescope.nvim" },
 	})
+	use({ "ckipp01/nvim-jenkinsfile-linter", requires = { "nvim-lua/plenary.nvim" } })
 
 	-- Git
 	use("tpope/vim-fugitive")
