@@ -60,6 +60,7 @@ map("n", "<C-P>", ":Telescope fd<CR>")
 map("n", "<Leader>b", ":Telescope buffers<CR>")
 map("n", "<Leader>q", ":bdelete<CR>")
 map("n", "<Leader>g", ":Git<CR>")
+map("n", "<Leader>dd", ":Gitsigns toggle_linehl<CR>")
 map("n", "<leader>cp", ':let @+ = expand("%")<CR>')
 map("n", "<leader>CP", ':let @+ = expand("%:p")<CR>')
 

@@ -32,14 +32,13 @@ end
 require("lualine").setup({
 	options = {
 		theme = "tokyonight",
-		component_separators = "|",
-		section_separators = { left = "", right = "" },
+		component_separators = { left = "", right = "" },
 	},
 	sections = {
 		lualine_a = {
 			{ "mode", separator = { left = "" }, right_padding = 2 },
 		},
-		lualine_b = { { "filename", path = 1, shorting_target = 40, { "b:gitsigns_head", icon = "" } } },
+		lualine_b = { { "filename", path = 1, shorting_target = 40 }, { "b:gitsigns_head", icon = "" } },
 		lualine_c = { "diagnostics" },
 		lualine_x = { lsp, "lsp_progress" },
 		lualine_y = { "filetype", { "diff", source = diff_source } },

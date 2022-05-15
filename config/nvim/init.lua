@@ -53,14 +53,14 @@ require('telescope').load_extension('ui-select')
 vim.cmd([[
   augroup packer_user_config
     autocmd!
-    autocmd BufWritePost /Users/btaczala/dotfiles/config/nvim/lua/plugins.lua source <afile> | PackerInstall
+    autocmd BufWritePost $HOME/dotfiles/config/nvim/lua/plugins.lua source <afile> | PackerInstall | PackerCompile
   augroup end
 ]])
 
 vim.cmd([[
   augroup packer_user_config
     autocmd!
-    autocmd BufWritePost /Users/btaczala/dotfiles/installers/macos/Brewfile | Dispatch brew bundle --file /Users/btaczala/dotfiles/installers/macos/Brewfile
+    autocmd BufWritePost $HOME/dotfiles/installers/macos/Brewfile | Dispatch brew bundle --file $HOME/dotfiles/installers/macos/Brewfile
   augroup end
 ]])
 
