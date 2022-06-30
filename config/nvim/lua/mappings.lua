@@ -18,14 +18,12 @@ function file_exists(name)
 end
 
 function compile()
-	if vim.bo.filetype == "cpp" then
-		local cwd = vim.fn.getcwd()
-		local CMakeFile = cwd .. "/CMakeLists.txt"
-		if file_exists(CMakeFile) then
-			vim.cmd(":CMake build")
-			return
-		end
-	end
+    local cwd = vim.fn.getcwd()
+    local CMakeFile = cwd .. "/CMakeLists.txt"
+    if file_exists(CMakeFile) then
+        vim.cmd(":CMake build")
+        return
+    end
 	vim.cmd("Make")
 end
 
@@ -48,13 +46,14 @@ wk.register({
 		d = { "<cmd>CMake build_and_debug<cr>", "Debug a program" },
 		t = { "<cmd>Telescope cmake select_target<cr>", "Select a target" },
 	},
+	-- a = { "<cmd>Make<cr>", "Compile current target" },
 	a = { "<cmd>lua compile()<cr>", "Compile current target" },
 	A = { "<cmd>CMake build_all<cr>", "Compile all" },
 }, { prefix = "<leader>" })
 
 -- mappings
 map("n", "<Leader>ff", ":Telescope grep_string<CR>")
-map("n", "<Leader>fg", ':lua require("telescope").extensions.live_grep_raw.live_grep_raw()<CR>')
+map("n", "<Leader>fg", ':lua require("telescope").extensions.live_grep_args.live_grep_args()<CR>')
 map("n", "<Leader>fh", ":Telescope command_history<CR>")
 map("n", "<C-P>", ":Telescope fd<CR>")
 map("n", "<Leader>b", ":Telescope buffers<CR>")

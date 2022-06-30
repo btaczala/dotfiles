@@ -51,3 +51,5 @@ windows:
   - build-mcu: cd klingnet-mcu 
   - editor-lib: cd klingnet-lib && nvim
   - build-lib: cd klingnet-lib
+  - klingnet3-doc: cd klingnet-doc && nvim
+  - klingnet-release: cd klingnet-build && nvim

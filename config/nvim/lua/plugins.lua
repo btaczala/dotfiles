@@ -9,7 +9,7 @@ require("packer").startup(function()
 
 	use("nvim-telescope/telescope.nvim")
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
-	use("nvim-telescope/telescope-live-grep-raw.nvim")
+	use("nvim-telescope/telescope-live-grep-args.nvim")
 	use({ "nvim-telescope/telescope-ui-select.nvim" })
 	use("christoomey/vim-tmux-navigator")
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
@@ -89,6 +89,7 @@ require("packer").startup(function()
 			require("indent_blankline").setup({})
 		end,
 	})
+	use("dcharbon/vim-flatbuffers")
 
 	-- fzf
 	use("vijaymarupudi/nvim-fzf")
@@ -175,4 +176,8 @@ require("packer").startup(function()
 	use("folke/tokyonight.nvim")
 	use("projekt0n/github-nvim-theme")
 	use("navarasu/onedark.nvim")
+ 
+	-- presentations
+	use({ "vim-pandoc/vim-pandoc" })
+	use({ "vim-pandoc/vim-pandoc-syntax" })
 end)

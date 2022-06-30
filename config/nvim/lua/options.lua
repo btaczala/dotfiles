@@ -30,3 +30,4 @@ opt.foldmethod = "expr"
 opt.foldminlines = 1
 opt.termguicolors = true
 opt.timeoutlen = 100
+vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
