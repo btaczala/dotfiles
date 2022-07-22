@@ -17,8 +17,6 @@ require("cmake").setup({
 	configure_args = {
 		"-D",
 		"CMAKE_EXPORT_COMPILE_COMMANDS=1",
-		"-G",
-		"Ninja Multi-Config",
 		"-D",
 		"CMAKE_CXX_COMPILER_LAUNCHER=ccache",
 		"-D",
