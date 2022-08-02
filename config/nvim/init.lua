@@ -14,6 +14,8 @@ require("coding")
 require("snippets")
 require("options")
 
+local lga_actions = require("telescope-live-grep-args.actions")
+
 -- treesitter
 local ts = require("nvim-treesitter.configs")
 ts.setup({
@@ -47,6 +49,17 @@ require("telescope").setup({
 		},
 		["ui-select"] = {
 			require("telescope.themes").get_dropdown({}),
+		},
+		live_grep_args = {
+			auto_quoting = true, -- enable/disable auto-quoting
+			mappings = {
+				i = {
+                    ["<C-k>"] = actions.move_selection_previous,
+					["<C-'>"] = lga_actions.quote_prompt(),
+					["<C-l>g"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+					["<C-l>t"] = lga_actions.quote_prompt({ postfix = " -t" }),
+				},
+			},
 		},
 	},
 })
