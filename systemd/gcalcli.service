@@ -1,6 +1,0 @@
-[Unit]
-Description=gcalcli remind
-
-[Service]
-Type=simple
-ExecStart=/home/bata/dotfiles/systemd/gcal_remind.sh

@@ -36,6 +36,7 @@ wk.register({
 		name = "debugging",
 		o = { "<cmd>lua require('dapui').toggle()<cr>", "Open debugging UI" },
 		x = { "<cmd>lua require('dapui').close()<cr>", "Close debugging UI" },
+		t = { "<cmd>lua require('dap').terminate()<cr>", "Terminate" },
 		b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle breakpoint" },
 		c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
 		q = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run to cursor" },

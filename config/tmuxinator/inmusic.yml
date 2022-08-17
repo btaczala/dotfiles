@@ -53,3 +53,5 @@ windows:
   - build-lib: cd klingnet-lib
   - klingnet3-doc: cd klingnet-doc && nvim
   - klingnet-release: cd klingnet-build && nvim
+  - klingnet-ui: cd klingnet-ui && nvim
+  - klingnet-broker: cd klingnet-broker && nvim

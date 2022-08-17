@@ -100,7 +100,17 @@ require("packer").startup(function()
 	-- lsp
 	use("neovim/nvim-lspconfig")
 	use("nvim-lua/lsp-status.nvim")
-	use("glepnir/lspsaga.nvim")
+	use({
+		"glepnir/lspsaga.nvim",
+		branch = "main",
+		config = function()
+			local saga = require("lspsaga")
+
+			saga.init_lsp_saga({
+				-- your configuration
+			})
+		end,
+	})
 	use("hrsh7th/nvim-cmp")
 	use("hrsh7th/cmp-nvim-lsp")
 	use("L3MON4D3/LuaSnip")
@@ -176,7 +186,7 @@ require("packer").startup(function()
 	use("folke/tokyonight.nvim")
 	use("projekt0n/github-nvim-theme")
 	use("navarasu/onedark.nvim")
- 
+
 	-- presentations
 	use({ "vim-pandoc/vim-pandoc" })
 	use({ "vim-pandoc/vim-pandoc-syntax" })

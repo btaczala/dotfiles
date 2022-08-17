@@ -1,7 +1,0 @@
-#!/bin/bash
-
-if [[ -e /tmp/kitty_scrollback_buffer ]]; then
-    rm -rf /tmp/kitty_scrollback_buffer
-fi
-
-nvim -c "set norelativenumber nonumber nolist showtabline=0 foldcolumn=0" -c "autocmd TermOpen * normal G" -c "silent! write /tmp/kitty_scrollback_buffer | te cat /tmp/kitty_scrollback_buffer - "
