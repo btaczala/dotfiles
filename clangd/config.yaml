@@ -1,0 +1,4 @@
+CompileFlags:
+    Add: [-Wall, -Wextra, -Werror]
+    Remove: [-mlongcalls, -fstrict-volatile-bitfields]
+

@@ -28,6 +28,7 @@
     ~/.gitignore: git/gitignore
     ~/.yabairc: config/yabai/yabairc
     ~/.skhdrc: config/skhd/skhdrc
+    ~/Library/Preferences/clangd/config.yaml: clangd/config.yaml
 - shell:
     - [
       '[[ -d ~/.zprezto ]] ||
