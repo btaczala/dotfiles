@@ -4,11 +4,7 @@ if vim.fn.has("mac") == 1 then
 	dn.run()
 end
 
-vim.g.tokyonight_transparent = true
+require("tokyonight").setup({
+	transparent = true,
+})
 vim.cmd([[colorscheme tokyonight]])
--- require("onedark").setup({
--- 	style = "darker",
--- 	term_colors = true,
--- 	transparent = true,
--- })
--- require("onedark").load()
