@@ -47,8 +47,13 @@ wk.register({
 		d = { "<cmd>CMake build_and_debug<cr>", "Debug a program" },
 		t = { "<cmd>Telescope cmake select_target<cr>", "Select a target" },
 	},
-	a = { "<cmd>Make<cr>", "Compile current target" },
-	-- a = { "<cmd>lua compile()<cr>", "Compile current target" },
+	g = {
+		name = "git",
+		p = { "<cmd>Git pull<cr>", "Pull from remote" },
+		g = { "<cmd>Git<cr>", "Show Git" },
+	},
+	-- a = { "<cmd>Make<cr>", "Compile current target" },
+	a = { "<cmd>lua compile()<cr>", "Compile current target" },
 	A = { "<cmd>CMake build_all<cr>", "Compile all" },
 }, { prefix = "<leader>" })
 

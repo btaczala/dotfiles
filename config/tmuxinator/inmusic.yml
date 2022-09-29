@@ -45,7 +45,7 @@ root: ~/Projects/inmusic
 # attach: false
 
 windows:
-  - editor-app: cd klingnet-app && source ~/Projects/inmusic/klingnet-build/esp-idf/export.sh && nvim
+  - editor-app: cd klingnet-app && source ~/Projects/inmusic/klingnet-build/esp-idf/export.sh && export PATH=/Users/btaczala/.espressif/tools/xtensa-clang/14.0.0-38679f0333/xtensa-esp32-elf-clang/bin/:$PATH && nvim
   - build-app: cd klingnet-app && source ~/Projects/inmusic/klingnet-build/esp-idf/export.sh
   - editor-mcu: cd klingnet-mcu && nvim
   - build-mcu: cd klingnet-mcu 
