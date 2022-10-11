@@ -42,7 +42,7 @@ function format()
 		vim.cmd(":e %")
 	else
 		print("lsp format")
-		vim.cmd(":lua vim.lsp.buf.formatting()")
+		vim.cmd(":lua vim.lsp.buf.format()")
 	end
 end
 
