@@ -55,7 +55,7 @@ null_ls.setup({
 	on_attach = on_attach,
 })
 
-local servers = { "cmake", "clangd", "pyright" }
+local servers = { "cmake", "clangd", "pyright", "tsserver" }
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup({
 		on_attach = on_attach,
