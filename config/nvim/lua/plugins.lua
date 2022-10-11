@@ -90,6 +90,12 @@ require("packer").startup(function()
 		end,
 	})
 	use("dcharbon/vim-flatbuffers")
+	use({
+		"gbprod/yanky.nvim",
+		config = function()
+			require("yanky").setup({})
+		end,
+	})
 
 	-- fzf
 	use("vijaymarupudi/nvim-fzf")
@@ -100,17 +106,6 @@ require("packer").startup(function()
 	-- lsp
 	use("neovim/nvim-lspconfig")
 	use("nvim-lua/lsp-status.nvim")
-	use({
-		"glepnir/lspsaga.nvim",
-		branch = "main",
-		config = function()
-			local saga = require("lspsaga")
-
-			saga.init_lsp_saga({
-				-- your configuration
-			})
-		end,
-	})
 	use("hrsh7th/nvim-cmp")
 	use("hrsh7th/cmp-nvim-lsp")
 	use("L3MON4D3/LuaSnip")
@@ -120,16 +115,10 @@ require("packer").startup(function()
 		"jose-elias-alvarez/null-ls.nvim",
 		requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 	})
+
 	use({
-		"folke/trouble.nvim",
-		requires = "kyazdani42/nvim-web-devicons",
-		config = function()
-			require("trouble").setup({
-				-- your configuration comes here
-				-- or leave it empty to use the default settings
-				-- refer to the configuration section below
-			})
-		end,
+		"SmiteshP/nvim-navic",
+		requires = "neovim/nvim-lspconfig",
 	})
 
 	-- MacOS

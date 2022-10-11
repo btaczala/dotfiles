@@ -1,5 +1,6 @@
 local lspconfig = require("lspconfig")
 local lsp_status = require("lsp-status")
+local navic = require("nvim-navic")
 
 local on_attach = function(client, bufnr)
 	local function buf_set_keymap(...)
@@ -7,6 +8,10 @@ local on_attach = function(client, bufnr)
 	end
 	local function buf_set_option(...)
 		vim.api.nvim_buf_set_option(bufnr, ...)
+	end
+
+	if client.server_capabilities.documentSymbolProvider then
+		navic.attach(client, bufnr)
 	end
 
 	-- Mappings.
@@ -21,8 +26,9 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap("n", "<leader>ls", "<cmd>Telescope lsp_document_symbols<CR>", opts)
 	buf_set_keymap("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
 	buf_set_keymap("n", "<leader>lh", "<cmd>ClangdSwitchSourceHeader<CR>", opts)
-	buf_set_keymap("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
-	buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
+	buf_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
+	buf_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
+	buf_set_keymap("n", "<leader>dd", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 	buf_set_keymap("n", "<leader>xx", "<cmd>TroubleToggle<CR>", opts)
 	buf_set_keymap("n", "<leader>xw", "<cmd>TroubleToggle lsp_workspace_diagnostics<CR>", opts)
 end
