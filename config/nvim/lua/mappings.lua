@@ -52,6 +52,10 @@ wk.register({
 		p = { "<cmd>Git pull<cr>", "Pull from remote" },
 		g = { "<cmd>Git<cr>", "Show Git" },
 	},
+	z = {
+		name = "git",
+		z = { "<cmd>ZenMode<cr>", "ZenMode" },
+	},
 	-- a = { "<cmd>Make<cr>", "Compile current target" },
 	a = { "<cmd>lua compile()<cr>", "Compile current target" },
 	A = { "<cmd>CMake build_all<cr>", "Compile all" },

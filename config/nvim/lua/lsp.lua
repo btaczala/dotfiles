@@ -35,33 +35,54 @@ end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.offsetEncoding = { "utf-16" }
-capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 null_ls = require("null-ls")
-
 null_ls.setup({
 	sources = {
 		null_ls.builtins.formatting.stylua,
 		null_ls.builtins.formatting.cmake_format,
-		null_ls.builtins.formatting.qmlformat,
+		null_ls.builtins.formatting.qmlformat.with({
+			filetypes = { "qml", "qmljs" },
+		}),
 		null_ls.builtins.formatting.fixjson,
 		null_ls.builtins.formatting.shfmt,
 		null_ls.builtins.code_actions.gitsigns,
-		null_ls.builtins.formatting.prettier,
 		null_ls.builtins.diagnostics.shellcheck,
-		null_ls.builtins.diagnostics.qmllint,
 		null_ls.builtins.code_actions.shellcheck,
 	},
 	on_attach = on_attach,
 })
 
-local servers = { "cmake", "clangd", "pyright", "tsserver" }
+local servers = { "cmake", "clangd", "tsserver" }
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup({
 		on_attach = on_attach,
 		capabilities = capabilities,
 	})
 end
+
+-- Set qml files to be qmljs
+vim.cmd([[ autocmd BufNewFile,BufRead *.qml set filetype=qmljs ]])
+lspconfig.qmlls.setup({})
+lspconfig.pylsp.setup({
+	settings = {
+		pylsp = {
+			plugins = {
+				pycodestyle = {
+					ignore = { "E501" },
+					maxLineLength = 120,
+				},
+				black = {
+					line_length = 120,
+				},
+				mccabe = {
+					threshold = 20,
+				},
+			},
+		},
+	},
+})
 
 lsp_status.register_progress()
 

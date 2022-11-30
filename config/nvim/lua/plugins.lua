@@ -97,6 +97,20 @@ require("packer").startup(function()
 		end,
 	})
 
+	use({
+		"folke/zen-mode.nvim",
+		config = function()
+			require("zen-mode").setup({})
+		end,
+	})
+
+	use({
+		"levouh/tint.nvim",
+		config = function()
+			require("tint").setup({})
+		end,
+	})
+
 	-- fzf
 	use("vijaymarupudi/nvim-fzf")
 	use("kyazdani42/nvim-web-devicons")

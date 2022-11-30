@@ -36,7 +36,7 @@ function format()
 		vim.cmd(":e %")
 	elseif vim.bo.filetype == "cmake" then
 		print(string.format("cmake-format -i '%s'", vim.fn.expand("%p")))
-		local file = io.popen(string.format("cmake-format -i '%s'", vim.fn.expand("%")))
+		local file = io.popen(string.format("cmake-format --line-width 120 -i '%s'", vim.fn.expand("%")))
 		local output = file:read("*all")
 		file:close()
 		vim.cmd(":e %")
