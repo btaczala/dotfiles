@@ -18,13 +18,37 @@ function file_exists(name)
 end
 
 function compile()
-    local cwd = vim.fn.getcwd()
-    local CMakeFile = cwd .. "/CMakeLists.txt"
-    if file_exists(CMakeFile) then
-        vim.cmd(":CMake build")
-        return
-    end
+	local cwd = vim.fn.getcwd()
+	local CMakeFile = cwd .. "/CMakeLists.txt"
+	if file_exists(CMakeFile) then
+		vim.cmd(":Task start cmake build")
+		return
+	end
 	vim.cmd("Make")
+end
+
+local function buf_set_keymap(...)
+	vim.api.nvim_buf_set_keymap(0, ...)
+end
+
+function lsp_keybindings()
+	local opts = { noremap = true, silent = true }
+	buf_set_keymap("n", "<leader>li", "<cmd>lua require'telescope.builtin'.diagnostics()<CR>", opts)
+	buf_set_keymap("n", "<leader>ld", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+	buf_set_keymap("n", "<leader>lD", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+	buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+	buf_set_keymap("n", "<leader>lx", "<cmd>lua require'telescope.builtin'.lsp_references()<CR>", opts)
+	buf_set_keymap("n", "<leader>lq", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+	buf_set_keymap("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+	buf_set_keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
+	buf_set_keymap("n", "<leader>ls", "<cmd>Telescope lsp_document_symbols<CR>", opts)
+	buf_set_keymap("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
+	buf_set_keymap("n", "<leader>lh", "<cmd>ClangdSwitchSourceHeader<CR>", opts)
+	buf_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
+	buf_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
+	buf_set_keymap("n", "<leader>dd", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+	buf_set_keymap("n", "<leader>xx", "<cmd>TroubleToggle<CR>", opts)
+	buf_set_keymap("n", "<leader>xw", "<cmd>TroubleToggle lsp_workspace_diagnostics<CR>", opts)
 end
 
 wk.register({
@@ -43,8 +67,8 @@ wk.register({
 	},
 	r = {
 		name = "compile",
-		r = { "<cmd>CMake build_and_run<cr>", "Run program" },
-		d = { "<cmd>CMake build_and_debug<cr>", "Debug a program" },
+		r = { "<cmd>Task start cmake run<cr>", "Run program" },
+		d = { "<cmd>Task start cmake debug<cr>", "Debug a program" },
 		t = { "<cmd>Telescope cmake select_target<cr>", "Select a target" },
 	},
 	g = {
@@ -57,8 +81,12 @@ wk.register({
 		z = { "<cmd>ZenMode<cr>", "ZenMode" },
 	},
 	-- a = { "<cmd>Make<cr>", "Compile current target" },
-	a = { "<cmd>lua compile()<cr>", "Compile current target" },
-	A = { "<cmd>CMake build_all<cr>", "Compile all" },
+	a = {
+		a = { "<cmd>lua compile()<cr>", "Compile current target" },
+		c = { "<cmd>Task start cmake configure<cr>", "Show Git" },
+		b = { "<cmd>Task start cmake build_all<cr>", "Compile all" },
+	},
+	A = {},
 }, { prefix = "<leader>" })
 
 -- mappings
@@ -94,7 +122,7 @@ function WhichKeyQml()
 		},
 	}, { prefix = "<leader>" })
 end
-vim.keymap.set({"n","x"}, "p", "<Plug>(YankyPutAfter)")
-vim.keymap.set({"n","x"}, "P", "<Plug>(YankyPutBefore)")
-vim.keymap.set({"n","x"}, "gp", "<Plug>(YankyGPutAfter)")
-vim.keymap.set({"n","x"}, "gP", "<Plug>(YankyGPutBefore)")
+vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
+vim.keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
+vim.keymap.set({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
+vim.keymap.set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")

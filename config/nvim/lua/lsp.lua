@@ -2,10 +2,9 @@ local lspconfig = require("lspconfig")
 local lsp_status = require("lsp-status")
 local navic = require("nvim-navic")
 
+require("mappings")
+
 local on_attach = function(client, bufnr)
-	local function buf_set_keymap(...)
-		vim.api.nvim_buf_set_keymap(bufnr, ...)
-	end
 	local function buf_set_option(...)
 		vim.api.nvim_buf_set_option(bufnr, ...)
 	end
@@ -15,39 +14,22 @@ local on_attach = function(client, bufnr)
 	end
 
 	-- Mappings.
-	local opts = { noremap = true, silent = true }
-	buf_set_keymap("n", "<leader>ld", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-	buf_set_keymap("n", "<leader>lD", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-	buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-	buf_set_keymap("n", "<leader>lx", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-	buf_set_keymap("n", "<leader>lq", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-	buf_set_keymap("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-	buf_set_keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
-	buf_set_keymap("n", "<leader>ls", "<cmd>Telescope lsp_document_symbols<CR>", opts)
-	buf_set_keymap("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
-	buf_set_keymap("n", "<leader>lh", "<cmd>ClangdSwitchSourceHeader<CR>", opts)
-	buf_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
-	buf_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
-	buf_set_keymap("n", "<leader>dd", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-	buf_set_keymap("n", "<leader>xx", "<cmd>TroubleToggle<CR>", opts)
-	buf_set_keymap("n", "<leader>xw", "<cmd>TroubleToggle lsp_workspace_diagnostics<CR>", opts)
+	lsp_keybindings()
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.offsetEncoding = { "utf-16" }
+capabilities.offsetEncoding = "utf-8"
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 null_ls = require("null-ls")
 null_ls.setup({
 	sources = {
 		null_ls.builtins.formatting.stylua,
-		null_ls.builtins.formatting.cmake_format,
 		null_ls.builtins.formatting.qmlformat.with({
 			filetypes = { "qml", "qmljs" },
 		}),
 		null_ls.builtins.formatting.fixjson,
 		null_ls.builtins.formatting.shfmt,
-		null_ls.builtins.code_actions.gitsigns,
 		null_ls.builtins.diagnostics.shellcheck,
 		null_ls.builtins.code_actions.shellcheck,
 	},
@@ -64,7 +46,8 @@ end
 
 -- Set qml files to be qmljs
 vim.cmd([[ autocmd BufNewFile,BufRead *.qml set filetype=qmljs ]])
-lspconfig.qmlls.setup({})
+-- Don't enable qmlls just yet - it consumes a lot of CPU
+-- lspconfig.qmlls.setup({})
 lspconfig.pylsp.setup({
 	settings = {
 		pylsp = {

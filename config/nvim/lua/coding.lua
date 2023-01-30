@@ -10,21 +10,29 @@ local function map(mode, lhs, rhs, opts)
 end
 
 local Path = require("plenary.path")
-require("cmake").setup({
-	parameters_file = "neovim.json",
-	build_dir = tostring(Path:new("{cwd}", "build")),
-	default_projects_path = tostring(Path:new(vim.loop.os_homedir(), "Projects")),
-	configure_args = {
-		"-D",
-		"CMAKE_EXPORT_COMPILE_COMMANDS=1",
-		"-D",
-		"CMAKE_CXX_COMPILER_LAUNCHER=ccache",
-		"-D",
-		"CMAKE_C_COMPILER_LAUNCHER=ccache",
+
+local Path = require("plenary.path")
+require("tasks").setup({
+	default_params = { -- Default module parameters with which `neovim.json` will be created.
+		cmake = {
+			cmd = "/usr/local/bin/cmake", -- CMake executable to use, can be changed using `:Task set_module_param cmake cmd`.
+			build_dir = tostring(Path:new("{cwd}", "build")),
+			build_type = "Debug", -- Build type, can be changed using `:Task set_module_param cmake build_type`.
+			dap_name = "lldb", -- DAP configuration name from `require('dap').configurations`. If there is no such configuration, a new one with this name as `type` will be created.
+			args = { -- Task default arguments.
+				configure = { },
+			},
+		},
 	},
-	build_args = {},
-	dap_configuration = { type = "lldb", request = "launch" },
-	dap_open_command = require("dapui").open,
+	save_before_run = true, -- If true, all files will be saved before executing a task.
+	params_file = "neovim.json", -- JSON file to store module and task parameters.
+	quickfix = {
+		pos = "botright", -- Default quickfix position.
+		height = 12, -- Default height.
+	},
+	dap_open_command = function()
+		return require("dap").repl.open()
+	end, -- Command to run after starting DAP session. You can set it to `false` if you don't want to open anything or `require('dapui').open` if you are using https://github.com/rcarriga/nvim-dap-ui
 })
 
 function format()

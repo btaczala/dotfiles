@@ -33,7 +33,7 @@ end
 
 require("lualine").setup({
 	options = {
-		theme = "tokyonight",
+		theme = "onedark",
 		component_separators = { left = "", right = "" },
 	},
 	sections = {

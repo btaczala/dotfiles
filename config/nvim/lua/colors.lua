@@ -4,7 +4,14 @@ if vim.fn.has("mac") == 1 then
 	dn.run()
 end
 
-require("tokyonight").setup({
-	transparent = true,
-})
-vim.cmd([[colorscheme tokyonight]])
+require('onedark').setup {
+    style = 'darker',
+    transparent = true,
+    lualine = {
+        transparent = true
+    }
+
+}
+require('onedark').load()
+
+vim.cmd([[colorscheme onedark]])

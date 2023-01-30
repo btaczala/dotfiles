@@ -104,12 +104,6 @@ require("packer").startup(function()
 		end,
 	})
 
-	use({
-		"levouh/tint.nvim",
-		config = function()
-			require("tint").setup({})
-		end,
-	})
 
 	-- fzf
 	use("vijaymarupudi/nvim-fzf")
@@ -135,6 +129,13 @@ require("packer").startup(function()
 		requires = "neovim/nvim-lspconfig",
 	})
 
+	use({
+		"rmagatti/goto-preview",
+		config = function()
+			require("goto-preview").setup({})
+		end,
+	})
+
 	-- MacOS
 	use("cormacrelf/dark-notify")
 
@@ -149,11 +150,8 @@ require("packer").startup(function()
 	use("liuchengxu/vista.vim")
 	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
 	use("nvim-telescope/telescope-dap.nvim")
-	use({
-		"Shatur/neovim-cmake",
-		requires = { "nvim-lua/plenary.nvim", "mfussenegger/nvim-dap", "nvim-telescope/telescope.nvim" },
-	})
 	use({ "ckipp01/nvim-jenkinsfile-linter", requires = { "nvim-lua/plenary.nvim" } })
+	use("Shatur/neovim-tasks")
 
 	-- Git
 	use("tpope/vim-fugitive")
@@ -183,12 +181,8 @@ require("packer").startup(function()
 	})
 
 	-- colorschemes
-	use("rafamadriz/neon")
-	use("Pocco81/Catppuccino.nvim")
-	use("marko-cerovac/material.nvim")
-	use("folke/tokyonight.nvim")
-	use("projekt0n/github-nvim-theme")
-	use("navarasu/onedark.nvim")
+	use("tinted-theming/base16-vim")
+    use('navarasu/onedark.nvim')
 
 	-- presentations
 	use({ "vim-pandoc/vim-pandoc" })
