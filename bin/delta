@@ -1,9 +1,11 @@
 #!/bin/bash
 
-delta_command=$(fd '^delta$' -t x --type symlink /usr/local/bin)
+delta_command=$(brew --prefix git-delta)/bin/delta
 
-if [[ ! ( $(darkMode) =~ 'Dark' ) ]]; then
-    $delta_command --light $@
+if [[ ! ($(darkMode) =~ 'Dark') ]]; then
+	# shellcheck disable=2068
+	$delta_command --light $@
 else
-    $delta_command --dark $@
+	# shellcheck disable=2068
+	$delta_command --dark $@
 fi
