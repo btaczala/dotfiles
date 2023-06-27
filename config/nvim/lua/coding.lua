@@ -15,12 +15,12 @@ local Path = require("plenary.path")
 require("tasks").setup({
 	default_params = { -- Default module parameters with which `neovim.json` will be created.
 		cmake = {
-			cmd = "/usr/local/bin/cmake", -- CMake executable to use, can be changed using `:Task set_module_param cmake cmd`.
+			cmd = "/opt/homebrew/bin/cmake", -- CMake executable to use, can be changed using `:Task set_module_param cmake cmd`.
 			build_dir = tostring(Path:new("{cwd}", "build")),
 			build_type = "Debug", -- Build type, can be changed using `:Task set_module_param cmake build_type`.
 			dap_name = "lldb", -- DAP configuration name from `require('dap').configurations`. If there is no such configuration, a new one with this name as `type` will be created.
 			args = { -- Task default arguments.
-				configure = { },
+				configure = {},
 			},
 		},
 	},
@@ -31,7 +31,7 @@ require("tasks").setup({
 		height = 12, -- Default height.
 	},
 	dap_open_command = function()
-		return require("dap").repl.open()
+		return require("dapui").toggle()
 	end, -- Command to run after starting DAP session. You can set it to `false` if you don't want to open anything or `require('dapui').open` if you are using https://github.com/rcarriga/nvim-dap-ui
 })
 

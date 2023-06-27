@@ -70,6 +70,12 @@ require("packer").startup(function()
 	})
 	use({
 		"rmagatti/auto-session",
+		config = function()
+			require("auto-session").setup({
+				log_level = "error",
+				auto_session_suppress_dirs = { "~/", "~/Downloads", "/" },
+			})
+		end,
 	})
 
 	use({
@@ -104,7 +110,6 @@ require("packer").startup(function()
 		end,
 	})
 
-
 	-- fzf
 	use("vijaymarupudi/nvim-fzf")
 	use("kyazdani42/nvim-web-devicons")
@@ -137,7 +142,7 @@ require("packer").startup(function()
 	})
 
 	-- MacOS
-	use("cormacrelf/dark-notify")
+	use("f-person/auto-dark-mode.nvim")
 
 	-- Coding
 	use({
@@ -182,7 +187,7 @@ require("packer").startup(function()
 
 	-- colorschemes
 	use("tinted-theming/base16-vim")
-    use('navarasu/onedark.nvim')
+	use("navarasu/onedark.nvim")
 
 	-- presentations
 	use({ "vim-pandoc/vim-pandoc" })

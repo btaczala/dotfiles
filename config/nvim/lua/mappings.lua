@@ -46,7 +46,6 @@ function lsp_keybindings()
 	buf_set_keymap("n", "<leader>lh", "<cmd>ClangdSwitchSourceHeader<CR>", opts)
 	buf_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
 	buf_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
-	buf_set_keymap("n", "<leader>dd", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 	buf_set_keymap("n", "<leader>xx", "<cmd>TroubleToggle<CR>", opts)
 	buf_set_keymap("n", "<leader>xw", "<cmd>TroubleToggle lsp_workspace_diagnostics<CR>", opts)
 end
@@ -59,11 +58,19 @@ wk.register({
 	d = {
 		name = "debugging",
 		o = { "<cmd>lua require('dapui').toggle()<cr>", "Open debugging UI" },
-		x = { "<cmd>lua require('dapui').close()<cr>", "Close debugging UI" },
-		t = { "<cmd>lua require('dap').terminate()<cr>", "Terminate" },
+		x = {
+			function()
+				require("dapui").close()
+				require("dap").terminate()
+			end,
+			"Terminate",
+		},
 		b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle breakpoint" },
 		c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
 		q = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run to cursor" },
+		n = { "<cmd>lua require'dap'.step_over()<cr>", "Next line" },
+		i = { "<cmd>lua require'dap'.step_into()<cr>", "Step in" },
+		f = { "<cmd>lua require'dap'.step_out()<cr>", "Step out" },
 	},
 	r = {
 		name = "compile",

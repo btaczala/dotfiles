@@ -49,6 +49,7 @@ vim.cmd([[ autocmd BufNewFile,BufRead *.qml set filetype=qmljs ]])
 -- Don't enable qmlls just yet - it consumes a lot of CPU
 -- lspconfig.qmlls.setup({})
 lspconfig.pylsp.setup({
+    on_attach = on_attach,
 	settings = {
 		pylsp = {
 			plugins = {
