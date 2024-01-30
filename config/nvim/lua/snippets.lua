@@ -207,7 +207,7 @@ ls.autosnippets = {
 -- will need to extend the table yourself instead of setting a new one.
 ]]
 
-require("luasnip/loaders/from_vscode").load({ paths = { "/Users/btaczala/dotfiles/snippets" } }) -- Load snippets from my-snippets folder
+require("luasnip/loaders/from_vscode").load({ paths = { "/Users/bartek/dotfiles/snippets" } }) -- Load snippets from my-snippets folder
 
 -- You can also use lazy loading so you only get in memory snippets of languages you use
 require("luasnip/loaders/from_vscode").lazy_load() -- You can pass { paths = "./my-snippets/"} as well

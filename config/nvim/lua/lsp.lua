@@ -1,6 +1,5 @@
 local lspconfig = require("lspconfig")
 local lsp_status = require("lsp-status")
-local navic = require("nvim-navic")
 
 require("mappings")
 
@@ -9,10 +8,7 @@ local on_attach = function(client, bufnr)
 		vim.api.nvim_buf_set_option(bufnr, ...)
 	end
 
-	if client.server_capabilities.documentSymbolProvider then
-		navic.attach(client, bufnr)
-	end
-
+	require("lsp-inlayhints").on_attach(client, bufnr)
 	-- Mappings.
 	lsp_keybindings()
 end
@@ -29,36 +25,42 @@ null_ls.setup({
 			filetypes = { "qml", "qmljs" },
 		}),
 		null_ls.builtins.formatting.fixjson,
+		null_ls.builtins.formatting.autopep8,
 		null_ls.builtins.formatting.shfmt,
+		null_ls.builtins.formatting.just,
 		null_ls.builtins.diagnostics.shellcheck,
 		null_ls.builtins.code_actions.shellcheck,
 	},
 	on_attach = on_attach,
 })
 
-local servers = { "cmake", "clangd", "tsserver" }
+local servers = { "cmake", "tsserver", "html", "clangd" }
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup({
 		on_attach = on_attach,
 		capabilities = capabilities,
 	})
 end
+-- lspconfig.
 
 -- Set qml files to be qmljs
-vim.cmd([[ autocmd BufNewFile,BufRead *.qml set filetype=qmljs ]])
+-- vim.cmd([[ autocmd BufNewFile,BufRead *.qml set filetype=qml]])
 -- Don't enable qmlls just yet - it consumes a lot of CPU
--- lspconfig.qmlls.setup({})
+-- lspconfiPUBLICg.qmlls.setup({})
 lspconfig.pylsp.setup({
-    on_attach = on_attach,
+	on_attach = on_attach,
 	settings = {
 		pylsp = {
 			plugins = {
+				autopep8 = {
+					enabled = false,
+				},
 				pycodestyle = {
 					ignore = { "E501" },
 					maxLineLength = 120,
 				},
-				black = {
-					line_length = 120,
+				yapf = {
+					enabled = true,
 				},
 				mccabe = {
 					threshold = 20,

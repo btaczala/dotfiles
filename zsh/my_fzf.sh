@@ -12,6 +12,11 @@ fshow() {
 FZF-EOF"
 }
 
+function kt-mediahub() {
+  export PROJECT_DIR=$HOME/Projects/inmusic/mediamaster/ArKaos/Projects/MediaHub
+  kitty --session $HOME/dotfiles/projects/mediahub.conf
+}
+
 # fbr - checkout git branch (including remote branches), sorted by most recent commit, limit 30 last branches
 fbr() {
   local branches branch
@@ -21,9 +26,17 @@ fbr() {
   git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
 
-# using ripgrep combined with preview
-# find-in-file - usage: fif <searchTerm>
-fif() {
-  if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
-  rg --files-with-matches --no-messages "$1" | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}"
+
+unalias z
+z() {
+  if [[ -z "$*" ]]; then
+    cd "$(zshz -l 2>&1 | fzf +s --tac | sed 's/^[0-9,.]* *//')"
+  else
+    _last_z_args="$@"
+    zshz "$@"
+  fi
+}
+
+zz() {
+  cd "$(zshz -l 2>&1 | sed 's/^[0-9,.]* *//' | fzf -q "$_last_z_args")"
 }

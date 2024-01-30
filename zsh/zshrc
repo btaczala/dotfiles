@@ -27,6 +27,8 @@ zinit light junegunn/fzf
 zinit light unixorn/fzf-zsh-plugin
 zinit light svenXY/timewarrior
 
+zinit load agkozak/zsh-z
+
 
 ### End of Zinit's installer chunk
 
@@ -71,7 +73,6 @@ source_if_present $HOME/dotfiles/zsh/aliases.zsh
 source_if_present $HOME/dotfiles/zsh/forgit.plugin.zsh
 source_if_present $HOME/dotfiles/zsh/p10k.zsh
 source_if_present /usr/local/Cellar/fzf/0.27.2/shell/key-bindings.zsh
-source_if_present $HOME/.zinit/plugins/svenXY---timewarrior/timewarrior.plugin.zsh
 
 export LANG=en_US.UTF-8
 export LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
@@ -81,7 +82,6 @@ PATH=$(brew --prefix llvm)/bin:$PATH
 if type brew &>/dev/null
 then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-
   autoload -Uz compinit
   compinit
 fi
@@ -92,3 +92,13 @@ export CMAKE_CXX_COMPILER_LAUNCHER=ccache
 export CMAKE_GENERATOR="Ninja Multi-Config"
 export HOMEBREW_NO_ENV_HINTS
 export PATH=$HOME/dotfiles/bin:/usr/local/bin:$PATH
+
+if [[ "$TERM" == "xterm-kitty" ]]; then
+    if [[ "$(darkMode)" == "Dark" ]]; then
+        kitty @ set-colors --all --configured "$HOME/dotfiles/config/kitty/dark.conf"
+    else
+        kitty @ set-colors --all --configured "$HOME/dotfiles/config/kitty/light.conf"
+    fi
+fi
+export ARKAOS_CONAN_PROFILE_NAME=Darwin-AppleClang-14.0-arm64-TYPE-None
+

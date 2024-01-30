@@ -35,6 +35,48 @@ require("tasks").setup({
 	end, -- Command to run after starting DAP session. You can set it to `false` if you don't want to open anything or `require('dapui').open` if you are using https://github.com/rcarriga/nvim-dap-ui
 })
 
+require("cmake-tools").setup({
+	cmake_command = "cmake", -- this is used to specify cmake command path
+	cmake_regenerate_on_save = false, -- auto generate when save CMakeLists.txt
+	cmake_generate_options = {}, -- this will be passed when invoke `CMakeGenerate`
+	cmake_build_options = {}, -- this will be passed when invoke `CMakeBuild`
+	-- support macro expansion:
+	--       ${kit}
+	--       ${kitGenerator}
+	--       ${variant:xx}
+	cmake_build_directory = "build", -- this is used to specify generate directory for cmake, allows macro expansion
+	cmake_soft_link_compile_commands = true, -- this will automatically make a soft link from compile commands file to project root dir
+	cmake_compile_commands_from_lsp = false, -- this will automatically set compile commands file location using lsp, to use it, please set `cmake_soft_link_compile_commands` to false
+	cmake_kits_path = nil, -- this is used to specify global cmake kits path, see CMakeKits for detailed usage
+	cmake_variants_message = {
+		short = { show = true }, -- whether to show short message
+		long = { show = true, max_length = 40 }, -- whether to show long message
+	},
+	cmake_dap_configuration = { -- debug settings for cmake
+		name = "cpp",
+		type = "codelldb",
+		request = "launch",
+		stopOnEntry = false,
+		runInTerminal = true,
+		console = "integratedTerminal",
+	},
+	cmake_executor = { -- executor to use
+		name = "overseer", -- name of the executor
+		opts = {}, -- the options the executor will get, possible values depend on the executor type. See `default_opts` for possible values.
+		default_opts = { -- a list of default and possible values for executors
+			quickfix = {
+				show = "only_on_error", -- "always", "only_on_error"
+				position = "belowright", -- "bottom", "top"
+				size = 10,
+			},
+			terminal = {
+				name = "CMake terminal",
+			}, -- terminal executor uses the values in cmake_terminal
+		},
+	},
+})
+require("overseer").setup()
+
 function format()
 	if vim.bo.filetype == "qml" then
 		print(string.format("qmlformat -i '%s'", vim.fn.expand("%p")))

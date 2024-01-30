@@ -1,7 +1,5 @@
-# /Users/btaczala/.config/tmuxinator/ev.yml
-
 name: ev
-root: ~/Projects/inmusic/ev
+root: ~/Projects/inmusic/ev/ev_conan_recipes
 
 # Optional tmux socket
 # socket_name: foo
@@ -45,5 +43,4 @@ root: ~/Projects/inmusic/ev
 # attach: false
 
 windows:
-  - nvim: cd ev_conan_recipes && nvim
-  - term: cd ev_conan_recipes
+  - ev_conan_recipes: nvim

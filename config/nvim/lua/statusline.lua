@@ -2,7 +2,16 @@
 -- Author: lokesh-krishna
 -- MIT license, see LICENSE for more details.
 
-local navic = require("nvim-navic")
+
+local treesitter = require("nvim-treesitter")
+local function treelocation()
+	current =  treesitter.statusline({
+		indicator_size = 90,
+		type_patterns = { "class", "function", "method" },
+		separator = " -> ",
+	}):gsub("\n", " ")
+    return current
+end
 
 local function lsp()
 	local msg = "No Active Lsp"
@@ -42,8 +51,8 @@ require("lualine").setup({
 		},
 		lualine_b = { { "filename", path = 1, shorting_target = 40 }, { "b:gitsigns_head", icon = "" } },
 		lualine_c = { "diagnostics" },
-		lualine_x = { lsp, "lsp_progress", { navic.get_location, cond = navic.is_available } },
-		lualine_y = { { "diff", source = diff_source } },
+		lualine_x = { lsp, "lsp_progress", "overseer" },
+		lualine_y = { },
 		lualine_z = {
 			{ "location", separator = { right = "" }, left_padding = 2 },
 		},

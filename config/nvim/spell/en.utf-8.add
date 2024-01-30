@@ -56,3 +56,8 @@ Gigbar
 GigBar
 newpage
 mqtt
+mDNS
+ingroup
+NetworkErrorHandler
+NetworkOptions
+spdlog

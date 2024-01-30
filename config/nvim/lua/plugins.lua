@@ -11,7 +11,13 @@ require("packer").startup(function()
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 	use("nvim-telescope/telescope-live-grep-args.nvim")
 	use({ "nvim-telescope/telescope-ui-select.nvim" })
-	use("christoomey/vim-tmux-navigator")
+	use({
+		"mrjones2014/smart-splits.nvim",
+		config = function()
+			require("smart-splits").setup()
+		end,
+	})
+
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 	use("famiu/feline.nvim")
 	use({
@@ -24,12 +30,16 @@ require("packer").startup(function()
 			"arkav/lualine-lsp-progress",
 		},
 	})
+	use("lvimuser/lsp-inlayhints.nvim")
+
+	use("RaafatTurki/hex.nvim")
 	use("SmiteshP/nvim-gps")
 	use("vmchale/just-vim")
 	use("peterhoeg/vim-qml")
 	use("famiu/bufdelete.nvim")
 	use("onsails/lspkind-nvim")
 	use("rafamadriz/friendly-snippets")
+	use("SirVer/ultisnips")
 	use({ "tpope/vim-dispatch", opt = true, cmd = { "Dispatch", "Make", "Focus", "Start" } })
 	use({
 		"AckslD/nvim-neoclip.lua",
@@ -89,12 +99,19 @@ require("packer").startup(function()
 		end,
 	})
 
-	use({
-		"lukas-reineke/indent-blankline.nvim",
-		config = function()
-			require("indent_blankline").setup({})
-		end,
-	})
+	-- use({
+	-- 	"lukas-reineke/indent-blankline.nvim",
+	-- 	main = "ibl",
+	-- 	opts = {},
+	-- 	config = function()
+	-- 		require("ibl").setup({})
+	-- 	end,
+	-- })
+	-- use({
+	-- 	"lukas-reineke/indent-blankline.nvim",
+	-- 	main = "ibl",
+	-- 	opts = {},
+	-- })
 	use("dcharbon/vim-flatbuffers")
 	use({
 		"gbprod/yanky.nvim",
@@ -141,6 +158,20 @@ require("packer").startup(function()
 		end,
 	})
 
+	use({
+		"SmiteshP/nvim-navbuddy",
+		requires = {
+			"neovim/nvim-lspconfig",
+			"SmiteshP/nvim-navic",
+			"MunifTanjim/nui.nvim",
+			"numToStr/Comment.nvim", -- Optional
+			"nvim-telescope/telescope.nvim", -- Optional
+		},
+		config = function()
+			require("nvim-navbuddy").setup({})
+		end,
+	})
+
 	-- MacOS
 	use("f-person/auto-dark-mode.nvim")
 
@@ -151,15 +182,30 @@ require("packer").startup(function()
 			require("Comment").setup()
 		end,
 	})
+	use({
+		"ThePrimeagen/refactoring.nvim",
+		requires = {
+			{ "nvim-lua/plenary.nvim" },
+			{ "nvim-treesitter/nvim-treesitter" },
+		},
+		config = function()
+			require("refactoring").setup({})
+		end,
+	})
 
 	use("liuchengxu/vista.vim")
 	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
 	use("nvim-telescope/telescope-dap.nvim")
 	use({ "ckipp01/nvim-jenkinsfile-linter", requires = { "nvim-lua/plenary.nvim" } })
 	use("Shatur/neovim-tasks")
+	use("Civitasv/cmake-tools.nvim")
+	use("stevearc/overseer.nvim")
+
+	use("vim-test/vim-test")
 
 	-- Git
 	use("tpope/vim-fugitive")
+	use("FabijanZulj/blame.nvim")
 	use({
 		"lewis6991/gitsigns.nvim",
 		requires = { "nvim-lua/plenary.nvim" },
