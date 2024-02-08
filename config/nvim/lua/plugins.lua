@@ -18,6 +18,7 @@ require("packer").startup(function()
 		end,
 	})
 
+	use("p00f/clangd_extensions.nvim")
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 	use("famiu/feline.nvim")
 	use({

@@ -34,13 +34,28 @@ null_ls.setup({
 	on_attach = on_attach,
 })
 
-local servers = { "cmake", "tsserver", "html", "clangd" }
+require("clangd_extensions").setup({
+	server = {
+		on_attach = on_attach,
+	},
+})
+local servers = { "cmake", "tsserver", "html" }
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup({
 		on_attach = on_attach,
 		capabilities = capabilities,
 	})
 end
+
+if vim.fn.has("mac") then
+	lspconfig["clangd"].setup({
+		cmd = { "clangd", "--query-driver=/Library/Developer/CommandLineTools/usr/bin/c++,/Library/Developer/CommandLineTools/usr/bin/clang++", "--log=verbose" },
+		-- cmd = { "clangd", "--log=verbose" },
+		on_attach = on_attach,
+		capabilities = capabilities,
+	})
+end
+
 -- lspconfig.
 
 -- Set qml files to be qmljs
