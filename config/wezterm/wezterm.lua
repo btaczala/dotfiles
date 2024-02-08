@@ -21,7 +21,7 @@ wezterm.on("format-window-title", function(tab, pane, tabs, panes, config)
 		index = string.format("[%d/%d] ", tab.tab_index + 1, #tabs)
 	end
 
-	return zoomed .. index .. tab.tab_title
+	return tab.window_title and tab.window_title or (zoomed .. index .. tab.tab_title)
 end)
 
 wezterm.on("window-config-reloaded", function(window, pane)
@@ -37,9 +37,6 @@ wezterm.on("window-config-reloaded", function(window, pane)
 	overrides.window_frame.active_titlebar_bg = current_scheme.background
 	window:set_config_overrides(overrides)
 end)
-
-local SOLID_LEFT_ARROW = wezterm.nerdfonts.pl_right_hard_divider
-local SOLID_RIGHT_ARROW = wezterm.nerdfonts.pl_left_hard_divider
 
 function tab_title(tab_info)
 	local title = tab_info.tab_title
@@ -58,6 +55,11 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 
 	local title = tab_title(tab)
 
+	local zoomed = ""
+	if tab.active_pane.is_zoomed then
+		zoomed = "[Z] "
+	end
+
 	if tab.is_active then
 		foreground = current_scheme.brights[3]
 	end
@@ -65,7 +67,7 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 	return {
 		{ Background = { Color = background } },
 		{ Foreground = { Color = foreground } },
-		{ Text = title },
+		{ Text = zoomed .. title },
 	}
 end)
 
@@ -103,7 +105,7 @@ local function scroll_up(scroll)
 				SendKey = { key = scroll, mods = "CTRL" },
 			}, pane)
 		else
-			win:perform_action({ ScrollByPage = scroll == 'u' and -1 or 1 }, pane)
+			win:perform_action({ ScrollByPage = scroll == "u" and -1 or 1 }, pane)
 		end
 	end)
 end
@@ -208,13 +210,8 @@ config.keys = {
 
 config.window_frame = {
 	font = wezterm.font({ family = "Roboto", weight = "Bold" }),
-
 	font_size = 14.0,
-
-	-- The overall background color of the tab bar when
-	-- the window is focused
 	active_titlebar_bg = "#FFF",
-
 	inactive_titlebar_bg = "#000",
 }
 
