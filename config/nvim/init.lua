@@ -1,7 +1,7 @@
 local g = vim.g -- a table to access global variables
 local opt = vim.opt -- to set options
 
-g.mapleader = ","
+g.mapleader = " "
 require("mappings")
 
 if vim.g.vscode then
