@@ -96,6 +96,18 @@ local direction_keys = {
 	l = "Right",
 }
 
+local function scroll_up(scroll)
+	return wezterm.action_callback(function(win, pane)
+		if is_vim(pane) then
+			win:perform_action({
+				SendKey = { key = scroll, mods = "CTRL" },
+			}, pane)
+		else
+			win:perform_action({ ScrollByPage = scroll == 'u' and -1 or 1 }, pane)
+		end
+	end)
+end
+
 local function split_nav(resize_or_move, key)
 	return {
 		key = key,
@@ -143,6 +155,11 @@ local config = {
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
 	{
+		key = "z",
+		mods = "LEADER",
+		action = wezterm.action.TogglePaneZoomState,
+	},
+	{
 		key = "r",
 		mods = "LEADER",
 		action = wezterm.action.ShowLauncher,
@@ -161,6 +178,16 @@ config.keys = {
 		key = "h",
 		mods = "LEADER|SHIFT",
 		action = wezterm.action.SplitPane({ direction = "Down", size = { Percent = 30 } }),
+	},
+	{
+		key = "d",
+		mods = "CTRL",
+		action = scroll_up("d"),
+	},
+	{
+		key = "u",
+		mods = "CTRL",
+		action = scroll_up("u"),
 	},
 	split_nav("move", "h"),
 	split_nav("move", "j"),
@@ -190,6 +217,5 @@ config.window_frame = {
 
 	inactive_titlebar_bg = "#000",
 }
-
 
 return config
