@@ -39,8 +39,8 @@ require("telescope").setup({
 				-- So, to not map "<C-n>", just put
 				["<C-n>"] = false,
 				["<C-p>"] = false,
-				["<C-j>"] = actions.move_selection_next,
-				["<C-k>"] = actions.move_selection_previous,
+				["<C-k>"] = actions.move_selection_next,
+				["<C-l>"] = actions.move_selection_previous,
 			},
 		},
 	},

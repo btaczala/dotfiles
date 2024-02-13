@@ -92,10 +92,10 @@ local function is_vim(pane)
 end
 
 local direction_keys = {
-	h = "Left",
-	j = "Down",
-	k = "Up",
-	l = "Right",
+	["j"] = "Left",
+	["k"]= "Down",
+	["l"] = "Up",
+    [";"] = "Right"
 }
 
 local function scroll_up(scroll)
@@ -191,15 +191,15 @@ config.keys = {
 		mods = "CTRL",
 		action = scroll_up("u"),
 	},
-	split_nav("move", "h"),
 	split_nav("move", "j"),
 	split_nav("move", "k"),
 	split_nav("move", "l"),
+	split_nav("move", ";"),
 	-- resize panes
-	split_nav("resize", "h"),
 	split_nav("resize", "j"),
 	split_nav("resize", "k"),
 	split_nav("resize", "l"),
+	split_nav("resize", ";"),
 	-- Send "CTRL-A" to the terminal when pressing CTRL-A, CTRL-A
 	{
 		key = "a",
