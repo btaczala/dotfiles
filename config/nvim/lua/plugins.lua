@@ -79,15 +79,6 @@ require("packer").startup(function()
 			})
 		end,
 	})
-	use({
-		"rmagatti/auto-session",
-		config = function()
-			require("auto-session").setup({
-				log_level = "error",
-				auto_session_suppress_dirs = { "~/", "~/Downloads", "/" },
-			})
-		end,
-	})
 
 	use({
 		"folke/which-key.nvim",
@@ -99,20 +90,6 @@ require("packer").startup(function()
 			})
 		end,
 	})
-
-	-- use({
-	-- 	"lukas-reineke/indent-blankline.nvim",
-	-- 	main = "ibl",
-	-- 	opts = {},
-	-- 	config = function()
-	-- 		require("ibl").setup({})
-	-- 	end,
-	-- })
-	-- use({
-	-- 	"lukas-reineke/indent-blankline.nvim",
-	-- 	main = "ibl",
-	-- 	opts = {},
-	-- })
 	use("dcharbon/vim-flatbuffers")
 	use({
 		"gbprod/yanky.nvim",
@@ -228,6 +205,11 @@ require("packer").startup(function()
 				integrations = {
 					diffview = true,
 				},
+				mappings = {
+					popup = {
+						["l"] = false,
+					},
+				},
 			})
 		end,
 	})
@@ -239,4 +221,12 @@ require("packer").startup(function()
 	-- presentations
 	use({ "vim-pandoc/vim-pandoc" })
 	use({ "vim-pandoc/vim-pandoc-syntax" })
+
+	use({
+		"nvim-orgmode/orgmode",
+		config = function()
+			require("orgmode").setup_ts_grammar()
+			require("orgmode").setup({})
+		end,
+	})
 end)

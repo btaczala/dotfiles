@@ -91,7 +91,7 @@ wk.register({
 		name = "run",
 		r = { "<cmd>CMakeRun<cr>", "Run program" },
 		-- r = { "<cmd>Task start cmake run<cr>", "Run program" },
-		d = { "<cmd>Task start cmake debug<cr>", "Debug a program" },
+		d = { "<cmd>CMakeDebug<cr>", "Debug a program" },
 		s = { "<cmd>Task set_module_param cmake target<cr>", "Select a target" },
 		t = { "<cmd>lua run_tests()<cr>", "Build tests" },
 	},

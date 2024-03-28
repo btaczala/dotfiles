@@ -62,3 +62,5 @@
 [blame]
 	markIgnoredLines = true
 	markUnblamableLines = true
+[maintenance]
+	repo = /Users/bartek/Projects/inmusic/mediamaster

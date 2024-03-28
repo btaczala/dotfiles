@@ -1,0 +1,27 @@
+substitutions:
+  name: "tx-ultimate"
+  friendly_name: "SHYS TX Ultimate"
+  relay_count: "1"
+  button_brightness: "0"
+
+packages:
+  smarthomeyourself.tx-ultimate: github://SmartHome-yourself/sonoff-tx-ultimate-for-esphome/tx_ultimate.yaml@main
+  
+esphome:
+  name: ${name}
+  name_add_mac_suffix: false
+
+api:
+  encryption:
+    key: "kzSdAMyTlAI1fR0s0PYZipyt124udJbXqkBJMMl1gA0="
+
+ota:
+  password: "09eb2623ca2ca44e8637536eac0dfaf4"
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  
+  ap:
+    ssid: ${friendly_name} AP
+    password: "top_secret"

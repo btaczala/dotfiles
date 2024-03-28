@@ -1,0 +1,25 @@
+esp32:
+  board: nodemcu-32s
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+esphome:
+  name: testesp32
+
+logger:
+  level: DEBUG
+
+api:
+  encryption:
+    key: "kzSdAMyTlAI1fR0s0PYZipyt124udJbXqkBJMMl1gA0="
+
+light:
+  - platform: fastled_clockless
+    chipset: WS2812
+    pin: GPIO4
+    num_leds: 1
+    rgb_order: GRB
+    name: "FastLED WS2812 Light"
+

@@ -72,20 +72,6 @@ require("telescope").load_extension("neoclip")
 require("telescope").load_extension("fzf")
 require("telescope").load_extension("ui-select")
 
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost $HOME/dotfiles/config/nvim/lua/plugins.lua source <afile> | PackerInstall | PackerCompile
-  augroup end
-]])
-
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost $HOME/dotfiles/installers/macos/Brewfile | Dispatch brew bundle --file $HOME/dotfiles/installers/macos/Brewfile
-  augroup end
-]])
-
 vim.api.nvim_exec(
 	[[
   augroup YankHighlight

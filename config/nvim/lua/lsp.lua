@@ -49,7 +49,7 @@ end
 
 if vim.fn.has("mac") then
 	lspconfig["clangd"].setup({
-		cmd = { "clangd", "--query-driver=/Library/Developer/CommandLineTools/usr/bin/c++,/Library/Developer/CommandLineTools/usr/bin/clang++", "--log=verbose" },
+		cmd = { "clangd", "--query-driver=/Library/Developer/CommandLineTools/usr/bin/c++,/Library/Developer/CommandLineTools/usr/bin/clang++,/Users/bartek/.espressif/tools/xtensa-esp32s3-elf/esp-12.2.0_20230208/xtensa-esp32s3-elf/bin/xtensa-esp32s3-elf-g++", "--log=verbose" },
 		-- cmd = { "clangd", "--log=verbose" },
 		on_attach = on_attach,
 		capabilities = capabilities,
@@ -125,8 +125,8 @@ cmp.setup({
 		end,
 	},
 	mapping = {
-		["<C-p>"] = cmp.mapping.select_prev_item(),
-		["<C-n>"] = cmp.mapping.select_next_item(),
+		["<C-l>"] = cmp.mapping.select_prev_item(),
+		["<C-k>"] = cmp.mapping.select_next_item(),
 		["<C-d>"] = cmp.mapping.scroll_docs(-4),
 		["<C-f>"] = cmp.mapping.scroll_docs(4),
 		["<C-Space>"] = cmp.mapping.complete(),

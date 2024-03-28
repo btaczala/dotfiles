@@ -1,0 +1,19 @@
+nas_path := "192.168.1.217"
+home_dir := env_var('HOME')
+local_mounted_path := home_dir / "media_nas/photos/icloud-backup"
+username := "bartek.taczala@gmail.com"
+
+mount:
+  #!/usr/bin/env bash
+  set -exuo pipefail
+  mkdir -p media_nas
+  pass=$(pass private/nas/bartekt)
+  user1=$(sed -e "s/+/%2B/g;s/@/%40/g;s/_/%5F/g" <<< "$pass")
+  mount_smbfs "//bartekt:$user1@{{nas_path}}/media" media_nas
+
+sync:
+  set -exuo pipefail
+  icloudpd --list-libraries --username {{username}} --password "$(pass private/apple/bartek.taczala@gmail.com)" 
+  icloudpd --directory {{local_mounted_path}} --username {{username}} --password "$(pass private/apple/bartek.taczala@gmail.com)" --library PrimarySync
+  icloudpd --directory {{local_mounted_path}} --username {{username}} --password "$(pass private/apple/bartek.taczala@gmail.com)" --library SharedSync-83FAAAAB-9914-4C07-92C0-4BC9C083297F
+

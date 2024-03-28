@@ -4,7 +4,7 @@ function scheme_for_appearance(appearance)
 	if appearance:find("Dark") then
 		return "Tomorrow Night"
 	else
-		return "Classic Light (base16)"
+		return "Catppuccin Latte"
 	end
 end
 
@@ -50,6 +50,9 @@ function tab_title(tab_info)
 end
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
+	if not current_scheme then
+		return
+	end
 	background = current_scheme.background
 	foreground = current_scheme.foreground
 
@@ -74,6 +77,7 @@ end)
 -- if you are *NOT* lazy-loading smart-splits.nvim (recommended)
 local function is_vim(pane)
 	-- this is set by the plugin, and unset on ExitPre in Neovim
+	wezterm.log_info("is_vim original")
 	return pane:get_user_vars().IS_NVIM == "true"
 end
 
@@ -93,18 +97,21 @@ end
 
 local direction_keys = {
 	["j"] = "Left",
-	["k"]= "Down",
+	["k"] = "Down",
 	["l"] = "Up",
-    [";"] = "Right"
+	[";"] = "Right",
 }
 
-local function scroll_up(scroll)
+local function scroll(scroll)
 	return wezterm.action_callback(function(win, pane)
+		wezterm.log_info("clicked scrol " .. scroll)
 		if is_vim(pane) then
+			wezterm.log_info("vim")
 			win:perform_action({
 				SendKey = { key = scroll, mods = "CTRL" },
 			}, pane)
 		else
+			wezterm.log_info("not vim")
 			win:perform_action({ ScrollByPage = scroll == "u" and -1 or 1 }, pane)
 		end
 	end)
@@ -184,12 +191,12 @@ config.keys = {
 	{
 		key = "d",
 		mods = "CTRL",
-		action = scroll_up("d"),
+		action = scroll("d"),
 	},
 	{
 		key = "u",
 		mods = "CTRL",
-		action = scroll_up("u"),
+		action = scroll("u"),
 	},
 	split_nav("move", "j"),
 	split_nav("move", "k"),
@@ -212,7 +219,7 @@ config.window_frame = {
 	font = wezterm.font({ family = "Roboto", weight = "Bold" }),
 	font_size = 14.0,
 	active_titlebar_bg = "#FFF",
-	inactive_titlebar_bg = "#000",
+	inactive_titlebar_bg = "#FFF",
 }
 
 return config
