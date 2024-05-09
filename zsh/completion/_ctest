@@ -1,0 +1,233 @@
+#compdef ctest
+
+# Copyright (C) 2019  CERN for the benefit of the LHCb collaboration
+# Author: Paul Seyfert <pseyfert@cern.ch>
+#
+# This software is distributed under the terms of the GNU General Public
+# Licence version 3 (GPL Version 3), copied verbatim in the file "LICENSE".
+#
+# In applying this licence, CERN does not waive the privileges and immunities
+# granted to it by virtue of its status as an Intergovernmental Organization
+# or submit itself to any jurisdiction.
+
+(( $+functions[_cmake_build_types] )) ||
+_cmake_build_types() {
+  local build_types; build_types=(
+    'Debug'
+    'Release'
+    'RelWithDebInfo'
+    'MinSizeRel'
+  )
+  _values 'build type' ${build_types[@]}
+}
+
+(( $+functions[_ctest_repeat_types] )) ||
+_ctest_repeat_types() {
+  local repeat_types; repeat_types=(
+    'until-fail'
+    'until-pass'
+    'after-timeout'
+  )
+  _values 'repeat type' ${repeat_types[@]}
+}
+
+(( $+functions[_cmake_generators] )) ||
+_cmake_generators() {
+  local generators; generators=(
+    'Unix Makefiles'
+    'Ninja'
+    'CodeBlocks - Ninja'
+    'CodeBlocks - Unix Makefiles'
+    'Eclipse CDT4 - Ninja'
+    'Eclipse CDT4 - Unix Makefiles'
+    'KDevelop3'
+    'KDevelop3 - Unix Makefiles'
+    'Sublime Text 2 - Ninja'
+    'Sublime Text 2 - Unix Makefiles'
+  )
+
+  _describe -t generators 'generator' generators
+}
+
+
+#reduced wrt the original to keep it keep it realistic
+    # '(-Wno-dev -Wdev)-Wno-dev[Suppress/Enable developer warnings]'
+    # '(-Wno-dev -Wdev)-Wdev[Suppress/Enable developer warnings]'
+    # '(-Wno-deprecated -Wdeprecated)-Wno-deprecated[Suppress/Enable deprecation warnings]'
+    # '(-Wno-deprecated -Wdeprecated)-Wdeprecated[Suppress/Enable deprecation warnings]'
+    # '(-Wno-error=dev -Werror=dev)-Wno-error=dev[Make developer warnings (not) errors]'
+    # '(-Wno-error=dev -Werror=dev)-Werror=dev[Make developer warnings (not) errors]'
+    # '(-Wno-error=deprecated -Werror=deprecated)-Werror=deprecated[Make deprecated macro and function warnings (not) errors]'
+    # '(-Wno-error=deprecated -Werror=deprecated)-Wno-error=deprecated[Make deprecated macro and function warnings (not) errors]'
+    # '--warn-uninitialized[Warn about uninitialized values.]'
+    # '--warn-unused-vars[Warn about unused variables.]'
+    # '--no-warn-unused-cli[Dont warn about command line options.]'
+    # '-i[Run in wizard mode]'
+    # '-L-[List cache variables]::_values "options" "[non-advanced cache variables]" "A[advanced cache variables]" "H[non-advanced cached variables with help]" "AH[advanced cache variables with help]"'
+    # '--find-package[Run in pkg-config like mode.]'
+    # ':cmake project:_files -/'
+local -a cmake_build_options;cmake_build_options=(
+    '-C[Pre-load a script to populate the cache]:script:_files'
+    '*-D-[Create a cmake cache entry]:property:_cmake_define_property'
+    '-U[Remove matching entries from CMake cache]:globbing expression'
+    '-G[Specify a makefile generator]:generator:_cmake_generators'
+    '-T[Specify toolset name if supported by generator]:toolset name'
+    '--trace[Put cmake in trace mode]'
+)
+
+local ctest_test_opts;ctest_test_opts=(
+ '(-C --build-config)'{-C,--build-config}"[Choose configuration to test.]:test config:_cmake_build_types"
+  '--progress[Enable short progress output from tests.]'
+  '(-V --verbose -VV --extra-verbose)'{-V,--verbose}'[Enable verbose output from tests.]'
+  '(-V --verbose -VV --extra-verbose)'{-VV,--extra-verbose}'[Enable more verbose output from tests.]'
+  '--debug[Displaying more verbose internals of CTest.]'
+  '--output-on-failure[Output any test output if test fails.]'
+  '--stop-on-failure[Stops if tests fails.]'
+  '-F[Enable failover.]'
+  '(-j --parallel)'{-j,--parallel}'[Run the tests in parallel.]:number of jobs'
+  '(-Q --quiet)'{-Q,--quiet}'[Make ctest quiet.]'
+  '(-N --show-only)'{-N,--show-only}'[Disable actual execution of tests.]'
+  '(-O --output-log)'{-O,--output-log}'[Output to log file]:output log file:_path_files'
+  '--rerun-failed[ only the tests that failed previously]'
+  '--repeat[Require each test to run <n> times without failing in order to pass.]:number of passes:_ctest_repeat_types'
+  '(-L --label-regex)'{-L,--label-regex}'[Run tests with labels matching regex.]:label regex to run'
+  '(-R --tests-regex)'{-R,--tests-regex}'[Run tests matching regex.]:test regex to run'
+  '(-E --exclude-regex)'{-E,--exclude-regex}'[Exclude tests matching regex.]:test regex to exclude'
+  '(-LE --label-exclude)'{-LE,--label-exclude}'[Exclude tests with labels matching regex.]:label regex to exclude'
+  '(-FA --fixture-exclude-any)'{-FA,--fixture-exclude-any}'[Do not automatically add any tests for fixtures matching regular expression.]:regex'
+  '(-FS --fixture-exclude-setup)'{-FS,--fixture-exclude-setup}'[Do not automatically add setup tests for fixtures matching regular expression.]:regex'
+  '(-FC --fixture-exclude-cleanup)'{-FC,--fixture-exclude-cleanup}'[Do not automatically add cleanup tests for fixtures matching regular expression.]:regex'
+  '--no-label-summary[Disable timing summary information for labels.]'
+  '--no-subproject-summary[Disable timing summary information for subprojects.]'
+  '--test-dir[Specify the directory in which to look for]:build directory: _path_files -/'_cte
+)
+local ctest_build_opts;ctest_build_opts=(
+  '--build-target[Specify a specific target to build.]:build target:_fixme'
+  '--build-nocmake[Run the build without running cmake first.]'
+  '--build-run-dir[Specify directory to run programs from.]:runtime directory: _path_files -/'
+  '--build-two-config[Run CMake twice]'
+  '--build-exe-dir[Specify the directory for the executable.]'
+  '--build-generator[Specify the generator to use.]:build generator:_cmake_generators'
+  '--build-generator-platform[Specify the generator-specific platform.]:platform'
+  '--build-generator-toolset[Specify the generator-specific toolset.]:toolset'
+  '--build-project[Specify the name of the project to build.]:project name'
+  '--build-makeprogram[Specify the make program to use.]:make program:'
+  '--build-noclean[Skip the make clean step.]'
+  '--build-config-sample[A sample executable to use to determine the configuration]:executable'
+  '--build-options[Add extra options to the build step.]:cmake build options:_cmake_build_options'
+  '(* -)--test-command[The test to run with the --build-and-test option.]:test name'
+  '--test-timeout[The time limit in seconds, internal use only.]'
+)
+
+
+_cmake_build_options() {
+    # TODO: not working!
+  _message "hey"
+  _message "ho"
+  _message "lets"
+  _message "go"
+  _arguments "$cmake_build_options[@]"
+}
+
+_go_to_test() {
+    # TODO: not working!
+  _message "this is a test"
+  _arguments "(* -)--test-command[The test to run.]:test name"
+}
+
+if [[ $#words -ge 2 && ${words[2]} == --build-and-test ]]; then
+  if (( ${words[(I)--build-options]} ));then
+    (( ${words[(I)--test-command]} )) && _message "test names" ||
+    _alternative \
+      '::_cmake_build_options' \
+      '::_go_to_test'
+  else _arguments \
+      '--build-and-test[Configure, build and run a test.]:source dir:_path_files -/ :build dir:_path_files -/' \
+      "$ctest_build_opts[@]"
+  fi
+elif [[ $#words -ge 2 && ( ${words[2]} == -D || ${words[2]} == --dashboard ) ]]; then
+  # TODO: --extra-submit can take multiple files
+  _arguments \
+  '--track[Specify the track to submit dashboard to]:track' \
+  '(-A --add-notes)'{-A,--add-notes}'[Add a notes file with submission]:file:_path_files' \
+  '--tomorrow-tag[Nightly or experimental starts with next day tag.]' \
+  '--extra-submit[Submit extra files to the dashboard.]:file(s):_path_files' \
+  '--http1.0[Submit using HTTP 1.0.]' \
+  '--no-compress-output[Do not compress test output when submitting.]'
+elif [[ $CURRENT -eq 2 ]]; then
+  # TODO: separate --build-and-test visually from the others
+  _arguments \
+    - gotobuild \
+    '--build-and-test[Configure, build and run a test.]:source dir:_path_files -/ :build dir:_path_files -/' \
+    - gototest \
+    "$ctest_test_opts[@]" \
+    - gotodashboard \
+    {-D,--dashboard}'[Execute dashboard test]:dashboard'
+else
+  _arguments \
+    "$ctest_test_opts[@]"
+fi
+
+
+
+
+
+
+
+  # --test-output-size-passed <size>
+  #                              = Limit the output for passed tests to <size>
+  #                                bytes
+  # --test-output-size-failed <size>
+  #                              = Limit the output for failed tests to <size>
+  #                                bytes
+  # -D <var>:<type>=<value>      = Define a variable for script mode
+  # -M <model>, --test-model <model>
+  #                              = Sets the model for a dashboard
+  # -T <action>, --test-action <action>
+  #                              = Sets the dashboard action to perform
+  # -S <script>, --script <script>
+  #                              = Execute a dashboard for a configuration
+  # -SP <script>, --script-new-process <script>
+  #                              = Execute a dashboard for a configuration
+  # -I [Start,End,Stride,test#,test#|Test file], --tests-information
+  #                              = Run a specific number of tests by number.
+  # -U, --union                  = Take the Union of -I and -R
+  # --max-width <width>          = Set the max width for a test name to output
+  # --interactive-debug-mode [0|1]
+  #                              = Set the interactive mode to 0 or 1.
+  # --test-load                  = CPU load threshold for starting new parallel
+  #                                tests.
+  # --overwrite                  = Overwrite CTest configuration option.
+  #
+  # --force-new-ctest-process    = Run child CTest instances as new processes
+  # --schedule-random            = Use a random order for scheduling tests
+  # --submit-index               = Submit individual dashboard tests with
+  #                                specific index
+  # --timeout <seconds>          = Set a global timeout on all tests.
+  # --stop-time <time>           = Set a time at which all tests should stop
+  #                                running.
+  # --print-labels               = Print all available test labels.
+  # --help,-help,-usage,-h,-H,/? = Print usage information and exit.
+  # --version,-version,/V [<f>]  = Print version number and exit.
+  # --help-full [<f>]            = Print all help manuals and exit.
+  # --help-manual <man> [<f>]    = Print one help manual and exit.
+  # --help-manual-list [<f>]     = List help manuals available and exit.
+  # --help-command <cmd> [<f>]   = Print help for one command and exit.
+  # --help-command-list [<f>]    = List commands with help available and exit.
+  # --help-commands [<f>]        = Print cmake-commands manual and exit.
+  # --help-module <mod> [<f>]    = Print help for one module and exit.
+  # --help-module-list [<f>]     = List modules with help available and exit.
+  # --help-modules [<f>]         = Print cmake-modules manual and exit.
+  # --help-policy <cmp> [<f>]    = Print help for one policy and exit.
+  # --help-policy-list [<f>]     = List policies with help available and exit.
+  # --help-policies [<f>]        = Print cmake-policies manual and exit.
+  # --help-property <prop> [<f>] = Print help for one property and exit.
+  # --help-property-list [<f>]   = List properties with help available and
+  #                                exit.
+  # --help-properties [<f>]      = Print cmake-properties manual and exit.
+  # --help-variable var [<f>]    = Print help for one variable and exit.
+  # --help-variable-list [<f>]   = List variables with help available and exit.
+  # --help-variables [<f>]       = Print cmake-variables manual and exit.
+  #
+  # DASHBOARD
+

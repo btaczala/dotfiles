@@ -8,6 +8,7 @@ build-*
 build
 justfile
 justfile.*
+*.justfile
 .env
 neovim.json
 *~

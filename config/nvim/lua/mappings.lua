@@ -61,6 +61,7 @@ function lsp_keybindings()
 	buf_set_keymap("n", "<leader>lp", "<cmd>lua require'goto-preview'.goto_preview_definition()<CR>", opts)
 	buf_set_keymap("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
 	buf_set_keymap("n", "<leader>lh", "<cmd>ClangdSwitchSourceHeader<CR>", opts)
+	buf_set_keymap("n", "<leader>lH", "<cmd>ClangdToggleInlayHints<CR>", opts)
 	buf_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
 	buf_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
 end
@@ -92,7 +93,7 @@ wk.register({
 		r = { "<cmd>CMakeRun<cr>", "Run program" },
 		-- r = { "<cmd>Task start cmake run<cr>", "Run program" },
 		d = { "<cmd>CMakeDebug<cr>", "Debug a program" },
-		s = { "<cmd>Task set_module_param cmake target<cr>", "Select a target" },
+		s = { "<cmd>CMakeSelectLaunchTarget", "Select a target" },
 		t = { "<cmd>lua run_tests()<cr>", "Build tests" },
 	},
 	g = {

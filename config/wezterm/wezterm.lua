@@ -213,13 +213,27 @@ config.keys = {
 		mods = "LEADER|CTRL",
 		action = wezterm.action.SendKey({ key = "a", mods = "CTRL" }),
 	},
+	{
+		key = "Enter",
+		mods = "LEADER",
+		action = wezterm.action.ActivateCopyMode,
+	},
 }
+wezterm.on("mux-startup", function()
+	local tab, pane, window = mux.spawn_window({})
+	pane:split({ direction = "Top" })
+end)
 
 config.window_frame = {
 	font = wezterm.font({ family = "Roboto", weight = "Bold" }),
 	font_size = 14.0,
 	active_titlebar_bg = "#FFF",
 	inactive_titlebar_bg = "#FFF",
+}
+config.unix_domains = {
+	{
+		name = "unix",
+	},
 }
 
 return config

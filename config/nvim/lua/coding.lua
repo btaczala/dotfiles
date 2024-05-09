@@ -12,8 +12,6 @@ end
 
 local Path = require("plenary.path")
 
-local Path = require("plenary.path")
-
 require("cmake-tools").setup({
 	cmake_command = "cmake", -- this is used to specify cmake command path
 	cmake_regenerate_on_save = false, -- auto generate when save CMakeLists.txt
@@ -35,7 +33,7 @@ require("cmake-tools").setup({
 		name = "cpp",
 		type = "codelldb",
 		request = "launch",
-		stopOnEntry = true,
+		stopOnEntry = false,
 		runInTerminal = true,
 		console = "integratedTerminal",
 	},
@@ -147,8 +145,13 @@ dap.adapters.codelldb = {
 	type = "server",
 	port = "${port}",
 	executable = {
-		-- CHANGE THIS to your path!
 		command = "/Users/bartek/dev/codelldb/extension/adapter/codelldb",
 		args = { "--port", "${port}" },
 	},
 }
+
+require("neotest").setup({
+	adapters = {
+		require("neotest-gtest").setup({}),
+	},
+})

@@ -172,7 +172,17 @@ require("packer").startup(function()
 	})
 
 	use("liuchengxu/vista.vim")
-	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
+	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } })
+	use({
+		"nvim-neotest/neotest",
+		requires = {
+			"nvim-neotest/nvim-nio",
+			"nvim-lua/plenary.nvim",
+			"antoinemadec/FixCursorHold.nvim",
+			"nvim-treesitter/nvim-treesitter",
+			"alfaix/neotest-gtest",
+		},
+	})
 	use("nvim-telescope/telescope-dap.nvim")
 	use({ "ckipp01/nvim-jenkinsfile-linter", requires = { "nvim-lua/plenary.nvim" } })
 	use("Shatur/neovim-tasks")
@@ -225,7 +235,6 @@ require("packer").startup(function()
 	use({
 		"nvim-orgmode/orgmode",
 		config = function()
-			require("orgmode").setup_ts_grammar()
 			require("orgmode").setup({})
 		end,
 	})

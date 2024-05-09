@@ -61,8 +61,8 @@ zle -N edit-command-line
 bindkey '^xe' edit-command-line
 bindkey '^x^e' edit-command-line
 
-# fpath=($fpath $HOME/dotfiles/zsh/completion)
-# autoload -Uz compinit && compinit
+fpath=($fpath $HOME/dotfiles/zsh/completion)
+autoload -Uz compinit && compinit
 
 function source_if_present() {
     [[ ! -f $1 ]] || source $1
@@ -102,3 +102,4 @@ if [[ "$TERM" == "xterm-kitty" ]]; then
 fi
 export ARKAOS_CONAN_PROFILE_NAME=Darwin-AppleClang-14.0-arm64-TYPE-None
 
+eval "$(atuin init zsh)"
