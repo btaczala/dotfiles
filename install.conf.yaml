@@ -5,48 +5,14 @@
 - clean: ['~']
 
 - link:
-    ~/.tmux.conf: tmux/tmux.conf
-    ~/.config/termite: config/termite
-    ~/.config/rofi-pass/config: config/rofi-pass/config
-    ~/.config/kanshi: config/kanshi
-    ~/.vimrc: vim/.vimrc
-    ~/.Xresources: Xconfig/Xresources
     ~/.zshrc: zsh/zshrc
     ~/.zshenv: zsh/zshenv
     ~/.gitconfig: git/gitconfig
     ~/.gdbinit: gdbinit
-    ~/.config/khal: work/siili/khal
     ~/.config/nvim: config/nvim
-    ~/.config/zathura: config/zathura
-    ~/.config/tmuxinator: config/tmuxinator
-    ~/.config/mimeapps.list: config/mimeapps.list
-    ~/.local/share/applications/run_windows.desktop: vms/run_windows.desktop
     ~/.vifm/vifmrc: config/vifm/vifmrc
     ~/.config/bat/config: config/bat/config
-    ~/.config/kitty: config/kitty
     ~/.config/wezterm: config/wezterm
+    ~/.tigrc: config/wezterm
     ~/.gitignore: git/gitignore
-    ~/.yabairc: config/yabai/yabairc
-    ~/.skhdrc: config/skhd/skhdrc
     ~/Library/Preferences/clangd/config.yaml: clangd/config.yaml
-- shell:
-    - [
-      '[[ -d ~/.zprezto ]] ||
-        git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-      ']
-    - [
-      '[[ ! -d $ZPREZTODIR/contrib ]] ||
-        git clone --recurse-submodules https://github.com/belak/prezto-contrib contrib
-      ']
-    - [
-      '[[ -d $HOME/.config/vifm/colors ]] ||
-        git clone https://github.com/vifm/vifm-colors "$HOME/.config/vifm/colors"
-      ']
-    - [
-      '[[ -d $HOME/.config/kitty/kitty-themes ]] ||
-        git clone https://github.com/dexpota/kitty-themes.git "$HOME/.config/kitty/kitty-themes"
-      ']
-    - [
-      '[[ -d $HOME/.fzf ]] ||
-        git clone --depth 1 https://github.com/junegunn/fzf.git "$HOME/.fzf"
-      ']

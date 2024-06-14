@@ -5,6 +5,7 @@ brew "cmake"
 brew "neovim"
 brew "cppman"
 brew "shfmt"
+brew "lua-language-server"
 cask "kitty"
 
 # dev fonts
