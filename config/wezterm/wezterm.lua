@@ -3,9 +3,9 @@ local act = wezterm.action
 
 function scheme_for_appearance(appearance)
     if appearance:find("Dark") then
-        return "Tomorrow Night"
+        return "Tokyo Night Moon"
     else
-        return "Catppuccin Latte"
+        return "Tokyo Night Day"
     end
 end
 
@@ -13,6 +13,8 @@ local current_scheme = nil
 
 wezterm.on("format-window-title", function(tab, pane, tabs, panes, config)
     local zoomed = ""
+    local window = wezterm.mux.get_window(tab.window_id)
+    -- wezterm.log_info(window:get_workspace())
     if tab.active_pane.is_zoomed then
         zoomed = "[Z] "
     end
@@ -22,7 +24,7 @@ wezterm.on("format-window-title", function(tab, pane, tabs, panes, config)
         index = string.format("[%d/%d] ", tab.tab_index + 1, #tabs)
     end
 
-    return tab.window_title and tab.window_title or (zoomed .. index .. tab.tab_title)
+    return window:get_workspace() and window:get_workspace() or (zoomed .. index .. tab.tab_title)
 end)
 
 wezterm.on("window-config-reloaded", function(window, pane)
@@ -162,7 +164,7 @@ local config = {
     adjust_window_size_when_changing_font_size = false,
 }
 
-config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
+config.leader = { key = "y", mods = "CTRL", timeout_milliseconds = 2000 }
 config.keys = {
     {
         key = "z",
@@ -170,7 +172,7 @@ config.keys = {
         action = wezterm.action.TogglePaneZoomState,
     },
     {
-        key = "r",
+        key = "l",
         mods = "LEADER",
         action = wezterm.action.ShowLauncher,
     },
@@ -228,6 +230,11 @@ config.keys = {
         key = 'w',
         mods = 'CMD|SHIFT',
         action = wezterm.action.CloseCurrentTab { confirm = true },
+    },
+    {
+        key = 'r',
+        mods = "LEADER",
+        action = wezterm.action.ReloadConfiguration,
     },
     {
         key = 'Space',

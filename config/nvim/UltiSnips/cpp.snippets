@@ -9,3 +9,7 @@ endsnippet
 snippet pretty_this_function
 printf("[%s] \r\n", __PRETTY_FUNCTION__);
 endsnippet
+
+snippet UnimplementedError
+return absl::UnimplementedError(fmt::format("function {} not implemented", __PRETTY_FUNCTION__));
+endsnippet

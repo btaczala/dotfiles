@@ -18,6 +18,7 @@ require("debugging")
 require("coding")
 require("snippets")
 require("options")
+require("filetypes")
 
 local lga_actions = require("telescope-live-grep-args.actions")
 
