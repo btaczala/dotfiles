@@ -1,25 +1,36 @@
 hide_window_decorations yes
 font_family      Fira Code
-bold_font        Fira Code Bold
-italic_font      Fira Code Light
-bold_italic_font Fira Code SemiBold
 
-font_size 14.0
+disable_ligatures never
+
+font_size 12.0
 
 tab_bar_edge bottom
 tab_bar_style powerline
 tab_powerline_style round
 
 allow_remote_control true
-enabled_layouts fat:bias=70;full_size=1;mirrored=false,stack,tall,grid,splits
-
+enabled_layouts vertical,fat:bias=80;full_size=1;mirrored=false,stack,tall,grid,splits
 
 # vim windows navigation
-map ctrl+j kitten pass_keys.py neighboring_window bottom ctrl+j "^.*nvim$"
-map ctrl+k kitten pass_keys.py neighboring_window top    ctrl+k "^.*nvim$"
-map ctrl+h kitten pass_keys.py neighboring_window left   ctrl+h "^.*nvim$"
-map ctrl+l kitten pass_keys.py neighboring_window right  ctrl+l "^.*nvim$"
+map ctrl+k kitten pass_keys.py neighboring_window bottom ctrl+k "^.*nvim$"
+map ctrl+l kitten pass_keys.py neighboring_window top    ctrl+l "^.*nvim$"
+map ctrl+j kitten pass_keys.py neighboring_window left   ctrl+j "^.*nvim$"
+map ctrl+; kitten pass_keys.py neighboring_window right  ctrl+; "^.*nvim$"
 map cmd+shift+enter launch --cwd=current
+
+map ctrl+cmd+h resize_window wider
+map ctrl+cmd+l resize_window narrower
+map ctrl+cmd+j resize_window taller
+map ctrl+cmd+k resize_window shorter
+
+map ctrl+u scroll_page_up
+map ctrl+d scroll_page_down
+
+map alt+k kitten pass_keys.py relative_resize down  3 alt+j "^.* - nvim$"
+map alt+l kitten pass_keys.py relative_resize up    3 alt+k "^.* - nvim$"
+map alt+j kitten pass_keys.py relative_resize left  3 alt+h "^.* - nvim$"
+map alt+; kitten pass_keys.py relative_resize right 4 alt+l "^.* - nvim$"
 
 # window reorganizing
 # map ctrl+shift+h resize_window wider
@@ -31,6 +42,6 @@ map ctrl+shift+space next_layout
 
 
 # BEGIN_KITTY_THEME
-# GitHub Light
+# Spring
 include current-theme.conf
 # END_KITTY_THEME

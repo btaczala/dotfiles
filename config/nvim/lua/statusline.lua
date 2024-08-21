@@ -4,14 +4,6 @@
 
 
 local treesitter = require("nvim-treesitter")
-local function treelocation()
-	current =  treesitter.statusline({
-		indicator_size = 90,
-		type_patterns = { "class", "function", "method" },
-		separator = " -> ",
-	}):gsub("\n", " ")
-    return current
-end
 
 local function lsp()
 	local msg = "No Active Lsp"
@@ -29,21 +21,10 @@ local function lsp()
 	return msg
 end
 
-local function diff_source()
-	local gitsigns = vim.b.gitsigns_status_dict
-	if gitsigns then
-		return {
-			added = gitsigns.added,
-			modified = gitsigns.changed,
-			removed = gitsigns.removed,
-		}
-	end
-end
-
 require("lualine").setup({
 	options = {
-		theme = "tokyonight",
-		-- theme = "onedark",
+		-- theme = "tokyonight",
+		theme = "onedark",
 		component_separators = { left = "", right = "" },
 	},
 	sections = {

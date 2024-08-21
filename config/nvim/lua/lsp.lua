@@ -4,7 +4,6 @@ local lsp_status = require("lsp-status")
 require("mappings")
 
 local on_attach = function(client, bufnr)
-    require("lsp-inlayhints").on_attach(client, bufnr)
     -- Mappings.
     lsp_keybindings()
 end

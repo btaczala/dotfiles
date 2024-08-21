@@ -1,8 +1,6 @@
 local g = vim.g -- a table to access global variables
-local opt = vim.opt -- to set options
 
 g.mapleader = " "
-require("mappings")
 
 if vim.g.vscode then
     return
@@ -10,6 +8,7 @@ end
 
 
 require("plugins")
+require("mappings")
 require("lsp")
 require("colors")
 require("projects")
@@ -69,7 +68,6 @@ require("telescope").setup({
 		},
 	},
 })
-require("telescope").load_extension("neoclip")
 require("telescope").load_extension("fzf")
 require("telescope").load_extension("ui-select")
 

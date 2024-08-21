@@ -124,11 +124,9 @@ vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 
 vim.cmd("autocmd FileType qml lua WhichKeyQml()")
 function WhichKeyQml()
-    wk.register({
-        r = {
-            p = { "<cmd>Dispatch qmlscene %<cr>", "Run qml preview" },
-        },
-    }, { prefix = "<leader>" })
+    wk.add({
+        "<leader>rp", "<cmd>Dispatch qmlscene %<cr>", desc = "Run qml preview"
+    })
 end
 
 vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")

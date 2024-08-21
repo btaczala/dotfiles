@@ -1,5 +1,6 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
+local mux = wezterm.mux
 
 function scheme_for_appearance(appearance)
     if appearance:find("Dark") then
@@ -11,7 +12,7 @@ end
 
 local current_scheme = nil
 
-wezterm.on("format-window-title", function(tab, pane, tabs, panes, config)
+wezterm.on("format-window-title", function(tab, _, tabs, _, _)
     local zoomed = ""
     local window = wezterm.mux.get_window(tab.window_id)
     -- wezterm.log_info(window:get_workspace())
@@ -27,7 +28,7 @@ wezterm.on("format-window-title", function(tab, pane, tabs, panes, config)
     return window:get_workspace() and window:get_workspace() or (zoomed .. index .. tab.tab_title)
 end)
 
-wezterm.on("window-config-reloaded", function(window, pane)
+wezterm.on("window-config-reloaded", function(window, _)
     local overrides = window:get_config_overrides() or {}
     local appearance = window:get_appearance()
     local scheme = scheme_for_appearance(appearance)
@@ -41,7 +42,7 @@ wezterm.on("window-config-reloaded", function(window, pane)
     window:set_config_overrides(overrides)
 end)
 
-function tab_title(tab_info)
+local function tab_title(tab_info)
     local title = tab_info.tab_title
     -- if the tab title is explicitly set, take that
     if title and #title > 0 then
@@ -52,12 +53,13 @@ function tab_title(tab_info)
     return tab_info.active_pane.title
 end
 
-wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
+wezterm.on("format-tab-title", function(tab, _, _, _, _, _)
     if not current_scheme then
         return
     end
-    background = current_scheme.background
-    foreground = current_scheme.foreground
+    local background = current_scheme.background
+    local foreground = current_scheme.foreground
+
 
     local title = tab_title(tab)
 
@@ -76,13 +78,13 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
         { Text = zoomed .. title },
     }
 end)
-
--- if you are *NOT* lazy-loading smart-splits.nvim (recommended)
-local function is_vim(pane)
-    -- this is set by the plugin, and unset on ExitPre in Neovim
-    wezterm.log_info("is_vim original")
-    return pane:get_user_vars().IS_NVIM == "true"
-end
+--
+-- -- if you are *NOT* lazy-loading smart-splits.nvim (recommended)
+-- local function is_vim(pane)
+--     -- this is set by the plugin, and unset on ExitPre in Neovim
+--     wezterm.log_info("is_vim original")
+--     return pane:get_user_vars().IS_NVIM == "true"
+-- end
 
 -- if you *ARE* lazy-loading smart-splits.nvim (not recommended)
 -- you have to use this instead, but note that this will not work
@@ -105,21 +107,20 @@ local direction_keys = {
     [";"] = "Right",
 }
 
-local function scroll(scroll)
+local function scroll(scroll_key)
     return wezterm.action_callback(function(win, pane)
-        wezterm.log_info("clicked scrol " .. scroll)
         if is_vim(pane) then
             wezterm.log_info("vim")
             win:perform_action({
-                SendKey = { key = scroll, mods = "CTRL" },
+                SendKey = { key = scroll_key, mods = "CTRL" },
             }, pane)
         else
             wezterm.log_info("not vim")
-            win:perform_action({ ScrollByPage = scroll == "u" and -1 or 1 }, pane)
+            win:perform_action({ ScrollByPage = scroll_key == "u" and -1 or 1 }, pane)
         end
     end)
 end
-
+--
 local function split_nav(resize_or_move, key)
     return {
         key = key,
@@ -142,12 +143,12 @@ local function split_nav(resize_or_move, key)
 end
 
 local config = {
-    font = wezterm.font_with_fallback({
-        "JetBrains Mono",
-        "Iosevka",
-        "Fira Code",
-        "Hack Nerd Font",
-    }),
+    -- font = wezterm.font_with_fallback({
+    --     "JetBrains Mono",
+    --     "Iosevka",
+    --     "Fira Code",
+    --     "Hack Nerd Font",
+    -- }),
     font_size = 15,
     automatically_reload_config = true,
     enable_tab_bar = true,
@@ -260,7 +261,7 @@ config.keys = {
     },
 }
 wezterm.on("mux-startup", function()
-    local tab, pane, window = mux.spawn_window({})
+    local _, pane, _ = mux.spawn_window({})
     pane:split({ direction = "Top" })
 end)
 

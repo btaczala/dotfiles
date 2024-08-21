@@ -149,9 +149,3 @@ dap.adapters.codelldb = {
 		args = { "--port", "${port}" },
 	},
 }
-
-require("neotest").setup({
-	adapters = {
-		require("neotest-gtest").setup({}),
-	},
-})

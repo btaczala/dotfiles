@@ -11,7 +11,7 @@ end
 
 local packer_bootstrap = ensure_packer()
 
-require("packer").startup(function()
+require("packer").startup(function(use)
     use("wbthomason/packer.nvim")
 
     use("nvim-telescope/telescope.nvim")
@@ -38,9 +38,6 @@ require("packer").startup(function()
             "arkav/lualine-lsp-progress",
         },
     })
-    use("lvimuser/lsp-inlayhints.nvim")
-
-    use("RaafatTurki/hex.nvim")
     use("SmiteshP/nvim-gps")
     use("vmchale/just-vim")
     use("peterhoeg/vim-qml")
@@ -50,40 +47,9 @@ require("packer").startup(function()
     use("SirVer/ultisnips")
     use({ "tpope/vim-dispatch", opt = true, cmd = { "Dispatch", "Make", "Focus", "Start" } })
     use({
-        "AckslD/nvim-neoclip.lua",
-        requires = { "tami5/sqlite.lua", module = "sqlite" },
-        config = function()
-            require("neoclip").setup()
-        end,
-    })
-    use({
         "akinsho/toggleterm.nvim",
         config = function()
             require("toggleterm").setup()
-        end,
-    })
-    use({
-        "norcalli/nvim-colorizer.lua",
-        config = function()
-            require("colorizer").setup()
-        end,
-    })
-
-    use({
-        "sidebar-nvim/sidebar.nvim",
-        config = function()
-            require("sidebar-nvim").setup({
-                sections = { "datetime", "git", "symbols" },
-                symbols = {
-                    icon = "ƒ",
-                },
-                buffers = {
-                    icon = "",
-                    ignored_buffers = {}, -- ignore buffers by regex
-                    sorting = "id",       -- alternatively set it to "name" to sort by buffer name instead of buf id
-                    show_numbers = true,  -- whether to also show the buffer numbers
-                },
-            })
         end,
     })
 
@@ -97,7 +63,6 @@ require("packer").startup(function()
             })
         end,
     })
-    use("dcharbon/vim-flatbuffers")
     use({
         "gbprod/yanky.nvim",
         config = function()
@@ -163,36 +128,13 @@ require("packer").startup(function()
             require("Comment").setup()
         end,
     })
-    use({
-        "ThePrimeagen/refactoring.nvim",
-        requires = {
-            { "nvim-lua/plenary.nvim" },
-            { "nvim-treesitter/nvim-treesitter" },
-        },
-        config = function()
-            require("refactoring").setup({})
-        end,
-    })
 
-    use("liuchengxu/vista.vim")
-    use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } })
-    use({
-        "nvim-neotest/neotest",
-        requires = {
-            "nvim-neotest/nvim-nio",
-            "nvim-lua/plenary.nvim",
-            "antoinemadec/FixCursorHold.nvim",
-            "nvim-treesitter/nvim-treesitter",
-            "alfaix/neotest-gtest",
-        },
-    })
+    use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } }
     use("nvim-telescope/telescope-dap.nvim")
-    use({ "ckipp01/nvim-jenkinsfile-linter", requires = { "nvim-lua/plenary.nvim" } })
-    use("Shatur/neovim-tasks")
-    use("Civitasv/cmake-tools.nvim")
-    use("stevearc/overseer.nvim")
-
-    use("vim-test/vim-test")
+    use({
+        "Civitasv/cmake-tools.nvim",
+        requires = { "stevearc/overseer.nvim" }
+    })
 
     -- Git
     use("tpope/vim-fugitive")
@@ -209,39 +151,10 @@ require("packer").startup(function()
             })
         end,
     })
-    use({
-        "TimUntersberger/neogit",
-        requires = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim" },
-        config = function()
-            require("neogit").setup({
-                disable_commit_confirmation = true,
-                integrations = {
-                    diffview = true,
-                },
-                mappings = {
-                    popup = {
-                        ["l"] = false,
-                    },
-                },
-            })
-        end,
-    })
 
     -- colorschemes
-    use("tinted-theming/base16-vim")
     use({ "navarasu/onedark.nvim", commit = "3a8005f24239b7f1bb6aae53e20fdca520048d22" })
-    use { 'nyoom-engineering/oxocarbon.nvim' }
 
-    -- presentations
-    use({ "vim-pandoc/vim-pandoc" })
-    use({ "vim-pandoc/vim-pandoc-syntax" })
-
-    use({
-        "nvim-orgmode/orgmode",
-        config = function()
-            require("orgmode").setup({})
-        end,
-    })
     if packer_bootstrap then
         require('packer').sync()
     end
