@@ -40,6 +40,7 @@ alias gco='git checkout'
 alias gc='git commit'
 alias gst='git status'
 alias gb='git branch'
+alias nvimm='NVIM_APPNAME=nvim-minimal nvim'
 
 export EDITOR=nvim
 export BROWSER=firefox
