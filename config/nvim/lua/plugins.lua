@@ -88,7 +88,13 @@ require("packer").startup(function(use)
     use("nvim-lua/lsp-status.nvim")
     use("hrsh7th/nvim-cmp")
     use("hrsh7th/cmp-nvim-lsp")
-    use("L3MON4D3/LuaSnip")
+    use({
+        "L3MON4D3/LuaSnip",
+        config = function()
+            require('luasnip_snippets.common.snip_utils').setup()
+        end,
+    })
+    use("mireq/luasnip-snippets")
     use("saadparwaiz1/cmp_luasnip")
     use("hrsh7th/cmp-buffer")
 
@@ -129,11 +135,16 @@ require("packer").startup(function(use)
         end,
     })
 
+    -- coding
     use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } }
     use("nvim-telescope/telescope-dap.nvim")
     use({
         "Civitasv/cmake-tools.nvim",
         requires = { "stevearc/overseer.nvim" }
+    })
+    use({
+        "nvim-neotest/neotest",
+        requires = { "nvim-lua/plenary.nvim", "alfaix/neotest-gtest" },
     })
 
     -- Git

@@ -6,6 +6,7 @@ compile_commands.json
 *.pro.user
 build-*
 build
+mediamaster-build
 justfile
 justfile.*
 *.justfile

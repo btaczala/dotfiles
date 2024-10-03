@@ -2,11 +2,6 @@ local g = vim.g -- a table to access global variables
 
 g.mapleader = " "
 
-if vim.g.vscode then
-    return
-end
-
-
 require("plugins")
 require("mappings")
 require("lsp")
@@ -18,6 +13,7 @@ require("coding")
 require("snippets")
 require("options")
 require("filetypes")
+require("test")
 
 local lga_actions = require("telescope-live-grep-args.actions")
 

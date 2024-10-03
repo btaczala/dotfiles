@@ -2,7 +2,7 @@ local wezterm = require("wezterm")
 local act = wezterm.action
 local mux = wezterm.mux
 
-function scheme_for_appearance(appearance)
+local function scheme_for_appearance(appearance)
     if appearance:find("Dark") then
         return "Tokyo Night Moon"
     else
@@ -78,20 +78,7 @@ wezterm.on("format-tab-title", function(tab, _, _, _, _, _)
         { Text = zoomed .. title },
     }
 end)
---
--- -- if you are *NOT* lazy-loading smart-splits.nvim (recommended)
--- local function is_vim(pane)
---     -- this is set by the plugin, and unset on ExitPre in Neovim
---     wezterm.log_info("is_vim original")
---     return pane:get_user_vars().IS_NVIM == "true"
--- end
 
--- if you *ARE* lazy-loading smart-splits.nvim (not recommended)
--- you have to use this instead, but note that this will not work
--- in all cases (e.g. over an SSH connection). Also note that
--- `pane:get_foreground_process_name()` can have high and highly variable
--- latency, so the other implementation of `is_vim()` will be more
--- performant as well.
 local function is_vim(pane)
     -- This gsub is equivalent to POSIX basename(3)
     -- Given "/foo/bar" returns "bar"
@@ -110,12 +97,10 @@ local direction_keys = {
 local function scroll(scroll_key)
     return wezterm.action_callback(function(win, pane)
         if is_vim(pane) then
-            wezterm.log_info("vim")
             win:perform_action({
                 SendKey = { key = scroll_key, mods = "CTRL" },
             }, pane)
         else
-            wezterm.log_info("not vim")
             win:perform_action({ ScrollByPage = scroll_key == "u" and -1 or 1 }, pane)
         end
     end)
@@ -143,12 +128,11 @@ local function split_nav(resize_or_move, key)
 end
 
 local config = {
-    -- font = wezterm.font_with_fallback({
-    --     "JetBrains Mono",
-    --     "Iosevka",
-    --     "Fira Code",
-    --     "Hack Nerd Font",
-    -- }),
+    font = wezterm.font_with_fallback({
+        "JetBrains Mono",
+        "Fira Code",
+        "Hack Nerd Font",
+    }),
     font_size = 15,
     automatically_reload_config = true,
     enable_tab_bar = true,
@@ -194,13 +178,15 @@ config.keys = {
     },
     {
         key = "d",
-        mods = "CTRL",
-        action = scroll("d"),
+        mods = "CTRL|SHIFT",
+        -- action = scroll("d"),
+        action = act.ScrollByPage(1)
     },
     {
         key = "u",
-        mods = "CTRL",
-        action = scroll("u"),
+        mods = "CTRL|SHIFT",
+        -- action = scroll("u"),
+        action = act.ScrollByPage(-1)
     },
     split_nav("move", "j"),
     split_nav("move", "k"),
@@ -238,6 +224,11 @@ config.keys = {
         action = wezterm.action.ReloadConfiguration,
     },
     {
+        key = 'd',
+        mods = "LEADER",
+        action = wezterm.action.ShowDebugOverlay,
+    },
+    {
         key = 'Space',
         mods = 'LEADER',
         action = wezterm.action.RotatePanes 'CounterClockwise',
@@ -258,6 +249,11 @@ config.keys = {
         key = 'x',
         mods = 'CTRL|SHIFT',
         action = wezterm.action.ActivateCopyMode,
+    },
+    {
+        key = 'd',
+        mods = 'CTRL',
+        action = wezterm.action.DisableDefaultAssignment,
     },
 }
 wezterm.on("mux-startup", function()
