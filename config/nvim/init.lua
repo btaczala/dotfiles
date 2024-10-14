@@ -55,7 +55,7 @@ require("telescope").setup({
 			auto_quoting = true, -- enable/disable auto-quoting
 			mappings = {
 				i = {
-                    ["<C-k>"] = actions.move_selection_previous,
+					["<C-k>"] = actions.move_selection_previous,
 					["<C-'>"] = lga_actions.quote_prompt(),
 					["<C-l>g"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
 					["<C-l>t"] = lga_actions.quote_prompt({ postfix = " -t" }),

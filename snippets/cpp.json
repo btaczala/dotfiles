@@ -39,7 +39,7 @@
   "UnimplementedError": {
     "prefix": "unimpl",
     "body": [
-        "return absl::UnimplementedError(fmt::format(\"function {} not implemented\", __PRETTY_FUNCTION__));"
+      "return absl::UnimplementedError(fmt::format(\"function {} not implemented\", __PRETTY_FUNCTION__));"
     ]
   },
   "CppGuard": {
