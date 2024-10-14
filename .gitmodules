@@ -4,3 +4,9 @@
 [submodule "projects"]
 	path = projects
 	url = git@github.com:btaczala/dotfiles-projects.git
+[submodule "config/kickstart.nvim"]
+	path = config/kickstart.nvim
+	url = git@github.com:btaczala/kickstart.nvim.git
+[submodule "config/nvim-minimal"]
+	path = config/nvim-minimal
+	url = git@github.com:btaczala/kickstart.nvim.git
