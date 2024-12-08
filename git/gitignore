@@ -27,3 +27,4 @@ CMakeUserPresets.json
 .pre-commit-config.yaml
 *cmake-tools*
 out_conan
+mediamaster-build*

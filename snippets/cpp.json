@@ -1,4 +1,16 @@
 {
+  "C++ Header Guard": {
+    "prefix": "headerguard",
+    "body": [
+      "#ifndef ${TM_FILENAME_BASE/(.*)/${1:/upcase}/}_H",
+      "#define ${TM_FILENAME_BASE/(.*)/${1:/upcase}/}_H",
+      "",
+      "${0}",
+      "",
+      "#endif // ${TM_FILENAME_BASE/(.*)/${1:/upcase}/}_H"
+    ],
+    "description": "C++ Header Guard"
+  },
   "for": {
     "prefix": "for",
     "body": [
@@ -40,14 +52,6 @@
     "prefix": "unimpl",
     "body": [
       "return absl::UnimplementedError(fmt::format(\"function {} not implemented\", __PRETTY_FUNCTION__));"
-    ]
-  },
-  "CppGuard": {
-    "prefix": "cppgrd",
-    "body": [
-      "#ifndef ${TM_FILEPATH/(?:^.*\\\\src\\\\)?(\\w+)(?!\\w*$)|(\\W)|(\\w+)$/${1:/upcase}${2:+_}${3:/upcase}${3:+_}/g}",
-      "#define ${TM_FILEPATH/(?:^.*\\\\src\\\\)?(\\w+)(?!\\w*$)|(\\W)|(\\w+)$/${1:/upcase}${2:+_}${3:/upcase}${3:+_}/g}",
-      "\n#endif // ${TM_FILEPATH/(?:^.*\\\\src\\\\)?(\\w+)(?!\\w*$)|(\\W)|(\\w+)$/${1:/upcase}${2:+_}${3:/upcase}${3:+_}/g}"
     ]
   }
 }

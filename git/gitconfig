@@ -1,43 +1,44 @@
 [user]
-	name = Bartosz Taczała
-	email = btaczala@inmusicbrands.com
+    name = Bartosz Taczała
+    email = btaczala@inmusicbrands.com
 
 [merge]
-	;tool = vimdiff
+    ;tool = vimdiff
     tool = nvimdiff4
 [gui]
-	editor = gvim
-	historybrowser = gitk
+    editor = gvim
+    historybrowser = gitk
 [color]
-	sh = auto
-	ui = auto
+    sh = auto
+    ui = auto
 [core]
-	editor = nvim
-	autocrlf = input
-	excludesfile = ~/.gitignore
+    editor = nvim
+    autocrlf = input
+    excludesfile = ~/.gitignore
     pager = delta
 [alias]
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-	new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
-	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
-	la = "!git config -l | grep alias | cut -c 7-"
-	ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
-	fl = log -u
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
+    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+    la = "!git config -l | grep alias | cut -c 7-"
+    ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+    fl = log -u
     added = difftool --cached
     fbr = fzf-branch
+    rups = "!f() { git fetch; git reset --hard origin/$(git rev-parse --abbrev-ref HEAD); }; f"
 [push]
-	default = simple
+    default = simple
 [gitreview]
-	username = bataczal
-	remote = origin
+    username = bataczal
+    remote = origin
 [cola]
-	fontdiff = Hack,9,-1,5,50,0,0,0,0,0
-	spellcheck = false
+    fontdiff = Hack,9,-1,5,50,0,0,0,0,0
+    spellcheck = false
 [filter "lfs"]
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
 
 # stolen from https://vimways.org/2018/vim-and-git/
 [mergetool "nvimdiff4"]
@@ -58,9 +59,9 @@
 [interactive]
     diffFilter = delta --color-only
 [pull]
-	ff = only
+    ff = only
 [blame]
-	markIgnoredLines = true
-	markUnblamableLines = true
+    markIgnoredLines = true
+    markUnblamableLines = true
 [maintenance]
-	repo = /Users/bartek/Projects/inmusic/mediamaster
+    repo = /Users/bartek/Projects/inmusic/mediamaster

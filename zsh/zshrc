@@ -92,7 +92,7 @@ export CMAKE_C_COMPILER_LAUNCHER=ccache
 export CMAKE_CXX_COMPILER_LAUNCHER=ccache
 export CMAKE_GENERATOR="Ninja Multi-Config"
 export HOMEBREW_NO_ENV_HINTS
-export PATH=$HOME/dotfiles/bin:/usr/local/bin:$PATH
+export PATH=$HOME/dotfiles/bin:/usr/local/bin:$HOME/.cargo/bin/:$PATH
 
 if [[ "$TERM" == "xterm-kitty" ]]; then
     if [[ "$(darkMode)" == "Dark" ]]; then

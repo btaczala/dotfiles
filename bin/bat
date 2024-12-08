@@ -1,5 +1,5 @@
 #!/bin/bash
 
-bat_command=$(fd '^bat$' -t x --type symlink /usr/local/bin)
+bat_command=$(fd '^bat$' -t x --type symlink /opt/homebrew/Cellar/)
 
 $bat_command --theme=$(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo default || echo GitHub) $@
