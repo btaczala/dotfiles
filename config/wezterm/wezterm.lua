@@ -2,6 +2,38 @@ local wezterm = require("wezterm")
 local act = wezterm.action
 local mux = wezterm.mux
 
+-- sessions
+--
+wezterm.on("gui-startup", function(cmd)
+	-- dotfiles
+	do
+		local dotfiles_path = wezterm.home_dir .. "/dotfiles"
+		local tab, build_pane, window = mux.spawn_window({
+			workspace = "dotfiles",
+			cwd = dotfiles_path,
+		})
+		build_pane:send_text("nvimm\n")
+		tab:set_title("dotfiles")
+		mux.set_active_workspace("dotfiles")
+
+		local qmk_tab, _, _ =
+			window:spawn_tab({ cwd = wezterm.home_dir .. "/dev/qmk_firmware/keyboards/splitkb/aurora/lily58" })
+		qmk_tab:set_title("qmk")
+
+		local glances_tab, _, _ = window:spawn_tab({ args = { "/opt/homebrew/bin/glances", "-w" } })
+		glances_tab:set_title("glances")
+	end
+
+	do
+		local tab, pane, mm_window = mux.spawn_window({
+			workspace = "mediamaster",
+			cwd = wezterm.home_dir .. "/Projects/inmusic/mediamaster",
+		})
+		pane:send_text("nvimm\n")
+		tab:set_title("mediamaster")
+	end
+end)
+
 local function scheme_for_appearance(appearance)
 	if appearance:find("Dark") then
 		return "Tokyo Night Moon"
@@ -92,18 +124,6 @@ local direction_keys = {
 	["l"] = "Up",
 	[";"] = "Right",
 }
-
-local function scroll(scroll_key)
-	return wezterm.action_callback(function(win, pane)
-		if is_vim(pane) then
-			win:perform_action({
-				SendKey = { key = scroll_key, mods = "CTRL" },
-			}, pane)
-		else
-			win:perform_action({ ScrollByPage = scroll_key == "u" and -1 or 1 }, pane)
-		end
-	end)
-end
 --
 local function split_nav(resize_or_move, key)
 	return {

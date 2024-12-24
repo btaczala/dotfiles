@@ -12,7 +12,7 @@
     sh = auto
     ui = auto
 [core]
-    editor = nvim
+    editor = nvimm
     autocrlf = input
     excludesfile = ~/.gitignore
     pager = delta
@@ -26,11 +26,9 @@
     added = difftool --cached
     fbr = fzf-branch
     rups = "!f() { git fetch; git reset --hard origin/$(git rev-parse --abbrev-ref HEAD); }; f"
+    sync = "!f() { git fetch origin main && git rebase origin/main && git push --force-with-lease; }; f"
 [push]
     default = simple
-[gitreview]
-    username = bataczal
-    remote = origin
 [cola]
     fontdiff = Hack,9,-1,5,50,0,0,0,0,0
     spellcheck = false
