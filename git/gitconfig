@@ -12,7 +12,7 @@
     sh = auto
     ui = auto
 [core]
-    editor = nvimm
+    editor = nvim
     autocrlf = input
     excludesfile = ~/.gitignore
     pager = delta
