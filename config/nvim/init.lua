@@ -1,81 +1,68 @@
-local g = vim.g -- a table to access global variables
+-- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
+require 'options'
 
-g.mapleader = " "
+-- Clear highlights on search when pressing <Esc> in normal mode
+--  See `:help hlsearch`
 
-require("plugins")
-require("mappings")
-require("lsp")
-require("colors")
-require("projects")
-require("statusline")
-require("debugging")
-require("coding")
-require("snippets")
-require("options")
-require("filetypes")
-require("test")
+require 'lazy-bootstrap'
+require 'plugins'
+require 'keymaps'
 
-local lga_actions = require("telescope-live-grep-args.actions")
+local function find_project_root()
+  local patterns = { 'CMakeLists.txt', '.git' } -- Look for CMakeLists.txt or .git as root markers
+  local root = vim.fs.find(patterns, { upward = true, stop = os.getenv 'HOME' })[1]
+  if root then
+    return vim.fs.dirname(root) -- Return the directory containing the root marker
+  end
+end
 
--- treesitter
-local ts = require("nvim-treesitter.configs")
-ts.setup({
-	ensure_installed = { "c", "cpp", "lua", "rust", "cmake", "json", "json5", "python", "yaml", "zig" },
-	sync_install = false,
-	highlight = { enable = true },
+local function cmake_file_exists()
+  local root_dir = find_project_root()
+  if root_dir then
+    local cmake_path = root_dir .. '/CMakeLists.txt'
+    if vim.loop.fs_stat(cmake_path) then
+      return true
+    end
+  end
+  return false
+end
+
+vim.api.nvim_create_augroup('CppFiles', { clear = true })
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+  pattern = { '*.qml' },
+  callback = function()
+    local path = vim.fn.expand '%:p'
+    if string.sub(path, 1, #'/Users/bartek/Projects/inmusic/') == '/Users/bartek/Projects/inmusic/' then
+      vim.api.nvim_buf_set_keymap(0, 'n', '<leader>rp', '<cmd>OverseerRun evstylepreview <CR>', { noremap = true, silent = true })
+    else
+      vim.api.nvim_buf_set_keymap(0, 'n', '<leader>rp', '<cmd>!qmlscene ' .. path .. '<CR>', { noremap = true, silent = true })
+    end
+  end,
+  group = 'CppFiles',
 })
 
--- telescope
-local actions = require("telescope.actions")
-require("telescope").setup({
-	defaults = {
-		mappings = {
-			i = {
-				-- To disable a keymap, put [map] = false
-				-- So, to not map "<C-n>", just put
-				["<C-n>"] = false,
-				["<C-p>"] = false,
-				["<C-k>"] = actions.move_selection_next,
-				["<C-l>"] = actions.move_selection_previous,
-			},
-		},
-	},
-	extensions = {
-		fzf = {
-			fuzzy = true, -- false will only do exact matching
-			override_generic_sorter = true, -- override the generic sorter
-			override_file_sorter = true, -- override the file sorter
-			case_mode = "smart_case", -- or "ignore_case" or "respect_case"
-			-- the default case_mode is "smart_case"
-		},
-		["ui-select"] = {
-			require("telescope.themes").get_dropdown({}),
-		},
-		live_grep_args = {
-			auto_quoting = true, -- enable/disable auto-quoting
-			mappings = {
-				i = {
-					["<C-k>"] = actions.move_selection_previous,
-					["<C-'>"] = lga_actions.quote_prompt(),
-					["<C-l>g"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
-					["<C-l>t"] = lga_actions.quote_prompt({ postfix = " -t" }),
-				},
-			},
-		},
-	},
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+  pattern = { '*.justfile' },
+  command = 'set filetype=just',
 })
-require("telescope").load_extension("fzf")
-require("telescope").load_extension("ui-select")
 
-vim.api.nvim_exec(
-	[[
-  augroup YankHighlight
-    autocmd!
-    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
-  augroup end
-]],
-	false
-)
-vim.cmd([[
-    au BufNewFile,BufRead Jenkinsfile setf groovy
-]])
+vim.api.nvim_create_autocmd('BufEnter', {
+  callback = function()
+    if cmake_file_exists() then
+      vim.api.nvim_buf_set_keymap(0, 'n', '<leader>jj', '<cmd>CMakeBuild<CR>', { noremap = true, silent = true })
+      vim.api.nvim_buf_set_keymap(0, 'n', '<leader>ja', '<cmd>CMakeOpenExecutor<CR>', { noremap = true, silent = true })
+      vim.api.nvim_buf_set_keymap(0, 'n', '<leader>jc', '<cmd>CMakeGenerate<CR>', { noremap = true, silent = true })
+      vim.api.nvim_buf_set_keymap(0, 'n', '<leader>jr', '<cmd>CMakeRun<CR>', { noremap = true, silent = true })
+      vim.api.nvim_buf_set_keymap(0, 'n', '<leader>jd', '<cmd>CMakeDebug<CR>', { noremap = true, silent = true })
+      vim.api.nvim_buf_set_keymap(0, 'n', '<leader>jo', '<cmd>CMakeOpenRunner<CR>', { noremap = true, silent = true })
+      vim.api.nvim_buf_set_keymap(0, 'n', '<leader>jt', '<cmd>CMakeRunTest<CR>', { noremap = true, silent = true })
+      vim.api.nvim_buf_set_keymap(0, 'n', '<leader>rr', '<cmd>CMakeRun<CR>', { noremap = true, silent = true })
+      vim.api.nvim_buf_set_keymap(0, 'n', '<leader>rd', '<cmd>CMakeDebug<CR>', { noremap = true, silent = true })
+      vim.api.nvim_buf_set_keymap(0, 'n', '<leader>rss', '<cmd>CMakeTargetSetting<CR>', { noremap = true, silent = true })
+      vim.api.nvim_buf_set_keymap(0, 'n', '<leader>rst', '<cmd>CMakeSelectLaunchTarget<CR>', { noremap = true, silent = true })
+      vim.api.nvim_buf_set_keymap(0, 'n', '<leader>rsb', '<cmd>CMakeSelectBuildTarget<CR>', { noremap = true, silent = true })
+    end
+  end,
+})
+
+vim.api.nvim_set_keymap('n', '<leader>ww', ':w!<CR>', { noremap = true })

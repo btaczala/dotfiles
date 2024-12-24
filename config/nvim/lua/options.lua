@@ -1,36 +1,42 @@
-local opt = vim.opt -- to set options
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+vim.g.have_nerd_font = true
+vim.o.number = true
+vim.o.relativenumber = true
 
--- options
-opt.syntax = "enable"
-opt.modeline = true
-opt.modelines = 1
-opt.nu = true
-opt.rnu = true
-opt.spell = false
-opt.spelllang = "en_us,pl"
-opt.spellfile = os.getenv("HOME") .. "/dotfiles/config/nvim/spell/en.utf-8.add"
-opt.splitright = true
-opt.smartindent = true
-opt.encoding = "utf8"
-opt.tabstop = 4
-opt.shiftwidth = 4
-opt.expandtab = true
-opt.exrc = true
-opt.autoread = true
-opt.signcolumn = "yes"
-opt.swapfile = false
-opt.backup = false
-opt.undodir = os.getenv("HOME") .. "/.cache/nvim/undodir/"
-opt.undofile = true
-opt.incsearch = true
+-- Enable mouse mode, can be useful for resizing splits for example!
+vim.o.mouse = 'a'
 
-opt.foldexpr = "nvim_treesitter#foldexpr()"
-opt.foldlevel = 99
-opt.foldmethod = "expr"
-opt.foldminlines = 1
-opt.termguicolors = true
-opt.timeoutlen = 100
-opt.cursorline = true
-vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
+-- Don't show the mode, since it's already in the status line
+vim.o.showmode = false
 
-opt.listchars = { space = '_', tab = '>~', eol = '$' }
+-- Enable break indent
+vim.o.breakindent = true
+
+-- Save undo history
+vim.o.undofile = true
+
+-- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
+vim.o.ignorecase = true
+vim.o.smartcase = true
+
+-- Keep signcolumn on by default
+vim.o.signcolumn = 'yes'
+
+-- Decrease update time
+vim.o.updatetime = 250
+
+vim.o.timeoutlen = 100
+vim.o.splitright = true
+vim.o.splitbelow = true
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
+vim.o.expandtab = true
+vim.o.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+
+vim.o.spelllang = 'en_us'
+vim.o.spellfile = os.getenv 'HOME' .. '/dotfiles/config/nvim/spell/en.utf-8.add'
+vim.o.inccommand = 'split'
+vim.o.cursorline = true
+vim.o.scrolloff = 10
