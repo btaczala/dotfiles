@@ -3,11 +3,15 @@ import re
 from kittens.tui.handler import result_handler
 from kitty.key_encoding import KeyEvent, parse_shortcut
 
+VIM_ID = "n?vim"
 
-def is_window_vim(window, vim_id):
+
+def is_window_vim(window):
     fp = window.child.foreground_processes
-    print(fp, vim_id)
-    return any(re.search(vim_id, p['cmdline'][0] if len(p['cmdline']) else '', re.I) for p in fp)
+    return any(
+        re.search(VIM_ID, p["cmdline"][0] if len(p["cmdline"]) else "", re.I)
+        for p in fp
+    )
 
 
 def encode_key_mapping(window, key_mapping):
@@ -35,16 +39,12 @@ def handle_result(args, result, target_window_id, boss):
     window = boss.window_id_map.get(target_window_id)
     direction = args[2]
     key_mapping = args[3]
-    vim_id = args[4] if len(args) > 4 else "n?vim"
-    print(f"handle result {window}, {direction}, {key_mapping}, {vim_id}")
 
     if window is None:
         return
-    if is_window_vim(window, vim_id):
-        print("o, window is vim")
+    if is_window_vim(window):
         for keymap in key_mapping.split(">"):
             encoded = encode_key_mapping(window, keymap)
-            print("writing to child")
             window.write_to_child(encoded)
     else:
         boss.active_tab.neighboring_window(direction)
