@@ -1,3 +1,23 @@
+local function switch_header_source_in_split()
+  -- Save the current window ID
+  local current_window = vim.api.nvim_get_current_win()
+
+  -- Create a new vertical split
+  vim.cmd 'vsplit'
+
+  -- Save the ID of the new split window
+  local new_window = vim.api.nvim_get_current_win()
+
+  -- Switch back to the original window and run ClangSwitchHeaderSource
+  vim.api.nvim_set_current_win(current_window)
+  vim.cmd 'ClangdSwitchSourceHeader'
+  --
+  -- -- Move the corresponding file to the new split
+  local new_file = vim.api.nvim_buf_get_name(0)
+  vim.api.nvim_set_current_win(new_window)
+  vim.cmd('edit ' .. new_file)
+end
+
 return {
   'neovim/nvim-lspconfig',
   dependencies = {
@@ -33,7 +53,8 @@ return {
         -- WARN: This is not Goto Definition, this is Goto Declaration.
         --  For example, in C this would take you to the header.
         map('<leader>ld', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-        map('<leader>lh', '<cmd>ClangdSwitchSourceHeader<CR>', '[G]oto [D]eclaration')
+        map('<leader>lh', '<cmd>ClangdSwitchSourceHeader<CR>', '[G]oto [H]eader')
+        map('<leader>lH', switch_header_source_in_split, '[G]oto [H]eader in new split')
 
         -- The following two autocommands are used to highlight references of the
         -- word under your cursor when your cursor rests there for a little while.
@@ -106,7 +127,7 @@ return {
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
----@diagnostic disable-next-line: missing-fields
+    ---@diagnostic disable-next-line: missing-fields
     require('mason-lspconfig').setup {
       handlers = {
         function(server_name)
