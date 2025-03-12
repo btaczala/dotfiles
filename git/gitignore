@@ -28,3 +28,6 @@ CMakeUserPresets.json
 *cmake-tools*
 out_conan
 mediamaster-build*
+target/*
+.stignore
+.stfolder

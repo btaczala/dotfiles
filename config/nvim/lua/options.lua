@@ -28,7 +28,7 @@ vim.o.updatetime = 250
 
 vim.o.timeoutlen = 100
 vim.o.splitright = true
-vim.o.splitbelow = true
+vim.o.splitbelow = false
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.expandtab = true
@@ -40,3 +40,15 @@ vim.o.spellfile = os.getenv 'HOME' .. '/dotfiles/config/nvim/spell/en.utf-8.add'
 vim.o.inccommand = 'split'
 vim.o.cursorline = true
 vim.o.scrolloff = 10
+
+vim.o.autoread = true
+vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
+  command = "if mode() != 'c' | checktime | endif",
+  pattern = { "*" },
+})
+
+vim.opt.backupdir = os.getenv('HOME') .. '/.neovim/backup'
+vim.diagnostic.config({ virtual_text = false })
+vim.diagnostic.config({ virtual_lines = { only_current_line = true } })
+
+vim.opt.conceallevel = 1

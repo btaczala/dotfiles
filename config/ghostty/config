@@ -2,16 +2,22 @@ font-family = "Hack Nerd Font Mono Regular"
 theme = "light:iceberg-light,dark:tokyonight"
 macos-titlebar-style = "tabs"
 
+unfocused-split-opacity = 0.92
+
 window-theme = "system"
 
 keybind = ctrl+y>h=new_split:down
 keybind = ctrl+y>v=new_split:right
-keybind = ctrl+j=goto_split:left
-keybind = ctrl+k=goto_split:bottom
-keybind = ctrl+l=goto_split:top
-keybind = ctrl+u=scroll_page_up
-keybind = ctrl+d=scroll_page_down
-keybind = ctrl+;=goto_split:right
+
+keybind = unconsumed:ctrl+j=goto_split:left
+keybind = unconsumed:ctrl+k=goto_split:bottom
+keybind = unconsumed:ctrl+l=goto_split:top
+keybind = unconsumed:ctrl+;=goto_split:right
+
+keybind = ctrl+shift+u=scroll_page_up
+keybind = ctrl+shift+d=scroll_page_down
+keybind = alt+k=resize_split:down,20
+keybind = alt+l=resize_split:up,20
 
 keybind = ctrl+y>w=write_scrollback_file:paste
 keybind = ctrl+y>q=toggle_quick_terminal

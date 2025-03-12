@@ -75,9 +75,11 @@ require('lazy').setup(
         require('bookmarks').setup {}
       end,
     },
+    'tpope/vim-fugitive',
 
-    require 'kickstart/plugins/neogit',
+    -- require 'kickstart/plugins/neogit',
     require 'kickstart.plugins.telescope',
+    require 'kickstart.plugins.git',
     -- LSP Plugins
     {
       -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
@@ -114,6 +116,8 @@ require('lazy').setup(
     },
 
     require 'kickstart/plugins/which-key',
+    require 'kickstart/plugins/orgmode',
+    require 'kickstart/plugins/obsidian',
     require 'kickstart/plugins/lsp-config',
     { -- Autoformat
       'stevearc/conform.nvim',
@@ -121,12 +125,12 @@ require('lazy').setup(
         require('conform').formatters.cmakeformat = {
           inherit = false,
           command = 'cmake-format',
-          args = { '', '$FILENAME' },
+          args = { '$FILENAME', '--line-width', '100' },
         }
         require('conform').formatters.qmlformat = {
           inherit = false,
           command = 'qmlformat',
-          args = { '', '$FILENAME' },
+          args = { '$FILENAME' },
         }
         require('conform').setup {
           log_level = vim.log.levels.DEBUG,
@@ -144,7 +148,8 @@ require('lazy').setup(
         {
           '<leader>lf',
           function()
-            require('conform').format { async = true, lsp_format = 'fallback' }
+            vim.api.nvim_command 'write'
+            require('conform').format { async = false, lsp_format = 'fallback' }
           end,
           mode = '',
           desc = '[F]ormat buffer',
@@ -152,17 +157,23 @@ require('lazy').setup(
       },
       opts = {
         notify_on_error = true,
-        format_on_save = { timeout_ms = 500 },
       },
     },
+    -- {
+    --   'rachartier/tiny-inline-diagnostic.nvim',
+    --   event = 'VeryLazy', -- Or `LspAttach`
+    --   priority = 1000, -- needs to be loaded in first
+    --   config = function()
+    --     require('tiny-inline-diagnostic').setup {
+    --       preset = 'nonerdfont',
+    --       use_icons_from_diagnostic = true,
+    --     }
+    --   end,
+    -- },
     {
-      'rachartier/tiny-inline-diagnostic.nvim',
-      event = 'VeryLazy', -- Or `LspAttach`
-      priority = 1000, -- needs to be loaded in first
+      'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
       config = function()
-        require('tiny-inline-diagnostic').setup {
-          preset = 'classic',
-        }
+        require('lsp_lines').setup {}
       end,
     },
     require 'kickstart/plugins/cmake',
@@ -178,7 +189,7 @@ require('lazy').setup(
       lazy = false,
 
       opts = {
-        suppressed_dirs = { '~/', '~/Projects', '~/Downloads', '/' },
+        suppressed_dirs = { '~/', '~/Projects', '~/Downloads', '/', '/Users/bartek/Projects/inmusic/mount_windows/mediamaster' },
         -- log_level = 'debug',
       },
     },
@@ -220,21 +231,9 @@ require('lazy').setup(
         -- You can configure highlights by doing something like:
         vim.cmd.hi 'Comment gui=none'
       end,
-    },
-    {
-      'navarasu/onedark.nvim',
-      config = function()
-        require('onedark').setup {
-          style = 'darker',
-          transparent = true,
-          lualine = {
-            transparent = true,
-          },
-        }
-      end,
-      -- init = function()
-      --   vim.cmd.colorscheme 'onedark'
-      -- end,
+      opts = {
+        transparent = false,
+      },
     },
 
     -- Highlight todo, notes, etc in comments
@@ -273,7 +272,20 @@ require('lazy').setup(
       'mrjones2014/smart-splits.nvim',
     },
     require 'kickstart/plugins/ai',
+    require 'kickstart/plugins/snippets',
     require 'kickstart/plugins/plantuml',
+    {
+      'mrcjkb/rustaceanvim',
+      version = '^5', -- Recommended
+      lazy = false, -- This plugin is already lazy
+    },
+    require 'kickstart/plugins/openscad',
+    {
+      'fei6409/log-highlight.nvim',
+      config = function()
+        require('log-highlight').setup {}
+      end,
+    },
   },
   ---@diagnostic disable-next-line: missing-fields
   {

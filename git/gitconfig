@@ -63,3 +63,14 @@
     markUnblamableLines = true
 [maintenance]
     repo = /Users/bartek/Projects/inmusic/mediamaster
+[safe]
+	directory = *
+	directory = *
+	directory = *
+	directory = *
+	directory = *
+	directory = *
+	directory = *
+	directory = *
+	directory = *
+	directory = *

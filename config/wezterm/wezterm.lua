@@ -3,7 +3,6 @@ local act = wezterm.action
 local mux = wezterm.mux
 
 -- sessions
---
 wezterm.on("gui-startup", function(cmd)
 	-- dotfiles
 	do
@@ -12,7 +11,7 @@ wezterm.on("gui-startup", function(cmd)
 			workspace = "dotfiles",
 			cwd = dotfiles_path,
 		})
-		build_pane:send_text("nvimm\n")
+		build_pane:send_text("nvim\n")
 		tab:set_title("dotfiles")
 		mux.set_active_workspace("dotfiles")
 
@@ -29,7 +28,7 @@ wezterm.on("gui-startup", function(cmd)
 			workspace = "mediamaster",
 			cwd = wezterm.home_dir .. "/Projects/inmusic/mediamaster",
 		})
-		pane:send_text("nvimm\n")
+		pane:send_text("nvim\n")
 		tab:set_title("mediamaster")
 	end
 end)
@@ -343,6 +342,8 @@ config.colors = {
 	quick_select_match_bg = { AnsiColor = "Navy" },
 	quick_select_match_fg = { Color = "#ffffff" },
 }
+config.macos_window_background_blur = 20
+config.window_background_opacity = 1
 
 config.unix_domains = {
 	{

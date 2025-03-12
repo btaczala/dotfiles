@@ -1,9 +1,36 @@
+---@diagnostic disable: missing-fields
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
-require 'options'
 
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
 
+if vim.g.vscode then
+  local vscode = require 'vscode'
+  vim.keymap.set("", "<Space>", "<Nop>")
+  vim.g.mapleader = " "
+  vim.api.nvim_set_keymap('n', 'j', 'h', { noremap = true })
+  vim.api.nvim_set_keymap('n', 'k', 'j', { noremap = true })
+  vim.api.nvim_set_keymap('n', 'l', 'k', { noremap = true })
+  vim.api.nvim_set_keymap('n', ';', 'l', { noremap = true })
+
+  vim.api.nvim_set_keymap('v', 'j', 'h', { noremap = true })
+  vim.api.nvim_set_keymap('v', 'k', 'j', { noremap = true })
+  vim.api.nvim_set_keymap('v', 'l', 'k', { noremap = true })
+  vim.api.nvim_set_keymap('v', ';', 'l', { noremap = true })
+  -- vim.keymap.set('n', '<leader>ff', '<cmd>lua require("vscode").call("editor.action.formatSelection")<cr>')
+  vim.keymap.set('n', '<leader>ff', function ()
+      vscode.call 'workbench.action.quickOpen'
+  end)
+  vim.keymap.set('n', '<leader>ww', function ()
+      vscode.call 'workbench.action.files.save'
+  end)
+  vim.keymap.set('n', '<leader>jj', function ()
+      vscode.call 'cmake.build'
+  end)
+  return
+end
+
+require 'options'
 require 'lazy-bootstrap'
 require 'plugins'
 require 'keymaps'
@@ -19,10 +46,7 @@ end
 local function cmake_file_exists()
   local root_dir = find_project_root()
   if root_dir then
-    local cmake_path = root_dir .. '/CMakeLists.txt'
-    if vim.loop.fs_stat(cmake_path) then
-      return true
-    end
+    return vim.fs.find('CMakeLists.txt', { path = root_dir })
   end
   return false
 end
@@ -42,8 +66,26 @@ vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
 })
 
 vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+  pattern = { '*.scad' },
+  callback = function()
+    local U = require 'openscad.utilities'
+    local builtin = require 'telescope.builtin'
+    local path = U.openscad_nvim_root_dir .. U.path_sep .. 'help_source' .. U.path_sep .. 'tree'
+    vim.keymap.set('n', '<leader>h', function()
+      builtin.find_files { cwd = path }
+    end, { desc = 'Search Openscad [h]elp' })
+  end,
+  group = 'CppFiles',
+})
+
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
   pattern = { '*.justfile' },
   command = 'set filetype=just',
+})
+
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+  pattern = { '*.slint' },
+  command = 'set filetype=slint',
 })
 
 vim.api.nvim_create_autocmd('BufEnter', {

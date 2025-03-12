@@ -1,3 +1,5 @@
+---@diagnostic disable: missing-fields
+
 return { -- Fuzzy Finder (files, lsp, etc)
   'nvim-telescope/telescope.nvim',
   event = 'VimEnter',

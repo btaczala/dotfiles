@@ -1,3 +1,5 @@
+---@diagnostic disable: missing-fields
+
 vim.api.nvim_set_keymap('n', 'j', 'h', { noremap = true })
 vim.api.nvim_set_keymap('n', 'k', 'j', { noremap = true })
 vim.api.nvim_set_keymap('n', 'l', 'k', { noremap = true })
@@ -7,6 +9,11 @@ vim.api.nvim_set_keymap('v', 'j', 'h', { noremap = true })
 vim.api.nvim_set_keymap('v', 'k', 'j', { noremap = true })
 vim.api.nvim_set_keymap('v', 'l', 'k', { noremap = true })
 vim.api.nvim_set_keymap('v', ';', 'l', { noremap = true })
+
+-- vim.api.nvim_set_keymap('n', '<C-w>h', '<C-w>j', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<C-w>j', '<C-w>k', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<C-w>k', '<C-w>l', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<C-w>l', '<C-w>;', { noremap = true, silent = true })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -22,15 +29,22 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
-vim.keymap.set('n', '<C-j>', require('smart-splits').move_cursor_left)
-vim.keymap.set('n', '<C-k>', require('smart-splits').move_cursor_down)
-vim.keymap.set('n', '<C-l>', require('smart-splits').move_cursor_up)
-vim.keymap.set('n', '<C-;>', require('smart-splits').move_cursor_right)
+if vim.env.TERM_PROGRAM == 'ghostty' then
+  vim.keymap.set('n', '<C-j>', '<C-w>h', { noremap = true, silent = false })
+  vim.keymap.set('n', '<C-k>', '<C-w>j', { noremap = true, silent = true })
+  vim.keymap.set('n', '<C-l>', '<C-w>k', { noremap = true, silent = false })
+  vim.keymap.set('n', '<C-;>', '<C-w>l', { noremap = true, silent = true })
+else
+  vim.keymap.set('n', '<C-j>', require('smart-splits').move_cursor_left)
+  vim.keymap.set('n', '<C-k>', require('smart-splits').move_cursor_down)
+  vim.keymap.set('n', '<C-l>', require('smart-splits').move_cursor_up)
+  vim.keymap.set('n', '<C-;>', require('smart-splits').move_cursor_right)
 
-vim.keymap.set('n', '<A-j>', require('smart-splits').resize_left)
-vim.keymap.set('n', '<A-k>', require('smart-splits').resize_down)
-vim.keymap.set('n', '<A-l>', require('smart-splits').resize_up)
-vim.keymap.set('n', '<A-;>', require('smart-splits').resize_right)
+  vim.keymap.set('n', '<A-j>', require('smart-splits').resize_left)
+  vim.keymap.set('n', '<A-k>', require('smart-splits').resize_down)
+  vim.keymap.set('n', '<A-l>', require('smart-splits').resize_up)
+  vim.keymap.set('n', '<A-;>', require('smart-splits').resize_right)
+end
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -57,3 +71,13 @@ vim.keymap.set('n', '<leader>mX', bm.bookmark_clear_all, { desc = 'Bookmark Clea
 
 vim.keymap.set('n', '<leader>cP', ':let @* = expand("%:p")<CR>', { noremap = true })
 vim.keymap.set('n', '<leader>cp', ':let @* = expand("%")<CR>', { noremap = true })
+
+-- local wk = require 'which-key'
+
+-- wk.register({
+--   ['<C-w>j'] = { '<C-w>h', 'Go to the left window' },
+--   ['<C-w>l'] = { '<C-w>k', 'Go to the up window' },
+--   ['<C-w>k'] = { '<C-w>j', 'Go to the down window' },
+--   ['<C-w>;'] = { '<C-w>l', 'Go to the right window' },
+-- }, { mode = 'n' }) -- Normal mode mapping
+

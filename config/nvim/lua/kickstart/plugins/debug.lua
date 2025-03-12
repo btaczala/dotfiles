@@ -17,10 +17,6 @@ return {
     -- Required dependency for nvim-dap-ui
     'nvim-neotest/nvim-nio',
 
-    -- Installs the debug adapters for you
-    'williamboman/mason.nvim',
-    'jay-babu/mason-nvim-dap.nvim',
-
     -- Add your own debuggers here
     'leoluz/nvim-dap-go',
   },
@@ -29,10 +25,10 @@ return {
     local dapui = require 'dapui'
     return {
       -- Basic debugging keymaps, feel free to change to your liking!
-      { '<F5>', dap.continue, desc = 'Debug: Start/Continue' },
-      { '<F1>', dap.step_into, desc = 'Debug: Step Into' },
-      { '<F2>', dap.step_over, desc = 'Debug: Step Over' },
-      { '<F3>', dap.step_out, desc = 'Debug: Step Out' },
+      { '<leader>ds', dap.continue, desc = 'Debug: Start/Continue' },
+      { '<leader>si', dap.step_into, desc = 'Debug: Step Into' },
+      { '<leader>sn', dap.step_over, desc = 'Debug: Step Over' },
+      { '<leader>so', dap.step_out, desc = 'Debug: Step Out' },
       { '<leader>b', dap.toggle_breakpoint, desc = 'Debug: Toggle Breakpoint' },
       {
         '<leader>B',
@@ -49,23 +45,6 @@ return {
   config = function()
     local dap = require 'dap'
     local dapui = require 'dapui'
-
-    require('mason-nvim-dap').setup {
-      -- Makes a best effort to setup the various debuggers with
-      -- reasonable debug configurations
-      automatic_installation = true,
-
-      -- You can provide additional configuration to the handlers,
-      -- see mason-nvim-dap README for more information
-      handlers = {},
-
-      -- You'll need to check that you have the required things installed
-      -- online, please don't ask me how to install them :)
-      ensure_installed = {
-        -- Update this to ensure that you have the debuggers for the langs you want
-        'delve',
-      },
-    }
 
     -- Dap UI setup
     -- For more information, see |:help nvim-dap-ui|
@@ -88,18 +67,40 @@ return {
         },
       },
     }
+    local function set_debug_keymaps()
+      vim.api.nvim_set_keymap('n', '<F5>', "<Cmd>lua require'dap'.continue()<CR>", { noremap = true, silent = true })
+      vim.api.nvim_set_keymap('n', '<F10>', "<Cmd>lua require'dap'.step_over()<CR>", { noremap = true, silent = true })
+      vim.api.nvim_set_keymap('n', '<F11>', "<Cmd>lua require'dap'.step_into()<CR>", { noremap = true, silent = true })
+      vim.api.nvim_set_keymap('n', '<F12>', "<Cmd>lua require'dap'.step_out()<CR>", { noremap = true, silent = true })
+      vim.api.nvim_set_keymap('n', '<Leader>db', "<Cmd>lua require'dap'.toggle_breakpoint()<CR>", { noremap = true, silent = true })
+      vim.api.nvim_set_keymap('n', '<Leader>dr', "<Cmd>lua require'dap'.repl.open()<CR>", { noremap = true, silent = true })
+      vim.api.nvim_set_keymap('n', '<Leader>so', "<Cmd>lua require'dap'.step_over()<CR>", { noremap = true, silent = true })
+    end
+
+    -- Function to remove debug keymaps
+    local function remove_debug_keymaps()
+      vim.api.nvim_del_keymap('n', '<F5>')
+      vim.api.nvim_del_keymap('n', '<F10>')
+      vim.api.nvim_del_keymap('n', '<F11>')
+      vim.api.nvim_del_keymap('n', '<F12>')
+      vim.api.nvim_del_keymap('n', '<Leader>db>')
+      vim.api.nvim_del_keymap('n', '<Leader>dr>')
+    end
 
     dap.listeners.after.event_initialized['dapui_config'] = dapui.open
     dap.listeners.before.event_terminated['dapui_config'] = dapui.close
     dap.listeners.before.event_exited['dapui_config'] = dapui.close
+    dap.listeners.after.event_initialized['dap_keymaps'] = function()
+      set_debug_keymaps()
+    end
 
-    -- Install golang specific config
-    require('dap-go').setup {
-      delve = {
-        -- On Windows delve must be run attached or it crashes.
-        -- See https://github.com/leoluz/nvim-dap-go/blob/main/README.md#configuring
-        detached = vim.fn.has 'win32' == 0,
-      },
-    }
+    -- Unregister keymaps when debugging session ends
+    dap.listeners.after.event_terminated['dap_keymaps'] = function()
+      remove_debug_keymaps()
+    end
+
+    dap.listeners.after.event_exited['dap_keymaps'] = function()
+      remove_debug_keymaps()
+    end
   end,
 }

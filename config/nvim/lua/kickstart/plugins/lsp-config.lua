@@ -1,3 +1,5 @@
+---@diagnostic disable: missing-fields
+
 local function switch_header_source_in_split()
   -- Save the current window ID
   local current_window = vim.api.nvim_get_current_win()
@@ -21,9 +23,6 @@ end
 return {
   'neovim/nvim-lspconfig',
   dependencies = {
-    { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
-    'williamboman/mason-lspconfig.nvim',
-    'WhoIsSethDaniel/mason-tool-installer.nvim',
     'saghen/blink.cmp',
 
     -- Notifications
@@ -100,46 +99,6 @@ return {
     local capabilities = require('blink.cmp').get_lsp_capabilities()
     local lspconfig = require 'lspconfig'
 
-    lspconfig['lua_ls'].setup { capabilities = capabilities }
-
-    local servers = {
-      clangd = {},
-
-      pylsp = {},
-      lua_ls = {
-        settings = {
-          Lua = {
-            completion = {
-              callSnippet = 'Replace',
-            },
-          },
-        },
-      },
-    }
-
-    require('mason').setup()
-
-    -- You can add other tools here that you want Mason to install
-    -- for you, so that they are available from within Neovim.
-    local ensure_installed = vim.tbl_keys(servers or {})
-    vim.list_extend(ensure_installed, {
-      'stylua', -- Used to format Lua code
-    })
-    require('mason-tool-installer').setup { ensure_installed = ensure_installed }
-
-    ---@diagnostic disable-next-line: missing-fields
-    require('mason-lspconfig').setup {
-      handlers = {
-        function(server_name)
-          local server = servers[server_name] or {}
-          -- This handles overriding only values explicitly passed
-          -- by the server configuration above. Useful when disabling
-          -- certain features of an LSP (for example, turning off formatting for ts_ls)
-          server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-          require('lspconfig')[server_name].setup(server)
-        end,
-      },
-    }
     local configs = require 'lspconfig.configs'
     local nvim_lsp = require 'lspconfig'
     if not configs.neocmake then
@@ -154,16 +113,49 @@ return {
           -- on_attach = on_attach, -- on_attach is the on_attach function you defined
           init_options = {
             format = {
-              enable = true,
-            },
-            lint = {
               enable = false,
             },
+            lint = {
+              enable = true,
+            },
             scan_cmake_in_package = true, -- default is true
+            enable_external_cmake_lint = true,
           },
         },
       }
-      nvim_lsp.neocmake.setup {}
+      configs.openscad = {
+        default_config = {
+          cmd = { 'openscad-lsp', '--stdio' },
+          filetypes = { 'openscad' },
+          root_dir = function(fname)
+            return vim.fs.dirname(vim.fs.find('.git', { path = fname, upward = true })[1])
+          end,
+          single_file_support = true,
+        },
+        docs = {
+          description = [=[
+https://github.com/Leathong/openscad-LSP
+
+A Language Server Protocol server for OpenSCAD
+
+You can build and install `openscad-lsp` binary with `cargo`:
+```sh
+cargo install openscad-lsp
+```
+]=],
+        },
+      }
+      lspconfig['lua_ls'].setup { capabilities = capabilities }
+      lspconfig['clangd'].setup {
+        capabilities = capabilities,
+        cmd = { 'clangd', '--background-index', '--clang-tidy', '--log=info', '--header-insertion=never' },
+      }
+      lspconfig['pylsp'].setup { capabilities = capabilities }
+      lspconfig['neocmake'].setup { capabilities = capabilities }
+      lspconfig['ts_ls'].setup { capabilities = capabilities }
+      lspconfig['openscad'].setup { capabilities = capabilities }
+      lspconfig['slint_lsp'].setup { capabilities = capabilities }
+      lspconfig['glsl_analyzer'].setup { capabilities = capabilities }
     end
   end,
 }
