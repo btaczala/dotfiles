@@ -48,7 +48,6 @@ vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGai
 })
 
 vim.opt.backupdir = os.getenv('HOME') .. '/.neovim/backup'
-vim.diagnostic.config({ virtual_text = false })
-vim.diagnostic.config({ virtual_lines = { only_current_line = true } })
+vim.diagnostic.config({ virtual_lines = true })
 
 vim.opt.conceallevel = 1

@@ -196,13 +196,13 @@ config.keys = {
 	},
 	{
 		key = "d",
-		mods = "CTRL",
+		mods = "CTRL|SHIFT",
 		-- action = scroll("d"),
 		action = act.ScrollByPage(1),
 	},
 	{
 		key = "u",
-		mods = "CTRL",
+		mods = "CTRL|SHIFT",
 		-- action = scroll("u"),
 		action = act.ScrollByPage(-1),
 	},

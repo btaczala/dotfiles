@@ -1,4 +1,4 @@
 CompileFlags:
-    Add: [-Wall, -Wextra, -Werror, -I/Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk/usr/include/c++/v1]
-    Remove: [-mlongcalls, -fstrict-volatile-bitfields]
-
+  Add: ['-std=c++2c']
+Hover:
+  ShowAKA: No

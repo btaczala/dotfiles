@@ -31,3 +31,4 @@ mediamaster-build*
 target/*
 .stignore
 .stfolder
+.qmlls.ini

@@ -23,49 +23,6 @@ require('lazy').setup(
         require('gitsigns').setup()
       end,
     },
-    {
-      'MunsMan/kitty-navigator.nvim',
-      build = {
-        'cp navigate_kitty.py ~/.config/kitty',
-        'cp pass_keys.py ~/.config/kitty',
-      },
-      opts = {
-        keybindings = {
-          {
-            '<C-j>',
-            function()
-              require('kitty-navigator').navigateLeft()
-            end,
-            desc = 'Move left a Split',
-            mode = { 'n' },
-          },
-          {
-            '<C-k>',
-            function()
-              require('kitty-navigator').navigateDown()
-            end,
-            desc = 'Move down a Split',
-            mode = { 'n' },
-          },
-          {
-            '<C-l>',
-            function()
-              require('kitty-navigator').navigateUp()
-            end,
-            desc = 'Move up a Split',
-            mode = { 'n' },
-          },
-          {
-            '<C-;>',
-            function()
-              require('kitty-navigator').navigateRight()
-            end,
-            desc = 'Move right a Split',
-            mode = { 'n' },
-          },
-        },
-      },
-    },
 
     {
       'tomasky/bookmarks.nvim',
@@ -76,7 +33,7 @@ require('lazy').setup(
       end,
     },
     'tpope/vim-fugitive',
-
+    --
     -- require 'kickstart/plugins/neogit',
     require 'kickstart.plugins.telescope',
     require 'kickstart.plugins.git',
@@ -114,9 +71,8 @@ require('lazy').setup(
         require('generate').setup()
       end,
     },
-
+    --
     require 'kickstart/plugins/which-key',
-    require 'kickstart/plugins/orgmode',
     require 'kickstart/plugins/obsidian',
     require 'kickstart/plugins/lsp-config',
     { -- Autoformat
@@ -159,23 +115,6 @@ require('lazy').setup(
         notify_on_error = true,
       },
     },
-    -- {
-    --   'rachartier/tiny-inline-diagnostic.nvim',
-    --   event = 'VeryLazy', -- Or `LspAttach`
-    --   priority = 1000, -- needs to be loaded in first
-    --   config = function()
-    --     require('tiny-inline-diagnostic').setup {
-    --       preset = 'nonerdfont',
-    --       use_icons_from_diagnostic = true,
-    --     }
-    --   end,
-    -- },
-    {
-      'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
-      config = function()
-        require('lsp_lines').setup {}
-      end,
-    },
     require 'kickstart/plugins/cmake',
     require 'kickstart/plugins/dap',
     require 'kickstart/plugins/cmp',
@@ -216,6 +155,35 @@ require('lazy').setup(
       opts = {
         -- add any options here
       },
+    },
+    {
+      'rebelot/kanagawa.nvim',
+      config = function()
+        require('kanagawa').setup {
+          compile = false, -- enable compiling the colorscheme
+          undercurl = true, -- enable undercurls
+          commentStyle = { italic = true },
+          functionStyle = {},
+          keywordStyle = { italic = true },
+          statementStyle = { bold = true },
+          typeStyle = {},
+          transparent = false, -- do not set background color
+          dimInactive = false, -- dim inactive window `:h hl-NormalNC`
+          terminalColors = true, -- define vim.g.terminal_color_{0,17}
+          colors = { -- add/modify theme and palette colors
+            palette = {},
+            theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
+          },
+          overrides = function(_) -- add/modify highlights
+            return {}
+          end,
+          theme = 'wave', -- Load "wave" theme
+          background = { -- map the value of 'background' option to a theme
+            dark = 'wave', -- try "dragon" !
+            light = 'lotus',
+          },
+        }
+      end,
     },
 
     { -- You can easily change to a different colorscheme.
@@ -275,16 +243,65 @@ require('lazy').setup(
     require 'kickstart/plugins/snippets',
     require 'kickstart/plugins/plantuml',
     {
+      'folke/trouble.nvim',
+      opts = {}, -- for default options, refer to the configuration section for custom setup.
+      cmd = 'Trouble',
+      keys = {
+        {
+          '<leader>qq',
+          '<cmd>Trouble diagnostics toggle<cr>',
+          desc = 'Quickfix List (Trouble)',
+        },
+      },
+    },
+    {
       'mrcjkb/rustaceanvim',
       version = '^5', -- Recommended
       lazy = false, -- This plugin is already lazy
     },
+    { 'RaafatTurki/hex.nvim' },
     require 'kickstart/plugins/openscad',
     {
       'fei6409/log-highlight.nvim',
       config = function()
         require('log-highlight').setup {}
       end,
+    },
+    {
+      'javiorfo/nvim-soil',
+
+      -- Optional for puml syntax highlighting:
+      dependencies = { 'javiorfo/nvim-nyctophilia' },
+
+      lazy = true,
+      ft = 'plantuml',
+      opts = {
+        -- If you want to change default configurations
+
+        -- This option closes the image viewer and reopen the image generated
+        -- When true this offers some kind of online updating (like plantuml web server)
+        actions = {
+          redraw = false,
+        },
+
+        -- If you want to use Plant UML jar version instead of the installed version
+        puml_jar = '/opt/homebrew/Cellar/plantuml/1.2025.2/libexec/plantuml.jar',
+
+        -- If you want to customize the image showed when running this plugin
+        image = {
+          darkmode = false, -- Enable or disable darkmode
+          format = 'png', -- Choose between png or svg
+
+          -- This is a default implementation of using nsxiv to open the resultant image
+          -- Edit the string to use your preferred app to open the image (as if it were a command line)
+          -- Some examples:
+          -- return "feh " .. img
+          -- return "xdg-open " .. img
+          execute_to_open = function(img)
+            return 'open ' .. img
+          end,
+        },
+      },
     },
   },
   ---@diagnostic disable-next-line: missing-fields

@@ -13,6 +13,6 @@
     ~/.vifm/vifmrc: config/vifm/vifmrc
     ~/.config/bat/config: config/bat/config
     ~/.config/wezterm: config/wezterm
-    ~/.tigrc: config/wezterm
     ~/.gitignore: git/gitignore
+    ~/.config/ghostty:  config/ghostty
     ~/Library/Preferences/clangd/config.yaml: clangd/config.yaml

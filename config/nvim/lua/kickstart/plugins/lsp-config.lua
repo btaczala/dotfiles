@@ -23,7 +23,7 @@ end
 return {
   'neovim/nvim-lspconfig',
   dependencies = {
-    'saghen/blink.cmp',
+    -- 'saghen/blink.cmp',
 
     -- Notifications
     { 'j-hui/fidget.nvim', opts = {} },
@@ -145,6 +145,16 @@ cargo install openscad-lsp
 ]=],
         },
       }
+      configs.qmlls = {
+        default_config = {
+          cmd = { 'qmlls', '-l', '/tmp/qmlls.log','-v' },
+          filetypes = { 'qml', 'qmljs' },
+          root_dir = function(fname)
+            return vim.fs.dirname(vim.fs.find('.git', { path = fname, upward = true })[1])
+          end,
+          single_file_support = true,
+        },
+      }
       lspconfig['lua_ls'].setup { capabilities = capabilities }
       lspconfig['clangd'].setup {
         capabilities = capabilities,
@@ -152,6 +162,7 @@ cargo install openscad-lsp
       }
       lspconfig['pylsp'].setup { capabilities = capabilities }
       lspconfig['neocmake'].setup { capabilities = capabilities }
+      lspconfig['qmlls'].setup { capabilities = capabilities }
       lspconfig['ts_ls'].setup { capabilities = capabilities }
       lspconfig['openscad'].setup { capabilities = capabilities }
       lspconfig['slint_lsp'].setup { capabilities = capabilities }

@@ -27,6 +27,28 @@
     ],
     "description": "Code snippet for 'for' loop"
   },
+  "Qt Property Getter Setter": {
+    "prefix": "qtproperty",
+    "body": [
+      "Q_PROPERTY(${2:Type} ${3:propertyName} READ ${3:propertyName} WRITE set${3:propertyName} NOTIFY ${3:propertyName}Changed)",
+      "",
+      "public:",
+      "    ${2:Type} ${3:propertyName}() const { return m_${3:propertyName}; }",
+      "    void set${3:propertyName}(${2:Type} value) {",
+      "        if (m_${3:propertyName} != value) {",
+      "            m_${3:propertyName} = value;",
+      "            emit ${3:propertyName}Changed();",
+      "        }",
+      "    }",
+      "",
+      "signals:",
+      "    void ${3:propertyName}Changed();",
+      "",
+      "private:",
+      "    ${2:Type} m_${3:propertyName};"
+    ],
+    "description": "Creates a Qt property with getter, setter, and signal."
+  },
   "qtmodel": {
     "prefix": "qtmodel",
     "body": [

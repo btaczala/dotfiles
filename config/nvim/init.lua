@@ -6,8 +6,8 @@
 
 if vim.g.vscode then
   local vscode = require 'vscode'
-  vim.keymap.set("", "<Space>", "<Nop>")
-  vim.g.mapleader = " "
+  vim.keymap.set('', '<Space>', '<Nop>')
+  vim.g.mapleader = ' '
   vim.api.nvim_set_keymap('n', 'j', 'h', { noremap = true })
   vim.api.nvim_set_keymap('n', 'k', 'j', { noremap = true })
   vim.api.nvim_set_keymap('n', 'l', 'k', { noremap = true })
@@ -18,14 +18,14 @@ if vim.g.vscode then
   vim.api.nvim_set_keymap('v', 'l', 'k', { noremap = true })
   vim.api.nvim_set_keymap('v', ';', 'l', { noremap = true })
   -- vim.keymap.set('n', '<leader>ff', '<cmd>lua require("vscode").call("editor.action.formatSelection")<cr>')
-  vim.keymap.set('n', '<leader>ff', function ()
-      vscode.call 'workbench.action.quickOpen'
+  vim.keymap.set('n', '<leader>ff', function()
+    vscode.call 'workbench.action.quickOpen'
   end)
-  vim.keymap.set('n', '<leader>ww', function ()
-      vscode.call 'workbench.action.files.save'
+  vim.keymap.set('n', '<leader>ww', function()
+    vscode.call 'workbench.action.'
   end)
-  vim.keymap.set('n', '<leader>jj', function ()
-      vscode.call 'cmake.build'
+  vim.keymap.set('n', '<leader>jj', function()
+    vscode.call 'cmake.build'
   end)
   return
 end
@@ -34,22 +34,6 @@ require 'options'
 require 'lazy-bootstrap'
 require 'plugins'
 require 'keymaps'
-
-local function find_project_root()
-  local patterns = { 'CMakeLists.txt', '.git' } -- Look for CMakeLists.txt or .git as root markers
-  local root = vim.fs.find(patterns, { upward = true, stop = os.getenv 'HOME' })[1]
-  if root then
-    return vim.fs.dirname(root) -- Return the directory containing the root marker
-  end
-end
-
-local function cmake_file_exists()
-  local root_dir = find_project_root()
-  if root_dir then
-    return vim.fs.find('CMakeLists.txt', { path = root_dir })
-  end
-  return false
-end
 
 vim.api.nvim_create_augroup('CppFiles', { clear = true })
 vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
@@ -88,24 +72,4 @@ vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
   command = 'set filetype=slint',
 })
 
-vim.api.nvim_create_autocmd('BufEnter', {
-  callback = function()
-    if cmake_file_exists() then
-      vim.api.nvim_buf_set_keymap(0, 'n', '<leader>jj', '<cmd>CMakeBuild<CR>', { noremap = true, silent = true })
-      vim.api.nvim_buf_set_keymap(0, 'n', '<leader>ja', '<cmd>CMakeOpenExecutor<CR>', { noremap = true, silent = true })
-      vim.api.nvim_buf_set_keymap(0, 'n', '<leader>jc', '<cmd>CMakeGenerate<CR>', { noremap = true, silent = true })
-      vim.api.nvim_buf_set_keymap(0, 'n', '<leader>jr', '<cmd>CMakeRun<CR>', { noremap = true, silent = true })
-      vim.api.nvim_buf_set_keymap(0, 'n', '<leader>jd', '<cmd>CMakeDebug<CR>', { noremap = true, silent = true })
-      vim.api.nvim_buf_set_keymap(0, 'n', '<leader>jo', '<cmd>CMakeOpenRunner<CR>', { noremap = true, silent = true })
-      vim.api.nvim_buf_set_keymap(0, 'n', '<leader>jt', '<cmd>CMakeRunTest<CR>', { noremap = true, silent = true })
-      vim.api.nvim_buf_set_keymap(0, 'n', '<leader>rr', '<cmd>CMakeRun<CR>', { noremap = true, silent = true })
-      vim.api.nvim_buf_set_keymap(0, 'n', '<leader>rd', '<cmd>CMakeDebug<CR>', { noremap = true, silent = true })
-      vim.api.nvim_buf_set_keymap(0, 'n', '<leader>rss', '<cmd>CMakeTargetSetting<CR>', { noremap = true, silent = true })
-      vim.api.nvim_buf_set_keymap(0, 'n', '<leader>rst', '<cmd>CMakeSelectLaunchTarget<CR>', { noremap = true, silent = true })
-      vim.api.nvim_buf_set_keymap(0, 'n', '<leader>rsb', '<cmd>CMakeSelectBuildTarget<CR>', { noremap = true, silent = true })
-    end
-  end,
-})
-
-vim.api.nvim_set_keymap('n', '<leader>ww', ':w!<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>g', ':Git<CR>', { noremap = true })
+require 'cpp'

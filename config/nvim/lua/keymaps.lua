@@ -10,10 +10,21 @@ vim.api.nvim_set_keymap('v', 'k', 'j', { noremap = true })
 vim.api.nvim_set_keymap('v', 'l', 'k', { noremap = true })
 vim.api.nvim_set_keymap('v', ';', 'l', { noremap = true })
 
--- vim.api.nvim_set_keymap('n', '<C-w>h', '<C-w>j', { noremap = true, silent = true })
--- vim.api.nvim_set_keymap('n', '<C-w>j', '<C-w>k', { noremap = true, silent = true })
--- vim.api.nvim_set_keymap('n', '<C-w>k', '<C-w>l', { noremap = true, silent = true })
--- vim.api.nvim_set_keymap('n', '<C-w>l', '<C-w>;', { noremap = true, silent = true })
+local function find_project_root()
+  local patterns = { 'CMakeLists.txt', '.git' } -- Look for CMakeLists.txt or .git as root markers
+  local root = vim.fs.find(patterns, { upward = true, stop = os.getenv 'HOME' })[1]
+  if root then
+    return vim.fs.dirname(root) -- Return the directory containing the root marker
+  end
+end
+
+local function cmake_file_exists()
+  local root_dir = find_project_root()
+  if root_dir then
+    return vim.fs.find('CMakeLists.txt', { path = root_dir })
+  end
+  return false
+end
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -72,12 +83,25 @@ vim.keymap.set('n', '<leader>mX', bm.bookmark_clear_all, { desc = 'Bookmark Clea
 vim.keymap.set('n', '<leader>cP', ':let @* = expand("%:p")<CR>', { noremap = true })
 vim.keymap.set('n', '<leader>cp', ':let @* = expand("%")<CR>', { noremap = true })
 
--- local wk = require 'which-key'
+vim.api.nvim_create_autocmd('BufEnter', {
+  callback = function()
+    if cmake_file_exists() then
+      vim.api.nvim_buf_set_keymap(0, 'n', '<leader>jj', '<cmd>CMakeBuild<CR>', { noremap = true, silent = true })
+      vim.api.nvim_buf_set_keymap(0, 'n', '<leader>ja', '<cmd>CMakeOpenExecutor<CR>', { noremap = true, silent = true })
+      vim.api.nvim_buf_set_keymap(0, 'n', '<leader>jc', '<cmd>CMakeGenerate<CR>', { noremap = true, silent = true })
+      vim.api.nvim_buf_set_keymap(0, 'n', '<leader>jr', '<cmd>CMakeRun<CR>', { noremap = true, silent = true })
+      vim.api.nvim_buf_set_keymap(0, 'n', '<leader>jd', '<cmd>CMakeDebug<CR>', { noremap = true, silent = true })
+      vim.api.nvim_buf_set_keymap(0, 'n', '<leader>jo', '<cmd>CMakeOpenRunner<CR>', { noremap = true, silent = true })
+      vim.api.nvim_buf_set_keymap(0, 'n', '<leader>jt', '<cmd>CMakeRunTest<CR>', { noremap = true, silent = true })
+      vim.api.nvim_buf_set_keymap(0, 'n', '<leader>rr', '<cmd>CMakeRun<CR>', { noremap = true, silent = true })
+      vim.api.nvim_buf_set_keymap(0, 'n', '<leader>rd', '<cmd>CMakeDebug<CR>', { noremap = true, silent = true })
+      vim.api.nvim_buf_set_keymap(0, 'n', '<leader>rss', '<cmd>CMakeTargetSetting<CR>', { noremap = true, silent = true })
+      vim.api.nvim_buf_set_keymap(0, 'n', '<leader>rst', '<cmd>CMakeSelectLaunchTarget<CR>', { noremap = true, silent = true })
+      vim.api.nvim_buf_set_keymap(0, 'n', '<leader>rsb', '<cmd>CMakeSelectBuildTarget<CR>', { noremap = true, silent = true })
+    end
+  end,
+})
 
--- wk.register({
---   ['<C-w>j'] = { '<C-w>h', 'Go to the left window' },
---   ['<C-w>l'] = { '<C-w>k', 'Go to the up window' },
---   ['<C-w>k'] = { '<C-w>j', 'Go to the down window' },
---   ['<C-w>;'] = { '<C-w>l', 'Go to the right window' },
--- }, { mode = 'n' }) -- Normal mode mapping
-
+vim.api.nvim_set_keymap('n', '<leader>ww', ':w!<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>g', ':Neogit<CR>', { noremap = true })
+-- vim.api.nvim_set_keymap('n', '<leader>g', ':Git<CR>', { noremap = true })

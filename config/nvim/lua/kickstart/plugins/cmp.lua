@@ -1,5 +1,6 @@
 return {
   'saghen/blink.cmp',
+  build = 'cargo +nightly build --release',
   -- optional: provides snippets for the snippet source
   dependencies = { 'L3MON4D3/LuaSnip', version = 'v2.*' },
 
@@ -25,9 +26,9 @@ return {
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
       default = { 'lsp', 'path', 'snippets', 'buffer' },
-      cmdline = {},
     },
     signature = { enabled = true },
+    fuzzy = { implementation = 'prefer_rust_with_warning' },
   },
   -- documentation = { auto_show = true, auto_show_delay_ms = 500 },
   opts_extend = { 'sources.default' },
