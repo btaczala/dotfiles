@@ -147,7 +147,7 @@ cargo install openscad-lsp
       }
       configs.qmlls = {
         default_config = {
-          cmd = { 'qmlls', '-l', '/tmp/qmlls.log','-v' },
+          cmd = { 'qmlls', '-l', '/tmp/qmlls.log', '-v' },
           filetypes = { 'qml', 'qmljs' },
           root_dir = function(fname)
             return vim.fs.dirname(vim.fs.find('.git', { path = fname, upward = true })[1])
@@ -160,7 +160,18 @@ cargo install openscad-lsp
         capabilities = capabilities,
         cmd = { 'clangd', '--background-index', '--clang-tidy', '--log=info', '--header-insertion=never' },
       }
-      lspconfig['pylsp'].setup { capabilities = capabilities }
+      lspconfig['pylsp'].setup {
+        capabilities = capabilities,
+        settings = {
+          pylsp = {
+            plugins = {
+              pycodestyle = {
+                maxLineLength = 120,
+              },
+            },
+          },
+        },
+      }
       lspconfig['neocmake'].setup { capabilities = capabilities }
       lspconfig['qmlls'].setup { capabilities = capabilities }
       lspconfig['ts_ls'].setup { capabilities = capabilities }
