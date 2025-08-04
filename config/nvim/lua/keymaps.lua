@@ -80,6 +80,11 @@ vim.keymap.set('n', '<leader>mp', bm.bookmark_next, { desc = 'Bookmark [P]reviou
 vim.keymap.set('n', '<leader>ma', bm.bookmark_ann, { desc = 'Bookmark [A]nnotate' })
 vim.keymap.set('n', '<leader>mX', bm.bookmark_clear_all, { desc = 'Bookmark Clear All' })
 
+-- Folding toggle
+vim.keymap.set('n', '<leader>zt', function()
+  vim.opt_local.foldenable = not vim.opt_local.foldenable:get()
+end, { desc = 'Toggle folding in current buffer' })
+
 vim.keymap.set('n', '<leader>cP', ':let @* = expand("%:p")<CR>', { noremap = true })
 vim.keymap.set('n', '<leader>cp', ':let @* = expand("%")<CR>', { noremap = true })
 
@@ -97,13 +102,26 @@ vim.api.nvim_create_autocmd('BufEnter', {
       vim.api.nvim_buf_set_keymap(0, 'n', '<leader>rd', '<cmd>CMakeDebug<CR>', { noremap = true, silent = true })
       vim.api.nvim_buf_set_keymap(0, 'n', '<leader>rss', '<cmd>CMakeTargetSetting<CR>', { noremap = true, silent = true })
       vim.api.nvim_buf_set_keymap(0, 'n', '<leader>rst', '<cmd>CMakeSelectLaunchTarget<CR>', { noremap = true, silent = true })
+      vim.api.nvim_buf_set_keymap(0, 'n', '<leader>rsp', '<cmd>CMakeSelectBuildPreset<CR>', { noremap = true, silent = true })
       vim.api.nvim_buf_set_keymap(0, 'n', '<leader>rsb', '<cmd>CMakeSelectBuildTarget<CR>', { noremap = true, silent = true })
     end
   end,
 })
+vim.keymap.set("n", "<leader>b", function()
+  local row = vim.api.nvim_win_get_cursor(0)[1]
+  vim.api.nvim_buf_set_lines(0, row - 1, row - 1, false, {"{"})
+  vim.api.nvim_buf_set_lines(0, row + 1, row + 1, false, {"}"})
+
+  -- Optional: move cursor to the original line to preserve position
+  vim.api.nvim_win_set_cursor(0, {row, 0})
+
+  -- Call LSP format (async = true to avoid blocking)
+  vim.lsp.buf.format({ async = true })
+end, { desc = "Wrap current line with {} and format buffer" })
 
 vim.api.nvim_set_keymap('n', '<leader>ww', ':w!<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>g', ':Neogit<CR>', { noremap = true })
 -- vim.api.nvim_set_keymap('n', '<leader>g', ':Git<CR>', { noremap = true })
 -- AI
 vim.keymap.set('n', '<leader>aa', ':CodeCompanionChat toggle<CR>', { desc = 'Toggle Mistral AI' })
+

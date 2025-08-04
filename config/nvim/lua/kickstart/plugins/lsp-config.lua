@@ -100,29 +100,10 @@ return {
     local lspconfig = require 'lspconfig'
 
     local configs = require 'lspconfig.configs'
-    local nvim_lsp = require 'lspconfig'
-    if not configs.neocmake then
-      configs.neocmake = {
-        default_config = {
-          cmd = { 'neocmakelsp', '--stdio' },
-          filetypes = { 'cmake' },
-          root_dir = function(fname)
-            return nvim_lsp.util.find_git_ancestor(fname)
-          end,
-          single_file_support = true, -- suggested
-          -- on_attach = on_attach, -- on_attach is the on_attach function you defined
-          init_options = {
-            format = {
-              enable = false,
-            },
-            lint = {
-              enable = true,
-            },
-            scan_cmake_in_package = true, -- default is true
-            enable_external_cmake_lint = true,
-          },
-        },
-      }
+    vim.lsp.config('neocmake', {
+      single_file_support = true, -- suggested
+    })
+    if not configs.openscad then
       configs.openscad = {
         default_config = {
           cmd = { 'openscad-lsp', '--stdio' },
@@ -158,7 +139,7 @@ cargo install openscad-lsp
       lspconfig['lua_ls'].setup { capabilities = capabilities }
       lspconfig['clangd'].setup {
         capabilities = capabilities,
-        cmd = { 'clangd', '--background-index', '--clang-tidy', '--log=info', '--header-insertion=never' },
+        cmd = { '/opt/homebrew/Cellar/llvm@19/19.1.7/bin/clangd', '--background-index', '--clang-tidy', '--log=info', '--header-insertion=never' },
       }
       lspconfig['pylsp'].setup {
         capabilities = capabilities,

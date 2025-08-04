@@ -35,6 +35,14 @@ vim.o.expandtab = true
 vim.o.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
+-- folds
+-- vim.opt.foldmethod='expr'
+-- vim.opt.foldexpr='nvim_treesitter#foldexpr()'
+-- vim.opt.foldnestmax = 4
+-- vim.opt.foldlevel = 99
+-- vim.opt.foldlevelstart = 1
+
+
 vim.o.spelllang = 'en_us'
 vim.o.spellfile = os.getenv 'HOME' .. '/dotfiles/config/nvim/spell/en.utf-8.add'
 vim.o.inccommand = 'split'

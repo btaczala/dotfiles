@@ -29,7 +29,7 @@ return {
               chat_url = '/v1/chat/completions',
             },
             handlers = {
-              form_parameters = function(self, params, messages)
+              form_parameters = function(_, params, _)
                 -- codestral doesn't support these in the body
                 params.stream_options = nil
                 params.options = nil
