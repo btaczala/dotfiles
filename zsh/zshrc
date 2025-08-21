@@ -109,8 +109,5 @@ if [[ "$TERM" == "xterm-kitty" ]]; then
     fi
 fi
 export ARKAOS_CONAN_PROFILE_NAME=Darwin-AppleClang-14.0-arm64-TYPE-None
-. "$HOME/.cargo/env"
 
-export STM32CubeMX_PATH=/Applications/STMicroelectronics/STM32CubeMX.app/Contents/Resources
 
-export STM32_PRG_PATH=/Applications/STMicroelectronics/STM32Cube/STM32CubeProgrammer/STM32CubeProgrammer.app/Contents/MacOs/bin

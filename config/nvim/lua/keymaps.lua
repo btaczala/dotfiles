@@ -120,8 +120,7 @@ vim.keymap.set("n", "<leader>b", function()
 end, { desc = "Wrap current line with {} and format buffer" })
 
 vim.api.nvim_set_keymap('n', '<leader>ww', ':w!<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>g', ':Neogit<CR>', { noremap = true })
--- vim.api.nvim_set_keymap('n', '<leader>g', ':Git<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>g', ':Git<CR>', { noremap = true })
 -- AI
 vim.keymap.set('n', '<leader>aa', ':CodeCompanionChat toggle<CR>', { desc = 'Toggle Mistral AI' })
 

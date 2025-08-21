@@ -4,7 +4,7 @@ require('lazy').setup(
     -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
     'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
-    { -- Adds git related signs to the gutter, as well as utilities for managing changes
+    {                   -- Adds git related signs to the gutter, as well as utilities for managing changes
       'lewis6991/gitsigns.nvim',
       opts = {
         signs = {
@@ -33,24 +33,7 @@ require('lazy').setup(
       end,
     },
     'tpope/vim-fugitive',
-    --
-    -- require 'kickstart/plugins/neogit',
     require 'kickstart.plugins.telescope',
-    require 'kickstart.plugins.git',
-    -- LSP Plugins
-    {
-      -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
-      -- used for completion, annotations and signatures of Neovim apis
-      'folke/lazydev.nvim',
-      ft = 'lua',
-      opts = {
-        library = {
-          -- Load luvit types when the `vim.uv` word is found
-          { path = 'luvit-meta/library', words = { 'vim%.uv' } },
-        },
-      },
-    },
-    { 'Bilal2453/luvit-meta', lazy = true },
     {
       'norcalli/nvim-colorizer.lua',
       config = function()
@@ -73,7 +56,6 @@ require('lazy').setup(
     },
     --
     require 'kickstart/plugins/which-key',
-    require 'kickstart/plugins/obsidian',
     require 'kickstart/plugins/lsp-config',
     { -- Autoformat
       'stevearc/conform.nvim',
@@ -160,25 +142,25 @@ require('lazy').setup(
       'rebelot/kanagawa.nvim',
       config = function()
         require('kanagawa').setup {
-          compile = false, -- enable compiling the colorscheme
+          compile = false,  -- enable compiling the colorscheme
           undercurl = true, -- enable undercurls
           commentStyle = { italic = true },
           functionStyle = {},
           keywordStyle = { italic = true },
           statementStyle = { bold = true },
           typeStyle = {},
-          transparent = false, -- do not set background color
-          dimInactive = false, -- dim inactive window `:h hl-NormalNC`
+          transparent = false,   -- do not set background color
+          dimInactive = false,   -- dim inactive window `:h hl-NormalNC`
           terminalColors = true, -- define vim.g.terminal_color_{0,17}
-          colors = { -- add/modify theme and palette colors
+          colors = {             -- add/modify theme and palette colors
             palette = {},
             theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
           },
           overrides = function(_) -- add/modify highlights
             return {}
           end,
-          theme = 'wave', -- Load "wave" theme
-          background = { -- map the value of 'background' option to a theme
+          theme = 'wave',  -- Load "wave" theme
+          background = {   -- map the value of 'background' option to a theme
             dark = 'wave', -- try "dragon" !
             light = 'lotus',
           },
@@ -207,7 +189,8 @@ require('lazy').setup(
     -- Highlight todo, notes, etc in comments
     { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
-    { -- Collection of various small independent plugins/modules
+    -- For statusline
+    {
       'echasnovski/mini.nvim',
       config = function()
         require('mini.ai').setup { n_lines = 500 }
@@ -227,7 +210,7 @@ require('lazy').setup(
       build = ':TSUpdate',
       main = 'nvim-treesitter.configs', -- Sets main module to use for opts
       opts = {
-        ensure_installed = { },
+        ensure_installed = {},
         auto_install = true,
         highlight = {
           enable = true,
@@ -239,9 +222,7 @@ require('lazy').setup(
     {
       'mrjones2014/smart-splits.nvim',
     },
-    require 'kickstart/plugins/ai',
     require 'kickstart/plugins/snippets',
-    require 'kickstart/plugins/plantuml',
     {
       'folke/trouble.nvim',
       opts = {}, -- for default options, refer to the configuration section for custom setup.
@@ -254,55 +235,7 @@ require('lazy').setup(
         },
       },
     },
-    {
-      'mrcjkb/rustaceanvim',
-      version = '^5', -- Recommended
-      lazy = false, -- This plugin is already lazy
-    },
-    { 'RaafatTurki/hex.nvim' },
     require 'kickstart/plugins/openscad',
-    {
-      'fei6409/log-highlight.nvim',
-      config = function()
-        require('log-highlight').setup {}
-      end,
-    },
-    {
-      'javiorfo/nvim-soil',
-
-      -- Optional for puml syntax highlighting:
-      dependencies = { 'javiorfo/nvim-nyctophilia' },
-
-      lazy = true,
-      ft = 'plantuml',
-      opts = {
-        -- If you want to change default configurations
-
-        -- This option closes the image viewer and reopen the image generated
-        -- When true this offers some kind of online updating (like plantuml web server)
-        actions = {
-          redraw = false,
-        },
-
-        -- If you want to use Plant UML jar version instead of the installed version
-        puml_jar = '/opt/homebrew/Cellar/plantuml/1.2025.2/libexec/plantuml.jar',
-
-        -- If you want to customize the image showed when running this plugin
-        image = {
-          darkmode = false, -- Enable or disable darkmode
-          format = 'png', -- Choose between png or svg
-
-          -- This is a default implementation of using nsxiv to open the resultant image
-          -- Edit the string to use your preferred app to open the image (as if it were a command line)
-          -- Some examples:
-          -- return "feh " .. img
-          -- return "xdg-open " .. img
-          execute_to_open = function(img)
-            return 'open ' .. img
-          end,
-        },
-      },
-    },
   },
   ---@diagnostic disable-next-line: missing-fields
   {

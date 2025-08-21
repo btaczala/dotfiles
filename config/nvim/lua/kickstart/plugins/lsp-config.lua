@@ -139,7 +139,7 @@ cargo install openscad-lsp
       lspconfig['lua_ls'].setup { capabilities = capabilities }
       lspconfig['clangd'].setup {
         capabilities = capabilities,
-        cmd = { '/opt/homebrew/Cellar/llvm@19/19.1.7/bin/clangd', '--background-index', '--clang-tidy', '--log=info', '--header-insertion=never' },
+        cmd = { '/opt/homebrew/Cellar/llvm/20.1.8/bin/clangd', '--background-index', '--clang-tidy', '--log=info', '--header-insertion=never' },
       }
       lspconfig['pylsp'].setup {
         capabilities = capabilities,
