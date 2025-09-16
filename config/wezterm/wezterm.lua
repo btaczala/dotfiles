@@ -15,12 +15,22 @@ wezterm.on("gui-startup", function(cmd)
 		tab:set_title("dotfiles")
 		mux.set_active_workspace("dotfiles")
 
+		local hostname = wezterm.hostname()
+		local ip = nil
+		if hostname and string.find(hostname, "Bartoszs%-MacBook%-Pro%-3") then
+			ip = "192.168.1.159"
+		elseif hostname and string.find(hostname, "mac%-mini") then
+			ip = "192.168.1.60"
+		end
+
 		local qmk_tab, _, _ =
 			window:spawn_tab({ cwd = wezterm.home_dir .. "/dev/qmk_firmware/keyboards/splitkb/aurora/lily58" })
 		qmk_tab:set_title("qmk")
 
-		local glances_tab, _, _ = window:spawn_tab({ args = { "/opt/homebrew/bin/glances", "-w" ,"-B", "192.168.1.16" } })
-		glances_tab:set_title("glances")
+		if hostname then
+			local glances_tab, _, _ = window:spawn_tab({ args = { "/opt/homebrew/bin/glances", "-w", "-B", ip } })
+			glances_tab:set_title("glances")
+		end
 	end
 
 	do
