@@ -4,6 +4,7 @@ local mux = wezterm.mux
 
 -- sessions
 wezterm.on("gui-startup", function(cmd)
+	local hostname = wezterm.hostname()
 	-- dotfiles
 	do
 		local dotfiles_path = wezterm.home_dir .. "/dotfiles"
@@ -15,7 +16,6 @@ wezterm.on("gui-startup", function(cmd)
 		tab:set_title("dotfiles")
 		mux.set_active_workspace("dotfiles")
 
-		local hostname = wezterm.hostname()
 		local ip = nil
 		if hostname and string.find(hostname, "Bartoszs%-MacBook%-Pro%-3") then
 			ip = "192.168.1.159"
@@ -33,8 +33,8 @@ wezterm.on("gui-startup", function(cmd)
 		end
 	end
 
-	do
-		local tab, pane, mm_window = mux.spawn_window({
+	if hostname and string.find(hostname, "Bartoszs%-MacBook%-Pro%-3") then
+		local tab, pane, _ = mux.spawn_window({
 			workspace = "mediamaster",
 			cwd = wezterm.home_dir .. "/Projects/inmusic/mediamaster",
 		})
