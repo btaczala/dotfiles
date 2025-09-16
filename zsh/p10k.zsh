@@ -59,7 +59,6 @@
   # Right prompt segments.
   typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
     command_execution_time    # previous command duration
-    timewarrior               # timewarrior
     context
     time                      # current time
   )
