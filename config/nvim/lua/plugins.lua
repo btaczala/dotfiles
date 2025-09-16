@@ -4,26 +4,6 @@ require('lazy').setup(
     -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
     'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
-    {                   -- Adds git related signs to the gutter, as well as utilities for managing changes
-      'lewis6991/gitsigns.nvim',
-      opts = {
-        signs = {
-          add = { text = '+' },
-          change = { text = '~' },
-          delete = { text = '_' },
-          topdelete = { text = '‾' },
-          changedelete = { text = '~' },
-        },
-      },
-      config = function()
-        local path = vim.fn.getcwd()
-        if string.sub(path, 1, #'/Users/bartek/Projects/inmusic/mount_windows/') == '/Users/bartek/Projects/inmusic/mount_windows/' then
-          return
-        end
-        require('gitsigns').setup()
-      end,
-    },
-
     {
       'tomasky/bookmarks.nvim',
       event = 'VimEnter',
