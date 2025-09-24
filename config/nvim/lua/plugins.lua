@@ -13,6 +13,7 @@ require('lazy').setup(
       end,
     },
     'tpope/vim-fugitive',
+    require 'kickstart.plugins.git',
     require 'kickstart.plugins.telescope',
     {
       'norcalli/nvim-colorizer.lua',

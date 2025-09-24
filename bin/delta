@@ -1,6 +1,7 @@
 #!/bin/bash
 
-delta_command=$(brew --prefix git-delta)/bin/delta
+
+delta_command=/opt/homebrew/Cellar/git-delta/0.18.2_3/bin/delta
 
 if [[ ! ($(darkMode) =~ 'Dark') ]]; then
 	# shellcheck disable=2068

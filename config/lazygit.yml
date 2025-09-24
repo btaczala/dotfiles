@@ -1,0 +1,21 @@
+keybinding:
+  universal:
+    quit: q
+    quit-alt1: <c-c>
+    return: <esc>
+    togglePanel: tab
+    prevItem: j
+    nextItem: k
+    prevPage: <c-u>
+    nextPage: <c-d>
+    scrollLeft: l
+    scrollRight: ';'
+    # keep h available if you still want help
+    # otherwise remove/overwrite it
+
+    prevBlock-alt: J    # was K
+    nextBlock-alt: K    # was J
+
+    prevBlock-alt2: L   # was H
+    nextBlock-alt2: ':' # was L
+
