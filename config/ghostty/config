@@ -8,6 +8,7 @@ window-theme = "system"
 
 keybind = ctrl+y>h=new_split:down
 keybind = ctrl+y>v=new_split:right
+keybind = ctrl+y>z=toggle_split_zoom
 
 keybind = unconsumed:ctrl+j=goto_split:left
 keybind = unconsumed:ctrl+k=goto_split:bottom
@@ -18,6 +19,8 @@ keybind = ctrl+shift+u=scroll_page_up
 keybind = ctrl+shift+d=scroll_page_down
 keybind = unconsumed:alt+k=resize_split:down,20
 keybind = unconsumed:alt+l=resize_split:up,20
+keybind = unconsumed:alt+j=resize_split:left,20
+keybind = unconsumed:alt+;=resize_split:right,20
 
 keybind = ctrl+y>w=write_scrollback_file:paste
 keybind = ctrl+y>q=toggle_quick_terminal
