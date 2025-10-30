@@ -73,3 +73,4 @@ vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
 })
 
 require 'cpp'
+require 'lsp-config'

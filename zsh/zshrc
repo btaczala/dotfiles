@@ -1,7 +1,6 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-#zmodload zsh/zprof
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
@@ -34,13 +33,13 @@ zinit load agkozak/zsh-z
 
 # #unalias grm
 alias ll='ls -lah'
+alias lg='lazygit'
 alias j=just
 alias icat="kitty +kitten icat"
 alias gco='git checkout'
 alias gc='git commit'
 alias gst='git status'
 alias gb='git branch'
-alias nvimm='NVIM_APPNAME=nvim-minimal nvim'
 
 alias lldb_last='lldb -o "run" -- $(fc -ln -1)'
 
@@ -70,7 +69,7 @@ if [[ "$TERM" == "xterm-ghostty" ]]; then
 fi
 
 fpath=($fpath $HOME/dotfiles/zsh/completion)
-autoload -Uz compinit && compinit
+# autoload -Uz compinit && compinit
 
 function source_if_present() {
     [[ ! -f $1 ]] || source $1
@@ -86,14 +85,14 @@ export LANG=en_US.UTF-8
 export LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
-# PATH=$(brew --prefix llvm)/bin:$PATH
+PATH=$(brew --prefix llvm)/bin:$PATH
 if type brew &>/dev/null
 then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
   autoload -Uz compinit
   compinit
 fi
-
+#
 export CMAKE_EXPORT_COMPILE_COMMANDS=ON
 export CMAKE_C_COMPILER_LAUNCHER=ccache
 export CMAKE_CXX_COMPILER_LAUNCHER=ccache
@@ -109,5 +108,3 @@ if [[ "$TERM" == "xterm-kitty" ]]; then
     fi
 fi
 export ARKAOS_CONAN_PROFILE_NAME=Darwin-AppleClang-14.0-arm64-TYPE-None
-
-
