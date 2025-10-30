@@ -36,7 +36,7 @@ wezterm.on("gui-startup", function(cmd)
 	if hostname and string.find(hostname, "Bartoszs%-MacBook%-Pro%-3") then
 		local tab, pane, _ = mux.spawn_window({
 			workspace = "mediamaster",
-			cwd = wezterm.home_dir .. "/Projects/inmusic/mediamaster",
+			cwd = wezterm.home_dir .. "/Projects/chamsys/mediamaster",
 		})
 		pane:send_text("nvim\n")
 		tab:set_title("mediamaster")
