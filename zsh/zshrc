@@ -108,3 +108,7 @@ if [[ "$TERM" == "xterm-kitty" ]]; then
     fi
 fi
 export ARKAOS_CONAN_PROFILE_NAME=Darwin-AppleClang-14.0-arm64-TYPE-None
+
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
