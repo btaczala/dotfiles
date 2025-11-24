@@ -3,6 +3,7 @@ substitutions:
   friendly_name: "SHYS TX Ultimate"
   relay_count: "1"
   button_brightness: "0"
+  nightlight: "off"
 
 packages:
   smarthomeyourself.tx-ultimate: github://SmartHome-yourself/sonoff-tx-ultimate-for-esphome/tx_ultimate.yaml@main
