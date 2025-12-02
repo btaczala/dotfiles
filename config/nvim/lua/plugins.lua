@@ -37,6 +37,7 @@ require('lazy').setup(
     },
     --
     require 'kickstart/plugins/which-key',
+    require 'kickstart/plugins/ai',
     require 'kickstart/plugins/lsp-config',
     { -- Autoformat
       'stevearc/conform.nvim',
@@ -67,7 +68,7 @@ require('lazy').setup(
         {
           '<leader>lf',
           function()
-            vim.api.nvim_command 'write'
+            vim.api.nvim_command 'write!'
             require('conform').format { async = false, lsp_format = 'fallback' }
           end,
           mode = '',

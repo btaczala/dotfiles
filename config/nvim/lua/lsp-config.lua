@@ -96,14 +96,7 @@ vim.lsp.config('neocmake', {
 vim.lsp.config('neocmake', {})
 vim.lsp.config('qmlls', {
   capabilities = capabilities,
-  settings = {
-    cmd = { 'qmlls', '-l', '/tmp/qmlls.log', '-v' },
-    filetypes = { 'qml', 'qmljs' },
-    root_dir = function(fname)
-      return vim.fs.dirname(vim.fs.find('.git', { path = fname, upward = true })[1])
-    end,
-    single_file_support = true,
-  },
+  cmd = { '/Users/bartek/Qt/6.10.1/macos/bin/qmllint' },
 })
 -- vim.lsp.config('ts_ls', { capabilities = capabilities })
 -- vim.lsp.config('openscad', { capabilities = capabilities })
@@ -150,5 +143,19 @@ vim.lsp.config(
   'clangd',
   { capabilities = capabilities, cmd = { '/opt/homebrew/opt/llvm/bin/clangd', '--background-index', '--clang-tidy', '--log=info', '--header-insertion=never' } }
 )
+vim.lsp.config('pylsp', {
+  settings = {
+    pylsp = {
+      plugins = {
+        pycodestyle = {
+          ignore = { 'W391', 'E251' },
+          maxLineLength = 120,
+        },
+      },
+    },
+  },
+})
 vim.lsp.enable 'lua_ls'
 vim.lsp.enable 'clangd'
+vim.lsp.enable 'pylsp'
+vim.lsp.enable 'qmlls'
