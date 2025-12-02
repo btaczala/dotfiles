@@ -1,0 +1,34 @@
+keybinding:
+  universal:
+    quit: q
+    quit-alt1: <c-c>
+    return: <esc>
+    prevItem-alt: l
+    nextItem-alt: k
+    prevPage: <c-u>
+    nextPage: <c-d>
+    scrollLeft: j
+    scrollRight: ';'
+#     # keep h available if you still want help
+#     # otherwise remove/overwrite it
+#
+    prevBlock-alt: J # was K
+    nextBlock-alt: K # was J
+customCommands:
+  - key: "G"
+    command: "glab mr create -a danielj --reviewer danielj --reviewer mihnea_ChamSys"
+    context: "localBranches"
+    description: "Create pull request using glab"
+    output: log
+  - key: b
+    command: tig blame -- {{.SelectedFile.Name}}
+    context: files
+    description: blame file at tree
+  - key: b
+    command: tig blame {{.SelectedSubCommit.Sha}} -- {{.SelectedCommitFile.Name}}
+    context: commitFiles
+    description: blame file at revision
+  - key: B
+    command: tig blame -- {{.SelectedCommitFile.Name}}
+    context: commitFiles
+    description: blame file at tree

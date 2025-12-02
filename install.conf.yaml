@@ -16,5 +16,8 @@
     ~/.gitignore: git/gitignore
     ~/.config/ghostty:  config/ghostty
     ~/.tigrc:  config/tigrc
-    ~/.config/lazygit/config.yml:  config/lazygit.yml
+    ~/.config/lazygit/config.yml:  config/lazygit/config.yml
     ~/Library/Preferences/clangd/config.yaml: clangd/config.yaml
+    ~/Library/Application Support/lazygit/config.yml:
+        if: '[ `uname` = Darwin ]'
+        path: config/lazygit/config.yml
