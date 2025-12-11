@@ -32,3 +32,4 @@ target/*
 .stignore
 .stfolder
 .qmlls.ini
+.neoconf.json

@@ -1,4 +1,5 @@
 ---@diagnostic disable: missing-fields
+
 local function switch_header_source_in_split()
   -- Save the current window ID
   local current_window = vim.api.nvim_get_current_win()
@@ -86,6 +87,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
+local neoconf = require 'neoconf'
+neoconf.setup {
+  -- override any of the default settings here
+}
+
 -- Servers
 local capabilities = require('blink.cmp').get_lsp_capabilities()
 vim.lsp.config('neocmake', {
@@ -96,7 +102,12 @@ vim.lsp.config('neocmake', {
 vim.lsp.config('neocmake', {})
 vim.lsp.config('qmlls', {
   capabilities = capabilities,
-  cmd = { '/Users/bartek/Qt/6.10.1/macos/bin/qmllint' },
+  cmd = {
+    'qmlls',
+    '-v',
+    '-l',
+    '/tmp/qmlls.log',
+  },
 })
 -- vim.lsp.config('ts_ls', { capabilities = capabilities })
 -- vim.lsp.config('openscad', { capabilities = capabilities })
@@ -155,6 +166,7 @@ vim.lsp.config('pylsp', {
     },
   },
 })
+
 vim.lsp.enable 'lua_ls'
 vim.lsp.enable 'clangd'
 vim.lsp.enable 'pylsp'

@@ -16,10 +16,15 @@ keybinding:
     nextBlock-alt: K # was J
 customCommands:
   - key: "G"
-    command: "glab mr create -a danielj --reviewer danielj --reviewer mihnea_ChamSys"
+    prompts:
+    - type: 'input'
+      title: 'What is mr title?'
+      key: 'MrTitle'
+      initialValue: ''
+    command: "glab mr create -a danielj --reviewer danielj --reviewer mihnea_ChamSys -t '{{.Form.MrTitle}}' -y"
     context: "localBranches"
     description: "Create pull request using glab"
-    output: log
+    output: terminal
   - key: b
     command: tig blame -- {{.SelectedFile.Name}}
     context: files
