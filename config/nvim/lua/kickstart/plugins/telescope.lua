@@ -49,6 +49,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
     pcall(require('telescope').load_extension, 'jsonfly')
     pcall(require('telescope').load_extension 'bookmarks')
     pcall(require('telescope').load_extension 'ripgrep')
+    pcall(require('telescope').load_extension 'remote-sshfs')
 
     -- See `:help telescope.builtin`
     local builtin = require 'telescope.builtin'

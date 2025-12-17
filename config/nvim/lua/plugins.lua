@@ -83,6 +83,7 @@ require('lazy').setup(
     require 'kickstart/plugins/cmake',
     require 'kickstart/plugins/dap',
     require 'kickstart/plugins/cmp',
+    require 'kickstart/plugins/sshfs',
     {
       'p00f/clangd_extensions.nvim',
       ft = { 'c', 'cpp' },
