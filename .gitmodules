@@ -10,3 +10,6 @@
 [submodule "config/nvim-minimal"]
 	path = config/nvim-minimal
 	url = git@github.com:btaczala/kickstart.nvim.git
+[submodule "dotbot-brewfile"]
+	path = dotbot-brewfile
+	url = https://github.com/sobolevn/dotbot-brewfile.git
