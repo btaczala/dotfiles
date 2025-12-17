@@ -5,20 +5,22 @@ brew "cmake"
 brew "neovim"
 brew "cppman"
 brew "shfmt"
+brew "ripgrep"
+brew "fd"
+brew "bat"
 brew "lua-language-server"
+brew "eza"
 cask "kitty"
 
 # dev fonts
-tap "homebrew/cask-fonts"
 cask "font-iosevka"
 cask "font-fira-code"
 
-# sport
-cask "trainerroad"
-
 # utils
-cask "signal"
 cask "whatsapp"
 cask "wezterm"
 cask "kitty"
 cask "temurin"
+
+cask "macos-fuse-t/homebrew-cask/fuse-t"
+cask "macos-fuse-t/homebrew-cask/fuse-t-sshfs"

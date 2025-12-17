@@ -2,7 +2,13 @@
     link:
       relink: true
       create: true
+    brewfile:
+        stdout: false
+        stderr: true
 - clean: ['~']
+
+- brewfile:
+      file: installers/macos/Brewfile
 
 - link:
     ~/.zshrc: zsh/zshrc
@@ -21,3 +27,6 @@
     ~/Library/Application Support/lazygit/config.yml:
         if: '[ `uname` = Darwin ]'
         path: config/lazygit/config.yml
+    ~/Library/LaunchAgents/com.bartek.glances.plist:
+        if: '[ `uname` = Darwin ]'
+        path: config/launchd/glances.xml
