@@ -33,3 +33,4 @@ target/*
 .stfolder
 .qmlls.ini
 .neoconf.json
+*.wks
