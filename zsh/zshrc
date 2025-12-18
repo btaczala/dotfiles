@@ -27,21 +27,7 @@ zinit light unixorn/fzf-zsh-plugin
 zinit light MichaelAquilina/zsh-auto-notify
 
 zinit load agkozak/zsh-z
-
-
 ### End of Zinit's installer chunk
-
-# #unalias grm
-alias ll='ls -lah'
-alias lg='lazygit'
-alias j=just
-alias icat="kitty +kitten icat"
-alias gco='git checkout'
-alias gc='git commit'
-alias gst='git status'
-alias gb='git branch'
-
-alias lldb_last='lldb -o "run" -- $(fc -ln -1)'
 
 export EDITOR=nvim
 export BROWSER=firefox
@@ -109,8 +95,8 @@ if [[ "$TERM" == "xterm-kitty" ]]; then
         kitty @ set-colors --all --configured "$HOME/dotfiles/config/kitty/light.conf"
     fi
 fi
-export ARKAOS_CONAN_PROFILE_NAME=Darwin-AppleClang-14.0-arm64-TYPE-None
-
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv &> /dev/null; then
 eval "$(pyenv init - zsh)"
+fi
