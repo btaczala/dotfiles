@@ -3,12 +3,12 @@ local act = wezterm.action
 local mux = wezterm.mux
 
 -- sessions
-wezterm.on("gui-startup", function(cmd)
+wezterm.on("gui-startup", function(_)
 	local hostname = wezterm.hostname()
 	-- dotfiles
 	do
 		local dotfiles_path = wezterm.home_dir .. "/dotfiles"
-		local tab, build_pane, window = mux.spawn_window({
+		local tab, build_pane, _ = mux.spawn_window({
 			workspace = "dotfiles",
 			cwd = dotfiles_path,
 		})
@@ -240,6 +240,37 @@ config.keys = {
 		key = "d",
 		mods = "LEADER",
 		action = wezterm.action.ShowDebugOverlay,
+	},
+	{
+		key = "g",
+		mods = "LEADER",
+		action = wezterm.action_callback(function(window, pane)
+			-- Create a new pane and split it horizontally
+			local new_pane = pane:split({
+				direction = "Right",
+				size = 0.5,
+			})
+
+			-- Maximize the new pane
+			new_pane:activate()
+			window:perform_action(wezterm.action.TogglePaneZoomState, new_pane)
+
+			-- Run lazygit in the new pane
+			new_pane:send_text("lazygit\n")
+
+			-- Wait for lazygit to finish and then close the pane
+			local function check_lazygit()
+				local process_name = new_pane:get_foreground_process_name()
+				wezterm.log_info("checking name " .. process_name)
+				if process_name and not string.find(process_name, "lazygit") then
+					window:perform_action(wezterm.action.CloseCurrentPane({ confirm = false }), new_pane)
+				else
+					wezterm.time.call_after(1, check_lazygit)
+				end
+			end
+
+			wezterm.time.call_after(1, check_lazygit)
+		end),
 	},
 	{
 		key = "Space",
