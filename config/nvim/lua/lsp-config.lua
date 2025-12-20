@@ -152,7 +152,7 @@ vim.lsp.config('lua_ls', {
 -- vim.lsp.config('glsl_analyzer', { capabilities = capabilities })
 vim.lsp.config(
   'clangd',
-  { capabilities = capabilities, cmd = { '/opt/homebrew/opt/llvm/bin/clangd', '--background-index', '--clang-tidy', '--log=info', '--header-insertion=never' } }
+  { capabilities = capabilities, cmd = { '/opt/homebrew/opt/llvm/bin/clangd', '--background-index', '--clang-tidy', '--log=error', '--header-insertion=never' } }
 )
 vim.lsp.config('pylsp', {
   settings = {
@@ -166,6 +166,7 @@ vim.lsp.config('pylsp', {
     },
   },
 })
+
 
 vim.lsp.enable 'lua_ls'
 vim.lsp.enable 'clangd'
