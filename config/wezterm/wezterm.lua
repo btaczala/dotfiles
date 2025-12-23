@@ -222,13 +222,13 @@ config.keys = {
 		action = wezterm.action.ActivateCopyMode,
 	},
 	{
-		key = "w",
-		mods = "CMD",
+		key = "q",
+		mods = "LEADER",
 		action = wezterm.action.CloseCurrentPane({ confirm = true }),
 	},
 	{
-		key = "w",
-		mods = "CMD|SHIFT",
+		key = "Q",
+		mods = "LEADER",
 		action = wezterm.action.CloseCurrentTab({ confirm = true }),
 	},
 	{
