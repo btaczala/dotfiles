@@ -59,3 +59,4 @@ vim.opt.backupdir = os.getenv('HOME') .. '/.neovim/backup'
 vim.diagnostic.config({ virtual_lines = true })
 
 vim.opt.conceallevel = 1
+vim.opt.winborder = "rounded"

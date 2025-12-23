@@ -107,20 +107,19 @@ vim.api.nvim_create_autocmd('BufEnter', {
     end
   end,
 })
-vim.keymap.set("n", "<leader>b", function()
+vim.keymap.set('n', '<leader>b', function()
   local row = vim.api.nvim_win_get_cursor(0)[1]
-  vim.api.nvim_buf_set_lines(0, row - 1, row - 1, false, {"{"})
-  vim.api.nvim_buf_set_lines(0, row + 1, row + 1, false, {"}"})
+  vim.api.nvim_buf_set_lines(0, row - 1, row - 1, false, { '{' })
+  vim.api.nvim_buf_set_lines(0, row + 1, row + 1, false, { '}' })
 
   -- Optional: move cursor to the original line to preserve position
-  vim.api.nvim_win_set_cursor(0, {row, 0})
+  vim.api.nvim_win_set_cursor(0, { row, 0 })
 
   -- Call LSP format (async = true to avoid blocking)
-  vim.lsp.buf.format({ async = true })
-end, { desc = "Wrap current line with {} and format buffer" })
+  vim.lsp.buf.format { async = true }
+end, { desc = 'Wrap current line with {} and format buffer' })
 
 vim.api.nvim_set_keymap('n', '<leader>ww', ':w!<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>g', ':Git<CR>', { noremap = true })
 -- AI
 vim.keymap.set('n', '<leader>aa', ':CodeCompanionChat toggle<CR>', { desc = 'Toggle Mistral AI' })
-
