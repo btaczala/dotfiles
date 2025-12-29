@@ -1,5 +1,25 @@
 ---@diagnostic disable: missing-fields
 
+local function goto_definition_in_split()
+  -- Save the current window ID
+  local current_window = vim.api.nvim_get_current_win()
+
+  -- Create a new vertical split
+  vim.cmd 'vsplit'
+
+  -- Save the ID of the new split window
+  local new_window = vim.api.nvim_get_current_win()
+
+  -- Switch back to the original window and go to definition
+  vim.api.nvim_set_current_win(current_window)
+  vim.lsp.buf.definition()
+
+  -- Move the corresponding file to the new split
+  local new_file = vim.api.nvim_buf_get_name(0)
+  vim.api.nvim_set_current_win(new_window)
+  vim.cmd('edit ' .. new_file)
+end
+
 local function switch_header_source_in_split()
   -- Save the current window ID
   local current_window = vim.api.nvim_get_current_win()
@@ -45,6 +65,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     map('<leader>ld', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
     map('<leader>lh', '<cmd>ClangdSwitchSourceHeader<CR>', '[G]oto [H]eader')
     map('<leader>lH', switch_header_source_in_split, '[G]oto [H]eader in new split')
+    map('<leader>lz', goto_definition_in_split, '[G]oto [D]efinition in new split')
 
     -- The following two autocommands are used to highlight references of the
     -- word under your cursor when your cursor rests there for a little while.
@@ -150,10 +171,10 @@ vim.lsp.config('lua_ls', {
 })
 -- vim.lsp.config('slint_lsp', { capabilities = capabilities })
 -- vim.lsp.config('glsl_analyzer', { capabilities = capabilities })
-vim.lsp.config(
-  'clangd',
-  { capabilities = capabilities, cmd = { '/opt/homebrew/opt/llvm/bin/clangd', '--background-index', '--clang-tidy', '--log=error', '--header-insertion=never' } }
-)
+vim.lsp.config('clangd', {
+  capabilities = capabilities,
+  cmd = { '/opt/homebrew/opt/llvm/bin/clangd', '--background-index', '--clang-tidy', '--log=error', '--header-insertion=never' },
+})
 vim.lsp.config('pylsp', {
   settings = {
     pylsp = {
