@@ -10,6 +10,7 @@ brew "fd"
 brew "bat"
 brew "lua-language-server"
 brew "eza"
+brew "zls"
 cask "kitty"
 
 # dev fonts

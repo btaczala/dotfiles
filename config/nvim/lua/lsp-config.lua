@@ -166,9 +166,19 @@ vim.lsp.config('pylsp', {
     },
   },
 })
-
+vim.lsp.config('zls', {
+  capabilities = capabilities,
+  cmd = { 'zls' },
+  settings = {
+    zls = {
+      enable_inlay_hints = true,
+      enable_snippets = true,
+    },
+  },
+})
 
 vim.lsp.enable 'lua_ls'
 vim.lsp.enable 'clangd'
 vim.lsp.enable 'pylsp'
 vim.lsp.enable 'qmlls'
+vim.lsp.enable 'zls'
