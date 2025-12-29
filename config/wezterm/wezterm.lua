@@ -299,6 +299,11 @@ config.keys = {
 		mods = "CTRL",
 		action = wezterm.action.DisableDefaultAssignment,
 	},
+	{
+		key = "w",
+		mods = "CMD",
+		action = wezterm.action.DisableDefaultAssignment,
+	},
 }
 config.key_tables = {
 	copy_mode = {
