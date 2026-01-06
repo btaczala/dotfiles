@@ -222,12 +222,12 @@ config.keys = {
 		action = wezterm.action.ActivateCopyMode,
 	},
 	{
-		key = "q",
+		key = "w",
 		mods = "LEADER",
 		action = wezterm.action.CloseCurrentPane({ confirm = true }),
 	},
 	{
-		key = "Q",
+		key = "W",
 		mods = "LEADER",
 		action = wezterm.action.CloseCurrentTab({ confirm = true }),
 	},
@@ -278,7 +278,7 @@ config.keys = {
 		action = wezterm.action.RotatePanes("CounterClockwise"),
 	},
 	{
-		key = "w",
+		key = "y",
 		mods = "LEADER",
 		action = wezterm.action.ShowLauncherArgs({
 			flags = "FUZZY|WORKSPACES",
