@@ -10,7 +10,7 @@ return {
       cmake_generate_options = { '-DCMAKE_EXPORT_COMPILE_COMMANDS=1' },
       cmake_soft_link_compile_commands = true,
       cmake_kits_path = nil, -- this is used to specify global cmake kits path, see CMakeKits for detailed usage
-      cmake_build_directory = "build",
+      cmake_build_directory = 'build',
       cmake_regenerate_on_save = false,
       cmake_variants_message = {
         short = { show = true }, -- whether to show short message
@@ -39,6 +39,19 @@ return {
       cmake_virtual_text_support = true,
       cmake_runner = {
         name = 'overseer',
+        default_opts = {
+          overseer = {
+            new_task_opts = {
+              strategy = {
+                'jobstart',
+                use_terminal = false,
+                perserve_output = false,
+              },
+            },
+            -- if you don't want the overseer task list to open overwritting this
+            -- function helps. Otherwise just remove this section
+          },
+        },
       },
     }
   end,

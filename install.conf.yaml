@@ -27,6 +27,9 @@
     ~/Library/Application Support/lazygit/config.yml:
         if: '[ `uname` = Darwin ]'
         path: config/lazygit/config.yml
+    ~/Library/Application Support/neocmakelsp/config.toml:
+        if: '[ `uname` = Darwin ]'
+        path: config/neocmakelsp/config.toml
     ~/Library/LaunchAgents/com.bartek.glances.plist:
         if: '[ `uname` = Darwin ]'
         path: config/launchd/glances.xml

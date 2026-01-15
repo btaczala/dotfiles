@@ -1,66 +1,42 @@
-local ts = vim.treesitter
-local ts_utils = require 'nvim-treesitter.ts_utils'
+-- Function to wrap visual selection with #ifdef and #endif
+local function wrap_with_ifdef()
+  -- Get the visual selection range
+  local start_pos = vim.fn.getpos "'<"
+  local end_pos = vim.fn.getpos "'>"
 
-local function add_function_implementation()
-  -- Get the current buffer and cursor position
-  local bufnr = vim.api.nvim_get_current_buf()
-  local cursor = vim.api.nvim_win_get_cursor(0)
-  local row, col = cursor[1] - 1, cursor[2]
+  local start_line = start_pos[2]
+  local end_line = end_pos[2]
 
-  -- Get the parser and parse the buffer
-  local parser = ts.get_parser(bufnr, 'cpp')
-  local tree = parser:parse()[1]
-  local root = tree:root()
+  -- Prompt user for the condition name
+  local condition = vim.fn.input 'Enter #ifdef condition: '
 
-  -- Tree-sitter query to match function declarations
-  local query = [[
-    (function_definition
-      declarator: (function_declarator
-        declarator: (identifier) @name
-        parameters: (parameter_list) @params
-      )
-    ) @function
-  ]]
-
-  local parsed_query = vim.treesitter.query.parse('cpp', query)
-
-  -- Find the function declaration at the cursor position
-  local function_node = nil
-  for _, match, _ in parsed_query:iter_matches(root, bufnr) do
-    local node = match[2]
-    if node then
-      local start_row, start_col = node:start()
-      local end_row, end_col = node:end_()
-      if start_row <= row and row <= end_row and start_col <= col and col <= end_col then
-        function_node = node
-        break
-      end
-    else
-      print('Node is nil for match:', vim.inspect(match))
-    end
-    -- if start_row <= row and row <= end_row and start_col <= col and col <= end_col then
-    --   function_node = node
-    --   break
-    -- end
-  end
-
-  if not function_node then
-    print 'No function declaration found at the cursor position.'
+  -- If user cancels or enters nothing, abort
+  if condition == '' then
+    print '\nOperation cancelled'
     return
   end
 
-  -- Extract function name and parameters
-  local name_node = function_node:named_child(1)
-  local params_node = function_node:named_child(2)
-  local function_name = ts_utils.get_node_text(name_node, bufnr)
-  local params_text = ts_utils.get_node_text(params_node, bufnr)
+  -- Get the current buffer
+  local bufnr = vim.api.nvim_get_current_buf()
 
-  -- Generate the function implementation
-  local implementation = string.format('\n%s %s {\n  // TODO: Implement function\n}\n', function_name, params_text)
+  -- Insert #endif after the selection (do this first to preserve line numbers)
+  vim.api.nvim_buf_set_lines(bufnr, end_line, end_line, false, { '#endif // ' .. condition })
 
-  -- Insert the function implementation below the current line
-  vim.api.nvim_buf_set_lines(bufnr, row + 1, row + 1, false, vim.split(implementation, '\n'))
+  -- Insert #ifdef before the selection
+  vim.api.nvim_buf_set_lines(bufnr, start_line - 1, start_line - 1, false, { '#ifdef ' .. condition })
+
+  print('\nWrapped with #ifdef ' .. condition)
 end
 
--- Create a Neovim command for easy execution
-vim.api.nvim_create_user_command('AddFunctionImplementation', add_function_implementation, {})
+-- Create a command to call the function
+vim.api.nvim_create_user_command('WrapIfdef', wrap_with_ifdef, { range = true })
+
+-- Optional: Create a visual mode mapping
+-- Uncomment the line below if you want <leader>if to trigger it in visual mode
+-- vim.keymap.set('v', '<leader>if', ':WrapIfdef<CR>', { noremap = true, silent = true })
+
+print 'ifdef_wrapper.lua loaded! Use :WrapIfdef in visual mode or map it to a key'
+
+return {
+  wrap_with_ifdef = wrap_with_ifdef,
+}

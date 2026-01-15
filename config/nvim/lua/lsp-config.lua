@@ -22,7 +22,7 @@ end
 
 local function switch_header_source_in_split()
   -- Save the current window ID
-  local current_window = vim.api.nvim_get_current_win()
+  -- local current_window = vim.api.nvim_get_current_win()
 
   -- Create a new vertical split
   vim.cmd 'vsplit'
@@ -31,7 +31,7 @@ local function switch_header_source_in_split()
   local new_window = vim.api.nvim_get_current_win()
 
   -- Switch back to the original window and run ClangSwitchHeaderSource
-  vim.api.nvim_set_current_win(current_window)
+  -- vim.api.nvim_set_current_win(current_window)
   vim.cmd 'ClangdSwitchSourceHeader'
   --
   -- -- Move the corresponding file to the new split
@@ -118,9 +118,14 @@ local capabilities = require('blink.cmp').get_lsp_capabilities()
 vim.lsp.config('neocmake', {
   capabilities = capabilities,
   single_file_support = true, -- suggested
+  semantic_token = false,
+  enable_external_cmake_lint = false,
+  lint = {
+    enable = false,
+  },
+  format = { enable = false },
 })
 
-vim.lsp.config('neocmake', {})
 vim.lsp.config('qmlls', {
   capabilities = capabilities,
   cmd = {
@@ -203,3 +208,4 @@ vim.lsp.enable 'clangd'
 vim.lsp.enable 'pylsp'
 vim.lsp.enable 'qmlls'
 vim.lsp.enable 'zls'
+vim.lsp.enable 'neocmake'
