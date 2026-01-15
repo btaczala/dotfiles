@@ -14,3 +14,6 @@ alias lldb_last='lldb -o "run" -- $(fc -ln -1)'
 alias cat='bat'
 
 #
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  alias fd=fdfind
+fi

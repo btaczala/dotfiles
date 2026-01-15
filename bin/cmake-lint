@@ -1,5 +1,0 @@
-#!/bin/bash
-cmake_lint_command=$(fd '^cmake-lint$' -t x --type symlink /opt/homebrew/bin/)
-
-$cmake_lint_command -c ~/.cmakelint.yaml $@
-

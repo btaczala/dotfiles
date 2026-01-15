@@ -70,13 +70,15 @@ source_if_present /usr/local/Cellar/fzf/0.27.2/shell/key-bindings.zsh
 export LANG=en_US.UTF-8
 export LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
-PATH=$(brew --prefix llvm)/bin:$PATH
-if type brew &>/dev/null
-then
-  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-  autoload -Uz compinit
-  compinit
+if [[ "$(uname)" == "Darwin" ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+    PATH=$(brew --prefix llvm)/bin:$PATH
+    if type brew &>/dev/null
+    then
+      FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+      autoload -Uz compinit
+      compinit
+    fi
 fi
 #
 export CMAKE_EXPORT_COMPILE_COMMANDS=ON

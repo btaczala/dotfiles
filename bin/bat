@@ -1,5 +1,14 @@
 #!/bin/bash
 
-bat_command=$(fd '^bat$' -t x --type symlink /opt/homebrew/Cellar/)
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  bat_command=$(fdfind '^batcat$' -t x --type symlink /usr)
+else
+  bat_command=$(fd '^bat$' -t x --type symlink /opt/homebrew/Cellar/)
+fi
+
+if [[ -z "$bat_command" ]]; then
+  echo "Error: bat_command not found" >&2
+  exit 1
+fi
 
 $bat_command --theme=$(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo default || echo GitHub) $@
