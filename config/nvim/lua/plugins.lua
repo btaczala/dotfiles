@@ -17,7 +17,7 @@ require('lazy').setup(
     require 'kickstart.plugins.git',
     require 'kickstart.plugins.telescope',
     {
-      'norcalli/nvim-colorizer.lua',
+      'catgoose/nvim-colorizer.lua',
       config = function()
         require('colorizer').setup {}
       end,
@@ -192,16 +192,13 @@ require('lazy').setup(
     {
       'nvim-treesitter/nvim-treesitter',
       build = ':TSUpdate',
-      main = 'nvim-treesitter.configs', -- Sets main module to use for opts
-      opts = {
-        ensure_installed = {},
-        auto_install = true,
-        highlight = {
-          enable = true,
-          additional_vim_regex_highlighting = { 'ruby' },
-        },
-        indent = { enable = true, disable = { 'ruby' } },
-      },
+      branch = 'main',
+      config = function()
+        require('nvim-treesitter').setup {
+          ensure_installed = {},
+          auto_install = true,
+        }
+      end,
     },
     {
       'mrjones2014/smart-splits.nvim',

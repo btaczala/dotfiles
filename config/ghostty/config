@@ -24,3 +24,6 @@ keybind = unconsumed:alt+;=resize_split:right,20
 
 keybind = ctrl+y>w=write_scrollback_file:paste
 keybind = ctrl+y>q=toggle_quick_terminal
+
+shell-integration-features = ssh-terminfo
+shell-integration-features = ssh-env

@@ -82,8 +82,8 @@ if [[ "$(uname)" == "Darwin" ]]; then
 fi
 #
 export CMAKE_EXPORT_COMPILE_COMMANDS=ON
-export CMAKE_C_COMPILER_LAUNCHER=ccache
-export CMAKE_CXX_COMPILER_LAUNCHER=ccache
+export CMAKE_C_COMPILER_LAUNCHER=sccache
+export CMAKE_CXX_COMPILER_LAUNCHER=sccache
 export CMAKE_GENERATOR="Ninja Multi-Config"
 export HOMEBREW_NO_ENV_HINTS
 export PATH=$HOME/.local/bin/:$HOME/dotfiles/bin:/usr/local/bin:$HOME/.cargo/bin/:$PATH
@@ -102,3 +102,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 if command -v pyenv &> /dev/null; then
 eval "$(pyenv init - zsh)"
 fi
+
+export STM32_PRG_PATH=/Applications/STMicroelectronics/STM32Cube/STM32CubeProgrammer/STM32CubeProgrammer.app/Contents/MacOs/bin
+export PATH=$PATH:/opt/ST/STM32CubeCLT_1.19.0/GNU-tools-for-STM32/bin/
+export STM32CubeMX_PATH=/Applications/STMicroelectronics/STM32CubeMX.app/Contents/Resources
