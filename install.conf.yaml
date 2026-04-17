@@ -16,6 +16,7 @@
     ~/.gitconfig: git/gitconfig
     ~/.gdbinit: gdbinit
     ~/.config/nvim: config/nvim
+    ~/.config/nvim-mini: config/nvim-mini
     ~/.vifm/vifmrc: config/vifm/vifmrc
     ~/.config/bat/config: config/bat/config
     ~/.config/wezterm: config/wezterm
