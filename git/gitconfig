@@ -27,7 +27,13 @@
     added = difftool --cached
     fbr = fzf-branch
     rups = "!f() { git fetch; git reset --hard origin/$(git rev-parse --abbrev-ref HEAD); }; f"
-    sync = "!f() { git fetch origin main && git rebase origin/main && git push --force-with-lease; }; f"
+    s = "!f() { git fetch origin main && git rebase origin/main && git push --force-with-lease; }; f"
+	next = stack next
+	prev = stack previous
+	reword = stack reword
+	amend = stack amend
+	run = stack run
+	sync = stack sync
 [push]
     default = simple
 [cola]
