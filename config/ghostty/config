@@ -2,7 +2,8 @@ font-family = "Hack Nerd Font Mono Regular"
 theme = "light:Tokyonight Day,dark:Tokyonight"
 macos-titlebar-style = "tabs"
 
-unfocused-split-opacity = 0.92
+unfocused-split-opacity = 0.8
+fnfocused-split-fill = #000000
 
 window-theme = "system"
 
