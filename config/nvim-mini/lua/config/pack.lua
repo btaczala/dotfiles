@@ -1,7 +1,7 @@
 vim.pack.add({
   'https://github.com/folke/tokyonight.nvim',
   'https://github.com/folke/which-key.nvim',
-  'https://github.com/saghen/blink.cmp',
+  { url = 'https://github.com/saghen/blink.cmp', version = 'v1' },
   'https://github.com/f-person/auto-dark-mode.nvim',
   'https://github.com/nvim-treesitter/nvim-treesitter',
   'https://github.com/mrjones2014/smart-splits.nvim',

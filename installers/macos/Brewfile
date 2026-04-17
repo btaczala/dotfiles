@@ -22,6 +22,3 @@ cask "whatsapp"
 cask "wezterm"
 cask "kitty"
 cask "temurin"
-
-cask "macos-fuse-t/homebrew-cask/fuse-t"
-cask "macos-fuse-t/homebrew-cask/fuse-t-sshfs"

@@ -1,0 +1,8 @@
+- defaults:
+    link:
+      relink: true
+      create: true
+
+- link:
+    "%LOCALAPPDATA%\\nvim": config/nvim-mini
+
