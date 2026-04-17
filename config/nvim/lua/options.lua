@@ -3,6 +3,7 @@ vim.g.maplocalleader = ' '
 vim.g.have_nerd_font = true
 vim.o.number = true
 vim.o.relativenumber = true
+vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'

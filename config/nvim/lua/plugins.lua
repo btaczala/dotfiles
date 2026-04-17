@@ -117,7 +117,8 @@ require('lazy').setup(
       end,
     },
     {
-      'numToStr/Comment.nvim',
+      'https://github.com/faergeek/Comment.nvim',
+      branch = 'nvim-0.12-compatibility',
       opts = {
         -- add any options here
       },
@@ -192,7 +193,6 @@ require('lazy').setup(
     {
       'nvim-treesitter/nvim-treesitter',
       build = ':TSUpdate',
-      branch = 'main',
       config = function()
         require('nvim-treesitter').setup {
           ensure_installed = {},

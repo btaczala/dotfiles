@@ -132,8 +132,8 @@ vim.lsp.config('qmlls', {
     'qmlls',
     '-v',
     '-l',
-    '/tmp/qmlls.log',
-  },
+    vim.fn.tempname():match('(.*[/\\])') .. 'qmlls.log',
+  }
 })
 -- vim.lsp.config('ts_ls', { capabilities = capabilities })
 -- vim.lsp.config('openscad', { capabilities = capabilities })
