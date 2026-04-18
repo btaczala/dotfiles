@@ -8,6 +8,10 @@
       "rev": "c573a15a62bd0bfd4006ee0849b24f5404395500",
       "src": "https://github.com/saghen/blink.cmp"
     },
+    "clangd_extensions.nvim": {
+      "rev": "78c2ecd659d54972be17aa6ba2deac3c53223b80",
+      "src": "https://github.com/dchinmay2/clangd_extensions.nvim"
+    },
     "cmake-tools.nvim": {
       "rev": "bac6ba2354a52c61f731c751cdb0f4e24669bf0d",
       "src": "https://github.com/Civitasv/cmake-tools.nvim"

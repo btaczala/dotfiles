@@ -1,7 +1,6 @@
 vim.pack.add({
   'https://github.com/folke/tokyonight.nvim',
   'https://github.com/folke/which-key.nvim',
-  { url = 'https://github.com/saghen/blink.cmp', version = 'v1' },
   'https://github.com/f-person/auto-dark-mode.nvim',
   'https://github.com/nvim-treesitter/nvim-treesitter',
   'https://github.com/mrjones2014/smart-splits.nvim',
@@ -9,6 +8,8 @@ vim.pack.add({
   'https://github.com/Civitasv/cmake-tools.nvim',
   'https://github.com/nvim-telescope/telescope.nvim',
   'https://github.com/nvim-telescope/telescope-ui-select.nvim',
+  'https://github.com/saghen/blink.cmp',
+  'https://github.com/dchinmay2/clangd_extensions.nvim',
 })
 vim.pack.add({ 'https://github.com/dmtrKovalenko/fff.nvim' })
 

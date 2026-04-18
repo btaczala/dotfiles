@@ -12,13 +12,19 @@ vim.keymap.set('n', '<leader>ww', '<cmd>write<cr>')
 
 
 vim.keymap.set('n', '<leader>lf', function() vim.lsp.buf.format() end, { desc = 'LSP format buffer' })
+vim.keymap.set({'n', 'v'}, '<leader>la', function() vim.lsp.buf.code_action() end, { desc = 'LSP code action' })
 vim.keymap.set('n', '<leader>ld', function() vim.lsp.buf.definition() end, { desc = 'LSP go to definition' })
 vim.keymap.set('n', '<leader>lx', function() vim.lsp.buf.rename() end, { desc = 'LSP rename' })
 vim.keymap.set('n', '<leader>lD', function() vim.lsp.buf.declaration() end, { desc = 'LSP go to declaration' })
 vim.keymap.set('n', '<leader>ls', function() require('telescope.builtin').lsp_document_symbols() end, { desc = 'LSP document symbols' })
-vim.keymap.set('n', '<leader>lh', function()
-    vim.lsp.buf.execute_command({ command = 'clangd.switchSourceHeader', arguments = { vim.uri_from_bufnr(0) } })
-end, { desc = 'Clangd switch header/source' })
+vim.keymap.set('n', '<leader>lh', '<cmd>ClangdSwitchSourceHeader<cr>', { desc = 'Clangd switch header/source' })
+
+vim.keymap.set('n', '<leader>cp', function()
+    local git_root = vim.fn.systemlist('git -C ' .. vim.fn.shellescape(vim.fn.expand('%:p:h')) .. ' rev-parse --show-toplevel')[1]
+    local full = vim.fn.expand('%:p')
+    vim.fn.setreg('+', git_root and full:sub(#git_root + 2) or full)
+end, { desc = 'Copy git-relative path to clipboard' })
+vim.keymap.set('n', '<leader>cP', function() vim.fn.setreg('+', vim.fn.expand('%:p')) end, { desc = 'Copy full path to clipboard' })
 
 vim.keymap.set('n', '<leader>d', function() vim.diagnostic.open_float() end, { desc = 'Show diagnostics' })
 

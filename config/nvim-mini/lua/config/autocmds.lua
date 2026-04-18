@@ -1,5 +1,5 @@
 require('blink.cmp').setup({
-    keymap = { preset = 'super-tab' },
+    keymap = { preset = 'super-tab', ['<CR>'] = { 'accept', 'fallback' } },
     sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer' },
     },
@@ -16,6 +16,7 @@ require('which-key').setup()
 require('telescope').setup({ extensions = { ['ui-select'] = {} } })
 require('telescope').load_extension('ui-select')
 require('cmake-tools').setup({})
+require('clangd_extensions').setup({})
 
 require('auto-dark-mode').setup({
     set_dark_mode = function()
