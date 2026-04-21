@@ -3,7 +3,7 @@ theme = "light:Tokyonight Day,dark:Tokyonight"
 macos-titlebar-style = "tabs"
 
 unfocused-split-opacity = 0.8
-fnfocused-split-fill = #000000
+unfocused-split-fill = #000000
 
 window-theme = "system"
 
@@ -17,6 +17,7 @@ keybind = unconsumed:ctrl+l=goto_split:top
 keybind = unconsumed:ctrl+;=goto_split:right
 
 keybind = ctrl+shift+u=scroll_page_up
+keybind = ctrl+shift+s=write_screen_file:open
 keybind = ctrl+shift+d=scroll_page_down
 keybind = unconsumed:alt+k=resize_split:down,20
 keybind = unconsumed:alt+l=resize_split:up,20

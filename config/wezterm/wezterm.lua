@@ -368,4 +368,10 @@ config.unix_domains = {
 	},
 }
 
+config.inactive_pane_hsb = {
+  saturation = 0.9,
+  brightness = 0.6,
+}
+
+
 return config
