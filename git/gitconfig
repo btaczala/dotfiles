@@ -81,3 +81,5 @@
 	directory = *
 	directory = *
 	directory = *
+[init]
+	defaultBranch = main
