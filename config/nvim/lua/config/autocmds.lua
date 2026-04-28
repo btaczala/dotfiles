@@ -26,3 +26,14 @@ require('auto-dark-mode').setup({
         vim.cmd.colorscheme('tokyonight-day')
     end,
 })
+
+vim.filetype.add({
+    filename = {
+        ['justfile'] = 'just',
+        ['Justfile'] = 'just',
+        ['.justfile'] = 'just',
+    },
+    pattern = {
+        ['.*%.justfile'] = 'just',
+    },
+})
