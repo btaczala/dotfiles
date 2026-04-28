@@ -64,6 +64,7 @@ wezterm.on("window-config-reloaded", function(window, _)
 
 	overrides.window_frame = {}
 	overrides.window_frame.active_titlebar_bg = current_scheme.background
+	overrides.window_frame.inactive_titlebar_bg = current_scheme.background
 	window:set_config_overrides(overrides)
 end)
 
