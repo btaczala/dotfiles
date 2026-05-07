@@ -36,4 +36,6 @@ target/*
 *.wks
 .neocmake.toml
 AGENTS.md
-.claude
+CLAUDE.md
+.claude*
+.envrc

@@ -28,6 +28,16 @@ vim.keymap.set('n', '<leader>cP', function() vim.fn.setreg('+', vim.fn.expand('%
 
 vim.keymap.set('n', '<leader>d', function() vim.diagnostic.open_float() end, { desc = 'Show diagnostics' })
 
+vim.keymap.set('n', ']h', function() require('gitsigns').next_hunk() end, { desc = 'Next git hunk' })
+vim.keymap.set('n', '[h', function() require('gitsigns').prev_hunk() end, { desc = 'Prev git hunk' })
+vim.keymap.set('n', '<leader>hs', function() require('gitsigns').stage_hunk() end, { desc = 'Stage hunk' })
+vim.keymap.set('v', '<leader>hs', function() require('gitsigns').stage_hunk({ vim.fn.line('.'), vim.fn.line('v') }) end, { desc = 'Stage hunk (selection)' })
+vim.keymap.set('n', '<leader>hu', function() require('gitsigns').undo_stage_hunk() end, { desc = 'Undo stage hunk' })
+vim.keymap.set('n', '<leader>hr', function() require('gitsigns').reset_hunk() end, { desc = 'Reset hunk' })
+vim.keymap.set('n', '<leader>hp', function() require('gitsigns').preview_hunk() end, { desc = 'Preview hunk' })
+vim.keymap.set('n', '<leader>hb', function() require('gitsigns').blame_line({ full = true }) end, { desc = 'Blame line' })
+vim.keymap.set('n', '<leader>hB', function() require('gitsigns').toggle_current_line_blame() end, { desc = 'Toggle line blame' })
+
 vim.keymap.set('n', '<leader>jj', '<cmd>CMakeBuild<cr>', { desc = 'CMake build' })
 
 vim.keymap.set('n', '<leader>rst', '<cmd>CMakeSelectLaunchTarget<cr>', { desc = 'CMake select run target' })
@@ -41,3 +51,7 @@ vim.keymap.set('n', '<C-j>', require('smart-splits').move_cursor_left)
 vim.keymap.set('n', '<C-k>', require('smart-splits').move_cursor_down)
 vim.keymap.set('n', '<C-l>', require('smart-splits').move_cursor_up)
 vim.keymap.set('n', '<C-;>', require('smart-splits').move_cursor_right)
+vim.keymap.set('n', '<A-j>', require('smart-splits').resize_left)
+vim.keymap.set('n', '<A-k>', require('smart-splits').resize_down)
+vim.keymap.set('n', '<A-l>', require('smart-splits').resize_up)
+vim.keymap.set('n', '<A-;>', require('smart-splits').resize_right)
