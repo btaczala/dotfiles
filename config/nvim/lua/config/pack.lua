@@ -10,6 +10,9 @@ vim.pack.add({
   'https://github.com/nvim-telescope/telescope-ui-select.nvim',
   'https://github.com/saghen/blink.cmp',
   'https://github.com/dchinmay2/clangd_extensions.nvim',
+  'https://github.com/nvim-tree/nvim-web-devicons',
+  'https://github.com/MeanderingProgrammer/render-markdown.nvim',
+  'https://github.com/lewis6991/gitsigns.nvim',
 })
 vim.pack.add({ 'https://github.com/dmtrKovalenko/fff.nvim' })
 
