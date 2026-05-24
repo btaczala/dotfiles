@@ -11,6 +11,7 @@ brew "bat"
 brew "lua-language-server"
 brew "eza"
 brew "zls"
+brew "dark-notify"
 cask "kitty"
 
 # dev fonts

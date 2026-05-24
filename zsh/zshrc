@@ -97,6 +97,7 @@ if [[ "$TERM" == "xterm-kitty" ]]; then
     else
         kitty @ set-colors --all --configured "$HOME/dotfiles/config/kitty/light.conf"
     fi
+    export TERM_FEATURES=P
 fi
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
@@ -107,5 +108,6 @@ fi
 export STM32_PRG_PATH=/Applications/STMicroelectronics/STM32Cube/STM32CubeProgrammer/STM32CubeProgrammer.app/Contents/MacOs/bin
 export PATH=$PATH:/opt/ST/STM32CubeCLT_1.19.0/GNU-tools-for-STM32/bin/
 export STM32CubeMX_PATH=/Applications/STMicroelectronics/STM32CubeMX.app/Contents/Resources
+export CLAUDE_CODE_TMPDIR=~/.local/share/claude/tmp/
 
 eval "$(direnv hook zsh)"

@@ -123,6 +123,9 @@
   # asynchronously when Git state changes.
   typeset -g POWERLEVEL9K_VCS_MAX_SYNC_LATENCY_SECONDS=0
 
+  # Disable VCS status for Windows mount (slow network/FUSE filesystem).
+  typeset -g POWERLEVEL9K_VCS_DISABLED_WORKDIR_PATTERN='~/Projects/chamsys/mount_windows/mediamaster(|/*)'
+
   # Cyan ahead/behind arrows.
   typeset -g POWERLEVEL9K_VCS_{INCOMING,OUTGOING}_CHANGESFORMAT_FOREGROUND=$cyan
   # Don't show remote branch, current tag or stashes.
