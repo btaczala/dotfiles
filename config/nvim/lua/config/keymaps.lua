@@ -1,7 +1,7 @@
 vim.g.mapleader = ' '
 
-vim.keymap.set('n', 'ff', function() require('fff').find_files() end, { desc = 'FFFind files' })
-vim.keymap.set('n', '<leader><leader>', function() require('fff').find_files() end, { desc = 'FFFind files' })
+vim.keymap.set('n', 'ff', function() require('telescope.builtin').find_files() end, { desc = 'Find files' })
+vim.keymap.set('n', '<leader><leader>', function() require('telescope.builtin').buffers() end, { desc = 'Telescope buffers' })
 
 vim.keymap.set({'n', 'v'}, 'j', 'h')
 vim.keymap.set({'n', 'v'}, 'k', 'j')
@@ -27,6 +27,7 @@ end, { desc = 'Copy git-relative path to clipboard' })
 vim.keymap.set('n', '<leader>cP', function() vim.fn.setreg('+', vim.fn.expand('%:p')) end, { desc = 'Copy full path to clipboard' })
 
 vim.keymap.set('n', '<leader>d', function() vim.diagnostic.open_float() end, { desc = 'Show diagnostics' })
+vim.keymap.set('n', '<leader>qq', function() vim.diagnostic.setqflist() end, { desc = 'Diagnostics to quickfix' })
 
 vim.keymap.set('n', ']h', function() require('gitsigns').next_hunk() end, { desc = 'Next git hunk' })
 vim.keymap.set('n', '[h', function() require('gitsigns').prev_hunk() end, { desc = 'Prev git hunk' })
@@ -44,14 +45,23 @@ vim.keymap.set('n', '<leader>rst', '<cmd>CMakeSelectLaunchTarget<cr>', { desc = 
 vim.keymap.set('n', '<leader>rsb', '<cmd>CMakeSelectBuildTarget<cr>', { desc = 'CMake select build target' })
 vim.keymap.set('n', '<leader>rsp', '<cmd>CMakeSelectBuildPreset<cr>', { desc = 'CMake select preset' })
 
-vim.keymap.set('n', '<leader>fg', function() require('fff').live_grep() end, { desc = 'Live grep' })
-vim.keymap.set('n', '<leader>fw', function() require('fff').live_grep({ query = vim.fn.expand('<cword>') }) end, { desc = 'Live grep word under cursor' })
+vim.keymap.set('n', '<leader>fg', function() require('telescope.builtin').live_grep() end, { desc = 'Live grep' })
+vim.keymap.set('n', '<leader>fw', function() require('telescope.builtin').grep_string() end, { desc = 'Live grep word under cursor' })
 
-vim.keymap.set('n', '<C-j>', require('smart-splits').move_cursor_left)
-vim.keymap.set('n', '<C-k>', require('smart-splits').move_cursor_down)
-vim.keymap.set('n', '<C-l>', require('smart-splits').move_cursor_up)
-vim.keymap.set('n', '<C-;>', require('smart-splits').move_cursor_right)
-vim.keymap.set('n', '<A-j>', require('smart-splits').resize_left)
-vim.keymap.set('n', '<A-k>', require('smart-splits').resize_down)
-vim.keymap.set('n', '<A-l>', require('smart-splits').resize_up)
-vim.keymap.set('n', '<A-;>', require('smart-splits').resize_right)
+if vim.env.TERM_PROGRAM == 'ghostty' then
+  vim.keymap.set('n', '<C-j>', '<C-w>h', { noremap = true, silent = false })
+  vim.keymap.set('n', '<C-k>', '<C-w>j', { noremap = true, silent = true })
+  vim.keymap.set('n', '<C-l>', '<C-w>k', { noremap = true, silent = false })
+  vim.keymap.set('n', '<C-;>', '<C-w>l', { noremap = true, silent = true })
+else
+  vim.keymap.set('n', '<C-j>', require('smart-splits').move_cursor_left)
+  vim.keymap.set('n', '<C-k>', require('smart-splits').move_cursor_down)
+  vim.keymap.set('n', '<C-l>', require('smart-splits').move_cursor_up)
+  vim.keymap.set('n', '<C-;>', require('smart-splits').move_cursor_right)
+
+  vim.keymap.set('n', '<A-j>', require('smart-splits').resize_left)
+  vim.keymap.set('n', '<A-k>', require('smart-splits').resize_down)
+  vim.keymap.set('n', '<A-l>', require('smart-splits').resize_up)
+  vim.keymap.set('n', '<A-;>', require('smart-splits').resize_right)
+end
+-- vim.keymap.set('n', '<A-;>', require('smart-splits').resize_right)

@@ -11,18 +11,18 @@ keybind = ctrl+y>h=new_split:down
 keybind = ctrl+y>v=new_split:right
 keybind = ctrl+y>z=toggle_split_zoom
 
-keybind = unconsumed:ctrl+j=goto_split:left
-keybind = unconsumed:ctrl+k=goto_split:bottom
-keybind = unconsumed:ctrl+l=goto_split:top
-keybind = unconsumed:ctrl+;=goto_split:right
+keybind = performable:ctrl+j=goto_split:left
+keybind = performable:ctrl+k=goto_split:bottom
+keybind = performable:ctrl+l=goto_split:top
+keybind = performable:ctrl+;=goto_split:right
 
 keybind = ctrl+shift+u=scroll_page_up
 keybind = ctrl+shift+s=write_screen_file:open
 keybind = ctrl+shift+d=scroll_page_down
-keybind = unconsumed:alt+k=resize_split:down,20
-keybind = unconsumed:alt+l=resize_split:up,20
-keybind = unconsumed:alt+j=resize_split:left,20
-keybind = unconsumed:alt+;=resize_split:right,20
+keybind = performable:alt+k=resize_split:down,20
+keybind = performable:alt+l=resize_split:up,20
+keybind = performable:alt+j=resize_split:left,20
+keybind = performable:alt+;=resize_split:right,20
 
 keybind = ctrl+y>w=write_scrollback_file:paste
 keybind = ctrl+y>q=toggle_quick_terminal

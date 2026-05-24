@@ -24,6 +24,10 @@
       "rev": "dd3f588bacbeb041be6facf1742e42097f62165d",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
+    "kitty-scrollback.nvim": {
+      "rev": "53fd294658941719d7622471f28e70179d6737a6",
+      "src": "https://github.com/mikesmithgh/kitty-scrollback.nvim"
+    },
     "nvim-lspconfig": {
       "rev": "4ea9083b6d3dff4ddc6da17c51334c3255b7eba5",
       "src": "https://github.com/neovim/nvim-lspconfig",

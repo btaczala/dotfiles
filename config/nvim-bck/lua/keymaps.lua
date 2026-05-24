@@ -41,10 +41,10 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 if vim.env.TERM_PROGRAM == 'ghostty' then
-  vim.keymap.set('n', '<C-j>', '<C-w>h', { noremap = true, silent = false })
-  vim.keymap.set('n', '<C-k>', '<C-w>j', { noremap = true, silent = true })
-  vim.keymap.set('n', '<C-l>', '<C-w>k', { noremap = true, silent = false })
-  vim.keymap.set('n', '<C-;>', '<C-w>l', { noremap = true, silent = true })
+  -- vim.keymap.set('n', '<C-j>', '<C-w>h', { noremap = true, silent = false })
+  -- vim.keymap.set('n', '<C-k>', '<C-w>j', { noremap = true, silent = true })
+  -- vim.keymap.set('n', '<C-l>', '<C-w>k', { noremap = true, silent = false })
+  -- vim.keymap.set('n', '<C-;>', '<C-w>l', { noremap = true, silent = true })
 else
   vim.keymap.set('n', '<C-j>', require('smart-splits').move_cursor_left)
   vim.keymap.set('n', '<C-k>', require('smart-splits').move_cursor_down)

@@ -29,7 +29,8 @@ vim.lsp.config('cmake', {
 vim.lsp.enable('cmake')
 
 vim.lsp.config('clangd', {
-    cmd = { 'clangd', '--background-index', '--clang-tidy', '--log=error', '--header-insertion=never' },
+    cmd = { 'clangd', '--background-index', '--clang-tidy', '--log=error', '--header-insertion=never',
+            '--background-index-priority=background' },
     filetypes = { 'c', 'cpp', 'objc', 'objcpp' },
     root_markers = { 'compile_commands.json', 'compile_flags.txt', 'CMakeLists.txt', '.git' },
 })
@@ -75,3 +76,31 @@ vim.lsp.config('ty', {
 })
 
 vim.lsp.enable('ty')
+
+vim.filetype.add({
+    pattern = {
+        ['.*%.yaml'] = {
+            priority = -math.huge,
+            function(path, bufnr)
+                local first_line = vim.api.nvim_buf_get_lines(bufnr, 0, 1, false)[1] or ''
+                if first_line:match('^esphome:') then
+                    return 'yaml.esphome'
+                end
+            end,
+        },
+    },
+})
+
+vim.lsp.config('esphome_lsp', {
+    cmd = { 'node', vim.fn.expand('~/.local/share/esphome-vscode/server/out/server.js'), '--stdio' },
+    filetypes = { 'yaml.esphome' },
+    root_markers = { '.esphome', 'secrets.yaml', '.git' },
+    settings = {
+        esphome = {
+            validator = 'local',
+            pythonPath = vim.fn.expand('~/.pyenv/versions/esphome/bin/python'),
+        },
+    },
+})
+
+vim.lsp.enable('esphome_lsp')

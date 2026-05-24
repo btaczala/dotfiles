@@ -13,13 +13,5 @@ vim.pack.add({
   'https://github.com/nvim-tree/nvim-web-devicons',
   'https://github.com/MeanderingProgrammer/render-markdown.nvim',
   'https://github.com/lewis6991/gitsigns.nvim',
-})
-vim.pack.add({ 'https://github.com/dmtrKovalenko/fff.nvim' })
-
-vim.api.nvim_create_autocmd('PackChanged', {
-  callback = function(event)
-    if event.data.updated then
-      require('fff.download').download_or_build_binary()
-    end
-  end,
+  'https://github.com/mikesmithgh/kitty-scrollback.nvim',
 })
