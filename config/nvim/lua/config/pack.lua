@@ -12,6 +12,9 @@ vim.pack.add({
   'https://github.com/dchinmay2/clangd_extensions.nvim',
   'https://github.com/nvim-tree/nvim-web-devicons',
   'https://github.com/MeanderingProgrammer/render-markdown.nvim',
-  'https://github.com/lewis6991/gitsigns.nvim',
   'https://github.com/mikesmithgh/kitty-scrollback.nvim',
+  'https://github.com/nvim-neotest/nvim-nio',
+  'https://github.com/nvim-neotest/neotest',
+  'https://github.com/orjangj/neotest-ctest',
+  'https://github.com/greggh/claude-code.nvim',
 })

@@ -1,0 +1,6 @@
+new_os_window
+new_tab dotfiles
+layout splits
+cd ~/dotfiles
+launch --cwd=$HOME/dotfiles zsh -ic "exec nvim"
+launch --cwd=$HOME/dotfiles --location=vsplit zsh -ic "exec claude"

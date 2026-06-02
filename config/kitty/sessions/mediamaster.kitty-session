@@ -1,0 +1,13 @@
+new_os_window
+os_window_title MediaMaster
+os_window_class mediamaster
+os_window_name MediaMaster
+new_tab mm-macos
+layout splits
+cd ~/Projects/chamsys/mediamaster/
+launch --cwd="$HOME/Projects/chamsys/mediamaster/" --title "mm-macos" zsh -ic "exec nvim"
+new_tab chamsys-os
+cd ~/Projects/chamsys/chamsys-os/
+launch zsh -ic "exec nvim"
+launch zsh
+
