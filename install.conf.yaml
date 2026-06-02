@@ -36,3 +36,6 @@
     ~/Library/LaunchAgents/com.bartek.dark-notify.plist:
         if: '[ `uname` = Darwin ]'
         path: config/launchd/com.bartek.dark-notify.plist
+    ~/Library/LaunchAgents/com.bartek.ha-mcp-tunnel.plist:
+        if: '[ `uname` = Darwin ]'
+        path: config/launchd/com.bartek.ha-mcp-tunnel.plist

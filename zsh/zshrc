@@ -25,7 +25,6 @@ source $HOME/dotfiles/zsh/my_fzf.sh
 source $HOME/dotfiles/zsh/aliases.zsh
 source $HOME/dotfiles/zsh/forgit.plugin.zsh
 source $HOME/dotfiles/zsh/p10k.zsh
-source /usr/local/Cellar/fzf/0.27.2/shell/key-bindings.zsh
 
 if [[ "$(uname)" == "Darwin" ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -38,11 +37,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
     fi
 fi
 if [[ "$TERM" == "xterm-kitty" ]]; then
-    if [[ "$(darkMode)" == "Dark" ]]; then
-        kitty @ set-colors --all --configured "$HOME/dotfiles/config/kitty/dark.conf"
-    else
-        kitty @ set-colors --all --configured "$HOME/dotfiles/config/kitty/light.conf"
-    fi
+    "$HOME/.config/kitty/sync-theme.sh"
     export TERM_FEATURES=P
 fi
 
