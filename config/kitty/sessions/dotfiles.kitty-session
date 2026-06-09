@@ -1,4 +1,6 @@
 new_os_window
+os_window_title dotfiles
+os_window_class dotfiles
 new_tab dotfiles
 layout splits
 cd ~/dotfiles

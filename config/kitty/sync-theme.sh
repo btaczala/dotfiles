@@ -8,5 +8,7 @@ else
     ln -sf "$config_dir/tokyonight_day.conf" "$config_dir/current-theme.conf"
 fi
 for socket in "$HOME/.local/share/kitty/mykitty-"*; do
-    /Applications/kitty.app/Contents/MacOS/kitten @ --to "unix:$socket" action load_config_file 2>/dev/null
+    # set-colors --configured applies the theme without reloading the whole
+    # config, so a manual font-size change (cmd +/-) survives a theme sync.
+    /Applications/kitty.app/Contents/MacOS/kitten @ --to "unix:$socket" set-colors --all --configured "$config_dir/current-theme.conf" 2>/dev/null
 done
