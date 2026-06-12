@@ -18,7 +18,7 @@ if [[ "$TERM" == "xterm-ghostty" ]]; then
 fi
 
 fpath=($fpath $HOME/dotfiles/zsh/completion)
-# autoload -Uz compinit && compinit
+autoload -Uz compinit && compinit
 
 source $HOME/dotfiles/zsh/exports.zsh
 source $HOME/dotfiles/zsh/my_fzf.sh
@@ -42,3 +42,10 @@ if [[ "$TERM" == "xterm-kitty" ]]; then
 fi
 
 eval "$(direnv hook zsh)"
+
+# atuin: shell history search (Ctrl-R). Must come after the fzf plugin so it
+# wins the Ctrl-R binding. --disable-up-arrow keeps the default up-arrow history.
+if command -v atuin &>/dev/null; then
+    eval "$(atuin init zsh --disable-up-arrow)"
+fi
+

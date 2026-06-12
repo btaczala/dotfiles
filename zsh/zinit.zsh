@@ -14,7 +14,7 @@ zinit ice depth"1"
 zinit light romkatv/powerlevel10k
 zinit light zsh-users/zsh-completions
 
-zinit light junegunn/fzf
+# zinit light junegunn/fzf
 zinit light unixorn/fzf-zsh-plugin
 zinit light MichaelAquilina/zsh-auto-notify
 

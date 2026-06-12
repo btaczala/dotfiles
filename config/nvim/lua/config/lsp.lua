@@ -30,7 +30,7 @@ vim.lsp.enable('cmake')
 
 vim.lsp.config('clangd', {
     cmd = { 'clangd', '--background-index', '--clang-tidy', '--log=error', '--header-insertion=never',
-            '--background-index-priority=background' },
+        '--background-index-priority=background' },
     filetypes = { 'c', 'cpp', 'objc', 'objcpp' },
     root_markers = { 'compile_commands.json', 'compile_flags.txt', 'CMakeLists.txt', '.git' },
 })
@@ -81,7 +81,7 @@ vim.filetype.add({
     pattern = {
         ['.*%.yaml'] = {
             priority = -math.huge,
-            function(path, bufnr)
+            function(_, bufnr)
                 local first_line = vim.api.nvim_buf_get_lines(bufnr, 0, 1, false)[1] or ''
                 if first_line:match('^esphome:') then
                     return 'yaml.esphome'
