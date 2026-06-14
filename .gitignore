@@ -7,3 +7,4 @@ config/nvim/plugin/
 config/nvim/plugged
 dotbot/*
 esphome/secrets.yaml
+.playwright*
