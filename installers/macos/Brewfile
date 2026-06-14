@@ -1,6 +1,8 @@
 # set ft=ruby
 # development
 brew "llvm"
+brew "direnv"
+brew "atuin"
 brew "cmake"
 brew "neovim"
 brew "cppman"
@@ -11,12 +13,15 @@ brew "bat"
 brew "lua-language-server"
 brew "eza"
 brew "zls"
-brew "dark-notify"
+brew "cormacrelf/tap/dark-notify"
 cask "kitty"
 
 # dev fonts
 cask "font-iosevka"
 cask "font-fira-code"
+cask "font-hack-nerd-font"
+cask "font-iosevka-nerd-font"
+cask "font-iosevka-term-nerd-font"
 
 # utils
 cask "whatsapp"

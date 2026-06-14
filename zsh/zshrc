@@ -43,9 +43,8 @@ fi
 
 eval "$(direnv hook zsh)"
 
-# atuin: shell history search (Ctrl-R). Must come after the fzf plugin so it
-# wins the Ctrl-R binding. --disable-up-arrow keeps the default up-arrow history.
+# atuin: shell history search (Ctrl-R / up / down). Must come after fzf plugin so it wins the bindings.
 if command -v atuin &>/dev/null; then
-    eval "$(atuin init zsh --disable-up-arrow)"
+    eval "$(atuin init zsh)"
 fi
 

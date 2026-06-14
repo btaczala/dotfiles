@@ -5,7 +5,9 @@ require('config.diagnostics')
 require('config.autocmds')
 require('config.lsp')
 
-require('smart-splits').setup()
+require('smart-splits').setup({
+  multiplexer_integration = 'kitty',
+})
 
 vim.api.nvim_create_autocmd('User', {
   pattern = 'KittyScrollbackLaunch',

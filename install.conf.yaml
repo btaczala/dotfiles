@@ -10,6 +10,10 @@
 - brewfile:
       file: installers/macos/Brewfile
 
+- create:
+    - ~/.local/share/kitty
+    - ~/.local/share/claude
+
 - link:
     ~/.zshrc: zsh/zshrc
     ~/.zshenv: zsh/zshenv
@@ -21,6 +25,7 @@
     ~/.config/wezterm: config/wezterm
     ~/.gitignore: git/gitignore
     ~/.config/ghostty:  config/ghostty
+    ~/.config/kitty:  config/kitty
     ~/.tigrc:  config/tigrc
     ~/.config/lazygit/config.yml:  config/lazygit/config.yml
     ~/Library/Preferences/clangd/config.yaml: clangd/config.yaml
