@@ -43,6 +43,11 @@ vim.keymap.set('n', '<leader>rst', '<cmd>CMakeSelectLaunchTarget<cr>', { desc = 
 vim.keymap.set('n', '<leader>rsb', '<cmd>CMakeSelectBuildTarget<cr>', { desc = 'CMake select build target' })
 vim.keymap.set('n', '<leader>rsp', '<cmd>CMakeSelectBuildPreset<cr>', { desc = 'CMake select preset' })
 
+vim.keymap.set('n', '<leader>gg', function() require('neogit').open() end, { desc = 'Neogit status' })
+vim.keymap.set('n', '<leader>gc', function() require('neogit').open({ 'commit' }) end, { desc = 'Neogit commit' })
+vim.keymap.set('n', '<leader>gp', function() require('neogit').open({ 'pull' }) end, { desc = 'Neogit pull' })
+vim.keymap.set('n', '<leader>gP', function() require('neogit').open({ 'push' }) end, { desc = 'Neogit push' })
+
 vim.keymap.set('n', '<leader>fg', function() require('telescope.builtin').live_grep() end, { desc = 'Live grep' })
 vim.keymap.set('n', '<leader>fw', function() require('telescope.builtin').grep_string() end, { desc = 'Live grep word under cursor' })
 

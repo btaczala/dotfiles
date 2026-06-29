@@ -13,6 +13,11 @@ alias gb='git branch'
 alias lldb_last='lldb -o "run" -- $(fc -ln -1)'
 alias cat='bat'
 
+# cp with a progress bar (rsync under the hood). Use \cp to bypass.
+cp() {
+  rsync -ah --info=progress2 --no-inc-recursive "$@"
+}
+
 #
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   alias fd=fdfind

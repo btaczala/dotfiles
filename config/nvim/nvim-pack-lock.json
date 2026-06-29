@@ -32,6 +32,10 @@
       "rev": "53fd294658941719d7622471f28e70179d6737a6",
       "src": "https://github.com/mikesmithgh/kitty-scrollback.nvim"
     },
+    "neogit": {
+      "rev": "43ea1a0854052e583f647e0b35879f0158a70a78",
+      "src": "https://github.com/NeogitOrg/neogit"
+    },
     "neotest": {
       "rev": "ad991822b7076b1d940b33a9d6d0d30416d5df81",
       "src": "https://github.com/nvim-neotest/neotest"
@@ -76,6 +80,10 @@
     "telescope.nvim": {
       "rev": "cfb85dcf7f822b79224e9e6aef9e8c794211b20b",
       "src": "https://github.com/nvim-telescope/telescope.nvim"
+    },
+    "tint.nvim": {
+      "rev": "586e87f00c8b0f5e857cefe10839e41f3e8c6d01",
+      "src": "https://github.com/levouh/tint.nvim"
     },
     "tokyonight.nvim": {
       "rev": "cdc07ac78467a233fd62c493de29a17e0cf2b2b6",

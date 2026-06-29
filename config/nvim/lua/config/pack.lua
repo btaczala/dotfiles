@@ -17,4 +17,6 @@ vim.pack.add({
   'https://github.com/nvim-neotest/neotest',
   'https://github.com/orjangj/neotest-ctest',
   'https://github.com/greggh/claude-code.nvim',
+  'https://github.com/levouh/tint.nvim',
+  'https://github.com/NeogitOrg/neogit',
 })

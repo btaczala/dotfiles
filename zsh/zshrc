@@ -48,3 +48,7 @@ if command -v atuin &>/dev/null; then
     eval "$(atuin init zsh)"
 fi
 
+
+# Claude Code: separate personal vs work accounts
+alias claude-personal='CLAUDE_CONFIG_DIR="$HOME/.claude" claude'
+alias claude-work='CLAUDE_CONFIG_DIR="$HOME/.claude-work" claude'

@@ -21,6 +21,7 @@
     ~/.gdbinit: gdbinit
     ~/.config/nvim: config/nvim
     ~/.vifm/vifmrc: config/vifm/vifmrc
+    ~/.config/atuin/config.toml: config/atuin/config.toml
     ~/.config/bat/config: config/bat/config
     ~/.config/wezterm: config/wezterm
     ~/.gitignore: git/gitignore

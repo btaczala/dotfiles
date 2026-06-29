@@ -19,3 +19,4 @@ zinit light unixorn/fzf-zsh-plugin
 zinit light MichaelAquilina/zsh-auto-notify
 
 zinit load agkozak/zsh-z
+zinit light Aloxaf/fzf-tab

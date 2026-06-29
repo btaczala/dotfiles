@@ -40,3 +40,5 @@ AGENTS.md
 CLAUDE.md
 .claude*
 .envrc
+.mcp.json
+.nvim.lua

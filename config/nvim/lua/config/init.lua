@@ -9,6 +9,15 @@ require('smart-splits').setup({
   multiplexer_integration = 'kitty',
 })
 
+require('tint').setup({
+  tint = -60,
+  saturation = 0.6,
+  window_ignore_function = function(winid)
+    -- don't dim floating windows (telescope, which-key, claude-code, etc.)
+    return vim.api.nvim_win_get_config(winid).relative ~= ''
+  end,
+})
+
 vim.api.nvim_create_autocmd('User', {
   pattern = 'KittyScrollbackLaunch',
   once = true,
@@ -18,6 +27,23 @@ vim.api.nvim_create_autocmd('User', {
 require('neotest').setup({
   adapters = {
     require('neotest-ctest'),
+  },
+})
+
+require('neogit').setup({
+  -- Match the global jkl; motion layout inside Neogit's status buffer.
+  -- (Neogit binds status + popup mappings buffer-locally, overriding the
+  -- global j->h / k->j / l->k / ;->l remaps from keymaps.lua.)
+  mappings = {
+    status = {
+      ['j'] = false,        -- was MoveDown; fall through to global j (left)
+      ['k'] = 'MoveDown',   -- jkl; layout: down
+      ['l'] = 'MoveUp',     -- jkl; layout: up
+    },
+    popup = {
+      ['l'] = false,        -- free l (now "up"); relocate the log popup
+      ['gl'] = 'LogPopup',
+    },
   },
 })
 
