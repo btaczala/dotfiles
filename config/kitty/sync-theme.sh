@@ -1,5 +1,7 @@
 #!/bin/sh
-# Sync current-theme.conf to match the current macOS appearance, then reload kitty config
+# Sync current-theme.conf to match the current macOS appearance, then reload kitty config.
+# macOS-only (uses `defaults` and the /Applications/kitty.app path); no-op elsewhere.
+[ "$(uname)" = "Darwin" ] || exit 0
 config_dir="$HOME/.config/kitty"
 appearance=$(defaults read -g AppleInterfaceStyle 2>/dev/null)
 if [ "$appearance" = "Dark" ]; then
