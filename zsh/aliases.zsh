@@ -18,7 +18,7 @@ cp() {
   rsync -ah --info=progress2 --no-inc-recursive "$@"
 }
 
-#
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+# Debian/Ubuntu rename fd to fdfind; only alias when that's actually the case.
+if ! command -v fd >/dev/null 2>&1 && command -v fdfind >/dev/null 2>&1; then
   alias fd=fdfind
 fi
