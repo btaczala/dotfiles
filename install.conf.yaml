@@ -2,13 +2,12 @@
     link:
       relink: true
       create: true
-    brewfile:
-        stdout: false
-        stderr: true
 - clean: ['~']
 
-- brewfile:
-      file: installers/macos/Brewfile
+- shell:
+    - command: 'if [ "$(uname)" = "Darwin" ]; then brew bundle --file=installers/macos/Brewfile; fi'
+      description: Installing Homebrew bundle (macOS only)
+      stderr: true
 
 - create:
     - ~/.local/share/kitty
@@ -30,6 +29,9 @@
     ~/.tigrc:  config/tigrc
     ~/.config/lazygit/config.yml:  config/lazygit/config.yml
     ~/Library/Preferences/clangd/config.yaml: clangd/config.yaml
+    ~/.config/autostart/albert.desktop:
+        if: '[ `uname` = Linux ]'
+        path: config/autostart/albert.desktop
     ~/Library/Application Support/lazygit/config.yml:
         if: '[ `uname` = Darwin ]'
         path: config/lazygit/config.yml
@@ -45,3 +47,11 @@
     ~/Library/LaunchAgents/com.bartek.ha-mcp-tunnel.plist:
         if: '[ `uname` = Darwin ]'
         path: config/launchd/com.bartek.ha-mcp-tunnel.plist
+    ~/.config/systemd/user/kitty-theme-sync.service:
+        if: '[ `uname` = Linux ]'
+        path: config/systemd/user/kitty-theme-sync.service
+
+- shell:
+    - command: 'if [ "$(uname)" = "Linux" ] && [ -n "$XDG_RUNTIME_DIR" ]; then systemctl --user daemon-reload && systemctl --user enable --now kitty-theme-sync.service; fi'
+      description: Enabling kitty theme-sync service (Linux only)
+      stderr: true

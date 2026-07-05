@@ -1,0 +1,10 @@
+[Unit]
+Description=Sync kitty theme with GNOME dark/light mode
+After=graphical-session.target
+
+[Service]
+ExecStart=/bin/sh -c '%h/.config/kitty/sync-theme.sh; exec gsettings monitor org.gnome.desktop.interface color-scheme | while read -r _; do %h/.config/kitty/sync-theme.sh; done'
+Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target

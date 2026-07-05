@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Albert
+Comment=A desktop agnostic launcher
+Exec=albert --platform xcb
+Icon=albert
+X-GNOME-Autostart-Delay=3
+StartupNotify=false
