@@ -24,7 +24,14 @@ export AUTO_NOTIFY_EXPIRE_TIME=40000
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 if command -v pyenv &> /dev/null; then
-eval "$(pyenv init - zsh)"
+    # Lazy init: shims on PATH now; full `pyenv init` (incl. rehash) on first use
+    export PATH="$PYENV_ROOT/shims:$PATH"
+    export PYENV_SHELL=zsh
+    pyenv() {
+        unfunction pyenv
+        eval "$(command pyenv init - zsh)"
+        pyenv "$@"
+    }
 fi
 
 export STM32_PRG_PATH=/Applications/STMicroelectronics/STM32CubeProgrammer/STM32CubeProgrammer.app/Contents/MacOs/bin

@@ -17,8 +17,24 @@ if [[ "$TERM" == "xterm-ghostty" ]]; then
     bindkey -r "^L"
 fi
 
+# All fpath changes must happen before the single compinit below
 fpath=($fpath $HOME/dotfiles/zsh/completion)
-autoload -Uz compinit && compinit
+if [[ "$(uname)" == "Darwin" ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+    PATH=/opt/homebrew/opt/llvm/bin:$PATH
+    FPATH="/opt/homebrew/share/zsh/site-functions:${FPATH}"
+fi
+
+# Full compinit (security audit + dump rebuild) at most once a day; -C otherwise
+autoload -Uz compinit
+() {
+  setopt localoptions extendedglob
+  if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh-24) ]]; then
+    compinit -C
+  else
+    compinit
+  fi
+}
 
 source $HOME/dotfiles/zsh/exports.zsh
 source $HOME/dotfiles/zsh/my_fzf.sh
@@ -26,18 +42,8 @@ source $HOME/dotfiles/zsh/aliases.zsh
 source $HOME/dotfiles/zsh/forgit.plugin.zsh
 source $HOME/dotfiles/zsh/p10k.zsh
 
-if [[ "$(uname)" == "Darwin" ]]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-    PATH=$(brew --prefix llvm)/bin:$PATH
-    if type brew &>/dev/null
-    then
-      FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-      autoload -Uz compinit
-      compinit
-    fi
-fi
 if [[ "$TERM" == "xterm-kitty" ]]; then
-    "$HOME/.config/kitty/sync-theme.sh"
+    ("$HOME/.config/kitty/sync-theme.sh" &)
     export TERM_FEATURES=P
 fi
 
