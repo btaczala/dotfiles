@@ -37,7 +37,7 @@ target/*
 *.wks
 .neocmake.toml
 AGENTS.md
-CLAUDE.md
+CLAUDE.local.md
 .claude*
 .envrc
 .mcp.json
