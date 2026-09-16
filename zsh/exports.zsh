@@ -17,7 +17,7 @@ export CMAKE_CXX_COMPILER_LAUNCHER=sccache
 export SCCACHE_CACHE_SIZE="30G"
 export CMAKE_GENERATOR="Ninja Multi-Config"
 export HOMEBREW_NO_ENV_HINTS
-export PATH=$HOME/.local/bin/:$HOME/dotfiles/bin:/usr/local/bin:$HOME/.cargo/bin/:$PATH
+export PATH=$HOME/.local/bin/:$HOME/dotfiles/bin:$HOME/.cargo/bin/:$PATH
 export AUTO_NOTIFY_WHITELIST=("brew" "docker" "cmake" "just")
 export AUTO_NOTIFY_EXPIRE_TIME=40000
 
