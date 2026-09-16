@@ -1,0 +1,17 @@
+os_window_title mm-w32
+os_window_class mm-w32
+os_window_name mm-w32
+new_tab mm-w32
+layout splits
+
+# pane1: top-left
+launch --title pane1 --var pane=1 --cwd=$HOME/Projects/chamsys zsh
+
+# pane3: full-width bottom (splits the whole area horizontally)
+launch --location=hsplit --title pane3 --var pane=3 --cwd=$HOME zsh
+
+# pane2: top-right (splits pane1 only, so pane3 keeps the full width)
+focus_matching_window title:^pane1$
+launch --location=vsplit --title pane2 --var pane=2 --cwd=$HOME zsh
+
+focus_matching_window title:^pane1$

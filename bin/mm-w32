@@ -1,0 +1,109 @@
+#!/usr/bin/env bash
+# mm-w32: build the mediamaster / windows-dev layout in the CURRENT kitty tab
+# (falls back to a new kitty OS window when invoked from outside kitty):
+#
+#   +-----------------+-----------------+
+#   | pane1  mediamst | pane2  ssh+psh  |
+#   |                 |        + claude |
+#   +-----------------+-----------------+
+#   | pane3            ssh + pwsh |
+#   +-----------------------------------+
+set -euo pipefail
+
+SESSION="$HOME/.config/kitty/sessions/mm-w32.kitty-session"
+
+# tweak these if the remote is slow/fast
+SSH_WAIT=3      # seconds to wait for the ssh connection (fast, local network)
+PSH_WAIT=8      # seconds to wait for pwsh to come up
+
+if [[ -n "${KITTY_LISTEN_ON:-}" && -n "${KITTY_WINDOW_ID:-}" ]]; then
+    MODE=inplace
+    SOCK="$KITTY_LISTEN_ON"
+else
+    MODE=newwin
+    SOCK="unix:$HOME/.local/share/kitty/mm-w32"
+fi
+
+kt() { kitten @ --to "$SOCK" "$@"; }
+
+# In-place mode takes over the window this script was invoked from, so detach
+# first: the parent returns the shell to its prompt, the child keeps driving.
+# stdin must go to /dev/null or the child would eat the keystrokes we send.
+if [[ "$MODE" == inplace && -z "${MM_W32_CHILD:-}" ]]; then
+    if [[ -n "$(kt set-user-vars --match "id:$KITTY_WINDOW_ID" 2>/dev/null | grep '^pane=' || true)" ]]; then
+        echo "this window is already part of a mm-w32 layout." >&2
+        exit 1
+    fi
+    # the child's stderr is gone, so sanity-check the tab while we still have a tty
+    nwin=$(kt ls --match-tab "state:focused" | python3 -c \
+        'import json,sys; print(sum(len(t["windows"]) for o in json.load(sys.stdin) for t in o["tabs"]))')
+    if [[ "$nwin" != 1 ]]; then
+        echo "current tab already has $nwin windows; run this in a fresh tab." >&2
+        exit 1
+    fi
+    MM_W32_CHILD=1 nohup "$0" "$@" \
+        >/dev/null 2>>"$HOME/.local/share/kitty/mm-w32.log" </dev/null &
+    exit 0
+fi
+
+if [[ "$MODE" == newwin ]]; then
+    if kt ls >/dev/null 2>&1; then
+        echo "mm-w32 session already running (socket ${SOCK#unix:})." >&2
+        exit 1
+    fi
+    rm -f "${SOCK#unix:}"
+    kitty --session "$SESSION" --listen-on "$SOCK" --detach
+    for _ in $(seq 1 100); do
+        kt ls >/dev/null 2>&1 && break
+        sleep 0.2
+    done
+    kt ls >/dev/null 2>&1 || { echo "kitty did not start listening on ${SOCK#unix:}" >&2; exit 1; }
+    # dedicated instance, so pane vars can't collide with anything else
+    scope() { echo "var:pane=$1"; }
+else
+    # in-place shares the kitty instance with every other tab, so tag this run
+    SID="$$-$(date +%s)"
+    scope() { echo "var:sid=$SID and var:pane=$1"; }
+
+    # this window becomes pane1; split the tab around it
+    kt focus-window --match "id:$KITTY_WINDOW_ID" >/dev/null
+    kt goto-layout splits >/dev/null
+    kt set-tab-title mm-w32
+    kt set-user-vars --match "id:$KITTY_WINDOW_ID" pane=1 "sid=$SID"
+
+    # pane3: full-width bottom (splits the whole area horizontally)
+    kt launch --location=hsplit --title pane3 --var pane=3 --var "sid=$SID" --cwd="$HOME" zsh >/dev/null
+
+    # pane2: top-right (splits pane1 only, so pane3 keeps the full width)
+    kt focus-window --match "$(scope 1)" >/dev/null
+    kt launch --location=vsplit --title pane2 --var pane=2 --var "sid=$SID" --cwd="$HOME" zsh >/dev/null
+    kt focus-window --match "$(scope 1)" >/dev/null
+fi
+
+send() { kt send-text --match "$(scope "$1")" "$2"; }
+
+# pane1: mount the windows share, then sit in mediamaster
+(
+    sleep 1
+    send 1 'cd ~/Projects/chamsys/ && just mount_windows; cd ~/Projects/chamsys/mount_windows/mediamaster\r'
+) &
+
+# pane2: ssh -> pwsh -> claude
+(
+    sleep 1
+    send 2 'ssh ArKaos-Desktop-Dev\r'
+    sleep "$SSH_WAIT"
+    send 2 'pwsh\r'
+    sleep "$PSH_WAIT"
+    send 2 'claude\r'
+) &
+
+# pane3: ssh -> pwsh
+(
+    sleep 1
+    send 3 'ssh ArKaos-Desktop-Dev\r'
+    sleep "$SSH_WAIT"
+    send 3 'pwsh\r'
+) &
+
+wait
