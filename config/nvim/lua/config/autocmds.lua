@@ -31,6 +31,50 @@ vim.api.nvim_create_autocmd('FileChangedShell', {
     callback = function() vim.v.fcs_choice = '' end,
 })
 
+-- Highlight BDD keywords in comments like TODO/FIXME, each in its own color.
+-- Scheduled because the built-in Syntax autocmd (registered after user config)
+-- clears syntax before sourcing the syntax file, which would wipe a match
+-- defined synchronously.
+local bdd_keywords = {
+    bddGiven = { keyword = 'Given', link = 'DiagnosticInfo' },
+    bddWhen = { keyword = 'When', link = 'DiagnosticWarn' },
+    bddThen = { keyword = 'Then', link = 'DiagnosticOk' },
+}
+
+-- Pill style: the source group's fg becomes the background, with the editor
+-- background as text color (falling back to a plain link if colors missing).
+local function bdd_link_highlights()
+    local normal = vim.api.nvim_get_hl(0, { name = 'Normal' })
+    for group, spec in pairs(bdd_keywords) do
+        local src = vim.api.nvim_get_hl(0, { name = spec.link, link = false })
+        if src.fg and normal.bg then
+            vim.api.nvim_set_hl(0, group, { fg = normal.bg, bg = src.fg, bold = true })
+        else
+            vim.api.nvim_set_hl(0, group, { link = spec.link })
+        end
+    end
+end
+
+vim.api.nvim_create_autocmd('Syntax', {
+    group = vim.api.nvim_create_augroup('bdd_keywords', {}),
+    callback = function(ev)
+        vim.schedule(function()
+            if not vim.api.nvim_buf_is_valid(ev.buf) then return end
+            vim.api.nvim_buf_call(ev.buf, function()
+                for group, spec in pairs(bdd_keywords) do
+                    vim.cmd(('syntax match %s /\\<%s:/ contained containedin=.*Comment.*'):format(group, spec.keyword))
+                end
+            end)
+        end)
+    end,
+})
+
+vim.api.nvim_create_autocmd('ColorScheme', {
+    group = 'bdd_keywords',
+    callback = bdd_link_highlights,
+})
+bdd_link_highlights()
+
 vim.api.nvim_create_autocmd('CursorHold', {
     callback = function()
         vim.diagnostic.open_float(nil, { focus = false })
@@ -40,7 +84,14 @@ vim.api.nvim_create_autocmd('CursorHold', {
 require('which-key').setup()
 require('telescope').setup({ extensions = { ['ui-select'] = {} } })
 require('telescope').load_extension('ui-select')
-require('cmake-tools').setup({})
+require('cmake-tools').setup({
+  cmake_dap_configuration = {
+    name = 'Launch (CMake target)',
+    type = 'lldb',
+    request = 'launch',
+    stopOnEntry = false,
+  },
+})
 require('clangd_extensions').setup({})
 require('render-markdown').setup({})
 

@@ -4,6 +4,7 @@ require('config.keymaps')
 require('config.diagnostics')
 require('config.autocmds')
 require('config.lsp')
+require('config.dap')
 
 require('smart-splits').setup({
   multiplexer_integration = 'kitty',
@@ -83,7 +84,8 @@ vim.api.nvim_create_autocmd('TermOpen', {
       vim.keymap.set('t', '<C-;>', function() vim.cmd('stopinsert') ss.move_cursor_right() end, opts)
       vim.keymap.set('t', '<A-j>', function() ss.resize_left() end, opts)
       vim.keymap.set('t', '<A-k>', function() ss.resize_down() end, opts)
-      vim.keymap.set('t', '<A-l>', function() ss.resize_up() end, opts)
+      -- ł, not resize: this pane is for typing prose (<Esc> then <A-l> to resize)
+      vim.keymap.set('t', '<A-l>', 'ł', opts)
       vim.keymap.set('t', '<A-;>', function() ss.resize_right() end, opts)
     end
   end,

@@ -9,6 +9,7 @@ vim.pack.add({
   'https://github.com/nvim-telescope/telescope.nvim',
   'https://github.com/nvim-telescope/telescope-ui-select.nvim',
   'https://github.com/saghen/blink.cmp',
+  'https://github.com/saghen/blink.lib',
   'https://github.com/dchinmay2/clangd_extensions.nvim',
   'https://github.com/nvim-tree/nvim-web-devicons',
   'https://github.com/MeanderingProgrammer/render-markdown.nvim',
@@ -19,4 +20,7 @@ vim.pack.add({
   'https://github.com/greggh/claude-code.nvim',
   'https://github.com/levouh/tint.nvim',
   'https://github.com/NeogitOrg/neogit',
+  'https://github.com/mfussenegger/nvim-dap',
+  'https://github.com/rcarriga/nvim-dap-ui',
+  'https://github.com/theHamsta/nvim-dap-virtual-text',
 })

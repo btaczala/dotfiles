@@ -66,5 +66,8 @@ else
   vim.keymap.set('n', '<A-k>', require('smart-splits').resize_down)
   vim.keymap.set('n', '<A-l>', require('smart-splits').resize_up)
   vim.keymap.set('n', '<A-;>', require('smart-splits').resize_right)
+
+  -- kitty swallows Option+l, so type ł wherever text is being entered
+  vim.keymap.set({ 'i', 'c', 't' }, '<A-l>', 'ł', { noremap = true })
 end
 -- vim.keymap.set('n', '<A-;>', require('smart-splits').resize_right)
