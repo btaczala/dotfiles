@@ -7,8 +7,13 @@ require('config.lsp')
 require('config.dap')
 
 require('smart-splits').setup({
-  multiplexer_integration = 'kitty',
+  multiplexer_integration = vim.env.TERM == 'xterm-kitty' and 'kitty' or false,
 })
+-- Ghostty is handled by backend-ghostty: it detects Ghostty itself, merges in
+-- multiplexer_integration = 'ghostty' + at_edge = 'stop', and claims the
+-- `nvim` Ghostty key table (see config/ghostty/config) via AppleScript. It's
+-- a no-op when not running inside Ghostty, so this is safe to call always.
+require('ghostty-smart-splits').setup({ key_table = 'nvim' })
 
 require('tint').setup({
   tint = -60,

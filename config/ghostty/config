@@ -29,3 +29,22 @@ keybind = ctrl+y>q=toggle_quick_terminal
 
 shell-integration-features = ssh-terminfo
 shell-integration-features = ssh-env
+
+# Inside Neovim. Keys here must match the jkl; layout above (and the
+# smart-splits keymaps in nvim/lua/config/keymaps.lua), not literal hjkl.
+keybind = nvim/
+# Move (left/down/up/right, sent as the raw bytes Ctrl+key would send anyway)
+keybind = nvim/ctrl+j=text:\x0a
+keybind = nvim/ctrl+k=text:\x0b
+keybind = nvim/ctrl+l=text:\x0c
+# Ctrl+; has no plain control byte; this is the CSI-u sequence Ghostty's
+# kitty-keyboard-protocol would send for it anyway. Verify with :checkhealth
+# and by pressing <C-;> at a split edge; if it doesn't register in Neovim,
+# drop this line and ctrl+; will just fall back to goto_split:right below.
+keybind = nvim/ctrl+;=text:\x1b[59;5u
+
+# Resize (left/down/up/right), sent as Alt's usual ESC-prefix convention
+keybind = nvim/alt+j=esc:j
+keybind = nvim/alt+k=esc:k
+keybind = nvim/alt+l=esc:l
+keybind = nvim/alt+;=esc:;

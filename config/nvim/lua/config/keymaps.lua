@@ -52,23 +52,17 @@ vim.keymap.set('n', '<leader>gP', function() require('neogit').open({ 'push' }) 
 vim.keymap.set('n', '<leader>fg', function() require('telescope.builtin').live_grep() end, { desc = 'Live grep' })
 vim.keymap.set('n', '<leader>fw', function() require('telescope.builtin').grep_string() end, { desc = 'Live grep word under cursor' })
 
-if vim.env.TERM_PROGRAM == 'ghostty' then
-  vim.keymap.set('n', '<C-j>', '<C-w>h', { noremap = true, silent = false })
-  vim.keymap.set('n', '<C-k>', '<C-w>j', { noremap = true, silent = true })
-  vim.keymap.set('n', '<C-l>', '<C-w>k', { noremap = true, silent = false })
-  vim.keymap.set('n', '<C-;>', '<C-w>l', { noremap = true, silent = true })
-else
-  vim.keymap.set('n', '<C-j>', require('smart-splits').move_cursor_left)
-  vim.keymap.set('n', '<C-k>', require('smart-splits').move_cursor_down)
-  vim.keymap.set('n', '<C-l>', require('smart-splits').move_cursor_up)
-  vim.keymap.set('n', '<C-;>', require('smart-splits').move_cursor_right)
+vim.keymap.set('n', '<C-j>', require('smart-splits').move_cursor_left)
+vim.keymap.set('n', '<C-k>', require('smart-splits').move_cursor_down)
+vim.keymap.set('n', '<C-l>', require('smart-splits').move_cursor_up)
+vim.keymap.set('n', '<C-;>', require('smart-splits').move_cursor_right)
 
-  vim.keymap.set('n', '<A-j>', require('smart-splits').resize_left)
-  vim.keymap.set('n', '<A-k>', require('smart-splits').resize_down)
-  vim.keymap.set('n', '<A-l>', require('smart-splits').resize_up)
-  vim.keymap.set('n', '<A-;>', require('smart-splits').resize_right)
+vim.keymap.set('n', '<A-j>', require('smart-splits').resize_left)
+vim.keymap.set('n', '<A-k>', require('smart-splits').resize_down)
+vim.keymap.set('n', '<A-l>', require('smart-splits').resize_up)
+vim.keymap.set('n', '<A-;>', require('smart-splits').resize_right)
 
-  -- kitty swallows Option+l, so type ł wherever text is being entered
-  vim.keymap.set({ 'i', 'c', 't' }, '<A-l>', 'ł', { noremap = true })
-end
--- vim.keymap.set('n', '<A-;>', require('smart-splits').resize_right)
+-- Kitty and Ghostty both swallow Option+l as a keybind (resize_up), so
+-- outside Normal mode it composes to ł at the OS level; make that explicit
+-- wherever text is being entered instead of leaving it to chance.
+vim.keymap.set({ 'i', 'c', 't' }, '<A-l>', 'ł', { noremap = true })

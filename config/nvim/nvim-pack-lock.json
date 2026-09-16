@@ -4,6 +4,10 @@
       "rev": "54058b4fe414bd64bd2904a6f8a63f1f14e3d8df",
       "src": "https://github.com/f-person/auto-dark-mode.nvim"
     },
+    "backend-ghostty": {
+      "rev": "6a37d657f10d09df2c66f004a3889d139fa88d3b",
+      "src": "https://github.com/smart-splits-nvim/backend-ghostty"
+    },
     "blink.cmp": {
       "rev": "e116ff9c5c1c2ed6bcdb2e0a6e547099876a8116",
       "src": "https://github.com/saghen/blink.cmp"
