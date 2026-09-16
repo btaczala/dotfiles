@@ -2,6 +2,8 @@
 from kittens.tui.handler import result_handler
 from kitty.key_encoding import KeyEvent, parse_shortcut
 
+FALLBACK_PREFIX = '--fallback-text='
+
 
 def encode_key_mapping(window, key_mapping):
     mods, key = parse_shortcut(key_mapping)
@@ -24,13 +26,18 @@ def main(args):
 
 
 def relative_resize_window(direction, amount, target_window_id, boss):
+    """Resize the window; returns False when there is nothing to resize."""
     window = boss.window_id_map.get(target_window_id)
     if window is None:
-        return
+        return False
 
-    neighbors = boss.active_tab.current_layout.neighbors_for_window(
-        window, boss.active_tab.windows
-    )
+    # stack (pane zoom, ctrl+y>z) reports the prev/next window as a neighbor in
+    # every direction, so ask it first — resizing a zoomed pane does nothing
+    layout = boss.active_tab.current_layout
+    if getattr(layout, 'name', '') == 'stack':
+        return False
+
+    neighbors = layout.neighbors_for_window(window, boss.active_tab.windows)
     current_window_id = boss.active_tab.active_window
 
     left_neighbors = neighbors.get('left')
@@ -78,17 +85,36 @@ def relative_resize_window(direction, amount, target_window_id, boss):
     elif direction == 'down' and bottom_neighbors:
         boss.active_tab.resize_window('taller', amount)
 
+    # no neighbor on this axis
+    else:
+        return False
+
+    return True
+
 
 @result_handler(no_ui=True)
 def handle_result(args, result, target_window_id, boss):
-    direction = args[1]
-    amount = int(args[2])
+    # --fallback-text=<str> is optional; strip it before positional indexing
+    fallback_text = ''
+    positional = []
+    for arg in args:
+        if arg.startswith(FALLBACK_PREFIX):
+            fallback_text = arg[len(FALLBACK_PREFIX):]
+        else:
+            positional.append(arg)
+
+    direction = positional[1]
+    amount = int(positional[2])
     window = boss.window_id_map.get(target_window_id)
 
+    # the tmux passthrough needs a 4th arg naming the key to forward; none of
+    # the bindings in kitty.conf pass one, so fall through to resizing instead
     cmd = window.child.foreground_cmdline[0]
-    if cmd == 'tmux':
-        keymap = args[3]
-        encoded = encode_key_mapping(window, keymap)
+    if cmd == 'tmux' and len(positional) > 3:
+        encoded = encode_key_mapping(window, positional[3])
         window.write_to_child(encoded)
-    else:
-        relative_resize_window(direction, amount, target_window_id, boss)
+    elif not relative_resize_window(direction, amount, target_window_id, boss):
+        # Nothing to resize on this axis, so type the character the key would
+        # have produced natively (kitty always swallows Option/Alt shortcuts).
+        if fallback_text:
+            window.write_to_child(fallback_text.encode('utf-8'))
