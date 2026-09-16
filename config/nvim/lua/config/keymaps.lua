@@ -39,6 +39,7 @@ vim.keymap.set('n', '<leader>tS', function() require('neotest').summary.toggle()
 vim.keymap.set('n', ']t', function() require('neotest').jump.next({ status = 'failed' }) end, { desc = 'Next failed test' })
 vim.keymap.set('n', '[t', function() require('neotest').jump.prev({ status = 'failed' }) end, { desc = 'Prev failed test' })
 
+vim.keymap.set('n', '<leader>rr', '<cmd>CMakeRun<cr>', { desc = 'CMake run target' })
 vim.keymap.set('n', '<leader>rst', '<cmd>CMakeSelectLaunchTarget<cr>', { desc = 'CMake select run target' })
 vim.keymap.set('n', '<leader>rsb', '<cmd>CMakeSelectBuildTarget<cr>', { desc = 'CMake select build target' })
 vim.keymap.set('n', '<leader>rsp', '<cmd>CMakeSelectBuildPreset<cr>', { desc = 'CMake select preset' })
