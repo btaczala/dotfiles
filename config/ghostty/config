@@ -1,8 +1,9 @@
-font-family = "Hack Nerd Font Mono Regular"
+font-family = "IosevkaTerm Nerd Font Mono"
+# font-family = "Hack Nerd Font Mono Regular"
 theme = "light:Tokyonight Day,dark:Tokyonight"
 macos-titlebar-style = "tabs"
 
-unfocused-split-opacity = 0.8
+unfocused-split-opacity = 0.9
 unfocused-split-fill = #000000
 
 window-theme = "system"
@@ -24,7 +25,9 @@ keybind = performable:alt+l=resize_split:up,20
 keybind = performable:alt+j=resize_split:left,20
 keybind = performable:alt+;=resize_split:right,20
 
-keybind = ctrl+y>w=write_scrollback_file:paste
+keybind = ctrl+y>w=close_surface
+keybind = ctrl+y>shift+w=close_tab
+keybind = ctrl+y>s=write_scrollback_file:paste
 keybind = ctrl+y>q=toggle_quick_terminal
 
 shell-integration-features = ssh-terminfo
