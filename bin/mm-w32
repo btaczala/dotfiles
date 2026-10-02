@@ -94,7 +94,9 @@ send() { kt send-text --match "$(scope "$1")" "$2"; }
     send 2 'ssh ArKaos-Desktop-Dev\r'
     sleep "$SSH_WAIT"
     send 2 'pwsh\r'
-    sleep "$PSH_WAIT"
+    sleep "1"
+    send 2 'cd D:\Projects\mediamaster\r'
+    sleep "1"
     send 2 'claude\r'
 ) &
 
@@ -104,6 +106,8 @@ send() { kt send-text --match "$(scope "$1")" "$2"; }
     send 3 'ssh ArKaos-Desktop-Dev\r'
     sleep "$SSH_WAIT"
     send 3 'pwsh\r'
+    sleep 1
+    send 3 'pw_load_vs\r'
 ) &
 
 wait
