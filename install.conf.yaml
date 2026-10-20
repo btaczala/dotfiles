@@ -38,8 +38,9 @@
     ~/Library/Application Support/neocmakelsp/config.toml:
         if: '[ `uname` = Darwin ]'
         path: config/neocmakelsp/config.toml
+    # Mac mini runs Glances as the `local` user (/Library/LaunchDaemons/io.nicolargo.glances.plist)
     ~/Library/LaunchAgents/com.bartek.glances.plist:
-        if: '[ `uname` = Darwin ]'
+        if: '[ `uname` = Darwin ] && [ `scutil --get LocalHostName` != Barteks-Mac-mini ]'
         path: config/launchd/glances.xml
     ~/Library/LaunchAgents/com.bartek.dark-notify.plist:
         if: '[ `uname` = Darwin ]'

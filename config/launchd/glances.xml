@@ -10,7 +10,6 @@
     <array>
       <string>/opt/homebrew/bin/glances</string>
       <string>-w</string>
-      <string>-d</string>
       <string>--bind</string>
       <string>0.0.0.0</string>
       <string>--port</string>
