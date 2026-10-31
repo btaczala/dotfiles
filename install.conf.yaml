@@ -16,6 +16,7 @@
 - link:
     ~/.zshrc: zsh/zshrc
     ~/.zshenv: zsh/zshenv
+    ~/.zprofile: zsh/zprofile
     ~/.gitconfig: git/gitconfig
     ~/.gdbinit: gdbinit
     ~/.config/nvim: config/nvim
