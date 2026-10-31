@@ -27,6 +27,7 @@
     ~/.gitignore: git/gitignore
     ~/.config/ghostty:  config/ghostty
     ~/.config/kitty:  config/kitty
+    ~/.config/rex:  config/rex
     ~/.tigrc:  config/tigrc
     ~/.config/lazygit/config.yml:  config/lazygit/config.yml
     ~/Library/Preferences/clangd/config.yaml: clangd/config.yaml

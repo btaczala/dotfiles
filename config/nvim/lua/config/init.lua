@@ -6,8 +6,12 @@ require('config.autocmds')
 require('config.lsp')
 require('config.dap')
 
+-- smart-splits has no Rex backend: at the edge of nvim's splits, hand the move
+-- to Rex (config/rex/init.lua passes ctrl+jkl; through while nvim is focused).
+local in_rex = vim.env.TERM_PROGRAM == 'rex' and vim.fn.executable('rex') == 1
 require('smart-splits').setup({
   multiplexer_integration = vim.env.TERM == 'xterm-kitty' and 'kitty' or false,
+  at_edge = in_rex and function(ctx) vim.system({ 'rex', 'focus', ctx.direction }) end or nil,
 })
 -- Ghostty is handled by backend-ghostty: it detects Ghostty itself, merges in
 -- multiplexer_integration = 'ghostty' + at_edge = 'stop', and claims the
