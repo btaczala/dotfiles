@@ -12,11 +12,25 @@ vim.keymap.set('n', '<leader>ww', '<cmd>write<cr>')
 
 
 vim.keymap.set('n', '<leader>lf', function() vim.lsp.buf.format() end, { desc = 'LSP format buffer' })
-vim.keymap.set({'n', 'v'}, '<leader>la', function() vim.lsp.buf.code_action() end, { desc = 'LSP code action' })
+-- nvim 0.12 only sends diagnostics whose range contains the cursor, so fix-its
+-- are missed when the cursor is elsewhere on the line. Send the whole line's.
+vim.keymap.set({'n', 'v'}, '<leader>la', function()
+    if vim.api.nvim_get_mode().mode ~= 'n' then return vim.lsp.buf.code_action() end
+    local lnum = vim.api.nvim_win_get_cursor(0)[1] - 1
+    local diagnostics = {}
+    for _, d in ipairs(vim.diagnostic.get(0, { lnum = lnum })) do
+        if d.user_data and d.user_data.lsp then table.insert(diagnostics, d.user_data.lsp) end
+    end
+    vim.lsp.buf.code_action({ context = { diagnostics = diagnostics } })
+end, { desc = 'LSP code action' })
 vim.keymap.set('n', '<leader>lD', function() vim.lsp.buf.definition() end, { desc = 'LSP go to definition' })
 vim.keymap.set('n', '<leader>ld', function() vim.lsp.buf.declaration() end, { desc = 'LSP go to declaration' })
+vim.keymap.set('n', '<leader>lld', function() vim.cmd('rightbelow vsplit') vim.lsp.buf.definition() end, { desc = 'LSP go to definition in vsplit' })
+vim.keymap.set('n', '<leader>llD', function() vim.cmd('rightbelow vsplit') vim.lsp.buf.declaration() end, { desc = 'LSP go to declaration in vsplit' })
 vim.keymap.set('n', '<leader>lx', function() vim.lsp.buf.rename() end, { desc = 'LSP rename' })
 vim.keymap.set('n', '<leader>ls', function() require('telescope.builtin').lsp_document_symbols() end, { desc = 'LSP document symbols' })
+vim.keymap.set('n', '<leader>li', function() require('telescope.builtin').lsp_incoming_calls() end, { desc = 'LSP incoming calls' })
+vim.keymap.set('n', '<leader>lo', function() require('telescope.builtin').lsp_outgoing_calls() end, { desc = 'LSP outgoing calls' })
 vim.keymap.set('n', '<leader>lh', '<cmd>ClangdSwitchSourceHeader<cr>', { desc = 'Clangd switch header/source' })
 
 vim.keymap.set('n', '<leader>cp', function()
@@ -51,6 +65,71 @@ vim.keymap.set('n', '<leader>gP', function() require('neogit').open({ 'push' }) 
 
 vim.keymap.set('n', '<leader>fg', function() require('telescope.builtin').live_grep() end, { desc = 'Live grep' })
 vim.keymap.set('n', '<leader>fw', function() require('telescope.builtin').grep_string() end, { desc = 'Live grep word under cursor' })
+vim.keymap.set('n', '<leader>fW', function()
+  local actions = require('telescope.actions')
+  local action_state = require('telescope.actions.state')
+  -- capture before the picker steals the cursor
+  local word = vim.fn.expand('<cword>')
+
+  require('telescope.pickers').new({}, {
+    prompt_title = 'rg file type (<Tab> to pick several)',
+    -- lines look like "cpp: *.C, *.H, *.cc, ..."
+    finder = require('telescope.finders').new_oneshot_job({ 'rg', '--type-list' }, {
+      entry_maker = function(line)
+        local name = line:match('^([^:]+):')
+        return name and { value = name, display = line, ordinal = line } or nil
+      end,
+    }),
+    sorter = require('telescope.config').values.generic_sorter({}),
+    attach_mappings = function(prompt_bufnr)
+      actions.select_default:replace(function()
+        local picker = action_state.get_current_picker(prompt_bufnr)
+        local selected = picker:get_multi_selection()
+        if #selected == 0 then selected = { action_state.get_selected_entry() } end
+        actions.close(prompt_bufnr)
+
+        local args = {}
+        for _, entry in ipairs(selected) do
+          table.insert(args, '--type=' .. entry.value)
+        end
+        require('telescope.builtin').grep_string({ search = word, additional_args = args })
+      end)
+      return true
+    end,
+  }):find()
+end, { desc = 'Grep word under cursor (pick rg file type)' })
+
+vim.keymap.set('n', '<leader>fG', function()
+  local actions = require('telescope.actions')
+  local action_state = require('telescope.actions.state')
+
+  require('telescope.pickers').new({}, {
+    prompt_title = 'rg file type (<Tab> to pick several)',
+    -- lines look like "cpp: *.C, *.H, *.cc, ..."
+    finder = require('telescope.finders').new_oneshot_job({ 'rg', '--type-list' }, {
+      entry_maker = function(line)
+        local name = line:match('^([^:]+):')
+        return name and { value = name, display = line, ordinal = line } or nil
+      end,
+    }),
+    sorter = require('telescope.config').values.generic_sorter({}),
+    attach_mappings = function(prompt_bufnr)
+      actions.select_default:replace(function()
+        local picker = action_state.get_current_picker(prompt_bufnr)
+        local selected = picker:get_multi_selection()
+        if #selected == 0 then selected = { action_state.get_selected_entry() } end
+        actions.close(prompt_bufnr)
+
+        local args = {}
+        for _, entry in ipairs(selected) do
+          table.insert(args, '--type=' .. entry.value)
+        end
+        require('telescope.builtin').live_grep({ additional_args = args })
+      end)
+      return true
+    end,
+  }):find()
+end, { desc = 'Live grep (pick rg file type)' })
 
 vim.keymap.set('n', '<C-j>', require('smart-splits').move_cursor_left)
 vim.keymap.set('n', '<C-k>', require('smart-splits').move_cursor_down)

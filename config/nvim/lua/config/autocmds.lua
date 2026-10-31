@@ -92,6 +92,17 @@ require('cmake-tools').setup({
     stopOnEntry = false,
   },
 })
+-- A preset unsetting an inherited var ("CMAKE_BUILD_TYPE": null, e.g. for
+-- Ninja Multi-Config) decodes to vim.NIL, which cmake-tools passes on as
+-- `--config <userdata>` and table.concat chokes on. Treat it as unset.
+do
+  local Preset = require('cmake-tools.preset')
+  local get_build_type = Preset.get_build_type
+  function Preset:get_build_type()
+    local build_type = get_build_type(self)
+    return build_type ~= vim.NIL and build_type or 'Debug'
+  end
+end
 require('clangd_extensions').setup({})
 require('render-markdown').setup({})
 
