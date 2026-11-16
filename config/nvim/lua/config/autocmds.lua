@@ -106,6 +106,18 @@ end
 require('clangd_extensions').setup({})
 require('render-markdown').setup({})
 
+-- tokyonight gives `inline code` in markdown a bright background (which
+-- RenderMarkdownCodeInline links to); keep only the foreground colour and
+-- make it italic instead.
+local function markdown_inline_code_style()
+    local hl = vim.api.nvim_get_hl(0, { name = '@markup.raw.markdown_inline', link = false })
+    hl.bg = nil
+    hl.italic = true
+    vim.api.nvim_set_hl(0, '@markup.raw.markdown_inline', hl)
+end
+vim.api.nvim_create_autocmd('ColorScheme', { callback = markdown_inline_code_style })
+markdown_inline_code_style()
+
 require('auto-dark-mode').setup({
     set_dark_mode = function()
         vim.cmd.colorscheme('tokyonight-moon')

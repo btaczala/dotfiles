@@ -14,6 +14,10 @@ keybinding:
 #
     prevBlock-alt: J # was K
     nextBlock-alt: K # was J
+  commits:
+    moveDownCommit: [<c-k>, <alt-down>] # was <c-j>
+    moveUpCommit: [<c-l>, <alt-up>] # was <c-k>
+    openLogMenu: <c-j> # was <c-l>, which now moves commits up
 customCommands:
   - key: "G"
     prompts:
