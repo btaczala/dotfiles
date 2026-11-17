@@ -38,6 +38,12 @@ autoload -Uz compinit
 
 source $HOME/dotfiles/zsh/exports.zsh
 source $HOME/dotfiles/zsh/my_fzf.sh
+
+# fzf defaults to its fixed "dark" scheme when $TERM has "256" (Rex, Ghostty),
+# painting a dark-grey gutter on light themes. base16 follows the terminal
+# palette, which is what kitty (TERM=xterm-kitty) already gets by default.
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --color=16"
+zstyle ':fzf-tab:*' fzf-flags --color=16
 source $HOME/dotfiles/zsh/aliases.zsh
 source $HOME/dotfiles/zsh/forgit.plugin.zsh
 source $HOME/dotfiles/zsh/p10k.zsh
