@@ -29,5 +29,4 @@ vim.lsp.enable({
     'ty',
     'esphome_lsp',
     'jsonls',
-    'mdi',
 })

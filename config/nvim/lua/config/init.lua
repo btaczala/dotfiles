@@ -1,6 +1,5 @@
 require('config.options')
 require('config.pack')
-require('config.mdi')
 require('config.keymaps')
 require('config.diagnostics')
 require('config.autocmds')
