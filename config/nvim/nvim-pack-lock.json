@@ -5,8 +5,12 @@
       "src": "https://github.com/f-person/auto-dark-mode.nvim"
     },
     "backend-ghostty": {
-      "rev": "6a37d657f10d09df2c66f004a3889d139fa88d3b",
+      "rev": "409b83b1aee2efa566ed55db837d7ac91e40bfd5",
       "src": "https://github.com/smart-splits-nvim/backend-ghostty"
+    },
+    "backend-kitty": {
+      "rev": "07b528c5c52054cc995d013abae18ef77d3f6217",
+      "src": "https://github.com/smart-splits-nvim/backend-kitty"
     },
     "blink.cmp": {
       "rev": "e116ff9c5c1c2ed6bcdb2e0a6e547099876a8116",
@@ -89,9 +93,14 @@
       "rev": "4663eb3ecd538bd5062628fb6d95bbe6bdca78f6",
       "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
     },
+    "smart-splits-backend-rex": {
+      "rev": "68f54325975ad47b03a968a3f201081bfadc0ff5",
+      "src": "https://github.com/rawnly/smart-splits-backend-rex"
+    },
     "smart-splits.nvim": {
-      "rev": "289971cfdbc7f7b1c91670a228b239d870130af7",
-      "src": "https://github.com/mrjones2014/smart-splits.nvim"
+      "rev": "5fd4fe53c2df2009e689f61511e3c474a9eccbaf",
+      "src": "https://github.com/mrjones2014/smart-splits.nvim",
+      "version": "'v3.0.0'"
     },
     "telescope-ui-select.nvim": {
       "rev": "6e51d7da30bd139a6950adf2a47fda6df9fa06d2",

@@ -6,18 +6,30 @@ require('config.autocmds')
 require('config.lsp')
 require('config.dap')
 
--- smart-splits has no Rex backend: at the edge of nvim's splits, hand the move
--- to Rex (config/rex/init.lua passes ctrl+jkl; through while nvim is focused).
-local in_rex = vim.env.TERM_PROGRAM == 'rex' and vim.fn.executable('rex') == 1
+-- smart-splits v3 picks its terminal backend by detection: smart-splits-backend-rex
+-- inside Rex (at the edge of nvim's splits, moves and resizes go to the
+-- neighboring Rex pane), backend-kitty in kitty, backend-ghostty in Ghostty.
+-- config/rex/init.lua and config/kitty/kitty.conf pass ctrl+jkl; and alt+jkl;
+-- through while nvim is focused, so the keys reach smart-splits in the first place.
 require('smart-splits').setup({
-  multiplexer_integration = vim.env.TERM == 'xterm-kitty' and 'kitty' or false,
-  at_edge = in_rex and function(ctx) vim.system({ 'rex', 'focus', ctx.direction }) end or nil,
+  mux = {
+    backend = {
+      'smart-splits-backend-rex',
+      'smart-splits-backend-kitty',
+      'smart-splits-backend-ghostty',
+    },
+    warn_if_unusable = false, -- plain terminal: no backend, plain window movement
+  },
+  move = {
+    -- stop at the multiplexer's edge; wrap between nvim windows when there is none
+    at_edge = function(ctx)
+      if not ctx.backend then ctx.wrap() end
+    end,
+  },
 })
--- Ghostty is handled by backend-ghostty: it detects Ghostty itself, merges in
--- multiplexer_integration = 'ghostty' + at_edge = 'stop', and claims the
--- `nvim` Ghostty key table (see config/ghostty/config) via AppleScript. It's
--- a no-op when not running inside Ghostty, so this is safe to call always.
-require('ghostty-smart-splits').setup({ key_table = 'nvim' })
+-- Claims the `nvim` Ghostty key table (see config/ghostty/config) via
+-- AppleScript while nvim runs. A no-op when not running inside Ghostty.
+require('smart-splits-backend-ghostty').setup({ key_table = 'nvim' })
 
 require('tint').setup({
   tint = -60,
