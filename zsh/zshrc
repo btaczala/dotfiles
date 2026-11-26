@@ -68,6 +68,3 @@ alias claude-work='CLAUDE_CONFIG_DIR="$HOME/.claude-work" claude'
 # ESP-IDF v6.0.2 (installed via eim) — activates idf.py, toolchains, python venv
 alias get_idf='source "$HOME/.espressif/tools/activate_idf_v6.0.2.sh"'
 [ "$TERM_PROGRAM" = rex ] && export CLAUDE_CODE_FORCE_TERMINAL_IMAGES=1 # show-your-work: Claude Code images on in rex
-
-# sccache: strip this prefix before hashing so worktrees share cache hits
-export SCCACHE_BASEDIRS="$HOME/Projects/chamsys"
