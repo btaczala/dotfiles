@@ -20,14 +20,17 @@ for key, direction in pairs(nav_keys) do
 end
 
 -- ─── Pane resize (Alt + j/k/l/;) ─────────────────────────────────────────────
--- Passes through to smart-splits.nvim in nvim, like navigation.
+-- In nvim the key goes to smart-splits.nvim as ESC+key (what nvim reads as <M-key>),
+-- like ghostty's esc:j. Passing the key through (return false) lets macOS compose
+-- Option+j into ∆ and Option+; into …, so nvim never sees <A-j>/<A-;>.
 -- alt+l: with no split to resize, type ł instead (Option+l on the Polish layout)
 local resize_keys = { ["alt+j"] = "left", ["alt+k"] = "down", ["alt+l"] = "up", ["alt+;"] = "right" }
 local fallback_text = { ["alt+l"] = "ł" }
 for key, direction in pairs(resize_keys) do
   rex.bind(key, function(ctx)
     if panes.focused_nvim(ctx.block_id) then
-      return false
+      rex.block.call(panes.terminal, "write", { block_id = ctx.block_id, data = "\27" .. key:sub(-1) })
+      return true
     end
     if not panes.resize(ctx.block_id, direction, 3) and fallback_text[key] then
       rex.block.call(panes.terminal, "write", { block_id = ctx.block_id, data = fallback_text[key] })
