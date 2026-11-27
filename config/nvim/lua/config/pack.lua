@@ -27,3 +27,9 @@ vim.pack.add({
   'https://github.com/theHamsta/nvim-dap-virtual-text',
   'https://github.com/smart-splits-nvim/backend-ghostty',
 })
+
+-- :PackUpdate updates every plugin to its latest version and opens a review
+-- buffer first (:write applies, :quit cancels). :PackUpdate! skips the review.
+vim.api.nvim_create_user_command('PackUpdate', function(opts)
+  vim.pack.update(nil, { force = opts.bang })
+end, { bang = true, desc = 'Update all plugins (! to skip review)' })

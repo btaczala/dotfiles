@@ -1,0 +1,7 @@
+./LICENSE
+./README.md
+./bin
+./bin/rex-fingers
+./lua
+./lua/rex-fingers
+./lua/rex-fingers/init.lua

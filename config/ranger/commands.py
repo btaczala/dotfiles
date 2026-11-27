@@ -2,6 +2,40 @@ import os
 import subprocess
 
 from ranger.api.commands import Command
+from ranger.ext import img_display
+
+# ranger's kitty image preview refuses to run unless $TERM contains "kitty"
+# (KittyImageDisplayer._late_init), but rex/ghostty/wezterm/konsole speak the
+# same kitty graphics protocol with a different $TERM. Pretend to be kitty
+# during the one-time handshake, then restore the real $TERM so child
+# processes (nvim, ...) still see it. Skipped inside tmux/screen, where the
+# kitty protocol does not pass through.
+_KITTY_PROTOCOL_TERM_PROGRAMS = frozenset({'kitty', 'rex', 'ghostty', 'wezterm', 'konsole'})
+
+_orig_kitty_late_init = getattr(img_display.KittyImageDisplayer, '_late_init', None)
+
+
+def _kitty_late_init(self):
+    term = os.environ.get('TERM', '')
+    if (
+        _orig_kitty_late_init is not None
+        and 'kitty' not in term
+        and not os.environ.get('TMUX')
+        and 'tmux' not in term
+        and 'screen' not in term
+        and os.environ.get('TERM_PROGRAM', '').lower() in _KITTY_PROTOCOL_TERM_PROGRAMS
+    ):
+        os.environ['TERM'] = 'xterm-kitty'
+        try:
+            _orig_kitty_late_init(self)
+        finally:
+            os.environ['TERM'] = term
+    else:
+        _orig_kitty_late_init(self)
+
+
+if _orig_kitty_late_init is not None:
+    img_display.KittyImageDisplayer._late_init = _kitty_late_init
 
 
 class fzf_select(Command):
