@@ -167,11 +167,3 @@ rex.bind("ctrl+y>ctrl+a", "pane.send_key", { key = "ctrl+a" })
 
 -- Command palette
 rex.bind("cmd+shift+p", "client.palette.toggle")
-local fingers_dir = os.getenv("HOME") .. "/.config/rex/plugins/rex-fingers"
-local fingers = dofile(fingers_dir .. "/lua/rex-fingers/init.lua")
-fingers.setup {
-    binary = fingers_dir .. "/bin/rex-fingers",
-    key = "ctrl+shift+enter",
-    window_key = "ctrl+shift+enter"
-
-}
